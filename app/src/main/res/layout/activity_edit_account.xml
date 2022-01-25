@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_shape"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/llBack"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:rotation='@{lang.equals("en")?180:0}'
+                    android:src="@drawable/ic_back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Personal Data"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/llProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center_horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/flImage"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            app:civ_border_color="@color/purple_200"
+                            app:civ_border_width="1dp"
+                            app:civ_circle_background_color="@color/white" />
+
+                        <ImageView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/circle_fill_color2"
+                            android:clickable="false"
+                            android:longClickable="false"
+                            android:padding="8dp"
+                            android:src="@drawable/circle_avatar" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/llChangePhoto"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:layout_constraintBottom_toBottomOf="@id/flImage"
+                        app:layout_constraintEnd_toEndOf="@id/flImage"
+                        app:layout_constraintHorizontal_bias=".1"
+                        app:layout_constraintStart_toStartOf="@id/flImage"
+                        app:layout_constraintTop_toTopOf="@id/flImage"
+                        app:layout_constraintVertical_bias="1">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@color/color2" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_edit"
+                             />
+                    </FrameLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="@string/email"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/small_stroke_color"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/circle_fill_color2">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_mail" />
+                        </FrameLayout>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_transparent"
+                            android:hint="mmmm@example.com"
+                            android:inputType="textEmailAddress"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="15sp"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="1dp"
+                        android:text="@string/name"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/small_stroke_color"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/circle_fill_color2">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_user" />
+                        </FrameLayout>
+
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_transparent"
+                            android:hint="@string/name"
+                            android:lines="1"
+                            android:singleLine="true"
+                            android:textColorHint="@color/white"
+                            android:textSize="15sp"
+                            tools:ignore="TouchTargetSizeCheck" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="3dp"
+                        android:text="@string/password"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:id="@+id/cardPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/small_stroke_color"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/circle_fill_color2">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_password"
+                                 />
+                        </FrameLayout>
+
+                        <EditText
+                            android:id="@+id/tvPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/background_transparent"
+                            android:hint="@string/password"
+                            android:textColorHint="@color/white"
+                            android:textSize="15sp" />
+
+
+                    </LinearLayout>
+
+                    <!--                    <TextView-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="10dp"-->
+                    <!--                        android:layout_marginTop="10dp"-->
+                    <!--                        android:layout_marginBottom="3dp"-->
+                    <!--                        android:text="@string/phone"-->
+                    <!--                        android:textColor="@color/black"-->
+                    <!--                        android:textSize="18sp" />-->
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="45dp"-->
+                    <!--                        android:layout_marginStart="16dp"-->
+                    <!--                        android:layout_marginEnd="16dp"-->
+                    <!--                        android:layout_marginBottom="10dp"-->
+                    <!--                        android:background="@drawable/small_stroke_color"-->
+                    <!--                        android:gravity="center_vertical"-->
+                    <!--                        android:orientation="horizontal">-->
+
+                    <!--                        <FrameLayout-->
+                    <!--                            android:layout_width="45dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:background="@drawable/circle_fill_color2">-->
+
+                    <!--                            <ImageView-->
+                    <!--                                android:layout_width="24dp"-->
+                    <!--                                android:layout_height="match_parent"-->
+                    <!--                                android:layout_gravity="center"-->
+                    <!--                                android:src="@drawable/ic_phone" />-->
+                    <!--                        </FrameLayout>-->
+
+                    <!--                        <EditText-->
+                    <!--                            android:id="@+id/phNum"-->
+                    <!--                            android:layout_width="0dp"-->
+                    <!--                            android:layout_height="match_parent"-->
+                    <!--                            android:layout_marginStart="8dp"-->
+                    <!--                            android:layout_marginEnd="8dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:background="@drawable/background_transparent"-->
+                    <!--                            android:text="01111111111"-->
+                    <!--                            android:inputType="phone"-->
+                    <!--                            android:lines="1"-->
+                    <!--                            android:singleLine="true"-->
+                    <!--                            android:textColorHint="@color/black"-->
+                    <!--                            android:textSize="15sp"-->
+                    <!--                            tools:ignore="TouchTargetSizeCheck" />-->
+
+                    <!--                        <Button-->
+                    <!--                            android:id="@+id/verifyPhone"-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:background="@drawable/bg_user_btn"-->
+                    <!--                            android:text="@string/verify"-->
+                    <!--                            android:textColor="@color/white"-->
+                    <!--                            android:textAllCaps="false"-->
+                    <!--                            android:textSize="15sp"-->
+                    <!--                            tools:ignore="TouchTargetSizeCheck" />-->
+
+                    <!--                    </LinearLayout>-->
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/saveChanges"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/bg_user_btn"
+                    android:text="@string/saveChanges"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <net.cachapa.expandablelayout.ExpandableLayout
+            android:id="@+id/expandLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@color/black_trans"
+            android:padding="16dp"
+            app:el_duration="800"
+            app:el_expanded="false"
+            app:el_parallax=".5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/flGallery"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_gallery"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/gallery"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/flCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:padding="12dp"
+                            android:src="@drawable/ic_camera"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/camera"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                </FrameLayout>
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/colorPrimary"
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+        </net.cachapa.expandablelayout.ExpandableLayout>
+    </LinearLayout>
+
+</layout>

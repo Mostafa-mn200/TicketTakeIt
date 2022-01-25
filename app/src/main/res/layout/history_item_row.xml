@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+  <androidx.cardview.widget.CardView
+      android:id="@+id/cardItem"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:cardCornerRadius="8dp"
+      app:cardBackgroundColor="@color/black2"
+      app:cardElevation="3dp"
+      android:layout_margin="5dp"
+      >
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          >
+          <LinearLayout
+              android:id="@+id/llHeader"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              >
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_margin="8dp"
+                  >
+                  <TextView
+                      android:id="@+id/movieName"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="Movie Name"
+                      android:textColor="@color/white"
+                      android:textSize="22sp"
+                      android:layout_gravity="center_vertical"/>
+                  <Space
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_gravity="center_vertical"
+                      android:layout_weight="1"/>
+
+                  <LinearLayout
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      >
+                      <TextView
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:text="20-10-2022"
+                          android:textColor="@color/white"
+                          android:textSize="18sp"/>
+                      <LinearLayout
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal"
+                          >
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="200"
+                              android:textColor="@color/white"
+                              android:layout_marginEnd="5dp"
+                              android:textSize="18sp"/>
+                          <TextView
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:text="EGP"
+                              android:textColor="@color/white"
+                              android:textSize="20sp"/>
+                      </LinearLayout>
+                  </LinearLayout>
+
+              </LinearLayout>
+              <ImageView
+                  android:id="@+id/arrow_clicked"
+                  android:layout_width="18dp"
+                  android:layout_height="18dp"
+                  android:src="@drawable/ic_arrow_down"
+                  android:layout_gravity="end"
+                  android:layout_marginEnd="15dp"/>
+
+          </LinearLayout>
+          <ImageView
+              android:id="@+id/cardImage"
+              android:layout_width="match_parent"
+              android:layout_height="220dp"
+              android:src="@drawable/spider"
+              android:visibility="gone"
+              android:scaleType="fitXY"/>
+      </LinearLayout>
+  </androidx.cardview.widget.CardView>
+</layout>
