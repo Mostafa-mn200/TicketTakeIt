@@ -35,7 +35,7 @@ public class LanguageActivity extends AppCompatActivity {
 
     @SuppressLint("ResourceAsColor")
     private void intView() {
-        ProgressDialog dialog=new ProgressDialog(this);
+        ProgressDialog dialog = new ProgressDialog(this);
         lang = Language.getLanguageSelected(this);//where u get the lang saved in shared pref
         //decorate the saved language
         if (lang.equals("en")) {
@@ -43,12 +43,12 @@ public class LanguageActivity extends AppCompatActivity {
             binding.enTxt.setTextColor(R.color.black);
             binding.arTxt.setTextColor(R.color.white);
             binding.flAr.setBackgroundResource(0);
-        } else if (lang.equals("ar")){
+        } else if (lang.equals("ar")) {
             binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary);
             binding.arTxt.setTextColor(R.color.black);
             binding.enTxt.setTextColor(R.color.white);
             binding.flEn.setBackgroundResource(0);
-        }else{
+        } else {
             Toast.makeText(this, "no selected language", Toast.LENGTH_SHORT).show();
         }
 
@@ -95,7 +95,7 @@ public class LanguageActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            },500);
+            }, 500);
             finish();
 
         });

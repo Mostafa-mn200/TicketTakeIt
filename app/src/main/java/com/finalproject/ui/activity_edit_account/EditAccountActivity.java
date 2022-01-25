@@ -33,7 +33,7 @@ public class EditAccountActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        ProgressDialog dialog=new ProgressDialog(this);
+        ProgressDialog dialog = new ProgressDialog(this);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {
                 setResult(RESULT_OK);
@@ -49,7 +49,7 @@ public class EditAccountActivity extends AppCompatActivity {
             new Handler().postDelayed(() -> {
                 dialog.dismiss();
                 Toast.makeText(EditAccountActivity.this, R.string.dataUpdated, Toast.LENGTH_SHORT).show();
-            },600);
+            }, 600);
         });
 //        binding.verifyPhone.setOnClickListener(new View.OnClickListener() {
 //            @Override

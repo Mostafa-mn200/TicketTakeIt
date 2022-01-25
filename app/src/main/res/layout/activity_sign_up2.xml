@@ -10,9 +10,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="10dp"
         android:background="@drawable/bg"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -176,8 +176,7 @@
                         android:layout_width="24dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_password"
-                         />
+                        android:src="@drawable/ic_password" />
                 </FrameLayout>
 
 

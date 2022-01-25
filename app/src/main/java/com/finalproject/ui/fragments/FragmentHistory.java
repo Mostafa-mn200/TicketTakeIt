@@ -47,7 +47,7 @@ public class FragmentHistory extends Fragment {
     }
 
     private void initView() {
-        historyAdapter=new HistoryAdapter(activity,this);
+        historyAdapter = new HistoryAdapter(activity, this);
         binding.recyclerHistory.setLayoutManager(new LinearLayoutManager(activity));
         binding.recyclerHistory.setAdapter(historyAdapter);
     }

@@ -17,7 +17,7 @@ import com.finalproject.databinding.HistoryItemRowBinding;
 
 import java.util.List;
 
-public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Object> list;
     private Context context;
     private LayoutInflater inflater;
@@ -33,21 +33,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HistoryItemRowBinding binding= DataBindingUtil.inflate(inflater, R.layout.history_item_row,parent,false);
+        HistoryItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.history_item_row, parent, false);
         return new MyHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyHolder myHolder=(MyHolder) holder;
+        MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.movieName.setText("SpiderMan");
         myHolder.binding.llHeader.setOnClickListener(view -> {
-            if (myHolder.binding.cardImage.getVisibility()==View.GONE){
-                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem,new AutoTransition());
+            if (myHolder.binding.cardImage.getVisibility() == View.GONE) {
+                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
                 myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_arrow_up);
                 myHolder.binding.cardImage.setVisibility(View.VISIBLE);
-            }else {
-                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem,new AutoTransition());
+            } else {
+                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
                 myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_arrow_down);
                 myHolder.binding.cardImage.setVisibility(View.GONE);
             }

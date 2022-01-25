@@ -22,8 +22,7 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/black2"
-                >
+                android:background="@color/black2">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
@@ -91,8 +90,8 @@
                 <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true"
                     android:background="@drawable/bg"
+                    android:fillViewport="true"
                     android:scrollbars="none">
 
                     <LinearLayout

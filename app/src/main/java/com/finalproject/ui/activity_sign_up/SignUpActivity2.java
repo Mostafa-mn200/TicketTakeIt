@@ -25,7 +25,7 @@ public class SignUpActivity2 extends AppCompatActivity {
     }
 
     private void initView() {
-        ProgressDialog dialog=new ProgressDialog(this);
+        ProgressDialog dialog = new ProgressDialog(this);
         binding.llPrevious.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, SignUpActivity.class);
             startActivity(intent);
@@ -41,7 +41,7 @@ public class SignUpActivity2 extends AppCompatActivity {
                     Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
                     startActivity(intent);
                 }
-            },650);
+            }, 650);
         });
         binding.txtLogin.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, LoginActivity.class);

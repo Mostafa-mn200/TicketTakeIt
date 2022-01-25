@@ -120,8 +120,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:padding="10dp"
-                            android:src="@drawable/ic_edit"
-                             />
+                            android:src="@drawable/ic_edit" />
                     </FrameLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -258,8 +257,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_password"
-                                 />
+                                android:src="@drawable/ic_password" />
                         </FrameLayout>
 
                         <EditText

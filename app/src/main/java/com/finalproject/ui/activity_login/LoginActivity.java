@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
-            },500);
+            }, 500);
 
         });
         binding.txtCreate.setOnClickListener(new View.OnClickListener() {
