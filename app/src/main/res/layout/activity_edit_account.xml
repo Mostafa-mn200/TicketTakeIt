@@ -161,7 +161,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_mail" />
+                                android:src="@drawable/ic_email" />
                         </FrameLayout>
 
                         <EditText
@@ -171,10 +171,11 @@
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
                             android:background="@drawable/background_transparent"
-                            android:hint="mmmm@example.com"
+                            android:hint="mohamed@gmail.com"
                             android:inputType="textEmailAddress"
                             android:lines="1"
                             android:singleLine="true"
+                            android:textColor="@color/white"
                             android:textColorHint="@color/white"
                             android:textSize="15sp"
                             tools:ignore="TouchTargetSizeCheck" />
@@ -220,9 +221,11 @@
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
                             android:background="@drawable/background_transparent"
-                            android:hint="@string/name"
+                            android:hint="Mohamed"
+                            android:inputType="text"
                             android:lines="1"
                             android:singleLine="true"
+                            android:textColor="@color/white"
                             android:textColorHint="@color/white"
                             android:textSize="15sp"
                             tools:ignore="TouchTargetSizeCheck" />
@@ -260,15 +263,33 @@
                                 android:src="@drawable/ic_password" />
                         </FrameLayout>
 
-                        <EditText
-                            android:id="@+id/tvPassword"
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/background_transparent"
-                            android:hint="@string/password"
-                            android:textColorHint="@color/white"
-                            android:textSize="15sp" />
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            app:counterEnabled="false"
+                            app:errorEnabled="false"
+                            app:hintEnabled="false"
+                            app:passwordToggleEnabled="true"
+                            app:passwordToggleTint="@color/white">
+
+                            <EditText
+                                android:id="@+id/edPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/transparent"
+                                android:gravity="start|center_vertical"
+                                android:hint="1234565"
+                                android:inputType="textPassword"
+                                android:lines="1"
+                                android:textAlignment="viewStart"
+                                android:textColor="@color/white"
+                                android:textColorHint="@color/white"
+                                android:textSize="14sp"
+
+                                />
+                        </com.google.android.material.textfield.TextInputLayout>
 
 
                     </LinearLayout>

@@ -139,9 +139,11 @@
                     android:layout_weight="1"
                     android:background="@drawable/background_transparent"
                     android:hint="@string/typeFullName"
+                    android:inputType="text"
                     android:lines="1"
                     android:singleLine="true"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/gray14"
                     android:textSize="15sp"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
@@ -200,7 +202,8 @@
                         android:inputType="textPassword"
                         android:lines="1"
                         android:textAlignment="viewStart"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/gray14"
                         android:textSize="14sp"
 
                         />

@@ -18,7 +18,8 @@
             android:exported="false" />
         <activity
             android:name=".ui.activity_edit_account.EditAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".ui.activity_verification_code.VerificationCodeActivity"
             android:exported="false" />

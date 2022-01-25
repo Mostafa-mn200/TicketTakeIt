@@ -21,11 +21,10 @@
     <string name="saveChanges">حفظ التغييرات</string>
     <string name="verify">تأكيد</string>
     <string name="change">تغيير</string>
-    <string name="click_here_to_change_your_password">اضغط هنا لتغيير كلمة السر</string>
     <string name="name">الاسم</string>
     <string name="email">البريد الالكتروني</string>
     <string name="phone">الهاتف</string>
-    <string name="password">كلمة السر</string>
+    <string name="password">كلمة المرور</string>
     <string name="firstName">الاسم الاول</string>
     <string name="lastName">الاسم الاخير</string>
     <string name="language">اللغة</string>
@@ -43,7 +42,7 @@
     <string name="owner">المالك</string>
     <string name="username">اسم المستخدم</string>
     <string name="usernameOrMail">اسم المستخدم,البريد الالكتروني</string>
-    <string name="forgetPassword">هل نسيت كلمة السر؟</string>
+    <string name="forgetPassword">هل نسيت كلمة المرور؟</string>
     <string name="dontHaveAccount">ليس لديك حساب شخصي؟</string>
     <string name="alreadyHaveAccount">لديك حساب بالفعل؟</string>
     <string name="nationalId">بطاقة تعريف الهوية</string>
