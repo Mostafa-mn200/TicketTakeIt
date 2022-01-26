@@ -166,7 +166,7 @@
             <Button
                 android:id="@+id/llCancel"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginEnd="30dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_change_lang"
@@ -178,7 +178,7 @@
             <Button
                 android:id="@+id/llNext"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/btn_change_lang"
                 android:minWidth="120dp"

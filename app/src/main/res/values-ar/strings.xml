@@ -36,17 +36,19 @@
     <string name="confirm">تأكيد</string>
     <string name="please_enter_the_verification_code_sent_to">من فضلك ادخل رمز التحقق المرسل الي</string>
     <string name="login">تسجيل الدخول</string>
+    <string name="pleaseLogin">الرجاء تسجيل الدخول للمتابعة</string>
     <string name="signUp">انشاء حسابك </string>
-    <string name="createNew">انشاء جديد</string>
+    <string name="signUp2">انشاء جديد</string>
+    <string name="pleaseFill">الرجاء ملء المطلوب هنا</string>
     <string name="customer">المستخدم</string>
     <string name="owner">المالك</string>
     <string name="username">اسم المستخدم</string>
-    <string name="usernameOrMail">اسم المستخدم,البريد الالكتروني</string>
+    <string name="usernameOrMail">اسم المستخدم أو البريد الالكتروني</string>
     <string name="forgetPassword">هل نسيت كلمة المرور؟</string>
     <string name="dontHaveAccount">ليس لديك حساب شخصي؟</string>
     <string name="alreadyHaveAccount">لديك حساب بالفعل؟</string>
     <string name="nationalId">بطاقة تعريف الهوية</string>
-    <string name="typeId">اكتب رقم هويتك</string>
+    <string name="typeId">رقم الهوية</string>
     <string name="typeFullName">اكتب اسمك </string>
     <string name="Continue">أكمل</string>
     <string name="gender">الجنس</string>
@@ -60,5 +62,8 @@
     <string name="savingChanges">جاري حفظ التعديلات</string>
     <string name="dataUpdated">تم تحديث البيانات</string>
     <string name="birthDate">تاريخ الميلاد</string>
+    <string name="day">اليوم</string>
+    <string name="month">الشهر</string>
+    <string name="year">السنة</string>
 
 </resources>

@@ -35,17 +35,19 @@
     <string name="confirm">Confirm</string>
     <string name="please_enter_the_verification_code_sent_to">Please enter the verification code sent to</string>
     <string name="login">Login</string>
+    <string name="pleaseLogin">Please login to continue</string>
     <string name="signUp">Sign up</string>
-    <string name="createNew">Create new</string>
+    <string name="signUp2">Sign up</string>
+    <string name="pleaseFill">Please fill in the required here</string>
     <string name="customer">Customer</string>
     <string name="owner">Owner</string>
     <string name="username">UserName</string>
-    <string name="usernameOrMail">UserName,Email</string>
+    <string name="usernameOrMail">UserName or Email</string>
     <string name="forgetPassword">Forget Your Password?</string>
     <string name="dontHaveAccount">Don\'t have an account?</string>
     <string name="alreadyHaveAccount">already have an account?</string>
     <string name="nationalId">National id card</string>
-    <string name="typeId">type your id </string>
+    <string name="typeId">id</string>
     <string name="typeFullName">type full name </string>
     <string name="Continue">Continue</string>
     <string name="gender">Gender</string>
@@ -59,4 +61,7 @@
     <string name="savingChanges">Saving changes</string>
     <string name="dataUpdated">Data Updated</string>
     <string name="birthDate">Birthdate</string>
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
 </resources>

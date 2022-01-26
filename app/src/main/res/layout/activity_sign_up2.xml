@@ -24,14 +24,13 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="8dp"
                     android:text="@string/Continue"
                     android:textColor="@color/white"
@@ -102,7 +101,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginBottom="3dp"
                 android:text="@string/name"
                 android:textColor="@color/white"
@@ -190,8 +189,8 @@
                     app:counterEnabled="false"
                     app:errorEnabled="false"
                     app:hintEnabled="false"
-                    app:passwordToggleEnabled="true">
-
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/white">
                     <EditText
                         android:id="@+id/edPassword"
                         android:layout_width="match_parent"
@@ -231,10 +230,10 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardMale"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/color2"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="3dp"
 
@@ -258,7 +257,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:text="@string/male"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -269,10 +268,10 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFemale"
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
+                    android:layout_width="100dp"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/white"
+                    app:cardBackgroundColor="@color/color2"
                     app:cardCornerRadius="5dp"
                     app:cardElevation="3dp"
 
@@ -295,7 +294,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/female"
-                            android:textColor="@color/black"
+                            android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -315,10 +314,10 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLocation"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                app:cardBackgroundColor="@color/white"
+                app:cardBackgroundColor="@color/color2"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
 
@@ -341,7 +340,7 @@
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="5dp"
                         android:text="@string/detectLocation"
-                        android:textColor="@color/black"
+                        android:textColor="@color/white"
                         android:textSize="15sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -356,7 +355,7 @@
                 <Button
                     android:id="@+id/llPrevious"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="25dp"
                     android:background="@drawable/bg_user_btn"
@@ -368,7 +367,7 @@
                 <Button
                     android:id="@+id/llSignUp"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/bg_user_btn"
                     android:text="@string/signUp"
