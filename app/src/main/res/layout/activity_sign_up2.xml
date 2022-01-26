@@ -50,38 +50,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
                 <FrameLayout
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="start"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="start|center_vertical|center_horizontal"
                     android:background="@drawable/circle_fill_color2">
 
                     <TextView
-                        android:layout_width="24dp"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:text="1"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:text="1"
                         android:textColor="@color/white"
-                        android:textSize="25sp"
+                        android:textSize="16sp"
                         app:tint="#7d7d7d" />
 
                 </FrameLayout>
 
                 <View
-                    android:layout_width="50dp"
+                    android:layout_width="25dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/horizontal_line2" />
+                <View
+                    android:layout_width="25dp"
                     android:layout_height="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
                     android:background="@drawable/horizontal_line" />
 
                 <FrameLayout
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="end"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="end|center_vertical"
                     android:background="@drawable/circle_fill_color">
 
                     <TextView
@@ -231,7 +237,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardMale"
                     android:layout_width="100dp"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     app:cardBackgroundColor="@color/color2"
                     app:cardCornerRadius="5dp"
@@ -269,7 +275,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardFemale"
                     android:layout_width="100dp"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
                     android:layout_margin="5dp"
                     app:cardBackgroundColor="@color/color2"
                     app:cardCornerRadius="5dp"
@@ -314,7 +320,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardLocation"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 app:cardBackgroundColor="@color/color2"
@@ -355,7 +361,7 @@
                 <Button
                     android:id="@+id/llPrevious"
                     android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="25dp"
                     android:background="@drawable/bg_user_btn"
@@ -367,7 +373,7 @@
                 <Button
                     android:id="@+id/llSignUp"
                     android:layout_width="150dp"
-                    android:layout_height="50dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:background="@drawable/bg_user_btn"
                     android:text="@string/signUp"

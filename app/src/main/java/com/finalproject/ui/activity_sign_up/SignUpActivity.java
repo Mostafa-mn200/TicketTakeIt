@@ -24,7 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.btnNext.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
             startActivity(intent);
-
+            finish();
         });
     }
 }

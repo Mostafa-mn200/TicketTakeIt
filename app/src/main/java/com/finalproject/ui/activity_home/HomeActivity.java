@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
 
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (binding.toolBar.getNavigationIcon() != null) {
-                binding.toolBar.getNavigationIcon().setColorFilter(ContextCompat.getColor(HomeActivity.this, R.color.black), PorterDuff.Mode.SRC_ATOP);
+                binding.toolBar.getNavigationIcon().setColorFilter(ContextCompat.getColor(HomeActivity.this, R.color.white), PorterDuff.Mode.SRC_ATOP);
 
             }
         });

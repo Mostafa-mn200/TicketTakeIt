@@ -33,20 +33,19 @@ public class LanguageActivity extends AppCompatActivity {
         intView();
     }
 
-    @SuppressLint("ResourceAsColor")
     private void intView() {
         ProgressDialog dialog = new ProgressDialog(this);
         lang = Language.getLanguageSelected(this);//where u get the lang saved in shared pref
         //decorate the saved language
         if (lang.equals("en")) {
             binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.enTxt.setTextColor(R.color.black);
-            binding.arTxt.setTextColor(R.color.white);
+            binding.enTxt.setTextColor(getResources().getColor(R.color.black));
+            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flAr.setBackgroundResource(0);
         } else if (lang.equals("ar")) {
             binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.arTxt.setTextColor(R.color.black);
-            binding.enTxt.setTextColor(R.color.white);
+            binding.arTxt.setTextColor(getResources().getColor(R.color.black));
+            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flEn.setBackgroundResource(0);
         } else {
             Toast.makeText(this, "no selected language", Toast.LENGTH_SHORT).show();
@@ -61,8 +60,8 @@ public class LanguageActivity extends AppCompatActivity {
             }
 
             binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.arTxt.setTextColor(R.color.black);
-            binding.enTxt.setTextColor(R.color.white);
+            binding.arTxt.setTextColor(getResources().getColor(R.color.black));
+            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flEn.setBackgroundResource(0);
         });
         binding.cardEn.setOnClickListener(view -> {
@@ -73,8 +72,8 @@ public class LanguageActivity extends AppCompatActivity {
                 binding.llNext.setVisibility(View.INVISIBLE);
             }
             binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.enTxt.setTextColor(R.color.black);
-            binding.arTxt.setTextColor(R.color.white);
+            binding.enTxt.setTextColor(getResources().getColor(R.color.black));
+            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flAr.setBackgroundResource(0);
         });
         binding.llCancel.setOnClickListener(view -> finish());
@@ -82,19 +81,16 @@ public class LanguageActivity extends AppCompatActivity {
             dialog.setMessage(getString(R.string.waitLoading));
             dialog.show();
 
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    dialog.dismiss();
-                    Language.setNewLocale(LanguageActivity.this, selectedLang);
+            new Handler().postDelayed(() -> {
+                dialog.dismiss();
+                Language.setNewLocale(LanguageActivity.this, selectedLang);
 
-                    Intent intent = new Intent(LanguageActivity.this, HomeActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    startActivity(intent);
-                    finish();
-                }
+                Intent intent = new Intent(LanguageActivity.this, HomeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
             }, 500);
             finish();
 

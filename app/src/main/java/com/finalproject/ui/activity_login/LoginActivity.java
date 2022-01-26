@@ -40,23 +40,18 @@ public class LoginActivity extends AppCompatActivity {
             dialog.setTitle(getString(R.string.login));
             dialog.setMessage(getString(R.string.waitLoading));
             dialog.show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    dialog.dismiss();
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                }
+            new Handler().postDelayed(() -> {
+                dialog.dismiss();
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
             }, 500);
 
         });
-        binding.txtCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-
-            }
+        binding.txtCreate.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 

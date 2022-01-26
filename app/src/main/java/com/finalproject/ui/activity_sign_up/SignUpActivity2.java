@@ -29,6 +29,7 @@ public class SignUpActivity2 extends AppCompatActivity {
         binding.llPrevious.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, SignUpActivity.class);
             startActivity(intent);
+            finish();
         });
         binding.llSignUp.setOnClickListener(view -> {
             dialog.setTitle(getString(R.string.signUp));
@@ -40,12 +41,15 @@ public class SignUpActivity2 extends AppCompatActivity {
                     dialog.dismiss();
                     Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
                     startActivity(intent);
+                    finish();
                 }
             }, 650);
+
         });
         binding.txtLogin.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, LoginActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 }
