@@ -234,15 +234,12 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardMale"
+                <LinearLayout
+                    android:id="@+id/llMale"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/color2"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="3dp"
-
+                    android:background="@drawable/bg_user_btn_not_clicked"
                     >
 
 
@@ -254,11 +251,13 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/iconMale"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/ic_male" />
 
                         <TextView
+                            android:id="@+id/txtMale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
@@ -266,20 +265,18 @@
                             android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
                 <Space
                     android:layout_width="20dp"
                     android:layout_height="0dp" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardFemale"
+                <LinearLayout
+                    android:id="@+id/llFemale"
                     android:layout_width="100dp"
                     android:layout_height="40dp"
                     android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/color2"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="3dp"
+                    android:background="@drawable/bg_user_btn_not_clicked"
 
                     >
 
@@ -292,18 +289,20 @@
                         android:orientation="horizontal">
 
                         <ImageView
+                            android:id="@+id/iconFemale"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:src="@drawable/ic_female" />
 
                         <TextView
+                            android:id="@+id/txtFemale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/female"
                             android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                </LinearLayout>
 
             </LinearLayout>
 

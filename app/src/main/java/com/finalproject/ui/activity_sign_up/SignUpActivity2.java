@@ -31,6 +31,26 @@ public class SignUpActivity2 extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        binding.llMale.setOnClickListener(view -> {
+            binding.llMale.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+            binding.llFemale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+            binding.txtMale.setTextColor(getResources().getColor(R.color.black));
+            binding.txtFemale.setTextColor(getResources().getColor(R.color.white));
+            binding.iconMale.setColorFilter(getResources().getColor(R.color.color2));
+            binding.iconFemale.setColorFilter(getResources().getColor(R.color.white));
+        });
+        binding.llFemale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.llFemale.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+                binding.llMale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+                binding.txtFemale.setTextColor(getResources().getColor(R.color.black));
+                binding.txtMale.setTextColor(getResources().getColor(R.color.white));
+                binding.iconFemale.setColorFilter(getResources().getColor(R.color.color2));
+                binding.iconMale.setColorFilter(getResources().getColor(R.color.white));
+            }
+        });
         binding.llSignUp.setOnClickListener(view -> {
             dialog.setTitle(getString(R.string.signUp));
             dialog.setMessage(getString(R.string.waitLoading));

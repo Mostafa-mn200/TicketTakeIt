@@ -1,21 +1,15 @@
 package com.finalproject.ui.activity_login;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
-import android.content.Context;
+
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.ProgressBar;
+
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
@@ -36,6 +30,23 @@ public class LoginActivity extends AppCompatActivity {
 
     private void initView() {
         ProgressDialog dialog = new ProgressDialog(this);
+
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+
+        binding.btnCustomer.setOnClickListener(view -> {
+            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
+        });
+        binding.btnOwner.setOnClickListener(view -> {
+            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
+            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
+        });
         binding.btnLogin.setOnClickListener(view -> {
             dialog.setTitle(getString(R.string.login));
             dialog.setMessage(getString(R.string.waitLoading));

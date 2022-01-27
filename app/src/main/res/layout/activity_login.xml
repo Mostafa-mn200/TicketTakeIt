@@ -57,6 +57,7 @@
                 >
 
                 <Button
+                    android:id="@+id/btnCustomer"
                     android:layout_width="90dp"
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
@@ -68,6 +69,7 @@
                     android:textSize="15sp" />
 
                 <Button
+                    android:id="@+id/btnOwner"
                     android:layout_width="90dp"
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
