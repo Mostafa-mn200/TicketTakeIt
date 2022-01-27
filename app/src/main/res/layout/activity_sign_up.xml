@@ -360,7 +360,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="28dp"
                 android:background="@drawable/bg_user_btn"
                 android:text="@string/next"
                 android:textAllCaps="false"

@@ -254,8 +254,8 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:src="@drawable/ic_male" />
 
                         <TextView
@@ -291,9 +291,9 @@
                         android:gravity="center"
                         android:orientation="horizontal">
 
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
                             android:src="@drawable/ic_female" />
 
                         <TextView
@@ -355,7 +355,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20sp"
+                android:layout_marginTop="35dp"
                 android:orientation="horizontal">
 
                 <Button
