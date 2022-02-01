@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -13,13 +14,24 @@ import android.os.Handler;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
+import com.finalproject.language.Language;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_sign_up.SignUpActivity;
 
+import java.util.Locale;
+
+import io.paperdb.Paper;
+
 public class LoginActivity extends AppCompatActivity {
+    private String lang;
     private ActivityLoginBinding binding;
     private boolean passVisible;
 
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Language.updateResources(newBase, "en"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +41,27 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        Paper.init(this);
+        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        binding.setLang(lang);
         ProgressDialog dialog = new ProgressDialog(this);
 
-        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-
-        binding.btnCustomer.setOnClickListener(view -> {
-            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
-        });
-        binding.btnOwner.setOnClickListener(view -> {
-            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
-            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
-        });
+//        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+//        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+//        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+//
+//        binding.btnCustomer.setOnClickListener(view -> {
+//            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+//            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+//            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+//            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
+//        });
+//        binding.btnOwner.setOnClickListener(view -> {
+//            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+//            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+//            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
+//            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
+//        });
         binding.btnLogin.setOnClickListener(view -> {
             dialog.setTitle(getString(R.string.login));
             dialog.setMessage(getString(R.string.waitLoading));

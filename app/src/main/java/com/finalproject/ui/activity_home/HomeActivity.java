@@ -1,5 +1,6 @@
 package com.finalproject.ui.activity_home;
 
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 
@@ -15,10 +16,20 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.Locale;
+
+import io.paperdb.Paper;
+
 
 public class HomeActivity extends AppCompatActivity {
+    private String lang;
     private ActivityHomeBinding binding;
     private NavController navController;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Language.updateResources(newBase, "en"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,9 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        Paper.init(this);
+        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        binding.setLang(lang);
         setSupportActionBar(binding.toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         navController = Navigation.findNavController(this, R.id.navHostFragment);

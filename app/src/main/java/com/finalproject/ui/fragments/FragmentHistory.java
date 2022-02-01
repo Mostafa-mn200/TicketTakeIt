@@ -52,3 +52,6 @@ public class FragmentHistory extends Fragment {
         binding.recyclerHistory.setAdapter(historyAdapter);
     }
 }
+
+
+

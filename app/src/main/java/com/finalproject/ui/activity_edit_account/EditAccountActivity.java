@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,11 +20,20 @@ import com.finalproject.language.Language;
 import com.finalproject.preferences.Preferences;
 import com.finalproject.ui.activity_verification_code.VerificationCodeActivity;
 
+import java.util.Locale;
+
+import io.paperdb.Paper;
+
 public class EditAccountActivity extends AppCompatActivity {
+    private String lang;
     private ActivityEditAccountBinding binding;
     private Preferences preferences;
     private ActivityResultLauncher<Intent> launcher;
 
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Language.updateResources(newBase, "en"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +43,9 @@ public class EditAccountActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        Paper.init(this);
+        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        binding.setLang(lang);
         ProgressDialog dialog = new ProgressDialog(this);
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK) {

@@ -362,7 +362,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="25dp"
-                    android:background="@drawable/bg_user_btn"
+                    android:background="@drawable/item_clicked2"
                     android:text="@string/saveChanges"
                     android:textAllCaps="false"
                     android:textColor="@color/white"

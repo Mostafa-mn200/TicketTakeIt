@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="lang"
+            type="String" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -234,20 +237,24 @@
                 android:layout_gravity="center_horizontal"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:id="@+id/llMale"
+                <androidx.cardview.widget.CardView
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/bg_user_btn_not_clicked"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@color/black2"
+                    app:cardElevation="5dp"
                     >
 
 
                     <LinearLayout
+                        android:id="@+id/llMale"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/bg_user_btn_not_clicked"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -265,27 +272,32 @@
                             android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <Space
                     android:layout_width="20dp"
-                    android:layout_height="0dp" />
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_vertical"/>
 
-                <LinearLayout
-                    android:id="@+id/llFemale"
+                <androidx.cardview.widget.CardView
                     android:layout_width="100dp"
-                    android:layout_height="40dp"
+                    android:layout_height="45dp"
                     android:layout_margin="5dp"
-                    android:background="@drawable/bg_user_btn_not_clicked"
+                    app:cardCornerRadius="8dp"
+                    app:cardBackgroundColor="@color/black2"
 
                     >
 
 
                     <LinearLayout
+                        android:id="@+id/llFemale"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:padding="5dp"
+                        android:background="@drawable/bg_user_btn_not_clicked"
+
                         android:orientation="horizontal">
 
                         <ImageView
@@ -302,7 +314,7 @@
                             android:textColor="@color/white"
                             android:textSize="15sp" />
                     </LinearLayout>
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -322,7 +334,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
-                app:cardBackgroundColor="@color/color2"
+                app:cardBackgroundColor="@color/black_trans"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="3dp">
 
@@ -363,7 +375,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginEnd="25dp"
-                    android:background="@drawable/bg_user_btn"
+                    android:background="@drawable/item_clicked2"
                     android:text="@string/previous"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -374,7 +386,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bg_user_btn"
+                    android:background="@drawable/item_clicked2"
                     android:text="@string/signUp"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
@@ -391,10 +403,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginEnd="5dp"
                     android:text="@string/alreadyHaveAccount"
-                    android:textColor="@color/purple_201"
+                    android:textColor="@color/gray14"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
@@ -402,12 +414,12 @@
                     android:id="@+id/txtLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
+                    android:layout_gravity="center_horizontal|center_vertical"
                     android:layout_marginStart="1dp"
                     android:text="@string/login"
                     android:textColor="@color/white"
 
-                    android:textSize="15sp"
+                    android:textSize="20dp"
                     android:textStyle="bold" />
             </LinearLayout>
 

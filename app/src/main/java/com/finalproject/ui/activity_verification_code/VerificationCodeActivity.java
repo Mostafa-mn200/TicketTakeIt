@@ -4,13 +4,24 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityVerificationCodeBinding;
+import com.finalproject.language.Language;
+
+import java.util.Locale;
+
+import io.paperdb.Paper;
 
 public class VerificationCodeActivity extends AppCompatActivity {
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Language.updateResources(newBase, "en"));
+    }
 
     private ActivityVerificationCodeBinding binding;
     private String phone_code = "";
@@ -31,7 +42,10 @@ public class VerificationCodeActivity extends AppCompatActivity {
         phone = intent.getStringExtra("phone");
     }
 
-    private void initView() {
+    private void initView()
+    {
+//        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+//        binding.setLang(lang);
         binding.phone.setText(phone_code+" "+phone);
     }
 }

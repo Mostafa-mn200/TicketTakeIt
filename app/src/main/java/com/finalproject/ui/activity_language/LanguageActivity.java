@@ -19,12 +19,19 @@ import com.finalproject.preferences.Preferences;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_splash.SplashActivity;
 
+import java.util.Locale;
+
 import io.paperdb.Paper;
 
 public class LanguageActivity extends AppCompatActivity {
+    private String lang;
     private ActivityLanguageBinding binding;
-    private String lang = "";
     private String selectedLang;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(Language.updateResources(newBase, "en"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +41,22 @@ public class LanguageActivity extends AppCompatActivity {
     }
 
     private void intView() {
+        Paper.init(this);
+        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        binding.setLang(lang);
+
         ProgressDialog dialog = new ProgressDialog(this);
         lang = Language.getLanguageSelected(this);//where u get the lang saved in shared pref
         //decorate the saved language
         if (lang.equals("en")) {
-            binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.enTxt.setTextColor(getResources().getColor(R.color.black));
-            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
+            binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary2);
+//            binding.enTxt.setTextColor(getResources().getColor(R.color.color2));
+//            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flAr.setBackgroundResource(0);
         } else if (lang.equals("ar")) {
-            binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.arTxt.setTextColor(getResources().getColor(R.color.black));
-            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
+            binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary2);
+//            binding.arTxt.setTextColor(getResources().getColor(R.color.color2));
+//            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flEn.setBackgroundResource(0);
         } else {
             Toast.makeText(this, "no selected language", Toast.LENGTH_SHORT).show();
@@ -59,9 +70,9 @@ public class LanguageActivity extends AppCompatActivity {
                 binding.llNext.setVisibility(View.INVISIBLE);
             }
 
-            binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.arTxt.setTextColor(getResources().getColor(R.color.black));
-            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
+            binding.flAr.setBackgroundResource(R.drawable.small_stroke_primary2);
+//            binding.arTxt.setTextColor(getResources().getColor(R.color.color2));
+//            binding.enTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flEn.setBackgroundResource(0);
         });
         binding.cardEn.setOnClickListener(view -> {
@@ -71,9 +82,9 @@ public class LanguageActivity extends AppCompatActivity {
             } else {
                 binding.llNext.setVisibility(View.INVISIBLE);
             }
-            binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary);
-            binding.enTxt.setTextColor(getResources().getColor(R.color.black));
-            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
+            binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary2);
+//            binding.enTxt.setTextColor(getResources().getColor(R.color.color2));
+//            binding.arTxt.setTextColor(getResources().getColor(R.color.white));
             binding.flAr.setBackgroundResource(0);
         });
         binding.llCancel.setOnClickListener(view -> finish());
