@@ -151,7 +151,7 @@
                                 android:layout_height="20dp"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="10dp"
-                                android:rotation='@{lang.equals("en")?180:0}'
+                                android:rotation='@{lang.equals("ar")?180:0}'
                                 android:src="@drawable/ic_shape" />
 
                             <TextView

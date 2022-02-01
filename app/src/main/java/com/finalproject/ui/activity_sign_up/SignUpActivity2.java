@@ -48,7 +48,8 @@ public class SignUpActivity2 extends AppCompatActivity {
         });
 
         binding.llMale.setOnClickListener(view -> {
-            binding.llMale.setBackgroundResource(R.drawable.small_stroke_color2);
+            binding.llMale.setBackgroundResource(R.drawable.small_stroke_color3);
+
             binding.llFemale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
 //            binding.txtMale.setTextColor(getResources().getColor(R.color.black));
 //            binding.txtFemale.setTextColor(getResources().getColor(R.color.white));
@@ -58,7 +59,7 @@ public class SignUpActivity2 extends AppCompatActivity {
         binding.llFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                binding.llFemale.setBackgroundResource(R.drawable.small_stroke_color2);
+                binding.llFemale.setBackgroundResource(R.drawable.small_stroke_color3);
                 binding.llMale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
 //                binding.txtFemale.setTextColor(getResources().getColor(R.color.black));
 //                binding.txtMale.setTextColor(getResources().getColor(R.color.white));
