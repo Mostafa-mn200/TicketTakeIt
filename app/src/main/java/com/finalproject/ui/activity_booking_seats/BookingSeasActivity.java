@@ -22,6 +22,7 @@ public class BookingSeasActivity extends AppCompatActivity {
     private String lang;
     ActivityBookingSeasBinding binding;
 
+
     @Override
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(Language.updateResources(newBase, "en"));
