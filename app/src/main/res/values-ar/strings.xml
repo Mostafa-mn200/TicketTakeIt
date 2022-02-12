@@ -66,4 +66,25 @@
     <string name="month">الشهر</string>
     <string name="year">السنة</string>
 
+    <string name="action_Mtype">Action</string>
+    <string name="_1h_39m_Mtime">1h 39m</string>
+    <string name="venom_Mname">Venom</string>
+    <string name="_7_0_MRate">7.0</string>
+    <string name="adventure_Mtype">Adventure</string>
+    <string name="overview">القصة</string>
+    <string name="cast_title">فريق العمل</string>
+    <string name="cast">Cast</string>
+    <string name="Choose_Cinema">اختار السينما</string>
+    <string name="choose_seat">اختار المقعد</string>
+    <string name="screen">الشاشة</string>
+    <string name="selected">محجوز</string>
+    <string name="available">متاح</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="choose_payment">اختر طريقة الدفع</string>
+    <string name="title_activity_cinema_map">الخريطة</string>
+    <string name="title_activity_cinema_maps">الخريطة</string>
+    <string name="fawry">فورى</string>
+    <string name="choose_payment_method">اختر طريقة الدفع</string>
+
 </resources>

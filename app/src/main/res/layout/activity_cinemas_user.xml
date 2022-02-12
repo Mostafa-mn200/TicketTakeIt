@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="lang"
+            type="String" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg"
+        tools:context=".ui.activity_cinema_users.CinemasUserActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                    <LinearLayout
+                        android:id="@+id/llSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_color2"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:layout_margin="10dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:padding="2dp"
+                            android:rotation='@{lang.equals("ar")?180:0}'
+                            android:src="@drawable/ic_search"
+                            app:tint="@color/white" />
+
+                        <androidx.legacy.widget.Space
+                            android:layout_width="12dp"
+                            android:layout_height="0dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_transparent"
+                            android:hint="@string/search"
+                            android:textColor="@color/white"
+                            android:textColorHint="@color/gray14"
+                            android:textSize="15sp" />
+                    </LinearLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardBackgroundColor="@color/black2"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="6dp">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/cinema_users_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

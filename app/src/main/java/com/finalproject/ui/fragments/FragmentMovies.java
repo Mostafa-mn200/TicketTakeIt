@@ -1,6 +1,7 @@
 package com.finalproject.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.finalproject.adapter.MoviesAdapter;
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.FragmentMoviesBinding;
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
 
 
 public class FragmentMovies extends Fragment {
@@ -55,5 +57,10 @@ public class FragmentMovies extends Fragment {
         moviesAdapter = new MoviesAdapter(activity, this);
         binding.recyclerMovies.setLayoutManager(new GridLayoutManager(activity, 2));
         binding.recyclerMovies.setAdapter(moviesAdapter);
+    }
+
+    public void navigatetoMovieTrailerActivity() {
+        Intent i=new Intent(getContext(), MovieTrailerActivity.class);
+        startActivity(i);
     }
 }
