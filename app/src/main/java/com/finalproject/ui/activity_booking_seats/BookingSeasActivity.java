@@ -27,21 +27,24 @@ public class BookingSeasActivity extends AppCompatActivity {
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(Language.updateResources(newBase, "en"));
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_booking_seas);
+        initView();
 
+
+    }
+
+    private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
 
-        binding.ChoosePaymentBtnBS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PaymentMetodFragment fragment=new PaymentMetodFragment();
-                fragment.show(getSupportFragmentManager(),"");
-            }
+        binding.ChoosePaymentBtnBS.setOnClickListener(view -> {
+            PaymentMetodFragment fragment=new PaymentMetodFragment();
+            fragment.show(getSupportFragmentManager(),"");
         });
     }
 }

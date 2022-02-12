@@ -77,9 +77,9 @@
                         android:layout_gravity="center_vertical"
 
                         android:layout_marginStart="5dp"
-                        android:text="8.5"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
+                        android:text="(8.5)"
+                        android:textColor="@color/color4"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -26,7 +26,7 @@ import java.util.List;
 public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private List<Object> cinemaList ;
     private Context context;
-    private Activity activity;
+
     CinemasUserActivity cinemasUserActivity;
     private LayoutInflater inflater;
 
@@ -48,17 +48,13 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
         VH vh=(VH)holder;
         vh.binding.NameOfcinema.setText("City stars cinema");
-        vh.binding.bookingImg.setImageResource(R.drawable.booking);
-        vh.binding.mapImg.setImageResource(R.drawable.map);
+//        vh.binding.bookingImg.setImageResource(R.drawable.booking);
+//        vh.binding.mapImg.setImageResource(R.drawable.map);
 
-        vh.binding.bookingImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        vh.binding.ImgBook.setOnClickListener(view -> {
 
-                //cinemasUserActivity.navigatetoCinemasUserActivity();
-                Intent i=new Intent(cinemasUserActivity, BookingSeasActivity.class);
-                activity.startActivity(i);
-            }
+            cinemasUserActivity=(CinemasUserActivity) context;
+            cinemasUserActivity.navigateToBookingSeasActivity();
         });
 
     }

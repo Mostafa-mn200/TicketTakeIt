@@ -115,12 +115,13 @@
                     android:textColor="@color/white_txt"
                     android:textSize="22dp"
                     android:layout_marginTop="150dp"/>
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/carve"
                     android:layout_below="@id/choose"
-                    android:layout_centerHorizontal="true"/>
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/carve" />
                 <TextView
                     android:id="@+id/screen"
                     android:layout_width="wrap_content"

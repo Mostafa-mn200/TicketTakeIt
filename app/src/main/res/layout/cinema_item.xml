@@ -25,16 +25,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="City Stare Cinema"
-                android:textSize="20dp"
+                android:textSize="18sp"
                 android:textColor="#FFFFFF"
-                android:paddingLeft="10dp" />
+                 />
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
             <ImageView
-                android:id="@+id/booking_img"
+                android:id="@+id/ImgBook"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/booking"
-                android:layout_marginLeft="85dp" />
+                 />
 
             <ImageView
                 android:id="@+id/map_img"

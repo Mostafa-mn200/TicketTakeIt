@@ -43,12 +43,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.venom);
-        myHolder.binding.cardMovieItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentMovies fragmentMovies=(FragmentMovies)fragment;
-                fragmentMovies.navigatetoMovieTrailerActivity();
-            }
+        myHolder.binding.cardMovieItem.setOnClickListener(view -> {
+            FragmentMovies fragmentMovies=(FragmentMovies)fragment;
+            fragmentMovies.navigatetoMovieTrailerActivity();
         });
     }
 

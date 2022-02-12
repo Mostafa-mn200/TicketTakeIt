@@ -49,4 +49,8 @@ public class CinemasUserActivity extends AppCompatActivity {
     }
 
 
+    public void navigateToBookingSeasActivity() {
+        Intent intent=new Intent(CinemasUserActivity.this,BookingSeasActivity.class);
+        startActivity(intent);
+    }
 }
