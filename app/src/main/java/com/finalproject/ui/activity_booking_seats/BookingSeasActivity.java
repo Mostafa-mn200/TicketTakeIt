@@ -12,6 +12,7 @@ import android.view.View;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityBookingSeasBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
 import com.finalproject.ui.fragments.PaymentMetodFragment;
 
 import java.util.Locale;
@@ -21,7 +22,6 @@ import io.paperdb.Paper;
 public class BookingSeasActivity extends AppCompatActivity {
     private String lang;
     ActivityBookingSeasBinding binding;
-
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -45,6 +45,15 @@ public class BookingSeasActivity extends AppCompatActivity {
         binding.ChoosePaymentBtnBS.setOnClickListener(view -> {
             PaymentMetodFragment fragment=new PaymentMetodFragment();
             fragment.show(getSupportFragmentManager(),"");
+        });
+
+        binding.backImgBS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(BookingSeasActivity.this, CinemasUserActivity.class);
+                startActivity(i);
+                finish();
+            }
         });
     }
 }

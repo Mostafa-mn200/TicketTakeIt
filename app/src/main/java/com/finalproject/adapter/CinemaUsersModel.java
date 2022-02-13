@@ -16,6 +16,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.CinemaItemBinding;
 import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
+import com.finalproject.ui.activity_maps.CinemaMapsActivity;
 import com.finalproject.ui.fragments.FragmentMovies;
 
 
@@ -47,7 +48,7 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
         VH vh=(VH)holder;
-        vh.binding.NameOfcinema.setText("City stars cinema");
+        //vh.binding.NameOfcinema.setText("City stars cinema");
 //        vh.binding.bookingImg.setImageResource(R.drawable.booking);
 //        vh.binding.mapImg.setImageResource(R.drawable.map);
 
@@ -56,6 +57,8 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
             cinemasUserActivity=(CinemasUserActivity) context;
             cinemasUserActivity.navigateToBookingSeasActivity();
         });
+
+
 
     }
 
