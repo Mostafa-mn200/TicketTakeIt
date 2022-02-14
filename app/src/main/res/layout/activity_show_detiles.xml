@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="lang"
+            type="String" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg"
+        tools:context=".ui.activity_show_detiles.ShowDetilesActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_poster_Mt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:src="@drawable/venom"
+                    android:scaleType="fitXY" />
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="5dp">
+
+
+                <TextView
+                    android:id="@+id/show_title_SD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/show_title"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white_txt" />
+
+                <TextView
+                    android:id="@+id/show_type1_SD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/showType"
+                    android:textSize="18sp"
+                    android:padding="3dp"
+                    android:background="@drawable/text_shap"
+                    android:textColor="@color/white_txt" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_rate"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:id="@+id/show_Rate_SD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/showRate"
+                        android:textColor="@color/white_txt"
+                        android:textSize="18sp"
+                        android:layout_marginEnd="10dp" />
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/time"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp" />
+
+                    <TextView
+                        android:id="@+id/show_Time_SD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/showTime"
+                        android:textColor="@color/white_txt"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="10dp">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/location"
+                        android:layout_marginTop="5dp" />
+
+                    <TextView
+                        android:id="@+id/cinema_title_BS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/theatreName"
+                        android:textColor="#EC0C2C"
+                        android:textStyle="bold"
+                        android:layout_marginTop="5dp"
+                        android:textSize="18dp"
+                        android:lines="1" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:fillViewport="true"
+            android:focusable="true"
+            android:layout_marginTop="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/overview_lay_SD"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/text_shap"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/overView_title_SD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/overview"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/white_txt" />
+
+                    <TextView
+                        android:id="@+id/summery_content_SD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OverView OverView OverView OverView OverView OverView OverView OverViewOverView"
+                        android:textSize="15dp"
+                        android:padding="6dp"
+                        android:textColor="@color/white_txt" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/text_shap">
+
+                    <TextView
+                        android:id="@+id/cast_title_SD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cast_title"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginStart="10dp"
+                        android:textColor="@color/white_txt" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cast_rec_hori_SD"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/ChooseSeatBtn_SD"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/choose_seat"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white_txt"
+                    android:background="@drawable/item_clicked2" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+</layout>
