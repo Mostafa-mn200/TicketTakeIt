@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieShowItemRowBinding;
+import com.finalproject.ui.fragments.FragmentMovies;
+import com.finalproject.ui.fragments.FragmentShows;
 
 import java.util.List;
 
@@ -38,6 +40,11 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.theatre);
         myHolder.binding.movieName.setText("العيال كبرت");
+
+        myHolder.binding.cardMovieItem.setOnClickListener(view -> {
+            FragmentShows fragmentShows=(FragmentShows) fragment;
+            fragmentShows.navigatetoShowDetilesActivity();
+        });
     }
 
     @Override

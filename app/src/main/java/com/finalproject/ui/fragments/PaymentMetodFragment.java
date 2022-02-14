@@ -21,16 +21,13 @@ import com.finalproject.databinding.FragmentPaymentMetodBinding;
 import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.ctivity_booking_showSeats.BookingShowSeatsActivity;
 
 public class PaymentMetodFragment extends AppCompatDialogFragment {
 
     FragmentPaymentMetodBinding binding;
-    private BookingSeasActivity activity;
 
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        activity = (BookingSeasActivity) context;
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

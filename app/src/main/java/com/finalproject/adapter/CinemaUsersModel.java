@@ -59,7 +59,6 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
         });
 
 
-
     }
 
     @Override

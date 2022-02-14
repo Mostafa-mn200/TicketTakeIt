@@ -17,8 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true">
-
-
+        <activity android:name=".ui.ctivity_booking_showSeats.BookingShowSeatsActivity"></activity>
+        <activity android:name=".ui.activity_show_detiles.ShowDetilesActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -34,13 +34,11 @@
         <activity
             android:name=".ui.activity_maps.CinemaMapsActivity"
             android:exported="true"
-            android:label="@string/title_activity_cinema_maps"></activity>
+            android:label="@string/title_activity_cinema_maps" />
         <activity android:name=".ui.activity_cinema_users.CinemasUserActivity" />
         <activity
             android:name=".ui.activity_booking_seats.BookingSeasActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.activity_trailar_movie.MovieTrailerActivity"
             android:exported="true" />
@@ -56,7 +54,6 @@
             android:name=".ui.activity_edit_account.EditAccountActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.activity_verification_code.VerificationCodeActivity"
             android:exported="false"
@@ -79,6 +76,7 @@
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

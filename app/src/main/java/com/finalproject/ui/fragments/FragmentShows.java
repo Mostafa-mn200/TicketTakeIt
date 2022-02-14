@@ -1,6 +1,7 @@
 package com.finalproject.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import com.finalproject.R;
 import com.finalproject.adapter.ShowsAdapter;
 import com.finalproject.databinding.FragmentShowsBinding;
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
 
 
 public class FragmentShows extends Fragment {
@@ -47,5 +49,10 @@ public class FragmentShows extends Fragment {
         showsAdapter = new ShowsAdapter(activity, this);
         binding.recyclerShows.setLayoutManager(new GridLayoutManager(activity, 2));
         binding.recyclerShows.setAdapter(showsAdapter);
+    }
+
+    public void navigatetoShowDetilesActivity() {
+        Intent i=new Intent(getContext(), ShowDetilesActivity.class);
+        startActivity(i);
     }
 }

@@ -87,4 +87,13 @@
     <string name="rserved">Rserved</string>
     <string name="cinemaName_CU">Cinema Sun City</string>
     <string name="vodavone">Vodavone</string>
+    <string name="show_title">EL Malek Lyeer</string>
+    <string name="showTime">2h 36m</string>
+    <string name="showRate">8.0</string>
+    <string name="showType">Action, Adventure</string>
+    <string name="showTitle_BSh">AL 3yal Kabret</string>
+    <string name="showType_BSh">Comedy</string>
+    <string name="showRate_BSh">9.6</string>
+    <string name="showTime_BSh">2h 30m</string>
+    <string name="theatreName">Zamalek theatre</string>
 </resources>

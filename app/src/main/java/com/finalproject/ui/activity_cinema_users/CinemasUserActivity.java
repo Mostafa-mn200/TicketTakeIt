@@ -39,6 +39,7 @@ public class CinemasUserActivity extends AppCompatActivity {
         binding= DataBindingUtil.setContentView(this,R.layout.activity_cinemas_user);
         initView();
     }
+
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
