@@ -6,7 +6,7 @@
     <string name="title_show">المسرحيات</string>
     <string name="title_history">حجوزاتي</string>
     <string name="title_profile">حسابي</string>
-    <string name="top_picked_for_you">أفضل اختيار لك</string>
+    <string name="top_picked_for_you">أفضل الافلام </string>
     <string name="seeAll">مشاهدة الكل</string>
     <string name="no_data_to_show">لا توجد بيانات لعرضها</string>
     <string name="comingSoon">قريبا</string>
@@ -89,5 +89,5 @@
     <string name="rserved">محجوز</string>
     <string name="cinemaName_CU">سينيما صن ستى</string>
     <string name="vodavone">فودافون</string>
-
+    <string name="logout">تسجيل الخروج</string>
 </resources>

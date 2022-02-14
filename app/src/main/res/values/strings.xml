@@ -5,11 +5,11 @@
     <string name="title_show">Shows</string>
     <string name="title_history">My Bookings</string>
     <string name="title_profile">Profile</string>
-    <string name="top_picked_for_you">Top Picked For You</string>
+    <string name="top_picked_for_you">Movies Top 10</string>
     <string name="seeAll">See All</string>
     <string name="no_data_to_show">No Data To Show</string>
     <string name="comingSoon">Coming Soon</string>
-    <string name="topShow">Top Shows</string>
+    <string name="topShow">Shows Top 10</string>
     <string name="search">Search</string>
     <string name="gallery">gallery</string>
     <string name="camera">Camera</string>
@@ -34,7 +34,8 @@
     <string name="resend">Resend</string>
     <string name="confirm">Confirm</string>
     <string name="please_enter_the_verification_code_sent_to">Please enter the verification code sent to</string>
-    <string name="login">Login</string>
+    <string name="login">login</string>
+
     <string name="pleaseLogin">Please login to continue</string>
     <string name="signUp">Sign up</string>
     <string name="signUp2">Sign up</string>
@@ -96,4 +97,6 @@
     <string name="showRate_BSh">9.6</string>
     <string name="showTime_BSh">2h 30m</string>
     <string name="theatreName">Zamalek theatre</string>
+    <string name="logout">logout</string>
+
 </resources>

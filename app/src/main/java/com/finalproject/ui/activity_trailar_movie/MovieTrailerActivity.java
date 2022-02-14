@@ -58,4 +58,5 @@ public class MovieTrailerActivity extends AppCompatActivity {
         binding.castRecHori.setAdapter(mCastadapter);
     }
 
+
 }

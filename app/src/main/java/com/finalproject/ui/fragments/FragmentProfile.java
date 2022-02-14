@@ -60,12 +60,9 @@ public class FragmentProfile extends Fragment {
 
         });
         binding.langName.setText(Language.getLanguageSelected(requireContext()));
-        binding.tvName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(activity,LoginActivity.class);
-                startActivity(intent);
-            }
+        binding.tvName.setOnClickListener(view -> {
+            Intent intent=new Intent(activity,LoginActivity.class);
+            startActivity(intent);
         });
     }
 }

@@ -3,6 +3,7 @@ package com.finalproject.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.HomeItemRowBinding;
 import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
+import com.finalproject.ui.fragments.FragmentHome;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
+    MovieTrailerActivity movieTrailerActivity;
 
     public TopPickedAdapter(Context context, Fragment fragment) {
         this.context = context;
@@ -39,6 +42,11 @@ public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.venom);
+
+        myHolder.binding.cardTopMovie.setOnClickListener(view -> {
+             FragmentHome fragmentHome =(FragmentHome) fragment;
+             fragmentHome.navigateToMovieTrailerActivity();
+        });
 
     }
 

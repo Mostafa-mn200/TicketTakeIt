@@ -1,6 +1,7 @@
 package com.finalproject.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +26,8 @@ import com.finalproject.adapter.TopPickedAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 import com.finalproject.databinding.FragmentHomeBinding;
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
+import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -73,9 +76,12 @@ public class FragmentHome extends Fragment {
         binding.tab.setupWithViewPager(binding.pager);
         timer = new Timer();
 
-        binding.seeTopPicked.setPaintFlags(binding.seeTopPicked.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         binding.seeComingSoon.setPaintFlags(binding.seeComingSoon.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        binding.seeTopShow.setPaintFlags(binding.seeTopShow.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        binding.seeComingSoon.setOnClickListener(view -> {
+
+        });
+
 
         topPickedAdapter = new TopPickedAdapter(activity, this);
         binding.recyclerTopPicked.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
@@ -91,6 +97,16 @@ public class FragmentHome extends Fragment {
 
         timer.scheduleAtFixedRate(new MyTask(), 3000, 3000);
 
+    }
+
+    public void navigateToMovieTrailerActivity() {
+        Intent i=new Intent(getContext(), MovieTrailerActivity.class);
+        startActivity(i);
+    }
+
+    public void navigateToShowDetilesActivity() {
+        Intent i=new Intent(getContext(), ShowDetilesActivity.class);
+        startActivity(i);
     }
 
     public class MyTask extends TimerTask {

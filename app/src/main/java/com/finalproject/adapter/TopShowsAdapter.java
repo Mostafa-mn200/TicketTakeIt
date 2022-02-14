@@ -2,6 +2,7 @@ package com.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.HomeItemRowBinding;
+import com.finalproject.ui.fragments.FragmentHome;
 
 import java.util.List;
 
@@ -38,6 +40,11 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.theatre);
         myHolder.binding.movieName.setText("العيال كبرت");
+
+        myHolder.binding.cardTopMovie.setOnClickListener(view -> {
+            FragmentHome fragmentHome =(FragmentHome) fragment;
+            fragmentHome.navigateToShowDetilesActivity();
+        });
     }
 
     @Override
