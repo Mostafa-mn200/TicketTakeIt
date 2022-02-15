@@ -10,6 +10,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 
 
 import com.finalproject.R;
@@ -44,24 +45,34 @@ public class LoginActivity extends AppCompatActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
-        ProgressDialog dialog = new ProgressDialog(this);
 
-//        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-//        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-//        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-//
-//        binding.btnCustomer.setOnClickListener(view -> {
-//            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-//            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-//            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-//            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
-//        });
-//        binding.btnOwner.setOnClickListener(view -> {
-//            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-//            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
-//            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
-//            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
-//        });
+
+        BtnsOnClick();
+    }
+
+    private void BtnsOnClick() {
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+
+        binding.btnCustomer.setOnClickListener(view -> {
+            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
+            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
+            binding.ownerIDLayout.setVisibility(View.GONE);
+            binding.UserNameLayout.setVisibility(View.VISIBLE);
+        });
+        binding.btnOwner.setOnClickListener(view -> {
+            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
+            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
+            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
+            binding.ownerIDLayout.setVisibility(View.VISIBLE);
+            binding.UserNameLayout.setVisibility(View.GONE);
+        });
+
+        ProgressDialog dialog = new ProgressDialog(this);
         binding.btnLogin.setOnClickListener(view -> {
             dialog.setTitle(getString(R.string.login));
             dialog.setMessage(getString(R.string.waitLoading));

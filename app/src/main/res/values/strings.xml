@@ -98,5 +98,6 @@
     <string name="showTime_BSh">2h 30m</string>
     <string name="theatreName">Zamalek theatre</string>
     <string name="logout">logout</string>
+    <string name="owner_id">Owner ID</string>
 
 </resources>
