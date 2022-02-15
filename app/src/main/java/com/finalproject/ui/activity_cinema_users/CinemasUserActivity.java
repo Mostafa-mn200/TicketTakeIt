@@ -13,6 +13,7 @@ import android.os.Bundle;
 import com.finalproject.R;
 import com.finalproject.adapter.CinemaUsersModel;
 import com.finalproject.adapter.ShowsAdapter;
+
 import com.finalproject.databinding.ActivityCinemasUserBinding;
 import com.finalproject.databinding.ActivityMovieTrailerBinding;
 import com.finalproject.language.Language;

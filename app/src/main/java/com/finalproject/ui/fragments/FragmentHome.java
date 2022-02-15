@@ -25,6 +25,7 @@ import com.finalproject.adapter.SliderAdapter;
 import com.finalproject.adapter.TopPickedAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 import com.finalproject.databinding.FragmentHomeBinding;
+import com.finalproject.ui.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
 import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
@@ -79,7 +80,8 @@ public class FragmentHome extends Fragment {
         binding.seeComingSoon.setPaintFlags(binding.seeComingSoon.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         binding.seeComingSoon.setOnClickListener(view -> {
-
+            Intent i=new Intent(getContext(), ComingSoonActivity.class);
+            startActivity(i);
         });
 
 
