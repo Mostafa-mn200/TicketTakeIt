@@ -19,22 +19,23 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class AllComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ComingSoonDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Object> list;
     private Context context;
     private LayoutInflater inflater;
 
 
-    public AllComingSoonAdapter(Context context) {
+    public ComingSoonDetailsAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
 
     }
+
     @NonNull
     @NotNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        ComingSoonItemBinding binding=DataBindingUtil.inflate(inflater,R.layout.coming_soon_item,parent,false);
+        ComingSoonItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.coming_soon_item, parent, false);
         return new MyHolder(binding);
     }
 
@@ -52,16 +53,18 @@ public class AllComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.View
             return 8;
         }
     }
+
     public void updateList(List<Object> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
-    public static class MyHolder extends RecyclerView.ViewHolder{
+    public static class MyHolder extends RecyclerView.ViewHolder {
         ComingSoonItemBinding binding;
+
         public MyHolder(ComingSoonItemBinding binding) {
             super(binding.getRoot());
-            this.binding=binding;
+            this.binding = binding;
         }
     }
 }

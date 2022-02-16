@@ -1,9 +1,7 @@
 package com.finalproject.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieShowItemRowBinding;
-import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
 import com.finalproject.ui.fragments.FragmentMovies;
 
 
@@ -45,7 +42,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 
         myHolder.binding.image.setImageResource(R.drawable.venom);
         myHolder.binding.cardMovieItem.setOnClickListener(view -> {
-            FragmentMovies fragmentMovies=(FragmentMovies)fragment;
+            FragmentMovies fragmentMovies = (FragmentMovies) fragment;
             fragmentMovies.navigatetoMovieTrailerActivity();
         });
     }

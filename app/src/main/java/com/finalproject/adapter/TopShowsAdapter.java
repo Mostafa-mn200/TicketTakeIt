@@ -2,7 +2,6 @@ package com.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,7 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.HomeItemRowBinding;
+import com.finalproject.databinding.TopShowsItemRowBinding;
 import com.finalproject.ui.fragments.FragmentHome;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HomeItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.home_item_row, parent, false);
+        TopShowsItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_shows_item_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -42,7 +41,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         myHolder.binding.movieName.setText("العيال كبرت");
 
         myHolder.binding.cardTopMovie.setOnClickListener(view -> {
-            FragmentHome fragmentHome =(FragmentHome) fragment;
+            FragmentHome fragmentHome = (FragmentHome) fragment;
             fragmentHome.navigateToShowDetilesActivity();
         });
     }
@@ -62,9 +61,9 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public HomeItemRowBinding binding;
+        public TopShowsItemRowBinding binding;
 
-        public MyHolder(HomeItemRowBinding binding) {
+        public MyHolder(TopShowsItemRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

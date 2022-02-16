@@ -44,11 +44,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         myHolder.binding.llHeader.setOnClickListener(view -> {
             if (myHolder.binding.cardImage.getVisibility() == View.GONE) {
                 TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
-                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_arrow_up);
+                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_top);
                 myHolder.binding.cardImage.setVisibility(View.VISIBLE);
             } else {
                 TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
-                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_arrow_down);
+                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_down);
                 myHolder.binding.cardImage.setVisibility(View.GONE);
             }
         });

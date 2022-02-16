@@ -1,9 +1,7 @@
 package com.finalproject.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,20 +10,20 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.HomeItemRowBinding;
-import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
+import com.finalproject.databinding.TopMoviesItemRowBinding;
+import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
 import com.finalproject.ui.fragments.FragmentHome;
 
 import java.util.List;
 
-public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<Object> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
-    MovieTrailerActivity movieTrailerActivity;
+    MovieDetailsActivity movieDetailsActivity;
 
-    public TopPickedAdapter(Context context, Fragment fragment) {
+    public TopMoviesAdapter(Context context, Fragment fragment) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.fragment = fragment;
@@ -34,7 +32,7 @@ public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HomeItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.home_item_row, parent, false);
+        TopMoviesItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_movies_item_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -44,8 +42,8 @@ public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         myHolder.binding.image.setImageResource(R.drawable.venom);
 
         myHolder.binding.cardTopMovie.setOnClickListener(view -> {
-             FragmentHome fragmentHome =(FragmentHome) fragment;
-             fragmentHome.navigateToMovieTrailerActivity();
+            FragmentHome fragmentHome = (FragmentHome) fragment;
+            fragmentHome.navigateToMovieTrailerActivity();
         });
 
     }
@@ -65,9 +63,9 @@ public class TopPickedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public HomeItemRowBinding binding;
+        public TopMoviesItemRowBinding binding;
 
-        public MyHolder(HomeItemRowBinding binding) {
+        public MyHolder(TopMoviesItemRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

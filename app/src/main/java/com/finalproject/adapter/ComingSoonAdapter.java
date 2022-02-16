@@ -10,7 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.HomeItemRowBinding;
+import com.finalproject.databinding.ComingSoonHomeItemBinding;
+
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HomeItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.home_item_row, parent, false);
+        ComingSoonHomeItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.coming_soon_home_item, parent, false);
         return new MyHolder(binding);
     }
 
@@ -37,7 +38,6 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.spider);
-        myHolder.binding.movieName.setText("SpiderMan");
     }
 
     @Override
@@ -55,9 +55,9 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public HomeItemRowBinding binding;
+        public ComingSoonHomeItemBinding binding;
 
-        public MyHolder(HomeItemRowBinding binding) {
+        public MyHolder(ComingSoonHomeItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

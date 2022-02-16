@@ -21,12 +21,10 @@ import com.finalproject.databinding.FragmentPaymentMetodBinding;
 import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 
 import com.finalproject.ui.activity_home.HomeActivity;
-import com.finalproject.ui.ctivity_booking_showSeats.BookingShowSeatsActivity;
 
 public class PaymentMetodFragment extends AppCompatDialogFragment {
 
     FragmentPaymentMetodBinding binding;
-
 
 
     @Override
@@ -36,11 +34,13 @@ public class PaymentMetodFragment extends AppCompatDialogFragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_payment_metod, container, false);
         return binding.getRoot();
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
     }
+
     private void initView() {
         binding.fFawry.setOnClickListener(new View.OnClickListener() {
             @Override

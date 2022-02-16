@@ -15,6 +15,7 @@ import com.finalproject.adapter.CastAdapter;
 import com.finalproject.adapter.CastShowAdapter;
 import com.finalproject.databinding.ActivityShowDetilesBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 import com.finalproject.ui.ctivity_booking_showSeats.BookingShowSeatsActivity;
 
 import java.util.Locale;
@@ -34,7 +35,7 @@ public class ShowDetilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_show_detiles);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_show_detiles);
         initView();
     }
 
@@ -43,16 +44,13 @@ public class ShowDetilesActivity extends AppCompatActivity {
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
 
-        mcastShowAdapter = new CastShowAdapter( this);
+        mcastShowAdapter = new CastShowAdapter(this);
         binding.castRecHoriSD.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHoriSD.setAdapter(mcastShowAdapter);
 
-        binding.ChooseSeatBtnSD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(ShowDetilesActivity.this, BookingShowSeatsActivity.class);
-                startActivity(i);
-            }
+        binding.ChooseSeatBtnSD.setOnClickListener(view -> {
+            Intent i = new Intent(ShowDetilesActivity.this, BookingSeasActivity.class);
+            startActivity(i);
         });
     }
 }
