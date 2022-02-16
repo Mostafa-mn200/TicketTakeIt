@@ -1,7 +1,6 @@
 package com.finalproject.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MoviesFilterRowBinding;
-import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
 
 import java.util.List;
 

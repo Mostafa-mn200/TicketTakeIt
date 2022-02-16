@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,22 +21,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.adapter.ComingSoonAdapter;
 import com.finalproject.adapter.SliderAdapter;
-import com.finalproject.adapter.TopPickedAdapter;
+import com.finalproject.adapter.TopMoviesAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 import com.finalproject.databinding.FragmentHomeBinding;
 import com.finalproject.ui.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
-import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
+import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
 
-import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class FragmentHome extends Fragment {
     private HomeActivity activity;
     private FragmentHomeBinding binding;
-    private TopPickedAdapter topPickedAdapter;
+    private TopMoviesAdapter topMoviesAdapter;
     private ComingSoonAdapter comingSoonAdapter;
     private TopShowsAdapter topShowsAdapter;
     private int[] sliders = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
@@ -80,14 +78,14 @@ public class FragmentHome extends Fragment {
         binding.seeComingSoon.setPaintFlags(binding.seeComingSoon.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         binding.seeComingSoon.setOnClickListener(view -> {
-            Intent i=new Intent(getContext(), ComingSoonActivity.class);
+            Intent i = new Intent(getContext(), ComingSoonActivity.class);
             startActivity(i);
         });
 
 
-        topPickedAdapter = new TopPickedAdapter(activity, this);
+        topMoviesAdapter = new TopMoviesAdapter(activity, this);
         binding.recyclerTopPicked.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
-        binding.recyclerTopPicked.setAdapter(topPickedAdapter);
+        binding.recyclerTopPicked.setAdapter(topMoviesAdapter);
 
         comingSoonAdapter = new ComingSoonAdapter(activity, this);
         binding.recyclerComingSoon.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
@@ -102,12 +100,12 @@ public class FragmentHome extends Fragment {
     }
 
     public void navigateToMovieTrailerActivity() {
-        Intent i=new Intent(getContext(), MovieTrailerActivity.class);
+        Intent i = new Intent(getContext(), MovieDetailsActivity.class);
         startActivity(i);
     }
 
     public void navigateToShowDetilesActivity() {
-        Intent i=new Intent(getContext(), ShowDetilesActivity.class);
+        Intent i = new Intent(getContext(), ShowDetilesActivity.class);
         startActivity(i);
     }
 

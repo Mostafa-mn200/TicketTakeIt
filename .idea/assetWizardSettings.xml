@@ -16,26 +16,12 @@
                   <entry key="vectorAssetStep">
                     <value>
                       <PersistentState>
-                        <option name="children">
-                          <map>
-                            <entry key="clipartAsset">
-                              <value>
-                                <PersistentState>
-                                  <option name="values">
-                                    <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio1/plugins/android/lib/android.jar!/images/material/icons/materialicons/location_on/baseline_location_on_24.xml" />
-                                    </map>
-                                  </option>
-                                </PersistentState>
-                              </value>
-                            </entry>
-                          </map>
-                        </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="fdfdfd" />
-                            <entry key="outputName" value="location" />
-                            <entry key="sourceFile" value="D:\Project photos\Final Project\email.svg" />
+                            <entry key="outputName" value="ic_top" />
+                            <entry key="sourceFile" value="D:\Project photos\Final Project\top.svg" />
                           </map>
                         </option>
                       </PersistentState>

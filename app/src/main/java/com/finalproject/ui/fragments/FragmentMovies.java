@@ -21,7 +21,7 @@ import com.finalproject.adapter.MoviesAdapter;
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.FragmentMoviesBinding;
 import com.finalproject.ui.activity_home.HomeActivity;
-import com.finalproject.ui.activity_trailar_movie.MovieTrailerActivity;
+import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
 
 
 public class FragmentMovies extends Fragment {
@@ -60,7 +60,7 @@ public class FragmentMovies extends Fragment {
     }
 
     public void navigatetoMovieTrailerActivity() {
-        Intent i=new Intent(getContext(), MovieTrailerActivity.class);
+        Intent i = new Intent(getContext(), MovieDetailsActivity.class);
         startActivity(i);
     }
 }

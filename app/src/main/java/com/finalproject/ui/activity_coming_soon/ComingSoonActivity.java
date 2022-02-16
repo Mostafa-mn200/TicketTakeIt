@@ -9,8 +9,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.finalproject.R;
-import com.finalproject.adapter.AllComingSoonAdapter;
-import com.finalproject.adapter.MoviesFilterAdapter;
+import com.finalproject.adapter.ComingSoonDetailsAdapter;
 import com.finalproject.databinding.ActivityComingSoonBinding;
 import com.finalproject.language.Language;
 
@@ -21,7 +20,7 @@ import io.paperdb.Paper;
 public class ComingSoonActivity extends AppCompatActivity {
     private String lang;
     private ActivityComingSoonBinding binding;
-    private AllComingSoonAdapter mallComingSoonAdapter;
+    private ComingSoonDetailsAdapter mallComingSoonDetailsAdapter;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -31,7 +30,7 @@ public class ComingSoonActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_coming_soon);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_coming_soon);
         initView();
     }
 
@@ -41,8 +40,9 @@ public class ComingSoonActivity extends AppCompatActivity {
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
 
-        mallComingSoonAdapter = new AllComingSoonAdapter(this);
+        mallComingSoonDetailsAdapter = new ComingSoonDetailsAdapter(this);
         binding.comingRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        binding.comingRecycler.setAdapter(mallComingSoonAdapter);
+        binding.comingRecycler.setAdapter(mallComingSoonDetailsAdapter);
+        binding.llBack.setOnClickListener(view -> {finish();});
     }
 }

@@ -8,12 +8,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardTopMovie"
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         app:cardBackgroundColor="@color/black2"
         app:cardCornerRadius="10dp"
-        app:cardElevation="6dp">
+        app:cardElevation="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -37,7 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/black2"
-                android:gravity="start"
+                android:gravity="center"
+                android:lines="1"
                 android:padding="5dp"
                 android:text="Venom"
                 android:textColor="@color/white"
@@ -51,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +70,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-
                     android:layout_marginStart="5dp"
                     android:text="(8.5)"
                     android:textColor="@color/color4"

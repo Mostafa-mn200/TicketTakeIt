@@ -24,15 +24,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<Object> cinemaList ;
+public class CinemaUsersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private List<Object> cinemaList;
     private Context context;
 
     CinemasUserActivity cinemasUserActivity;
     private LayoutInflater inflater;
 
 
-    public CinemaUsersModel(Context context) {
+    public CinemaUsersAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
@@ -47,14 +47,14 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
-        VH vh=(VH)holder;
+        VH vh = (VH) holder;
         //vh.binding.NameOfcinema.setText("City stars cinema");
 //        vh.binding.bookingImg.setImageResource(R.drawable.booking);
 //        vh.binding.mapImg.setImageResource(R.drawable.map);
 
         vh.binding.ImgBook.setOnClickListener(view -> {
 
-            cinemasUserActivity=(CinemasUserActivity) context;
+            cinemasUserActivity = (CinemasUserActivity) context;
             cinemasUserActivity.navigateToBookingSeasActivity();
         });
 
@@ -69,15 +69,17 @@ public class CinemaUsersModel extends RecyclerView.Adapter<RecyclerView.ViewHold
             return 8;
         }
     }
+
     public void updateList(List<Object> list) {
         this.cinemaList = list;
         notifyDataSetChanged();
     }
 
 
-    public static class VH extends RecyclerView.ViewHolder{
+    public static class VH extends RecyclerView.ViewHolder {
         public CinemaItemBinding binding;
-        public VH( CinemaItemBinding binding) {
+
+        public VH(CinemaItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
