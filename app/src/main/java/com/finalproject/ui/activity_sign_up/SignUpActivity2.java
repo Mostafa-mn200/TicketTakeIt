@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_sign_up;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
@@ -13,6 +12,7 @@ import android.view.View;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySignUp2Binding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 
@@ -20,14 +20,10 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class SignUpActivity2 extends AppCompatActivity {
+public class SignUpActivity2 extends BaseActivity {
     private String lang;
     private ActivitySignUp2Binding binding;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +35,7 @@ public class SignUpActivity2 extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
         ProgressDialog dialog = new ProgressDialog(this);
         binding.llPrevious.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, SignUpActivity.class);

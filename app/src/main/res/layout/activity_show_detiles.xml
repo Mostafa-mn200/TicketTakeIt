@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:fillViewport="true"
-                    app:layout_constraintBottom_toTopOf="@id/ChooseSeatBtn_SD"
+                    app:layout_constraintBottom_toTopOf="@id/btnChooseCinema"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_weight="1">
 
@@ -267,13 +267,13 @@
                 </androidx.core.widget.NestedScrollView>
 
                 <Button
-                    android:id="@+id/ChooseSeatBtn_SD"
+                    android:id="@+id/btnChooseCinema"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/ticket_booking_shap"
-                    android:text="@string/choose_seat"
+                    android:text="@string/Choose_Cinema"
                     android:textAllCaps="false"
                     android:textColor="@color/white_txt"
                     android:textSize="18sp"

@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_login;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.ProgressDialog;
@@ -16,6 +15,7 @@ import android.view.View;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_sign_up.SignUpActivity;
 
@@ -23,7 +23,7 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private String lang;
     private ActivityLoginBinding binding;
     private boolean passVisible;
@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
 
         BtnsOnClick();

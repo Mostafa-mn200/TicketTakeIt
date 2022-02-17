@@ -1,4 +1,4 @@
-package com.finalproject.ui.fragments;
+package com.finalproject.ui.activity_home.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,11 +20,12 @@ import com.finalproject.R;
 import com.finalproject.adapter.MoviesAdapter;
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.FragmentMoviesBinding;
+import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
 
 
-public class FragmentMovies extends Fragment {
+public class FragmentMovies extends BaseFragment {
     private HomeActivity activity;
     private FragmentMoviesBinding binding;
     MoviesFilterAdapter moviesFilterAdapter;

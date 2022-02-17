@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_cinema_users;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,27 +7,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.finalproject.R;
 import com.finalproject.adapter.CinemaUsersAdapter;
 
 import com.finalproject.databinding.ActivityCinemasUserBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 
 import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class CinemasUserActivity extends AppCompatActivity {
+public class CinemasUserActivity extends BaseActivity {
     private String lang;
     CinemaUsersAdapter Cinemaadapter;
     ActivityCinemasUserBinding binding;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +37,11 @@ public class CinemasUserActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
         Cinemaadapter = new CinemaUsersAdapter(this);
         binding.cinemaUsersRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         binding.cinemaUsersRecycler.setAdapter(Cinemaadapter);
+        binding.llBack.setOnClickListener(view -> finish());
     }
 
 

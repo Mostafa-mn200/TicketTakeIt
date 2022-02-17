@@ -1,23 +1,16 @@
 package com.finalproject.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.CinemaItemBinding;
-import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
 import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
-import com.finalproject.ui.activity_maps.CinemaMapsActivity;
-import com.finalproject.ui.fragments.FragmentMovies;
 
 
 import org.jetbrains.annotations.NotNull;

@@ -1,4 +1,4 @@
-package com.finalproject.ui.fragments;
+package com.finalproject.ui.fragment_payment;
 
 
 import android.content.Context;

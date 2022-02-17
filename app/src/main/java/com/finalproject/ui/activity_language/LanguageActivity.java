@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_language;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.annotation.SuppressLint;
@@ -16,6 +15,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityLanguageBinding;
 import com.finalproject.language.Language;
 import com.finalproject.preferences.Preferences;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_splash.SplashActivity;
 
@@ -23,7 +23,7 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class LanguageActivity extends AppCompatActivity {
+public class LanguageActivity extends BaseActivity {
     private String lang;
     private ActivityLanguageBinding binding;
     private String selectedLang;
@@ -43,7 +43,7 @@ public class LanguageActivity extends AppCompatActivity {
     private void intView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         ProgressDialog dialog = new ProgressDialog(this);
         lang = Language.getLanguageSelected(this);//where u get the lang saved in shared pref

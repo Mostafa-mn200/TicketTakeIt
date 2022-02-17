@@ -1,31 +1,31 @@
-package com.finalproject.ui.fragments;
+package com.finalproject.ui.activity_home.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.finalproject.R;
-
-
-import com.finalproject.adapter.HistoryAdapter;
-import com.finalproject.databinding.FragmentHistoryBinding;
+import com.finalproject.adapter.ShowsAdapter;
+import com.finalproject.databinding.FragmentShowsBinding;
+import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
 
 
-public class FragmentHistory extends Fragment {
+public class FragmentShows extends BaseFragment {
     private HomeActivity activity;
-    private FragmentHistoryBinding binding;
-    private HistoryAdapter historyAdapter;
-
+    private FragmentShowsBinding binding;
+    ShowsAdapter showsAdapter;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -36,7 +36,7 @@ public class FragmentHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_history, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_shows, container, false);
         return binding.getRoot();
     }
 
@@ -47,11 +47,13 @@ public class FragmentHistory extends Fragment {
     }
 
     private void initView() {
-        historyAdapter = new HistoryAdapter(activity, this);
-        binding.recyclerHistory.setLayoutManager(new LinearLayoutManager(activity));
-        binding.recyclerHistory.setAdapter(historyAdapter);
+        showsAdapter = new ShowsAdapter(activity, this);
+        binding.recyclerShows.setLayoutManager(new GridLayoutManager(activity, 2));
+        binding.recyclerShows.setAdapter(showsAdapter);
+    }
+
+    public void navigatetoShowDetilesActivity() {
+        Intent i=new Intent(getContext(), ShowDetilesActivity.class);
+        startActivity(i);
     }
 }
-
-
-

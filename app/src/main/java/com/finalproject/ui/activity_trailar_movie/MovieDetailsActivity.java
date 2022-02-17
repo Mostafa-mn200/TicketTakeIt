@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_trailar_movie;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,10 +26,7 @@ public class MovieDetailsActivity extends BaseActivity {
     private ActivityMovieDetailsBinding binding;
     private String lang;
 
-//    @Override
-//    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(Language.updateResources(newBase, "en"));
-//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +34,9 @@ public class MovieDetailsActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_details);
         initView();
 
-        binding.BuyTicketBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MovieDetailsActivity.this, CinemasUserActivity.class);
-                startActivity(i);
-            }
+        binding.btnChooseCinema.setOnClickListener(view -> {
+            Intent i = new Intent(MovieDetailsActivity.this, CinemasUserActivity.class);
+            startActivity(i);
         });
 
     }

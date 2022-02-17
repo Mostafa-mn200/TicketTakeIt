@@ -1,11 +1,8 @@
-package com.finalproject.ui.fragments;
+package com.finalproject.ui.activity_home.fragments;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -16,7 +13,6 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,14 +20,13 @@ import android.view.ViewGroup;
 import com.finalproject.R;
 import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_language.LanguageActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 
-import java.util.Locale;
 
-
-public class FragmentProfile extends Fragment {
+public class FragmentProfile extends BaseFragment {
     private HomeActivity activity;
     private FragmentProfileBinding binding;
     private ActivityResultLauncher<Intent> launcher;
@@ -71,9 +66,9 @@ public class FragmentProfile extends Fragment {
             launcher.launch(intent);
         });
         binding.langName.setText(Language.getLanguageSelected(requireContext()));
-        binding.tvName.setOnClickListener(view -> {
+        binding.llLogOut.setOnClickListener(view -> {
             Intent intent=new Intent(activity,LoginActivity.class);
-            startActivity(intent);
+            launcher.launch(intent);
         });
     }
 }

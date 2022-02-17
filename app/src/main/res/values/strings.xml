@@ -101,5 +101,6 @@
     <string name="owner_id">Owner ID</string>
     <string name="show_details">Show Details</string>
     <string name="movie_details">Movie Details</string>
+    <string name="booking_seats">Booking Seats</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.finalproject.ui.activity_verification_code;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Context;
@@ -11,12 +10,13 @@ import android.os.Bundle;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityVerificationCodeBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 
 import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class VerificationCodeActivity extends AppCompatActivity {
+public class VerificationCodeActivity extends BaseActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {

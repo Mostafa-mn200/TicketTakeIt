@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieShowItemRowBinding;
-import com.finalproject.ui.fragments.FragmentMovies;
-import com.finalproject.ui.fragments.FragmentShows;
+import com.finalproject.ui.activity_home.fragments.FragmentShows;
 
 import java.util.List;
 

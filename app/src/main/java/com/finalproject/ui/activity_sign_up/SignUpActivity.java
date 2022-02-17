@@ -1,7 +1,6 @@
 package com.finalproject.ui.activity_sign_up;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.app.DatePickerDialog;
@@ -18,6 +17,7 @@ import android.widget.DatePicker;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySignUpBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 
 import java.time.Year;
@@ -26,16 +26,12 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
     private String lang;
     private ActivitySignUpBinding binding;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private static final String Tag="SignUpActivity";
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         binding.llBack.setOnClickListener(view -> {
             Intent intent=new Intent(SignUpActivity.this, LoginActivity.class);

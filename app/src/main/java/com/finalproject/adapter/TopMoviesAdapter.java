@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.TopMoviesItemRowBinding;
 import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
-import com.finalproject.ui.fragments.FragmentHome;
+import com.finalproject.ui.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 

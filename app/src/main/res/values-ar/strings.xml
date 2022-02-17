@@ -94,4 +94,5 @@
     <string name="logout">تسجيل الخروج</string>
     <string name="show_details">تفاصيل المسرحية</string>
     <string name="movie_details">تفاصيل الفيلم</string>
+    <string name="booking_seats">حجز المقاعد</string>
 </resources>

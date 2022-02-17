@@ -1,6 +1,5 @@
 package com.finalproject.ui.activity_show_detiles;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,16 +14,18 @@ import com.finalproject.adapter.CastAdapter;
 import com.finalproject.adapter.CastShowAdapter;
 import com.finalproject.databinding.ActivityShowDetilesBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_booking_seats.BookingSeasActivity;
+import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
 import com.finalproject.ui.ctivity_booking_showSeats.BookingShowSeatsActivity;
 
 import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class ShowDetilesActivity extends AppCompatActivity {
+public class ShowDetilesActivity extends BaseActivity {
     ActivityShowDetilesBinding binding;
-    CastShowAdapter mcastShowAdapter;
+    CastShowAdapter castShowAdapter;
     String lang;
 
     @Override
@@ -42,15 +43,15 @@ public class ShowDetilesActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         binding.llBack.setOnClickListener(view -> finish());
-        mcastShowAdapter = new CastShowAdapter(this);
+        castShowAdapter = new CastShowAdapter(this);
         binding.castRecHoriSD.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
-        binding.castRecHoriSD.setAdapter(mcastShowAdapter);
+        binding.castRecHoriSD.setAdapter(castShowAdapter);
 
-        binding.ChooseSeatBtnSD.setOnClickListener(view -> {
-            Intent i = new Intent(ShowDetilesActivity.this, BookingSeasActivity.class);
+        binding.btnChooseCinema.setOnClickListener(view -> {
+            Intent i = new Intent(ShowDetilesActivity.this, CinemasUserActivity.class);
             startActivity(i);
         });
     }

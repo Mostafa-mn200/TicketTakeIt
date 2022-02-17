@@ -10,8 +10,8 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityHomeBinding;
 import com.finalproject.interfaces.Listeners;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
@@ -23,7 +23,7 @@ import java.util.Locale;
 import io.paperdb.Paper;
 
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends BaseActivity {
     private String lang;
     private ActivityHomeBinding binding;
     private NavController navController;
@@ -47,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
         setSupportActionBar(binding.toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         navController = Navigation.findNavController(this, R.id.navHostFragment);

@@ -1,4 +1,4 @@
-package com.finalproject.ui.fragments;
+package com.finalproject.ui.activity_home.fragments;
 
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +24,7 @@ import com.finalproject.adapter.SliderAdapter;
 import com.finalproject.adapter.TopMoviesAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 import com.finalproject.databinding.FragmentHomeBinding;
+import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.activity_home.HomeActivity;
 import com.finalproject.ui.activity_show_detiles.ShowDetilesActivity;
@@ -32,7 +33,7 @@ import com.finalproject.ui.activity_trailar_movie.MovieDetailsActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class FragmentHome extends Fragment {
+public class FragmentHome extends BaseFragment {
     private HomeActivity activity;
     private FragmentHomeBinding binding;
     private TopMoviesAdapter topMoviesAdapter;

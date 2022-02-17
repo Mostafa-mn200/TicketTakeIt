@@ -11,7 +11,6 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 

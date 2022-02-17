@@ -1,8 +1,6 @@
 package com.finalproject.ui.activity_booking_seats;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +12,7 @@ import com.finalproject.databinding.ActivityBookingSeasBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
-import com.finalproject.ui.fragments.PaymentMetodFragment;
+import com.finalproject.ui.fragment_payment.PaymentMetodFragment;
 
 import java.util.Locale;
 
@@ -48,7 +46,7 @@ public class BookingSeasActivity extends BaseActivity {
             fragment.show(getSupportFragmentManager(),"");
         });
 
-        binding.backImgBS.setOnClickListener(new View.OnClickListener() {
+        binding.llBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(BookingSeasActivity.this, CinemasUserActivity.class);

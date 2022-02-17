@@ -3,7 +3,6 @@ package com.finalproject.ui.activity_edit_account;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -28,6 +27,7 @@ import com.finalproject.databinding.ActivityEditAccountBinding;
 import com.finalproject.language.Language;
 import com.finalproject.preferences.Preferences;
 import com.finalproject.share.Common;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_verification_code.VerificationCodeActivity;
 import com.squareup.picasso.Picasso;
 
@@ -37,7 +37,7 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class EditAccountActivity extends AppCompatActivity {
+public class EditAccountActivity extends BaseActivity {
     private String lang;
     private ActivityEditAccountBinding binding;
     private Preferences preferences;
@@ -49,10 +49,6 @@ public class EditAccountActivity extends AppCompatActivity {
     private int selectedReq = 0;
     private Uri uri = null;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +60,7 @@ public class EditAccountActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
