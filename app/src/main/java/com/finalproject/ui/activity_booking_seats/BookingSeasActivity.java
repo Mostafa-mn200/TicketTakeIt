@@ -12,6 +12,7 @@ import android.view.View;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityBookingSeasBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
 import com.finalproject.ui.fragments.PaymentMetodFragment;
 
@@ -19,7 +20,7 @@ import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class BookingSeasActivity extends AppCompatActivity {
+public class BookingSeasActivity extends BaseActivity {
     private String lang;
     ActivityBookingSeasBinding binding;
 
@@ -40,7 +41,7 @@ public class BookingSeasActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         binding.ChoosePaymentBtnBS.setOnClickListener(view -> {
             PaymentMetodFragment fragment=new PaymentMetodFragment();

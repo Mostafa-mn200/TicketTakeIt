@@ -15,13 +15,14 @@ import com.finalproject.R;
 import com.finalproject.adapter.CastAdapter;
 import com.finalproject.databinding.ActivityMovieDetailsBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
 
 import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class MovieDetailsActivity extends AppCompatActivity {
+public class MovieDetailsActivity extends BaseActivity {
     CastAdapter mCastadapter;
     private ActivityMovieDetailsBinding binding;
     private String lang;
@@ -50,7 +51,7 @@ public class MovieDetailsActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         mCastadapter = new CastAdapter(this);
         binding.castRecHori.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));

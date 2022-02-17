@@ -12,12 +12,13 @@ import com.finalproject.R;
 import com.finalproject.adapter.ComingSoonDetailsAdapter;
 import com.finalproject.databinding.ActivityComingSoonBinding;
 import com.finalproject.language.Language;
+import com.finalproject.ui.activity_base.BaseActivity;
 
 import java.util.Locale;
 
 import io.paperdb.Paper;
 
-public class ComingSoonActivity extends AppCompatActivity {
+public class ComingSoonActivity extends BaseActivity {
     private String lang;
     private ActivityComingSoonBinding binding;
     private ComingSoonDetailsAdapter mallComingSoonDetailsAdapter;
@@ -38,7 +39,7 @@ public class ComingSoonActivity extends AppCompatActivity {
     private void initView() {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(lang);
+        binding.setLang(getLang());
 
         mallComingSoonDetailsAdapter = new ComingSoonDetailsAdapter(this);
         binding.comingRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));

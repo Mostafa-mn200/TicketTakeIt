@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.finalproject.model.UserModel;
+import com.finalproject.model.UserSettingsModel;
 import com.google.gson.Gson;
 
 
@@ -31,7 +32,39 @@ public class Preferences {
 
 
     }
+    public void createUpdateUserData(Context context, UserModel userModel) {
+        SharedPreferences preferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String user_data = gson.toJson(userModel);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("user_data", user_data);
+        editor.apply();
 
+    }
+
+    public void create_update_user_settings(Context context, UserSettingsModel model) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("settings_pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String data = new Gson().toJson(model);
+        editor.putString("settings", data);
+        editor.apply();
+
+
+    }
+
+    public void clearUserData(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.apply();
+
+    }
+    public UserSettingsModel getUserSettings(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("settings_pref", Context.MODE_PRIVATE);
+        UserSettingsModel model = new Gson().fromJson(preferences.getString("settings", ""), UserSettingsModel.class);
+        return model;
+
+    }
 
     public String getLanguage(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("language", Context.MODE_PRIVATE);
@@ -51,16 +84,16 @@ public class Preferences {
         return preferences.getBoolean("selected", false);
     }
 
-    public void create_update_userdata(Context context, UserModel userModel) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String user_data = gson.toJson(userModel);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("user_data", user_data);
-        editor.apply();
-        create_update_session(context, "login");
-
-    }
+//    public void create_update_userdata(Context context, UserModel userModel) {
+//        SharedPreferences sharedPreferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
+//        Gson gson = new Gson();
+//        String user_data = gson.toJson(userModel);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.putString("user_data", user_data);
+//        editor.apply();
+//        create_update_session(context, "login");
+//
+//    }
 
     public UserModel getUserData(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("user", Context.MODE_PRIVATE);
