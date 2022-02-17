@@ -106,12 +106,7 @@ public class EditAccountActivity extends AppCompatActivity {
         binding.image.setOnClickListener(view -> openSheet());
 
         ProgressDialog dialog = new ProgressDialog(this);
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == RESULT_OK) {
-                setResult(RESULT_OK);
-                finish();
-            }
-        });
+
 
         binding.llBack.setOnClickListener(view -> finish());
         binding.saveChanges.setOnClickListener(view -> {

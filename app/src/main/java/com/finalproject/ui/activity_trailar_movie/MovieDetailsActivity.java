@@ -27,10 +27,10 @@ public class MovieDetailsActivity extends BaseActivity {
     private ActivityMovieDetailsBinding binding;
     private String lang;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(Language.updateResources(newBase, "en"));
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,7 @@ public class MovieDetailsActivity extends BaseActivity {
         mCastadapter = new CastAdapter(this);
         binding.castRecHori.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHori.setAdapter(mCastadapter);
+        binding.llBack.setOnClickListener(view -> finish());
     }
 
 

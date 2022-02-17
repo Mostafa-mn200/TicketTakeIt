@@ -89,20 +89,9 @@ public class LanguageActivity extends AppCompatActivity {
         });
         binding.llCancel.setOnClickListener(view -> finish());
         binding.llNext.setOnClickListener(view -> {
-            dialog.setMessage(getString(R.string.waitLoading));
-            dialog.show();
-
-            new Handler().postDelayed(() -> {
-                dialog.dismiss();
-                Language.setNewLocale(LanguageActivity.this, selectedLang);
-
-                Intent intent = new Intent(LanguageActivity.this, HomeActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                finish();
-            }, 500);
+            Intent intent = getIntent();
+            intent.putExtra("lang", selectedLang);
+            setResult(RESULT_OK, intent);
             finish();
 
         });

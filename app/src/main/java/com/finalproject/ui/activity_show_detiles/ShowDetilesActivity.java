@@ -44,6 +44,7 @@ public class ShowDetilesActivity extends AppCompatActivity {
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
 
+        binding.llBack.setOnClickListener(view -> finish());
         mcastShowAdapter = new CastShowAdapter(this);
         binding.castRecHoriSD.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHoriSD.setAdapter(mcastShowAdapter);

@@ -28,7 +28,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", "ar")));
+        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", "en")));
     }
 
     @Override
@@ -44,7 +44,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected String getLang() {
         Paper.init(this);
-        String lang = Paper.book().read("lang", "ar");
+        String lang = Paper.book().read("lang", "en");
         return lang;
     }
 

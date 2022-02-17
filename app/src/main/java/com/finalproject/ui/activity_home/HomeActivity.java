@@ -1,8 +1,10 @@
 package com.finalproject.ui.activity_home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.Handler;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityHomeBinding;
@@ -74,5 +76,17 @@ public class HomeActivity extends AppCompatActivity {
         }
 
     }
+    public void refreshActivity(String lang) {
+        Paper.book().write("lang", lang);
+        Language.setNewLocale(this, lang);
+        new Handler()
+                .postDelayed(() -> {
 
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }, 500);
+
+
+    }
 }

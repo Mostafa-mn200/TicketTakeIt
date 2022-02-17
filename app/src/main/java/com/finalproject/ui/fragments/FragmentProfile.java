@@ -8,6 +8,8 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -23,6 +25,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_home.HomeActivity;
+import com.finalproject.ui.activity_language.LanguageActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 
 import java.util.Locale;
@@ -31,10 +34,17 @@ import java.util.Locale;
 public class FragmentProfile extends Fragment {
     private HomeActivity activity;
     private FragmentProfileBinding binding;
-
+    private ActivityResultLauncher<Intent> launcher;
+    private int req;
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 1 && result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                String lang = result.getData().getStringExtra("lang");
+                activity.refreshActivity(lang);
+            }
+        });
     }
 
     @Override
@@ -56,8 +66,9 @@ public class FragmentProfile extends Fragment {
 
         binding.llEditAccount.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.activity_edit_account));
         binding.llLanguage.setOnClickListener(view -> {
-            Navigation.findNavController(view).navigate(R.id.activity_language);
-
+            req = 1;
+            Intent intent = new Intent(activity, LanguageActivity.class);
+            launcher.launch(intent);
         });
         binding.langName.setText(Language.getLanguageSelected(requireContext()));
         binding.tvName.setOnClickListener(view -> {

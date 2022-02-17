@@ -42,14 +42,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.movieName.setText("SpiderMan");
         myHolder.binding.llHeader.setOnClickListener(view -> {
-            if (myHolder.binding.cardImage.getVisibility() == View.GONE) {
+            if (!myHolder.binding.expand.isExpanded()) {
                 TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
                 myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_top);
-                myHolder.binding.cardImage.setVisibility(View.VISIBLE);
+                myHolder.binding.expand.setExpanded(true);
             } else {
                 TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
                 myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_down);
-                myHolder.binding.cardImage.setVisibility(View.GONE);
+                myHolder.binding.expand.collapse(true);
             }
         });
     }
