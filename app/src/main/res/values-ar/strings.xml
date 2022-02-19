@@ -95,4 +95,11 @@
     <string name="show_details">تفاصيل المسرحية</string>
     <string name="movie_details">تفاصيل الفيلم</string>
     <string name="booking_seats">حجز المقاعد</string>
+    <string name="add_movie">إضافة فيلم</string>
+    <string name="movie_name">اسم الفيلم</string>
+    <string name="rate">التقييم</string>
+    <string name="ticket_price">سعر التذكرة</string>
+    <string name="movie_image">صورة الفيلم</string>
+    <string name="choose_video">إختر فيديو</string>
+    <string name="add_hero">إضافة بطل</string>
 </resources>

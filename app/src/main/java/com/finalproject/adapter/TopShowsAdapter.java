@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.TopShowsItemRowBinding;
-import com.finalproject.ui.activity_home.fragments.FragmentHome;
+import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 

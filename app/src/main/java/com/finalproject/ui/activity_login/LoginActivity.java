@@ -16,8 +16,8 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
-import com.finalproject.ui.activity_home.HomeActivity;
-import com.finalproject.ui.activity_sign_up.SignUpActivity;
+import com.finalproject.ui.user.activity_home.HomeActivity;
+import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
 
 import java.util.Locale;
 

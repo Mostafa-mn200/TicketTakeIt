@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.CinemaItemBinding;
-import com.finalproject.ui.activity_cinema_users.CinemasUserActivity;
+import com.finalproject.ui.user.activity_cinema_users.CinemasUserActivity;
 
 
 import org.jetbrains.annotations.NotNull;

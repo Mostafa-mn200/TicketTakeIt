@@ -7,46 +7,46 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.finalproject.ui.activity_home.fragments.FragmentHome"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentHome"
         android:label=""
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/movies"
-        android:name="com.finalproject.ui.activity_home.fragments.FragmentMovies"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentMovies"
         android:label=""
         tools:layout="@layout/fragment_movies" />
     <fragment
         android:id="@+id/shows"
-        android:name="com.finalproject.ui.activity_home.fragments.FragmentShows"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentShows"
         android:label=""
         tools:layout="@layout/fragment_shows" />
     <fragment
         android:id="@+id/history"
-        android:name="com.finalproject.ui.activity_home.fragments.FragmentHistory"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentHistory"
         android:label=""
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/Profile"
-        android:name="com.finalproject.ui.activity_home.fragments.FragmentProfile"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentProfile"
         android:label=""
         tools:layout="@layout/fragment_profile" />
     <activity
         android:id="@+id/activity_edit_account"
-        android:name="com.finalproject.ui.activity_edit_account.EditAccountActivity"
+        android:name="com.finalproject.ui.user.activity_edit_account.EditAccountActivity"
         android:label=""
         tools:layout="@layout/activity_edit_account" />
 
 
     <activity
         android:id="@+id/activity_language"
-        android:name="com.finalproject.ui.activity_language.LanguageActivity"
+        android:name="com.finalproject.ui.user.activity_language.LanguageActivity"
         android:label=""
         tools:layout="@layout/activity_language" />
 
     <activity
         android:id="@+id/verification_code"
-        android:name="com.finalproject.ui.activity_verification_code.VerificationCodeActivity"
+        android:name="com.finalproject.ui.user.activity_verification_code.VerificationCodeActivity"
         android:label=""
         tools:layout="@layout/activity_verification_code" />
 </navigation>

@@ -102,5 +102,11 @@
     <string name="show_details">Show Details</string>
     <string name="movie_details">Movie Details</string>
     <string name="booking_seats">Booking Seats</string>
-
+    <string name="add_movie">Add Movie</string>
+    <string name="movie_name">Movie name</string>
+    <string name="rate">Rate</string>
+    <string name="ticket_price">Ticket price</string>
+    <string name="movie_image">Movie image</string>
+    <string name="choose_video">Choose video</string>
+    <string name="add_hero">Add Hero</string>
 </resources>

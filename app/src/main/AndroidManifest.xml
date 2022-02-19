@@ -31,13 +31,13 @@
         tools:targetApi="q">
 
 
-        <activity android:name=".ui.ctivity_booking_showSeats.BookingShowSeatsActivity">
+        <activity android:name=".ui.user.ctivity_booking_showSeats.BookingShowSeatsActivity">
 
         </activity>
-        <activity android:name=".ui.activity_coming_soon.ComingSoonActivity">
+        <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity">
 
         </activity>
-        <activity android:name=".ui.activity_show_detiles.ShowDetilesActivity"
+        <activity android:name=".ui.user.activity_show_detiles.ShowDetilesActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"
             />
@@ -54,31 +54,31 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui.activity_maps.CinemaMapsActivity"
+            android:name=".ui.user.activity_maps.CinemaMapsActivity"
             android:exported="true"
             android:label="@string/title_activity_cinema_maps" />
-        <activity android:name=".ui.activity_cinema_users.CinemasUserActivity" />
+        <activity android:name=".ui.user.activity_cinema_users.CinemasUserActivity" />
         <activity
-            android:name=".ui.activity_booking_seats.BookingSeasActivity"
+            android:name=".ui.user.activity_booking_seats.BookingSeasActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.activity_trailar_movie.MovieDetailsActivity"
+            android:name=".ui.user.activity_trailar_movie.MovieDetailsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"/>
         <activity
-            android:name=".ui.activity_sign_up.SignUpActivity2"
+            android:name=".ui.user.activity_sign_up.SignUpActivity2"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_language.LanguageActivity"
+            android:name=".ui.user.activity_language.LanguageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_edit_account.EditAccountActivity"
+            android:name=".ui.user.activity_edit_account.EditAccountActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_verification_code.VerificationCodeActivity"
+            android:name=".ui.user.activity_verification_code.VerificationCodeActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -86,11 +86,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_sign_up.SignUpActivity"
+            android:name=".ui.user.activity_sign_up.SignUpActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_noification.NotificationActivity"
+            android:name=".ui.user.activity_noification.NotificationActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
@@ -104,7 +104,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity_home.HomeActivity"
+            android:name=".ui.user.activity_home.HomeActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustResize" />
