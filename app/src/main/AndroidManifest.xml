@@ -13,9 +13,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-         />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".share.App"
@@ -29,18 +27,25 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="q">
+        <activity android:name=".ui.owner.activity_theater_owner.TheaterOwnerActivity"></activity>
+        <activity
+            android:name=".ui.owner.activity_cinema_owner.CinemaOwnerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.owner.activity_owner_home.OwnerHomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-        <activity android:name=".ui.user.ctivity_booking_showSeats.BookingShowSeatsActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity">
-
-        </activity>
-        <activity android:name=".ui.user.activity_show_detiles.ShowDetilesActivity"
+        <activity android:name=".ui.user.ctivity_booking_showSeats.BookingShowSeatsActivity" />
+        <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
+        <activity
+            android:name=".ui.user.activity_show_detiles.ShowDetilesActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"
-            />
+            android:windowSoftInputMode="adjustResize" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -64,7 +69,7 @@
         <activity
             android:name=".ui.user.activity_trailar_movie.MovieDetailsActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.user.activity_sign_up.SignUpActivity2"
             android:exported="true"
@@ -96,13 +101,7 @@
         <activity
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.user.activity_home.HomeActivity"
             android:exported="false"

@@ -13,6 +13,7 @@ import com.finalproject.adapter.CastShowAdapter;
 import com.finalproject.databinding.ActivityShowDetilesBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
+import com.finalproject.ui.user.activity_booking_seats.BookingSeasActivity;
 import com.finalproject.ui.user.activity_cinema_users.CinemasUserActivity;
 
 import java.util.Locale;
@@ -46,8 +47,8 @@ public class ShowDetilesActivity extends BaseActivity {
         binding.castRecHoriSD.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHoriSD.setAdapter(castShowAdapter);
 
-        binding.btnChooseCinema.setOnClickListener(view -> {
-            Intent i = new Intent(ShowDetilesActivity.this, CinemasUserActivity.class);
+        binding.btnChooseSeatDS.setOnClickListener(view -> {
+            Intent i = new Intent(ShowDetilesActivity.this, BookingSeasActivity.class);
             startActivity(i);
         });
     }

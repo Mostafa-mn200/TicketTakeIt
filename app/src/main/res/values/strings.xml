@@ -109,4 +109,7 @@
     <string name="movie_image">Movie image</string>
     <string name="choose_video">Choose video</string>
     <string name="add_hero">Add Hero</string>
+    <string name="movies">Movies</string>
+    <string name="shows">Shows</string>
+    <string name="owner_home">Owner Home</string>
 </resources>

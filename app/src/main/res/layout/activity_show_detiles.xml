@@ -68,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:fillViewport="true"
-                    app:layout_constraintBottom_toTopOf="@id/btnChooseCinema"
+                    app:layout_constraintBottom_toTopOf="@id/btnChooseSeat_DS"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_weight="1">
 
@@ -136,6 +136,7 @@
                                 android:layout_marginStart="8dp"
                                 android:background="@drawable/text_shap"
                                 android:paddingEnd="8dp"
+                                android:paddingStart="8dp"
                                 android:text="@string/showType"
                                 android:textColor="@color/white_txt"
                                 android:textSize="18sp" />
@@ -190,7 +191,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
+                            android:layout_gravity="center_horizontal"
                             android:layout_marginTop="3dp"
                             android:orientation="horizontal">
 
@@ -267,13 +268,13 @@
                 </androidx.core.widget.NestedScrollView>
 
                 <Button
-                    android:id="@+id/btnChooseCinema"
+                    android:id="@+id/btnChooseSeat_DS"
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:background="@drawable/ticket_booking_shap"
-                    android:text="@string/Choose_Cinema"
+                    android:text="@string/choose_seat"
                     android:textAllCaps="false"
                     android:textColor="@color/white_txt"
                     android:textSize="18sp"
