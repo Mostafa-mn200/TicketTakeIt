@@ -5,13 +5,17 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityOwnerHomeBinding;
+import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.owner.activity_cinema_owner.CinemaOwnerActivity;
 import com.finalproject.ui.owner.activity_theater_owner.TheaterOwnerActivity;
+
+import io.paperdb.Paper;
 
 public class OwnerHomeActivity extends BaseActivity {
     ActivityOwnerHomeBinding binding;
@@ -25,6 +29,7 @@ public class OwnerHomeActivity extends BaseActivity {
 
 
     private void initView() {
+        binding.setLang(getLang());
         binding.cardMoviesOwner.setOnClickListener(view -> {
             Intent i=new Intent(OwnerHomeActivity.this, CinemaOwnerActivity.class);
             startActivity(i);
@@ -35,4 +40,5 @@ public class OwnerHomeActivity extends BaseActivity {
             startActivity(i);
         });
     }
+
 }

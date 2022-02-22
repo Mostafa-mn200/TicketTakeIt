@@ -13,7 +13,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage"/>
 
     <application
         android:name=".share.App"
@@ -62,6 +63,14 @@
             android:name=".ui.user.activity_maps.CinemaMapsActivity"
             android:exported="true"
             android:label="@string/title_activity_cinema_maps" />
+        <activity android:name=".ui.owner.activity_add_movie.AddMovieActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity android:name=".ui.owner.activity_add_show.AddShowActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity android:name=".ui.user.activity_cinema_users.CinemasUserActivity" />
         <activity
             android:name=".ui.user.activity_booking_seats.BookingSeasActivity"
@@ -101,7 +110,10 @@
         <activity
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="adjustResize" >
+
+
+        </activity>
         <activity
             android:name=".ui.user.activity_home.HomeActivity"
             android:exported="false"

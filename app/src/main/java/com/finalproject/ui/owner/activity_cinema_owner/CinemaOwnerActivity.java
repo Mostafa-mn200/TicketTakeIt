@@ -20,8 +20,8 @@ import com.finalproject.ui.owner.activity_add_movie.AddMovieActivity;
 
 public class CinemaOwnerActivity extends BaseActivity {
 
-    ActivityCinemaOwnerBinding binding;
-    CinemaOwnerAdapter mcinemaOwnerAdapter;
+    private ActivityCinemaOwnerBinding binding;
+    private CinemaOwnerAdapter cinemaOwnerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,15 +32,16 @@ public class CinemaOwnerActivity extends BaseActivity {
     }
 
     private void initView() {
-        mcinemaOwnerAdapter = new CinemaOwnerAdapter(this);
-        binding.cinemaMoviesRecyclerO.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
-        binding.cinemaMoviesRecyclerO.setAdapter(mcinemaOwnerAdapter);
+        binding.setLang(getLang());
+        cinemaOwnerAdapter = new CinemaOwnerAdapter(this);
+        binding.recViewMovieOwner.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
+        binding.recViewMovieOwner.setAdapter(cinemaOwnerAdapter);
 
         binding.llBack.setOnClickListener(view -> {finish();});
 
-        binding.fab.setOnClickListener(view -> {
-            //Intent i=new Intent(CinemaOwnerActivity.this, AddMovieActivity.class);
-            //startActivity(i);
+        binding.addaMovie.setOnClickListener(view -> {
+            Intent i=new Intent(CinemaOwnerActivity.this, AddMovieActivity.class);
+            startActivity(i);
         });
     }
 }

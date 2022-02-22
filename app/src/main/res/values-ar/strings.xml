@@ -102,4 +102,13 @@
     <string name="movie_image">صورة الفيلم</string>
     <string name="choose_video">إختر فيديو</string>
     <string name="add_hero">إضافة بطل</string>
+    <string name="save">حفظ</string>
+    <string name="add_show">إضافة مسرحية</string>
+    <string name="show_image">صورة المسرحية</string>
+    <string name="show_name">اسم المسرحية</string>
+    <string name="movies_list">قائمة الافلام</string>
+    <string name="shows_list">قائمة المسرحيات</string>
+    <string name="movies">الافلام</string>
+    <string name="shows">المسرحيات</string>
+    <string name="owner_data">بيانات المالك</string>
 </resources>

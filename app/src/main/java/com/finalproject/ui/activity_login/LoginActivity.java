@@ -16,6 +16,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
+import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
 
@@ -47,10 +48,10 @@ public class LoginActivity extends BaseActivity {
         binding.setLang(getLang());
 
 
-        BtnsOnClick();
+        btnsOnClick();
     }
 
-    private void BtnsOnClick() {
+    private void btnsOnClick() {
         binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
         binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
         binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
@@ -74,15 +75,28 @@ public class LoginActivity extends BaseActivity {
 
         ProgressDialog dialog = new ProgressDialog(this);
         binding.btnLogin.setOnClickListener(view -> {
-            dialog.setTitle(getString(R.string.login));
-            dialog.setMessage(getString(R.string.waitLoading));
-            dialog.show();
-            new Handler().postDelayed(() -> {
-                dialog.dismiss();
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }, 500);
+            if (binding.btnCustomer.isClickable()){
+                dialog.setTitle(getString(R.string.login));
+                dialog.setMessage(getString(R.string.waitLoading));
+                dialog.show();
+                new Handler().postDelayed(() -> {
+                    dialog.dismiss();
+                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }, 500);
+            }else if (binding.btnOwner.isClickable()){
+                dialog.setTitle(getString(R.string.login));
+                dialog.setMessage(getString(R.string.waitLoading));
+                dialog.show();
+                new Handler().postDelayed(() -> {
+                    dialog.dismiss();
+                    Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }, 500);
+            }
+
 
         });
         binding.txtCreate.setOnClickListener(view -> {

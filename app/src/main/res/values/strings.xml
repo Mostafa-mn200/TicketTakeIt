@@ -109,7 +109,13 @@
     <string name="movie_image">Movie image</string>
     <string name="choose_video">Choose video</string>
     <string name="add_hero">Add Hero</string>
+    <string name="save">Save</string>
+    <string name="add_show">Add Show</string>
+    <string name="show_image">Show image</string>
+    <string name="show_name">Show name</string>
     <string name="movies">Movies</string>
     <string name="shows">Shows</string>
-    <string name="owner_home">Owner Home</string>
+    <string name="movies_list">Movies List</string>
+    <string name="shows_list">Shows List</string>
+    <string name="owner_data">Owner Data</string>
 </resources>
