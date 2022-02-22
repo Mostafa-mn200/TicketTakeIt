@@ -32,7 +32,7 @@
     <string name="changeLanguage">Change Language</string>
     <string name="next">Next</string>
     <string name="resend">Resend</string>
-    <string name="confirm">Confirm</string>
+
     <string name="please_enter_the_verification_code_sent_to">Please enter the verification code sent to</string>
     <string name="login">Login</string>
     <string name="pleaseLogin">Please login to continue</string>
@@ -118,4 +118,11 @@
     <string name="movies_list">Movies List</string>
     <string name="shows_list">Shows List</string>
     <string name="owner_data">Owner Data</string>
+    <string name="confirm_your_email">Confirm Your Email</string>
+    <string name="change_password">Change Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="new_password">New Password</string>
+    <string name="you_about_to_end">You About To End</string>
+    <string name="code_has_been_sent">Code has been sent</string>
+    <string name="confirm">Confirm</string>
 </resources>

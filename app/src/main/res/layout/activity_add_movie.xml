@@ -14,7 +14,6 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg"
         android:orientation="vertical"
-
         >
 
         <androidx.appcompat.widget.Toolbar

@@ -16,6 +16,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
+import com.finalproject.ui.forgetPassword.ForgetPasswordActivity1;
 import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
@@ -71,6 +72,10 @@ public class LoginActivity extends BaseActivity {
             binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
             binding.ownerIDLayout.setVisibility(View.VISIBLE);
             binding.UserNameLayout.setVisibility(View.GONE);
+
+            Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         ProgressDialog dialog = new ProgressDialog(this);
@@ -104,5 +109,13 @@ public class LoginActivity extends BaseActivity {
             startActivity(intent);
             finish();
         });
+
+        binding.forgetPass.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity1.class);
+            startActivity(intent);
+            finish();
+        });
+
+
     }
 }
