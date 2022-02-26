@@ -22,6 +22,7 @@ import com.finalproject.adapter.ComingSoonAdapter;
 import com.finalproject.adapter.SliderAdapter;
 import com.finalproject.adapter.TopMoviesAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
+
 import com.finalproject.databinding.FragmentHomeBinding;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.owner.activity_add_movie.AddMovieActivity;

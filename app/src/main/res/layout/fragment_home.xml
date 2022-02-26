@@ -297,8 +297,9 @@
                                 android:id="@+id/lll"
                                 android:layout_width="match_parent"
                                 android:layout_height="120dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/soon" />
+                                android:scaleType="fitXY"
+                                android:src="@drawable/soon1"
+                                android:layout_margin="8dp"/>
                         </LinearLayout>
 
                         <FrameLayout

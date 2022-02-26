@@ -27,7 +27,8 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/soon" />
+                android:layout_marginStart="15dp"
+                android:src="@drawable/logo" />
 
             <TextView
                 android:layout_width="wrap_content"
