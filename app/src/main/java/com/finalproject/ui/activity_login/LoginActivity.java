@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.finalproject.R;
@@ -29,7 +30,7 @@ public class LoginActivity extends BaseActivity {
     private String lang;
     private ActivityLoginBinding binding;
     private boolean passVisible;
-    private String type;
+    private String type="";
 
 
     @Override
@@ -48,6 +49,7 @@ public class LoginActivity extends BaseActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(getLang());
+//        setupbutton1();
         binding.btnCustomer.setOnClickListener(view -> {
             setupbutton1();
         });
@@ -61,11 +63,13 @@ public class LoginActivity extends BaseActivity {
                     startActivity(intent);
                     finish();
 
-            } else{
+            } else if (type.equals("owner")){
                     Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
                     startActivity(intent);
                     finish();
 
+            }else {
+                Toast.makeText(this, "Please choose the user (Customer or Owner)", Toast.LENGTH_SHORT).show();
             }
 
 

@@ -111,4 +111,5 @@
     <string name="movies">الافلام</string>
     <string name="shows">المسرحيات</string>
     <string name="owner_data">بيانات المالك</string>
+    <string name="or">أو</string>
 </resources>
