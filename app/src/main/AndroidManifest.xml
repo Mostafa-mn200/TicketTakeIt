@@ -38,6 +38,9 @@
             android:exported="true" />
         <activity
             android:name=".ui.owner.activity_owner_home.OwnerHomeActivity"
+            android:exported="true">
+
+        </activity>
             android:exported="true" />
         <activity android:name=".ui.user.ctivity_booking_showSeats.BookingShowSeatsActivity" />
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
@@ -116,6 +119,7 @@
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
 
         </activity>
         <activity

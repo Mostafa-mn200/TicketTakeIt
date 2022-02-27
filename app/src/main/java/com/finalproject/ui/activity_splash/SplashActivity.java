@@ -6,6 +6,9 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySplashBinding;
@@ -31,6 +34,9 @@ public class SplashActivity extends BaseActivity {
     private CompositeDisposable disposable = new CompositeDisposable();
     private Preferences preferences;
     private String lang;
+    private Animation animation;
+    private Animation animation1;
+    private Animation animation2;
 
 
     @Override
@@ -57,7 +63,7 @@ public class SplashActivity extends BaseActivity {
 
                     @Override
                     public void onNext(@NonNull Long aLong) {
-                        navigateToHomeActivity();
+                        animateMethod();
                     }
 
                     @Override
@@ -70,6 +76,76 @@ public class SplashActivity extends BaseActivity {
 
                     }
                 });
+    }
+
+    private void animateMethod() {
+        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.lanuch);
+        animation1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
+        animation2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
+
+
+        binding.cons.startAnimation(animation);
+
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                binding.logo.startAnimation(animation1);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        animation1.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                binding.logo.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                binding.appName.startAnimation(animation2);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+        animation2.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                binding.appName.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if (getUserModel() == null) {
+                    navigateToLoginActivity();
+                } else {
+                    navigateToHomeActivity();
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent =new Intent(this,LoginActivity.class);
+        startActivity(intent);
     }
 
 

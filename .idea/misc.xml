@@ -74,13 +74,19 @@
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/ic_add_photo.xml" value="0.2324074074074074" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/ic_addd.xml" value="0.2703125" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/ic_delete_outlined.xml" value="0.2703125" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/ic_line.xml" value="0.26256410256410256" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/ic_logo.xml" value="0.26256410256410256" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/drawable/small_stroke_primary2.xml" value="0.26256410256410256" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_add_movie.xml" value="0.1793478260869565" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_add_show.xml" value="0.1793478260869565" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_cinema_maps.xml" value="0.1793478260869565" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_cinema_owner.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_edit_account.xml" value="0.25416666666666665" />
-        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_login.xml" value="0.23596014492753623" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_forget_pass3.xml" value="0.22780797101449277" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_language.xml" value="0.22780797101449277" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_login.xml" value="0.1590909090909091" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_owner_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_splash.xml" value="0.22780797101449277" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_theater_owner.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/add_hero_row.xml" value="0.1793478260869565" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/add_movie_hero_row.xml" value="0.25416666666666665" />

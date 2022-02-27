@@ -29,6 +29,7 @@ public class LoginActivity extends BaseActivity {
     private String lang;
     private ActivityLoginBinding binding;
     private boolean passVisible;
+    private String type;
 
 
     @Override
@@ -47,59 +48,24 @@ public class LoginActivity extends BaseActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(getLang());
-
-
-        btnsOnClick();
-    }
-
-    private void btnsOnClick() {
-        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
-        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-
         binding.btnCustomer.setOnClickListener(view -> {
-            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
-            binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-            binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
-            binding.ownerIDLayout.setVisibility(View.GONE);
-            binding.UserNameLayout.setVisibility(View.VISIBLE);
+            setupbutton1();
         });
         binding.btnOwner.setOnClickListener(view -> {
-            binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-            binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
-            binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
-            binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
-            binding.ownerIDLayout.setVisibility(View.VISIBLE);
-            binding.UserNameLayout.setVisibility(View.GONE);
-
-            Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
-            startActivity(intent);
-            finish();
+            setupbutton2();
         });
-
-        ProgressDialog dialog = new ProgressDialog(this);
         binding.btnLogin.setOnClickListener(view -> {
-            if (binding.btnCustomer.isClickable()){
-                dialog.setTitle(getString(R.string.login));
-                dialog.setMessage(getString(R.string.waitLoading));
-                dialog.show();
-                new Handler().postDelayed(() -> {
-                    dialog.dismiss();
+            if (type.equals("customer")) {
+
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent);
                     finish();
-                }, 500);
-            }else if (binding.btnOwner.isClickable()){
-                dialog.setTitle(getString(R.string.login));
-                dialog.setMessage(getString(R.string.waitLoading));
-                dialog.show();
-                new Handler().postDelayed(() -> {
-                    dialog.dismiss();
+
+            } else{
                     Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
                     startActivity(intent);
                     finish();
-                }, 500);
+
             }
 
 
@@ -115,6 +81,24 @@ public class LoginActivity extends BaseActivity {
             startActivity(intent);
             finish();
         });
+
+    }
+
+    public void setupbutton1() {
+        type="customer";
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+        binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
+
+    }
+
+    public void setupbutton2() {
+        type="owner";
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
+        binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
 
 
     }
