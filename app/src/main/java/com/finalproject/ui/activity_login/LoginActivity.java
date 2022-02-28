@@ -49,7 +49,6 @@ public class LoginActivity extends BaseActivity {
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(getLang());
-//        setupbutton1();
         binding.btnCustomer.setOnClickListener(view -> {
             setupbutton1();
         });

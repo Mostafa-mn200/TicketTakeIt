@@ -20,6 +20,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_language.LanguageActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
@@ -27,9 +28,12 @@ import com.finalproject.ui.activity_login.LoginActivity;
 
 public class FragmentProfile extends BaseFragment {
     private HomeActivity activity;
+    private OwnerHomeActivity activity2;
     private FragmentProfileBinding binding;
     private ActivityResultLauncher<Intent> launcher;
     private int req;
+
+
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
