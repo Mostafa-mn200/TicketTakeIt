@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityForgetPass2Binding;
@@ -40,11 +41,20 @@ public class ForgetPassActivity2 extends BaseActivity {
         });
 
         binding.llnext.setOnClickListener(view -> {
-            Intent intent = new Intent(ForgetPassActivity2.this, ForgetPassActivity3.class);
-            startActivity(intent);
-            finish();
+            if (validateParams()) {
+                Intent intent = new Intent(ForgetPassActivity2.this, ForgetPassActivity3.class);
+                startActivity(intent);
+                finish();
+            }
         });
     }
 
-
+    boolean validateParams() {
+        if (binding.edtCode.getText().toString().isEmpty()) {
+            Toast.makeText(ForgetPassActivity2.this, "Please enter your code", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

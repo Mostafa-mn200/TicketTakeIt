@@ -112,4 +112,11 @@
     <string name="shows">المسرحيات</string>
     <string name="owner_data">بيانات المالك</string>
     <string name="or">أو</string>
+
+    <string name="confirm_your_email">تأكبد البريد الالكترونى</string>
+    <string name="change_password">تغير كلمة السر</string>
+    <string name="confirm_password">تأكيد كلمة السر</string>
+    <string name="new_password">كلمة السر الجديدة</string>
+    <string name="you_about_to_end">انت على وشك الانتهاء</string>
+    <string name="code_has_been_sent">لقد تم ارسال الرمز</string>
 </resources>

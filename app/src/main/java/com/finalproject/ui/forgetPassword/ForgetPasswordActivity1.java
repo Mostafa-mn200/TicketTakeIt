@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityForgetPassword1Binding;
@@ -42,10 +43,21 @@ public class ForgetPasswordActivity1 extends BaseActivity {
             finish();
         });
 
-        binding.btnNext.setOnClickListener(view -> {
-            Intent intent=new Intent(ForgetPasswordActivity1.this, ForgetPassActivity2.class);
-            startActivity(intent);
-            finish();
-        });
+
+            binding.btnNext.setOnClickListener(view -> {
+                if (validateParams()) {
+                    Intent intent = new Intent(ForgetPasswordActivity1.this, ForgetPassActivity2.class);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+    }
+    boolean validateParams() {
+        if (binding.edEmail.getText().toString().isEmpty()) {
+            Toast.makeText(ForgetPasswordActivity1.this, "Please enter your email", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 }

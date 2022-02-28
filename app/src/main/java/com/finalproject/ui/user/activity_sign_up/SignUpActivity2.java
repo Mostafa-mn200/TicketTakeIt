@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySignUp2Binding;
@@ -62,24 +63,40 @@ public class SignUpActivity2 extends BaseActivity {
             }
         });
         binding.llSignUp.setOnClickListener(view -> {
-            dialog.setTitle(getString(R.string.signUp));
-            dialog.setMessage(getString(R.string.waitLoading));
-            dialog.show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    dialog.dismiss();
-                    Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-            }, 650);
-
+            if (validateParams()) {
+                dialog.setTitle(getString(R.string.signUp));
+                dialog.setMessage(getString(R.string.waitLoading));
+                dialog.show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                        Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }, 650);
+            }
         });
+
         binding.txtLogin.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
+    }
+    boolean validateParams() {
+        if (binding.edFullName.getText().toString().isEmpty()) {
+            Toast.makeText(SignUpActivity2.this, "Please enter your Name", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (binding.edPassword.getText().toString().isEmpty()) {
+            Toast.makeText(SignUpActivity2.this, "Please enter your Password", Toast.LENGTH_LONG).show();
+            return false;
+        } else if (binding.edPassword.getText().toString().length()<=6) {
+            Toast.makeText(SignUpActivity2.this, "Incorrect password", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            return true;
+        }
     }
 }

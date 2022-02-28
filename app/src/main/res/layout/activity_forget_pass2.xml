@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/change_password"
+                    android:text="@string/you_about_to_end"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     android:layout_marginTop="10dp" />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="3dp"
-                android:text="@string/pleaseFill"
+                android:text="@string/code_has_been_sent"
                 android:textColor="@color/gray14"
                 android:textSize="14sp" />
 
@@ -135,81 +135,60 @@
 
             </LinearLayout>
 
+            <com.chaos.view.PinView
+                android:id="@+id/edtCode"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:cursorVisible="true"
+                android:inputType="number"
+                android:itemBackground="@drawable/pin_view_item"
+                android:textColor="@color/color2"
+                android:textSize="15sp"
+                app:cursorColor="@color/color2"
+                app:cursorWidth="2dp"
+                app:hideLineWhenFilled="true"
+                app:itemCount="4"
+                app:itemHeight="40dp"
+                app:itemRadius="5dp"
+                app:itemSpacing="15dp"
+                app:itemWidth="40dp"
+                app:lineColor="@color/transparent"
+                app:lineWidth="0dp"
+                app:viewType="rectangle" />
 
 
             <LinearLayout
-                android:id="@+id/cardPassword"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/small_stroke_color"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp">
 
-                <FrameLayout
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/circle_fill_color2">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_password" />
-                </FrameLayout>
-
-                <EditText
-                    android:id="@+id/tvPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/background_transparent"
-                    android:hint="@string/new_password"
-                    android:inputType="textEmailAddress"
+                <TextView
+                    android:id="@+id/tvResend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/resend"
                     android:textColor="@color/white"
-                    android:textColorHint="@color/gray14"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/tvCounter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00:00"
+                    android:textColor="@color/white"
                     android:textSize="15sp" />
             </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/cardConfrimPassword"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="22dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/small_stroke_color"
-                android:orientation="horizontal">
-
-                <FrameLayout
-                    android:layout_width="45dp"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/circle_fill_color2">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_password" />
-                </FrameLayout>
-
-                <EditText
-                    android:id="@+id/tvConfirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/background_transparent"
-                    android:hint="@string/confirm_password"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/gray14"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
 
             <LinearLayout
                 android:layout_width="wrap_content"
