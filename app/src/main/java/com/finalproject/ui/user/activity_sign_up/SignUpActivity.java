@@ -45,11 +45,9 @@ public class SignUpActivity extends BaseActivity {
             finish();
         });
         binding.btnNext.setOnClickListener(view -> {
-            if (validateParams()) {
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
                 startActivity(intent);
                 finish();
-            }
         });
 
         binding.datePicker.setOnClickListener(view -> {
@@ -74,19 +72,6 @@ public class SignUpActivity extends BaseActivity {
         };
 }
 
-    boolean validateParams() {
-        if (binding.edNationalID.getText().toString().isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Please enter your National ID", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edEmail.getText().toString().isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Please enter your Email", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edUserName.getText().toString().isEmpty()) {
-            Toast.makeText(SignUpActivity.this, "Please enter your UserName", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
-    }
+
 
 }

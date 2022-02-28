@@ -45,19 +45,11 @@ public class ForgetPasswordActivity1 extends BaseActivity {
 
 
             binding.btnNext.setOnClickListener(view -> {
-                if (validateParams()) {
                     Intent intent = new Intent(ForgetPasswordActivity1.this, ForgetPassActivity2.class);
                     startActivity(intent);
                     finish();
-                }
+
             });
     }
-    boolean validateParams() {
-        if (binding.edEmail.getText().toString().isEmpty()) {
-            Toast.makeText(ForgetPasswordActivity1.this, "Please enter your email", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
-    }
+
 }

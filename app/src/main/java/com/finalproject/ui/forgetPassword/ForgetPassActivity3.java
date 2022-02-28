@@ -41,22 +41,11 @@ public class ForgetPassActivity3 extends BaseActivity {
         });
 
         binding.llconfirm.setOnClickListener(view -> {
-            if (validateParams()) {
                 Intent intent = new Intent(ForgetPassActivity3.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-            }
+
         });
     }
-    boolean validateParams() {
-        if (binding.edPassword.getText().toString().isEmpty()) {
-            Toast.makeText(ForgetPassActivity3.this, "Please enter your password", Toast.LENGTH_LONG).show();
-            return false;
-        }else if (binding.edConfirmPassword.getText().toString().isEmpty()) {
-            Toast.makeText(ForgetPassActivity3.this, "Please confirm your password", Toast.LENGTH_LONG).show();
-            return false;
-        }else {
-            return true;
-        }
-    }
+
 }

@@ -63,7 +63,6 @@ public class SignUpActivity2 extends BaseActivity {
             }
         });
         binding.llSignUp.setOnClickListener(view -> {
-            if (validateParams()) {
                 dialog.setTitle(getString(R.string.signUp));
                 dialog.setMessage(getString(R.string.waitLoading));
                 dialog.show();
@@ -76,7 +75,6 @@ public class SignUpActivity2 extends BaseActivity {
                         finish();
                     }
                 }, 650);
-            }
         });
 
         binding.txtLogin.setOnClickListener(view -> {
@@ -84,19 +82,5 @@ public class SignUpActivity2 extends BaseActivity {
             startActivity(intent);
             finish();
         });
-    }
-    boolean validateParams() {
-        if (binding.edFullName.getText().toString().isEmpty()) {
-            Toast.makeText(SignUpActivity2.this, "Please enter your Name", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edPassword.getText().toString().isEmpty()) {
-            Toast.makeText(SignUpActivity2.this, "Please enter your Password", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edPassword.getText().toString().length()<=6) {
-            Toast.makeText(SignUpActivity2.this, "Incorrect password", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
     }
 }

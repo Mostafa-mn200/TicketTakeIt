@@ -57,7 +57,6 @@ public class LoginActivity extends BaseActivity {
             setupbutton2();
         });
         binding.btnLogin.setOnClickListener(view -> {
-            if(validateParams()) {
                 if (type.equals("customer")) {
 
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -72,7 +71,7 @@ public class LoginActivity extends BaseActivity {
                 } else {
                     Toast.makeText(this, "Please choose the user (Customer or Owner)", Toast.LENGTH_SHORT).show();
                 }
-            }
+
 
         });
         binding.txtCreate.setOnClickListener(view -> {
@@ -107,18 +106,5 @@ public class LoginActivity extends BaseActivity {
 
 
     }
-    boolean validateParams() {
-        if (binding.edUserName.getText().toString().isEmpty()) {
-            Toast.makeText(LoginActivity.this, "Please enter your email or userName", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edPassword.getText().toString().isEmpty()) {
-            Toast.makeText(LoginActivity.this, "Please enter your password", Toast.LENGTH_LONG).show();
-            return false;
-        } else if (binding.edPassword.getText().toString().length() <= 6) {
-            Toast.makeText(LoginActivity.this, "Incorrect pass", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            return true;
-        }
-    }
+
 }
