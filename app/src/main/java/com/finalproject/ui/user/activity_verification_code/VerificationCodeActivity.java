@@ -18,10 +18,7 @@ import io.paperdb.Paper;
 
 public class VerificationCodeActivity extends BaseActivity {
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
+
 
     private ActivityVerificationCodeBinding binding;
     private String phone_code = "";
@@ -44,7 +41,7 @@ public class VerificationCodeActivity extends BaseActivity {
 
     private void initView()
     {
-//        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+//        lang = getLang();
 //        binding.setLang(lang);
         binding.phone.setText(phone_code+" "+phone);
     }

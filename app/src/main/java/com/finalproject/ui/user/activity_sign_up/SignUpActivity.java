@@ -36,7 +36,7 @@ public class SignUpActivity extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
 
         binding.llBack.setOnClickListener(view -> {
@@ -50,26 +50,26 @@ public class SignUpActivity extends BaseActivity {
                 finish();
         });
 
-        binding.datePicker.setOnClickListener(view -> {
-            Calendar calendar=Calendar.getInstance();
-            int year=calendar.get(Calendar.YEAR);
-            int month=calendar.get(Calendar.MONTH);
-            int day=calendar.get(Calendar.DAY_OF_MONTH);
-
-            DatePickerDialog dialog=new DatePickerDialog(SignUpActivity.this,
-                    android.R.style.Theme_DeviceDefault_Dialog
-            ,dateSetListener,year,month,day);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-            dialog.show();
-
-        });
-        dateSetListener= (datePicker, year, month, day) -> {
-            month=month+1;
-            Log.d(Tag,"date: "+ month + "/" + day + "/" + year );
-            String date =month + "/" + day + "/" + year;
-            binding.datePickerTxt.setText(date);
-            binding.datePickerTxt.setTextColor(getResources().getColor(R.color.white));
-        };
+//        binding.datePicker.setOnClickListener(view -> {
+//            Calendar calendar=Calendar.getInstance();
+//            int year=calendar.get(Calendar.YEAR);
+//            int month=calendar.get(Calendar.MONTH);
+//            int day=calendar.get(Calendar.DAY_OF_MONTH);
+//
+//            DatePickerDialog dialog=new DatePickerDialog(SignUpActivity.this,
+//                    android.R.style.Theme_DeviceDefault_Dialog
+//            ,dateSetListener,year,month,day);
+//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+//            dialog.show();
+//
+//        });
+//        dateSetListener= (datePicker, year, month, day) -> {
+//            month=month+1;
+//            Log.d(Tag,"date: "+ month + "/" + day + "/" + year );
+//            String date =month + "/" + day + "/" + year;
+//            binding.datePickerTxt.setText(date);
+//            binding.datePickerTxt.setTextColor(getResources().getColor(R.color.white));
+//        };
 }
 
 

@@ -33,7 +33,7 @@ public class SignUpActivity2 extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
         ProgressDialog dialog = new ProgressDialog(this);
         binding.llPrevious.setOnClickListener(view -> {

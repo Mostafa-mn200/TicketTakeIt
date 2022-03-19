@@ -2,14 +2,10 @@ package com.finalproject.ui.activity_login;
 
 import androidx.databinding.DataBindingUtil;
 
-import android.app.ProgressDialog;
-
 import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.View;
 import android.widget.Toast;
 
 
@@ -18,7 +14,7 @@ import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.forgetPassword.ForgetPasswordActivity1;
-import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
+import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
 
@@ -33,10 +29,7 @@ public class LoginActivity extends BaseActivity {
     private String type="";
 
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +40,7 @@ public class LoginActivity extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
         binding.btnCustomer.setOnClickListener(view -> {
             setupbutton1();
@@ -68,7 +61,7 @@ public class LoginActivity extends BaseActivity {
                     finish();
 
                 } else {
-                    Toast.makeText(this, "Please choose the user (Customer or Owner)", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.please_choose_the_user, Toast.LENGTH_SHORT).show();
                 }
 
 

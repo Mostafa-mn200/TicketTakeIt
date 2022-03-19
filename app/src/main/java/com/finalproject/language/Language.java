@@ -20,8 +20,8 @@ public class Language {
 
     public static void setNewLocale(Context c, String language) {
         persistLanguage(c, language);
-//        updateResources(c, language);
-        setLocale(c, language);
+        updateResources(c, language);
+       // setLocale(c, language);
     }
 
     public static Context updateResources(Context context, String language) {

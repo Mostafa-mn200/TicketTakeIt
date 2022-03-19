@@ -7,14 +7,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.finalproject.R;
 import com.finalproject.adapter.CastShowAdapter;
 import com.finalproject.databinding.ActivityShowDetilesBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
-import com.finalproject.ui.user.activity_booking_seats.BookingSeasActivity;
-import com.finalproject.ui.user.activity_cinema_users.CinemasUserActivity;
+import com.finalproject.ui.user.activity_booking_seats.BookingSeatsActivity;
 
 import java.util.Locale;
 
@@ -25,10 +25,6 @@ public class ShowDetilesActivity extends BaseActivity {
     CastShowAdapter castShowAdapter;
     String lang;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +34,20 @@ public class ShowDetilesActivity extends BaseActivity {
     }
 
     private void initView() {
-        Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(getLang());
+        setUpToolbar(binding.toolbar, getString(R.string.show_details), R.color.color2, R.color.white);
+//        Paper.init(this);
+//        lang = getLang();
+//        binding.setLang(getLang());
 
-        binding.llBack.setOnClickListener(view -> finish());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
         castShowAdapter = new CastShowAdapter(this);
         binding.castRecHoriSD.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHoriSD.setAdapter(castShowAdapter);
 
         binding.btnChooseSeatDS.setOnClickListener(view -> {
-            Intent i = new Intent(ShowDetilesActivity.this, BookingSeasActivity.class);
+            Intent i = new Intent(ShowDetilesActivity.this, BookingSeatsActivity.class);
             startActivity(i);
         });
+
     }
 }

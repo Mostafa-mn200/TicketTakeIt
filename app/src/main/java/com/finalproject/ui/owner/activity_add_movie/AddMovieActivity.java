@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -24,8 +25,10 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.finalproject.R;
+import com.finalproject.adapter.SpinnerFilterAdapter;
 import com.finalproject.databinding.ActivityAddMovieBinding;
 import com.finalproject.databinding.AddMovieHeroRowBinding;
+import com.finalproject.model.FilterModel;
 import com.finalproject.model.UserModel;
 import com.finalproject.preferences.Preferences;
 import com.finalproject.share.Common;
@@ -63,20 +66,45 @@ public class AddMovieActivity extends BaseActivity {
     private boolean playWhenReady = true;
     private AddMovieHeroRowBinding heroRowBinding;
     private List<AddMovieHeroRowBinding> addHeroBindingList;
+    private SpinnerFilterAdapter spinnerFilterAdapter;
+    private List<FilterModel> filterModelList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_movie);
         initView();
+        getDataFromIntent();
+    }
+
+    private void getDataFromIntent() {
+
+        Intent intent = getIntent();
+        filterModelList = (List<FilterModel>) intent.getSerializableExtra("data");
+        if (intent.hasExtra("data2")) {
+//            dishModel = (DishModel) intent.getSerializableExtra("data2");
+
+        }
+
+
     }
 
     private void initView() {
-        binding.setLang(getLang());
+        setUpToolbar(binding.toolbar, getString(R.string.add_movie), R.color.color2, R.color.white);
 
+        spinnerFilterAdapter=new SpinnerFilterAdapter(filterModelList,this);
+        binding.movieType.setAdapter(spinnerFilterAdapter);
+        binding.movieType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                addDishModel.setCategory_dishes_id(categoryList.get(i).getId());
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
-
+            }
+        });
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
 
@@ -131,7 +159,7 @@ public class AddMovieActivity extends BaseActivity {
                 }
             }
         });
-        binding.llBack.setOnClickListener(view -> finish());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
 
         binding.llAddHero.setOnClickListener(view -> {
 //            type="secondImage";

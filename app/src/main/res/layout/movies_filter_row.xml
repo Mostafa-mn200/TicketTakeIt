@@ -3,32 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.finalproject.model.FilterModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="@color/color2"
+        app:cardBackgroundColor="@{model.selected?@color/white:@color/color2}"
         app:cardCornerRadius="15dp"
         app:cardElevation="3dp"
-        app:contentPadding="5dp">
+        >
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:text="Comedy"
-                android:textColor="@color/white"
+                android:padding="8dp"
+                android:text="@{model.title}"
+                android:textColor="@{model.selected?@color/primary_dark2:@color/white}"
                 android:textSize="16sp" />
-        </FrameLayout>
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

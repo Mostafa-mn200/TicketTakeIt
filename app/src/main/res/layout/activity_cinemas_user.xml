@@ -19,89 +19,53 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <include
+                android:id="@id/toolbar"
+                layout="@layout/toolbar"/>
+<!--            <com.google.android.material.appbar.AppBarLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
 
-                <LinearLayout
-                    android:id="@+id/llBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+<!--                <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:background="@color/search_color"-->
+<!--                    app:layout_scrollFlags="scroll|exitUntilCollapsed">-->
 
-                    <ImageView
-                        android:id="@+id/arrow"
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center_vertical"
-                        android:padding="3dp"
-                        android:rotation='@{lang.equals("ar")?180:0}'
-                        android:src="@drawable/ic_left_arrow"
-                        app:tint="@color/white" />
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/llSearch"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:background="@drawable/rounded_color2"-->
+<!--                        android:gravity="center_vertical"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingStart="16dp"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:layout_margin="10dp">-->
 
-                    <TextView
-                        android:id="@+id/tvTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:text="@string/Choose_Cinema"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-                </LinearLayout>
-            </androidx.appcompat.widget.Toolbar>
+<!--                        <ImageView-->
+<!--                            android:layout_width="24dp"-->
+<!--                            android:layout_height="24dp"-->
+<!--                            android:padding="2dp"-->
+<!--                            android:src="@drawable/ic_search"-->
+<!--                            app:tint="@color/white" />-->
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+<!--                        <androidx.legacy.widget.Space-->
+<!--                            android:layout_width="12dp"-->
+<!--                            android:layout_height="0dp" />-->
 
-                <com.google.android.material.appbar.CollapsingToolbarLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/search_color"
-                    app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                    <LinearLayout
-                        android:id="@+id/llSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/rounded_color2"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:layout_margin="10dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:padding="2dp"
-                            android:src="@drawable/ic_search"
-                            app:tint="@color/white" />
-
-                        <androidx.legacy.widget.Space
-                            android:layout_width="12dp"
-                            android:layout_height="0dp" />
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/background_transparent"
-                            android:hint="@string/search"
-                            android:textColor="@color/white"
-                            android:textColorHint="@color/gray14"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </com.google.android.material.appbar.CollapsingToolbarLayout>
-            </com.google.android.material.appbar.AppBarLayout>
+<!--                        <EditText-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:background="@drawable/background_transparent"-->
+<!--                            android:hint="@string/search"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:textColorHint="@color/gray14"-->
+<!--                            android:textSize="15sp" />-->
+<!--                    </LinearLayout>-->
+<!--                </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+<!--            </com.google.android.material.appbar.AppBarLayout>-->
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/cinema_users_recycler"

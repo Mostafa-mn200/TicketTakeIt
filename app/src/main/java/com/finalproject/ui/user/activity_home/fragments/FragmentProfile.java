@@ -20,7 +20,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseFragment;
-import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
+import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_language.LanguageActivity;
 import com.finalproject.ui.activity_login.LoginActivity;

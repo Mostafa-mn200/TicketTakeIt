@@ -58,8 +58,7 @@ public class AddShowActivity extends BaseActivity {
     }
 
     private void initView() {
-        binding.setLang(getLang());
-
+        setUpToolbar(binding.toolbar, getString(R.string.add_show), R.color.color2, R.color.white);
         addShowHeroBindingList=new ArrayList<>();
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
@@ -113,7 +112,6 @@ public class AddShowActivity extends BaseActivity {
             }
         });
 
-        binding.llBack.setOnClickListener(view -> finish());
         binding.flGallery.setOnClickListener(view -> {
             closeSheet();
             checkReadPermission();
@@ -131,7 +129,7 @@ public class AddShowActivity extends BaseActivity {
         });
 
 
-        binding.llBack.setOnClickListener(view -> finish());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
 
         binding.llAddHero.setOnClickListener(view -> {
             addHeroItem();

@@ -19,16 +19,21 @@ import com.finalproject.R;
 import com.finalproject.adapter.MoviesAdapter;
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.FragmentMoviesBinding;
+import com.finalproject.model.FilterModel;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_trailar_movie.MovieDetailsActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class FragmentMovies extends BaseFragment {
     private HomeActivity activity;
     private FragmentMoviesBinding binding;
-    MoviesFilterAdapter moviesFilterAdapter;
-    MoviesAdapter moviesAdapter;
+    private MoviesFilterAdapter moviesFilterAdapter;
+    private MoviesAdapter moviesAdapter;
+    private List<FilterModel> filterModelList;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -50,7 +55,13 @@ public class FragmentMovies extends BaseFragment {
     }
 
     private void initView() {
-        moviesFilterAdapter = new MoviesFilterAdapter(activity, this);
+        filterModelList=new ArrayList<>();
+
+        filterModelList.add(new FilterModel("action"));
+        filterModelList.add(new FilterModel("drama"));
+        filterModelList.add(new FilterModel("comedy"));
+        filterModelList.add(new FilterModel("other"));
+        moviesFilterAdapter = new MoviesFilterAdapter(filterModelList,activity);
         binding.recyclerFilter.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
         binding.recyclerFilter.setAdapter(moviesFilterAdapter);
 
@@ -62,5 +73,10 @@ public class FragmentMovies extends BaseFragment {
     public void navigatetoMovieTrailerActivity() {
         Intent i = new Intent(getContext(), MovieDetailsActivity.class);
         startActivity(i);
+    }
+
+    public void setItemFilter(FilterModel filterModel, int currentPos) {
+//        mvvm.setSelectedFilterPos(currentPos);
+//        updateFilters(filterModel);
     }
 }

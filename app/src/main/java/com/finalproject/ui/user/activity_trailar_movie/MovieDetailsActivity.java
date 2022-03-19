@@ -39,14 +39,12 @@ public class MovieDetailsActivity extends BaseActivity {
     }
 
     private void initView() {
-        Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(getLang());
+        setUpToolbar(binding.toolbar, getString(R.string.movie_details), R.color.color2, R.color.white);
 
         mCastadapter = new CastAdapter(this);
         binding.castRecHori.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.castRecHori.setAdapter(mCastadapter);
-        binding.llBack.setOnClickListener(view -> finish());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
     }
 
 

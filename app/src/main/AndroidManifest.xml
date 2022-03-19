@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.finalproject">
+    package="com.finalproject" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -28,21 +28,21 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
-        tools:targetApi="q">
-        <activity android:name=".ui.forgetPassword.ForgetPassActivity3"></activity>
+        tools:targetApi="q" >
+        <activity
+            android:name=".ui.owner.activities_owner_home.activity_list_of_bookings.BookingListActivity"
+            android:exported="false" />
+        <activity android:name=".ui.forgetPassword.ForgetPassActivity3" />
         <activity android:name=".ui.forgetPassword.ForgetPassActivity2" />
         <activity android:name=".ui.forgetPassword.ForgetPasswordActivity1" />
-        <activity android:name=".ui.owner.activity_theater_owner.TheaterOwnerActivity" />
+        <activity android:name=".ui.owner.activities_owner_home.activity_shows.OwnerShowsActivity" />
         <activity
-            android:name=".ui.owner.activity_cinema_owner.CinemaOwnerActivity"
+            android:name=".ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.owner.activity_owner_home.OwnerHomeActivity"
-            android:exported="true">
-
+            android:name=".ui.owner.activities_owner_home.OwnerHomeActivity"
+            android:exported="true" >
         </activity>
-            android:exported="true" />
-        <activity android:name=".ui.user.ctivity_booking_showSeats.BookingShowSeatsActivity" />
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
         <activity
             android:name=".ui.user.activity_show_detiles.ShowDetilesActivity"
@@ -74,7 +74,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.user.activity_cinema_users.CinemasUserActivity" />
         <activity
-            android:name=".ui.user.activity_booking_seats.BookingSeasActivity"
+            android:name=".ui.user.activity_booking_seats.BookingSeatsActivity"
             android:exported="true" />
         <activity
             android:name=".ui.user.activity_trailar_movie.MovieDetailsActivity"
@@ -100,7 +100,6 @@
             android:name=".ui.activity_splash.SplashActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -118,9 +117,7 @@
         <activity
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-
-
+            android:windowSoftInputMode="adjustResize" >
         </activity>
         <activity
             android:name=".ui.user.activity_home.HomeActivity"

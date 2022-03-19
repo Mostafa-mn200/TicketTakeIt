@@ -9,6 +9,7 @@
     <string name="top_picked_for_you">أفضل الافلام </string>
     <string name="seeAll">مشاهدة الكل</string>
     <string name="no_data_to_show">لا توجد بيانات لعرضها</string>
+    <string name="no_filters_to_show">لا توجد أنواع لعرضها</string>
     <string name="comingSoon">قريبا</string>
     <string name="topShow">أفضل المسرحيات</string>
     <string name="search">ابحث الان</string>
@@ -73,7 +74,7 @@
     <string name="adventure_Mtype">Adventure</string>
     <string name="overview">القصة</string>
     <string name="cast_title">فريق العمل</string>
-    <string name="Choose_Cinema">اختار السينما</string>
+    <string name="choose_Cinema">اختار السينما</string>
     <string name="choose_seat">اختار المقعد</string>
     <string name="screen">الشاشة</string>
     <string name="selected">اختيار</string>
@@ -119,4 +120,12 @@
     <string name="new_password">كلمة السر الجديدة</string>
     <string name="you_about_to_end">انت على وشك الانتهاء</string>
     <string name="code_has_been_sent">لقد تم ارسال الرمز</string>
+    <string name="price">السعر :</string>
+    <string name="book_now">إحجز الان</string>
+    <string name="pay_now">إدفع الان</string>
+    <string name="done">تم</string>
+    <string name="time">الوقت</string>
+    <string name="bookings_list">قائمة الحجوزات</string>
+    <string name="movie_type">نوع الفيلم</string>
+    <string name="please_choose_the_user">برجاء تحديد(المستخدم أو المالك)</string>
 </resources>

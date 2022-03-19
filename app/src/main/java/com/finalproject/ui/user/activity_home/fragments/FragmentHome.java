@@ -25,9 +25,6 @@ import com.finalproject.adapter.TopShowsAdapter;
 
 import com.finalproject.databinding.FragmentHomeBinding;
 import com.finalproject.ui.activity_base.BaseFragment;
-import com.finalproject.ui.owner.activity_add_movie.AddMovieActivity;
-import com.finalproject.ui.owner.activity_add_show.AddShowActivity;
-import com.finalproject.ui.owner.activity_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_show_detiles.ShowDetilesActivity;
@@ -42,7 +39,7 @@ public class FragmentHome extends BaseFragment {
     private TopMoviesAdapter topMoviesAdapter;
     private ComingSoonAdapter comingSoonAdapter;
     private TopShowsAdapter topShowsAdapter;
-    private int[] sliders = {R.drawable.slider1, R.drawable.slider2, R.drawable.slider3};
+
     private Timer timer;
 
     private SliderAdapter sliderAdapter;

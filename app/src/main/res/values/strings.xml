@@ -8,6 +8,7 @@
     <string name="top_picked_for_you">Top Movies</string>
     <string name="seeAll">See All</string>
     <string name="no_data_to_show">No Data To Show</string>
+    <string name="no_filters_to_show">No Filters To Show</string>
     <string name="comingSoon">Coming Soon</string>
     <string name="topShow">Top Shows</string>
     <string name="search">Search</string>
@@ -71,7 +72,7 @@
     <string name="adventure_Mtype">Adventure</string>
     <string name="overview">OverView</string>
     <string name="cast_title">Cast</string>
-    <string name="Choose_Cinema">Choose Cinema</string>
+    <string name="choose_Cinema">Choose Cinema</string>
     <string name="choose_seat">Choose Seat</string>
     <string name="screen">Screen</string>
     <string name="selected">Selected</string>
@@ -126,4 +127,12 @@
     <string name="code_has_been_sent">Code has been sent</string>
     <string name="confirm">Confirm</string>
     <string name="or">OR</string>
+    <string name="price">Price :</string>
+    <string name="book_now">Book now</string>
+    <string name="pay_now">Pay now</string>
+    <string name="done">Done</string>
+    <string name="time">Time</string>
+    <string name="bookings_list">Bookings list</string>
+    <string name="movie_type">Movie type</string>
+    <string name="please_choose_the_user">Please choose the user (Customer or Owner)</string>
 </resources>

@@ -16,39 +16,9 @@
         android:orientation="vertical"
         >
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/color2">
-
-            <LinearLayout
-                android:id="@+id/llBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/arrow"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:padding="3dp"
-                    android:rotation='@{lang.equals("ar")?180:0}'
-                    android:src="@drawable/ic_left_arrow"
-                    app:tint="@color/white" />
-
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="@string/add_movie"
-                    android:textColor="@color/white"
-                    android:textSize="15sp" />
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+        <include
+            android:id="@id/toolbar"
+            layout="@layout/toolbar"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -175,6 +145,32 @@
 
                     </FrameLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/movie_type"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="1dp"
+                        android:paddingStart="5dp"
+                        android:paddingEnd="5dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:background="@drawable/rounded_color"
+                        >
+                        <Spinner
+                            android:id="@+id/movieType"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:layout_margin="8dp" />
+                    </LinearLayout>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -53,9 +53,10 @@ public class EditAccountActivity extends BaseActivity {
     }
 
     private void initView() {
-        Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-        binding.setLang(getLang());
+        setUpToolbar(binding.toolbar, getString(R.string.editAccount), R.color.color2, R.color.white);
+//        Paper.init(this);
+//        lang = getLang();
+//        binding.setLang(getLang());
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
@@ -99,7 +100,7 @@ public class EditAccountActivity extends BaseActivity {
         ProgressDialog dialog = new ProgressDialog(this);
 
 
-        binding.llBack.setOnClickListener(view -> finish());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
         binding.saveChanges.setOnClickListener(view -> {
             dialog.setMessage(getString(R.string.savingChanges));
             dialog.show();

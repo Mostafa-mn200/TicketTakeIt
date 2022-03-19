@@ -34,7 +34,7 @@ public class SplashActivity extends BaseActivity {
     private CompositeDisposable disposable = new CompositeDisposable();
     private Preferences preferences;
     private String lang;
-    private Animation animation;
+
     private Animation animation1;
     private Animation animation2;
 
@@ -48,7 +48,7 @@ public class SplashActivity extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
 
         preferences = Preferences.getInstance();
@@ -79,29 +79,14 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void animateMethod() {
-        animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.lanuch);
+
         animation1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
         animation2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
+        binding.logo.setVisibility(View.VISIBLE);
 
 
-        binding.cons.startAnimation(animation);
+        binding.logo.startAnimation(animation1);
 
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                binding.logo.startAnimation(animation1);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
 
         animation1.setAnimationListener(new Animation.AnimationListener() {
             @Override

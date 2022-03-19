@@ -154,7 +154,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/transparent"
                         android:gravity="start|center_vertical"
-                        android:hint="@string/usernameOrMail"
+                        android:hint="@string/username"
                         android:lines="1"
                         android:textAlignment="viewStart"
                         android:textColor="@color/white"

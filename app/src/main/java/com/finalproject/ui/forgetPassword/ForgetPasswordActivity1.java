@@ -34,7 +34,7 @@ public class ForgetPasswordActivity1 extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
 
         binding.llBack.setOnClickListener(view -> {

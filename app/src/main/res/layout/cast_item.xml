@@ -15,7 +15,7 @@
             android:id="@+id/cast_img"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/soon" />
+            android:src="@drawable/soon1" />
 
         <TextView
             android:id="@+id/author_name"

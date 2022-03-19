@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,10 +24,7 @@ public class LanguageActivity extends BaseActivity {
     private ActivityLanguageBinding binding;
     private String selectedLang;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +34,11 @@ public class LanguageActivity extends BaseActivity {
     }
 
     private void intView() {
-        Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
+        Log.e("lang",lang);
 
         ProgressDialog dialog = new ProgressDialog(this);
-        lang = Language.getLanguageSelected(this);//where u get the lang saved in shared pref
         //decorate the saved language
         if (lang.equals("en")) {
             binding.flEn.setBackgroundResource(R.drawable.small_stroke_primary2);

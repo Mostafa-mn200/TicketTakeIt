@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityHomeBinding;
 import com.finalproject.language.Language;
+import com.finalproject.model.FilterModel;
 import com.finalproject.ui.activity_base.BaseActivity;
 
 import androidx.core.content.ContextCompat;
@@ -27,15 +29,11 @@ public class HomeActivity extends BaseActivity {
     private ActivityHomeBinding binding;
     private NavController navController;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(Language.updateResources(newBase, "en"));
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Language.setLocale(this, Language.getLanguageSelected(this));
+        //anguage.setLocale(this, Language.getLanguageSelected(this));
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
@@ -45,7 +43,7 @@ public class HomeActivity extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
         setSupportActionBar(binding.toolBar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -75,7 +73,9 @@ public class HomeActivity extends BaseActivity {
         }
 
     }
+
     public void refreshActivity(String lang) {
+        Log.e("lang",lang);
         Paper.book().write("lang", lang);
         Language.setNewLocale(this, lang);
         new Handler()
@@ -88,4 +88,6 @@ public class HomeActivity extends BaseActivity {
 
 
     }
+
+
 }

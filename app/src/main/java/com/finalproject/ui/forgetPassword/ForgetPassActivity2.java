@@ -31,7 +31,7 @@ public class ForgetPassActivity2 extends BaseActivity {
 
     private void initView() {
         Paper.init(this);
-        lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
+        lang = getLang();
         binding.setLang(getLang());
 
         binding.llPrevious.setOnClickListener(view -> {
