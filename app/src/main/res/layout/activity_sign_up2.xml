@@ -8,6 +8,9 @@
         <variable
             name="lang"
             type="String" />
+        <variable
+            name="model"
+            type="com.finalproject.model.SignUpModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -141,6 +144,8 @@
 
                 <EditText
                     android:id="@+id/edFullName"
+                    error="@{model.error_name}"
+                    android:text="@={model.name}"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
@@ -203,6 +208,8 @@
                     app:passwordToggleTint="@color/white">
                     <EditText
                         android:id="@+id/edPassword"
+                        error="@{model.error_password}"
+                        android:text="@={model.password}"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@color/transparent"

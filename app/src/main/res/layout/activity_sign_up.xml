@@ -8,6 +8,9 @@
         <variable
             name="lang"
             type="String" />
+        <variable
+        name="model"
+        type="com.finalproject.model.SignUpModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -146,6 +149,8 @@
                 </FrameLayout>
 
                 <EditText
+                    error="@{model.error_national_id}"
+                    android:text="@={model.national_id}"
                     android:id="@+id/edNationalID"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -199,6 +204,8 @@
 
                 <EditText
                     android:id="@+id/edEmail"
+                    error="@{model.error_email}"
+                    android:text="@={model.email}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"
@@ -244,6 +251,8 @@
 
                 <EditText
                     android:id="@+id/edUserName"
+                    error="@{model.error_user_name}"
+                    android:text="@={model.user_name}"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="8dp"

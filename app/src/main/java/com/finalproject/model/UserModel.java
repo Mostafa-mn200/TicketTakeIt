@@ -2,7 +2,7 @@ package com.finalproject.model;
 
 import java.io.Serializable;
 
-public class UserModel {
+public class UserModel extends StatusResponse{
     private Data data;
 
     public Data getData() {
@@ -10,69 +10,55 @@ public class UserModel {
     }
 
     public static class Data implements Serializable {
-        private int id;
-        private String user_type;
-        private String logo;
+        private String id;
         private String name;
-        private String phone_code;
-        private String phone;
+        private String user_name;
+        private String national_id;
         private String gender;
-        private double latitude;
-        private double longitude;
-        private String address;
-        private String token;
-        private static String firebase_token;
+        private String type;
+        private String email;
+        private String email_verified_at;
+        private String created_at;
+        private String updated_at;
 
-        public int getId() {
+        public String getId() {
             return id;
-        }
-
-        public String getUser_type() {
-            return user_type;
-        }
-
-        public String getLogo() {
-            return logo;
         }
 
         public String getName() {
             return name;
         }
 
-        public String getPhone_code() {
-            return phone_code;
+        public String getUser_name() {
+            return user_name;
         }
 
-        public String getPhone() {
-            return phone;
+        public String getNational_id() {
+            return national_id;
         }
 
         public String getGender() {
             return gender;
         }
 
-        public double getLatitude() {
-            return latitude;
+        public String getType() {
+            return type;
         }
 
-        public double getLongitude() {
-            return longitude;
+        public String getEmail() {
+            return email;
         }
 
-        public String getAddress() {
-            return address;
+        public String getEmail_verified_at() {
+            return email_verified_at;
         }
 
-        public String getToken() {
-            return token;
+        public String getCreated_at() {
+            return created_at;
         }
 
-        public String getFirebase_token() {
-            return firebase_token;
-        }
-
-        public void setFirebase_token(String firebase_token) {
-            this.firebase_token = firebase_token;
+        public String getUpdated_at() {
+            return updated_at;
         }
     }
 

@@ -1,6 +1,7 @@
 package com.finalproject.ui.user.activity_sign_up;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySignUp2Binding;
+import com.finalproject.model.SignUpModel;
+import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
@@ -22,6 +25,8 @@ import io.paperdb.Paper;
 public class SignUpActivity2 extends BaseActivity {
     private String lang;
     private ActivitySignUp2Binding binding;
+    private ActivitySignupMvvm mvvm;
+    private SignUpModel signUpModel;
 
 
     @Override
@@ -31,11 +36,27 @@ public class SignUpActivity2 extends BaseActivity {
         initView();
     }
 
+    private void getDataFromIntent(){
+        Intent intent = getIntent();
+        intent.getSerializableExtra("national_id");
+    }
+
     private void initView() {
         Paper.init(this);
         lang = getLang();
         binding.setLang(getLang());
         ProgressDialog dialog = new ProgressDialog(this);
+
+        mvvm= ViewModelProviders.of(this).get(ActivitySignupMvvm.class);
+        signUpModel=new SignUpModel();
+        binding.setModel(signUpModel);
+        mvvm.userModelMutableLiveData.observe(this, userModel -> {
+            setUserModel(userModel);
+        });
+
+
+
+
         binding.llPrevious.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, SignUpActivity.class);
             startActivity(intent);
@@ -63,18 +84,9 @@ public class SignUpActivity2 extends BaseActivity {
             }
         });
         binding.llSignUp.setOnClickListener(view -> {
-                dialog.setTitle(getString(R.string.signUp));
-                dialog.setMessage(getString(R.string.waitLoading));
-                dialog.show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        dialog.dismiss();
-                        Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }, 650);
+                if (signUpModel.isDataValid2(this)){
+                    mvvm.signupWith(this,signUpModel);
+                }
         });
 
         binding.txtLogin.setOnClickListener(view -> {

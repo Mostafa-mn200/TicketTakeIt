@@ -1,6 +1,8 @@
 package com.finalproject.ui.user.activity_sign_up;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -12,6 +14,9 @@ import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivitySignUpBinding;
+import com.finalproject.model.SignUpModel;
+import com.finalproject.model.UserModel;
+import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 
@@ -25,6 +30,7 @@ public class SignUpActivity extends BaseActivity {
     private ActivitySignUpBinding binding;
     private DatePickerDialog.OnDateSetListener dateSetListener;
     private static final String Tag="SignUpActivity";
+    private SignUpModel signUpModel;
 
 
     @Override
@@ -39,15 +45,26 @@ public class SignUpActivity extends BaseActivity {
         lang = getLang();
         binding.setLang(getLang());
 
+        signUpModel=new SignUpModel();
+        binding.setModel(signUpModel);
+
+
         binding.llBack.setOnClickListener(view -> {
             Intent intent=new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
         binding.btnNext.setOnClickListener(view -> {
+            if (signUpModel.isDataValid1(this)) {
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
+                //intent.putExtra("data", signUpModel);
+                intent.putExtra("national_id",signUpModel.getNational_id());
+                intent.putExtra("email",signUpModel.getEmail());
+                intent.putExtra("user_name",signUpModel.getUser_name());
+
                 startActivity(intent);
                 finish();
+            }
         });
 
 //        binding.datePicker.setOnClickListener(view -> {
