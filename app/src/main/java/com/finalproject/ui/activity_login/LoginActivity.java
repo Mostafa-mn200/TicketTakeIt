@@ -1,6 +1,7 @@
 package com.finalproject.ui.activity_login;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,9 @@ import android.widget.Toast;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
+import com.finalproject.model.LoginModel;
+import com.finalproject.mvvm.ActivityLoginMvvm;
+import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.forgetPassword.ForgetPasswordActivity1;
 import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
@@ -27,6 +31,8 @@ public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding binding;
     private boolean passVisible;
     private String type="";
+    private ActivityLoginMvvm mvvm ;
+    private LoginModel loginModel;
 
 
 
@@ -39,6 +45,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initView() {
+        mvvm= ViewModelProviders.of(this).get(ActivityLoginMvvm.class);
+        loginModel = new LoginModel();
+        binding.setModel(loginModel);
+        mvvm.userModelMutableLiveData.observe(this,userModel -> {
+            setUserModel(userModel);
+
+        });
+
         Paper.init(this);
         lang = getLang();
         binding.setLang(getLang());
@@ -63,6 +77,8 @@ public class LoginActivity extends BaseActivity {
                 } else {
                     Toast.makeText(this, R.string.please_choose_the_user, Toast.LENGTH_SHORT).show();
                 }
+
+
 
 
         });

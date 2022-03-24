@@ -1,4 +1,4 @@
-package com.finalproject.interfaces;
+package com.finalproject.service;
 
 import com.finalproject.model.SignUpModel;
 import com.finalproject.model.UserModel;
@@ -21,4 +21,13 @@ public interface Service {
                                        @Field("gender") String gender,
                                        @Field("type") String type
     );
+
+    @FormUrlEncoded
+    @POST("api/login")
+    Single<Response<UserModel>> logIn(
+            @Field("user_name") String user_name,
+            @Field("password") String password,
+            @Field("type") String type
+    );
+
 }

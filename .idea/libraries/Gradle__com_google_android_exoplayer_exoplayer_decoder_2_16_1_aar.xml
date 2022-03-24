@@ -2,15 +2,16 @@
   <library name="Gradle: com.google.android.exoplayer:exoplayer-decoder:2.16.1@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5754da23a9d41ea9de4da28cf2acc823/transformed/jetified-exoplayer-decoder-2.16.1/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/96f3ee22ae7ee2c56110438d713f9cfc/transformed/jetified-exoplayer-decoder-2.16.1/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/67143ebbe4fcb0e77d0d10b0a7625233/transformed/jetified-exoplayer-decoder-2.16.1/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5754da23a9d41ea9de4da28cf2acc823/transformed/jetified-exoplayer-decoder-2.16.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5754da23a9d41ea9de4da28cf2acc823/transformed/jetified-exoplayer-decoder-2.16.1/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5754da23a9d41ea9de4da28cf2acc823/transformed/jetified-exoplayer-decoder-2.16.1/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/96f3ee22ae7ee2c56110438d713f9cfc/transformed/jetified-exoplayer-decoder-2.16.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/96f3ee22ae7ee2c56110438d713f9cfc/transformed/jetified-exoplayer-decoder-2.16.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/96f3ee22ae7ee2c56110438d713f9cfc/transformed/jetified-exoplayer-decoder-2.16.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/67143ebbe4fcb0e77d0d10b0a7625233/transformed/jetified-exoplayer-decoder-2.16.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/67143ebbe4fcb0e77d0d10b0a7625233/transformed/jetified-exoplayer-decoder-2.16.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/67143ebbe4fcb0e77d0d10b0a7625233/transformed/jetified-exoplayer-decoder-2.16.1/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

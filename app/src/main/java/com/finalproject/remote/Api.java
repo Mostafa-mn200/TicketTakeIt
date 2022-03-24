@@ -1,7 +1,6 @@
 package com.finalproject.remote;
 
-import com.finalproject.interfaces.Listeners;
-import com.finalproject.interfaces.Service;
+import com.finalproject.service.Service;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
