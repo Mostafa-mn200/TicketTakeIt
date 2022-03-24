@@ -63,6 +63,7 @@ public class SignUpActivity2 extends BaseActivity {
             finish();
         });
 
+
         binding.llMale.setOnClickListener(view -> {
             binding.llMale.setBackgroundResource(R.drawable.small_stroke_color3);
 
