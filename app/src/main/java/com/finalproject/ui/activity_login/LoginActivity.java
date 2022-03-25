@@ -69,11 +69,13 @@ public class LoginActivity extends BaseActivity {
             private void navigateToOwnerHome() {
                 Intent intent=new Intent(LoginActivity.this,OwnerHomeActivity.class);
                 startActivity(intent);
+                finish();
             }
 
             private void navigateToUserHome() {
                 Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         binding.btnLogin.setOnClickListener(view -> {
@@ -96,15 +98,14 @@ public class LoginActivity extends BaseActivity {
 
         });
         binding.txtCreate.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
         });
 
         binding.forgetPass.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity1.class);
             startActivity(intent);
-            finish();
+
         });
 
     }

@@ -47,15 +47,15 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         return onSignUpSuccess;
     }
 
-    public void signupWith(Context context, SignUpModel model,String type) {
+    public void signupWith(Context context, SignUpModel model) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
 
-        Log.e("data",model.getName()+"_"+model.getUser_name()+"_"+model.getPassword()+"_"+model.getNational_id()+"_"+model.getEmail()+"_"+model.getGender()+"_"+type);
+        Log.e("data",model.getName()+"_"+model.getUser_name()+"_"+model.getPassword()+"_"+model.getNational_id()+"_"+model.getEmail()+"_"+model.getGender()+"_"+model.getType());
         Api.getService(Tags.base_url).signUp(model.getName(),
                 model.getUser_name(), model.getPassword(), model.getNational_id(),
-                model.getEmail(), model.getGender(),type)
+                model.getEmail(), model.getGender(),model.getType())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<UserModel>>() {

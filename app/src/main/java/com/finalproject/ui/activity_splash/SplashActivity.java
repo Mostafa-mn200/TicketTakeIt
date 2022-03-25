@@ -131,6 +131,7 @@ public class SplashActivity extends BaseActivity {
     private void navigateToLoginActivity() {
         Intent intent =new Intent(this,LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

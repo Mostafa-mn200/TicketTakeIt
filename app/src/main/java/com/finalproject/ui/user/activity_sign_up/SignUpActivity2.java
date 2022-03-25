@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,7 +31,7 @@ public class SignUpActivity2 extends BaseActivity {
     private ActivitySignUp2Binding binding;
     private ActivitySignupMvvm mvvm;
     private SignUpModel signUpModel;
-    private String type = "";
+//    private String type = "";
 
 
     @Override
@@ -50,13 +51,7 @@ public class SignUpActivity2 extends BaseActivity {
         Paper.init(this);
         lang = getLang();
         binding.setLang(getLang());
-
-        binding.btnCustomer.setOnClickListener(view -> {
-            setupbutton1();
-        });
-        binding.btnOwner.setOnClickListener(view -> {
-            setupbutton2();
-        });
+        Log.e("type",signUpModel.getType());
 
         mvvm = ViewModelProviders.of(this).get(ActivitySignupMvvm.class);
         binding.setModel(signUpModel);
@@ -64,31 +59,29 @@ public class SignUpActivity2 extends BaseActivity {
             @Override
             public void onChanged(UserModel userModel) {
                 setUserModel(userModel);
-                if (signUpModel.getType().equals("customer")){
+                if (signUpModel.getType().equals("customer")) {
                     navigateToUserHome();
-                }else if (signUpModel.getType().equals("owner")){
+                } else if (signUpModel.getType().equals("owner")) {
                     navigateToOwnerHome();
                 }
             }
 
             private void navigateToOwnerHome() {
-                Intent intent=new Intent(SignUpActivity2.this,OwnerHomeActivity.class);
+                Intent intent = new Intent(SignUpActivity2.this, OwnerHomeActivity.class);
                 startActivity(intent);
             }
 
             private void navigateToUserHome() {
-                Intent intent=new Intent(SignUpActivity2.this,HomeActivity.class);
+                Intent intent = new Intent(SignUpActivity2.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
 
 
-
-
         binding.llPrevious.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity2.this, SignUpActivity.class);
             startActivity(intent);
-            finish();
+
         });
 
 
@@ -112,12 +105,7 @@ public class SignUpActivity2 extends BaseActivity {
         });
         binding.llSignUp.setOnClickListener(view -> {
             if (signUpModel.isDataValid2(this)) {
-                if (type.equals("customer")){
-                    mvvm.signupWith(this, signUpModel,"customer");
-                }else if (type.equals("owner")){
-                    mvvm.signupWith(this, signUpModel,"owner");
-                }
-
+                mvvm.signupWith(this, signUpModel);
             }
         });
 
@@ -127,24 +115,6 @@ public class SignUpActivity2 extends BaseActivity {
             finish();
         });
     }
-    public void setupbutton1() {
-        type="customer";
-        signUpModel.setType(type);
-        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
-        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
-        binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
-
-    }
-
-    public void setupbutton2() {
-        type="owner";
-        signUpModel.setType(type);
-        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
-        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
-        binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
-        binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
 
 
-    }
 }

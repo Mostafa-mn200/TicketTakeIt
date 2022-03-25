@@ -114,64 +114,7 @@
                 </FrameLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="50dp"
-                android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/btnCustomer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/bg_user_btn"
-                    android:padding="5dp"
-                    android:text="@string/customer"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:background="@drawable/horizontal_line2" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/or"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_weight="1"
-                    android:background="@drawable/horizontal_line2" />
-
-                <Button
-                    android:id="@+id/btnOwner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/bg_user_btn"
-                    android:padding="5dp"
-                    android:text="@string/owner"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
 
 
             <TextView
@@ -393,7 +336,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="100dp"
                 android:orientation="horizontal">
 
                 <Button

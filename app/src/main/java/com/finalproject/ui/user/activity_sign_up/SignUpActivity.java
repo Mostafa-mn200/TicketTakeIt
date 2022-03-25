@@ -32,6 +32,7 @@ public class SignUpActivity extends BaseActivity {
     private static final String Tag = "SignUpActivity";
     private SignUpModel signUpModel;
     private UserModel userModel;
+    private String type = "";
 
 
     @Override
@@ -41,16 +42,24 @@ public class SignUpActivity extends BaseActivity {
         initView();
     }
 
+
     private void initView() {
         Paper.init(this);
         lang = getLang();
         binding.setLang(getLang());
 
-        userModel=new UserModel();
+
+        binding.btnCustomer.setOnClickListener(view -> {
+            setupbutton1();
+        });
+        binding.btnOwner.setOnClickListener(view -> {
+            setupbutton2();
+        });
+        userModel = new UserModel();
         signUpModel = new SignUpModel();
         binding.setModel(signUpModel);
-
-
+        signUpModel.setType(type);
+        Log.e("type",type);
         binding.llBack.setOnClickListener(view -> {
             Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
@@ -61,30 +70,31 @@ public class SignUpActivity extends BaseActivity {
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
                 intent.putExtra("data", signUpModel);
                 startActivity(intent);
-                finish();
+
             }
         });
 
-//        binding.datePicker.setOnClickListener(view -> {
-//            Calendar calendar=Calendar.getInstance();
-//            int year=calendar.get(Calendar.YEAR);
-//            int month=calendar.get(Calendar.MONTH);
-//            int day=calendar.get(Calendar.DAY_OF_MONTH);
-//
-//            DatePickerDialog dialog=new DatePickerDialog(SignUpActivity.this,
-//                    android.R.style.Theme_DeviceDefault_Dialog
-//            ,dateSetListener,year,month,day);
-//            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-//            dialog.show();
-//
-//        });
-//        dateSetListener= (datePicker, year, month, day) -> {
-//            month=month+1;
-//            Log.d(Tag,"date: "+ month + "/" + day + "/" + year );
-//            String date =month + "/" + day + "/" + year;
-//            binding.datePickerTxt.setText(date);
-//            binding.datePickerTxt.setTextColor(getResources().getColor(R.color.white));
-//        };
+    }
+
+    public void setupbutton1() {
+        type = "customer";
+        signUpModel.setType(type);
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
+        binding.btnOwner.setTextColor(getResources().getColor(R.color.white));
+
+    }
+
+    public void setupbutton2() {
+        type = "owner";
+        signUpModel.setType(type);
+        binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
+        binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
+        binding.btnOwner.setTextColor(getResources().getColor(R.color.black));
+        binding.btnCustomer.setTextColor(getResources().getColor(R.color.white));
+
+
     }
 
 }
