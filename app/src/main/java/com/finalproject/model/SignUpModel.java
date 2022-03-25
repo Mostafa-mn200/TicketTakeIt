@@ -10,7 +10,9 @@ import androidx.databinding.ObservableField;
 import com.finalproject.BR;
 import com.finalproject.R;
 
-public class SignUpModel extends BaseObservable {
+import java.io.Serializable;
+
+public class SignUpModel extends BaseObservable implements Serializable {
     private String name;
     private String user_name;
     private String password;

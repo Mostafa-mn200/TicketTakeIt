@@ -25,7 +25,6 @@ public class LoginModel extends BaseObservable implements Serializable {
 
     public Boolean isDataValid(Context context) {
 
-
         if (!user_name.trim().isEmpty()
                 &&
                 !password.trim().isEmpty()
@@ -41,8 +40,6 @@ public class LoginModel extends BaseObservable implements Serializable {
         } else {
             if (user_name.trim().isEmpty()) {
                 error_user_name.set("Field is Required");
-
-
             } else {
                 error_user_name.set(null);
             }

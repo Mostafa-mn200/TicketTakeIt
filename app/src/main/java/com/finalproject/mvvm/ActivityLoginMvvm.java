@@ -28,10 +28,9 @@ import retrofit2.Response;
 
 public class ActivityLoginMvvm extends AndroidViewModel {
     private Context context;
-    public MutableLiveData<UserModel> userModelMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<UserModel> onLoginSuccess = new MutableLiveData<>();
 
     private CompositeDisposable disposable = new CompositeDisposable();
-
 
 
     public ActivityLoginMvvm(@NonNull Application application) {
@@ -39,21 +38,20 @@ public class ActivityLoginMvvm extends AndroidViewModel {
     }
 
 
-//    public MutableLiveData<UserModel> getUserModelMutableLiveData() {
-//        if (userModelMutableLiveData ==null)
-//        {
-//            userModelMutableLiveData = new MutableLiveData<>();
-//        }
-//        return userModelMutableLiveData;
-//
-//    }
+    public MutableLiveData<UserModel> getOnLoginSuccess() {
+        if (onLoginSuccess == null) {
+            onLoginSuccess = new MutableLiveData<>();
+        }
+        return onLoginSuccess;
 
-    public void loginWith(Context context , LoginModel loginModel,String type){
+    }
+
+    public void loginWith(Context context, LoginModel loginModel, String type) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-
-        Api.getService(Tags.base_url).logIn(loginModel.getUser_name(),loginModel.getPassword(),type)
+        Log.e("data", loginModel.getUser_name() + "_" + loginModel.getPassword() + "_" + loginModel.getType() + "");
+        Api.getService(Tags.base_url).logIn(loginModel.getUser_name(), loginModel.getPassword(), type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<UserModel>>() {
@@ -66,9 +64,11 @@ public class ActivityLoginMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<UserModel> response) {
                         dialog.dismiss();
-                        if (response.isSuccessful()){
-                            if (response.body().getStatus()==200){
-                                userModelMutableLiveData.postValue(response.body());
+                        Log.e("ssss", response.code() + "_");
+                        if (response.isSuccessful() && response.body() != null) {
+
+                            if (response.body().getStatus() == 200) {
+                                onLoginSuccess.setValue(response.body());
                             }
                         }
 
@@ -77,9 +77,9 @@ public class ActivityLoginMvvm extends AndroidViewModel {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         dialog.dismiss();
-                        Log.e("error",e.toString());
+                        Log.e("error", e.toString());
 
                     }
-                })
+                });
     }
 }

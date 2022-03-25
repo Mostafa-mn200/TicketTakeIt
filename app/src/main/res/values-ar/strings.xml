@@ -128,4 +128,5 @@
     <string name="bookings_list">قائمة الحجوزات</string>
     <string name="movie_type">نوع الفيلم</string>
     <string name="please_choose_the_user">برجاء تحديد(المستخدم أو المالك)</string>
+    <string name="data_taken_before">تم تسجيل هذه البيانات بالفعل من قبل</string>
 </resources>

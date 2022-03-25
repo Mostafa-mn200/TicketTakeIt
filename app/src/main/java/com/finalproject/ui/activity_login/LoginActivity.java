@@ -1,12 +1,14 @@
 package com.finalproject.ui.activity_login;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -14,6 +16,7 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
 import com.finalproject.language.Language;
 import com.finalproject.model.LoginModel;
+import com.finalproject.model.UserModel;
 import com.finalproject.mvvm.ActivityLoginMvvm;
 import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
@@ -27,14 +30,10 @@ import java.util.Locale;
 import io.paperdb.Paper;
 
 public class LoginActivity extends BaseActivity {
-    private String lang;
     private ActivityLoginBinding binding;
-    private boolean passVisible;
     private String type="";
     private ActivityLoginMvvm mvvm ;
     private LoginModel loginModel;
-
-
 
 
     @Override
@@ -48,36 +47,50 @@ public class LoginActivity extends BaseActivity {
         mvvm= ViewModelProviders.of(this).get(ActivityLoginMvvm.class);
         loginModel = new LoginModel();
         binding.setModel(loginModel);
-        mvvm.userModelMutableLiveData.observe(this,userModel -> {
-            setUserModel(userModel);
 
-        });
-
-        Paper.init(this);
-        lang = getLang();
-        binding.setLang(getLang());
         binding.btnCustomer.setOnClickListener(view -> {
             setupbutton1();
         });
         binding.btnOwner.setOnClickListener(view -> {
             setupbutton2();
         });
-        binding.btnLogin.setOnClickListener(view -> {
-                if (type.equals("customer")) {
 
-                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                    startActivity(intent);
-                    finish();
+        mvvm.getOnLoginSuccess().observe(this, new Observer<UserModel>() {
+            @Override
+            public void onChanged(UserModel userModel) {
+                setUserModel(userModel);
+                if (loginModel.getType().equals("customer")){
+                    navigateToUserHome();
+                }else if (loginModel.getType().equals("owner")){
+                    navigateToOwnerHome();
+                }
+            }
+
+            private void navigateToOwnerHome() {
+                Intent intent=new Intent(LoginActivity.this,OwnerHomeActivity.class);
+                startActivity(intent);
+            }
+
+            private void navigateToUserHome() {
+                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.btnLogin.setOnClickListener(view -> {
+            if (loginModel.isDataValid(this)) {
+
+                if (type.equals("customer")) {
+                    mvvm.loginWith(this, loginModel, "customer");
+
 
                 } else if (type.equals("owner")) {
-                    Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
-                    startActivity(intent);
-                    finish();
+                    mvvm.loginWith(this, loginModel, "owner");
+
 
                 } else {
                     Toast.makeText(this, R.string.please_choose_the_user, Toast.LENGTH_SHORT).show();
                 }
-
+            }
 
 
 
@@ -98,6 +111,7 @@ public class LoginActivity extends BaseActivity {
 
     public void setupbutton1() {
         type="customer";
+        loginModel.setType(type);
         binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
         binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
         binding.btnCustomer.setTextColor(getResources().getColor(R.color.black));
@@ -107,6 +121,7 @@ public class LoginActivity extends BaseActivity {
 
     public void setupbutton2() {
         type="owner";
+        loginModel.setType(type);
         binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
         binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);
         binding.btnOwner.setTextColor(getResources().getColor(R.color.black));

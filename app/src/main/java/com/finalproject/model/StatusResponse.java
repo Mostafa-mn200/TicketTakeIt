@@ -3,14 +3,9 @@ package com.finalproject.model;
 import java.io.Serializable;
 
 public class StatusResponse implements Serializable {
-    protected int status;
-    protected String message;
+    protected int code;
 
     public int getStatus() {
-        return status;
-    }
-
-    public String getMessage() {
-        return message;
+        return code;
     }
 }

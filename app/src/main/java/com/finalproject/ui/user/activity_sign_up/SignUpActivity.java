@@ -29,8 +29,9 @@ public class SignUpActivity extends BaseActivity {
     private String lang;
     private ActivitySignUpBinding binding;
     private DatePickerDialog.OnDateSetListener dateSetListener;
-    private static final String Tag="SignUpActivity";
+    private static final String Tag = "SignUpActivity";
     private SignUpModel signUpModel;
+    private UserModel userModel;
 
 
     @Override
@@ -45,23 +46,20 @@ public class SignUpActivity extends BaseActivity {
         lang = getLang();
         binding.setLang(getLang());
 
-        signUpModel=new SignUpModel();
+        userModel=new UserModel();
+        signUpModel = new SignUpModel();
         binding.setModel(signUpModel);
 
 
         binding.llBack.setOnClickListener(view -> {
-            Intent intent=new Intent(SignUpActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
         binding.btnNext.setOnClickListener(view -> {
             if (signUpModel.isDataValid1(this)) {
                 Intent intent = new Intent(SignUpActivity.this, SignUpActivity2.class);
-                //intent.putExtra("data", signUpModel);
-                intent.putExtra("national_id",signUpModel.getNational_id());
-                intent.putExtra("email",signUpModel.getEmail());
-                intent.putExtra("user_name",signUpModel.getUser_name());
-
+                intent.putExtra("data", signUpModel);
                 startActivity(intent);
                 finish();
             }
@@ -87,8 +85,6 @@ public class SignUpActivity extends BaseActivity {
 //            binding.datePickerTxt.setText(date);
 //            binding.datePickerTxt.setTextColor(getResources().getColor(R.color.white));
 //        };
-}
-
-
+    }
 
 }
