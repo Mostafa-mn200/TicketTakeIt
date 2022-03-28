@@ -41,8 +41,8 @@ public class ActivitySignupMvvm extends AndroidViewModel {
     }
 
     public MutableLiveData<UserModel> getOnSignUpSuccess() {
-        if (onSignUpSuccess==null){
-            onSignUpSuccess=new MutableLiveData<>();
+        if (onSignUpSuccess == null) {
+            onSignUpSuccess = new MutableLiveData<>();
         }
         return onSignUpSuccess;
     }
@@ -52,10 +52,10 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         dialog.setCancelable(false);
         dialog.show();
 
-        Log.e("data",model.getName()+"_"+model.getUser_name()+"_"+model.getPassword()+"_"+model.getNational_id()+"_"+model.getEmail()+"_"+model.getGender()+"_"+model.getType());
+       // Log.e("data", model.getName() + "_" + model.getUser_name() + "_" + model.getPassword() + "_" + model.getNational_id() + "_" + model.getEmail() + "_" + model.getGender() + "_" + model.getType());
         Api.getService(Tags.base_url).signUp(model.getName(),
                 model.getUser_name(), model.getPassword(), model.getNational_id(),
-                model.getEmail(), model.getGender(),model.getType())
+                model.getEmail(), model.getGender(), model.getType())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<UserModel>>() {
@@ -68,11 +68,11 @@ public class ActivitySignupMvvm extends AndroidViewModel {
                     public void onSuccess(@NotNull Response<UserModel> response) {
                         dialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
-                            Log.e("status",response.code()+"_"+response.body().getStatus());
+                            Log.e("status", response.code() + "_" + response.body().getStatus());
                             if (response.body().getStatus() == 200) {
                                 onSignUpSuccess.setValue(response.body());
-                            }else if (response.body().getStatus()==509){
-                                Toast.makeText(context,R.string.data_taken_before, Toast.LENGTH_SHORT).show();
+                            } else if (response.body().getStatus() == 509) {
+                                Toast.makeText(context, R.string.data_taken_before, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
@@ -80,7 +80,7 @@ public class ActivitySignupMvvm extends AndroidViewModel {
                     @Override
                     public void onError(@NotNull Throwable e) {
                         dialog.dismiss();
-                        Log.e("error",e.toString());
+                        Log.e("error", e.toString());
 
                     }
                 });

@@ -122,6 +122,7 @@
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_language.xml" value="0.22780797101449277" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_list_of_booking.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_movie_details.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_owner_home.xml" value="0.25416666666666665" />
@@ -129,6 +130,7 @@
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_owner_shows.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_show_detiles.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_sign_up.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_sign_up1.xml" value="0.2064814814814815" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_sign_up2.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_splash.xml" value="0.22780797101449277" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/activity_theater_owner.xml" value="0.25416666666666665" />
@@ -148,6 +150,8 @@
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/fragment_payment_metod.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/fragment_shows.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/fragment_signup1.xml" value="0.2" />
+        <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/fragment_signup2.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/history_item_row.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/movie_show_item_row.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/FinalProject1/app/src/main/res/layout/movies_filter_row.xml" value="0.22826086956521738" />

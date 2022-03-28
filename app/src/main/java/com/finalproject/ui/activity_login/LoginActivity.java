@@ -20,10 +20,10 @@ import com.finalproject.model.UserModel;
 import com.finalproject.mvvm.ActivityLoginMvvm;
 import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
+import com.finalproject.ui.activity_signup.SignUpActivity;
 import com.finalproject.ui.forgetPassword.ForgetPasswordActivity1;
 import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
 
 import java.util.Locale;
 

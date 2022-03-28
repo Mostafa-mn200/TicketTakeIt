@@ -27,14 +27,18 @@ public class SignUpModel extends BaseObservable implements Serializable {
     public ObservableField<String> error_national_id = new ObservableField<>();
     public ObservableField<String> error_email = new ObservableField<>();
 
-    public boolean isDataValid1(Context context) {
-        if (!national_id.trim().isEmpty()&&
-                !email.trim().isEmpty()&&
-                !user_name.trim().isEmpty()) {
+    public boolean isDataValid(Context context) {
+        if (!national_id.trim().isEmpty() &&
+                !name.isEmpty() &&
+                !email.trim().isEmpty() &&
+                !user_name.trim().isEmpty() &&
+                !password.trim().isEmpty()) {
 
             error_national_id.set(null);
+            error_name.set(null);
             error_email.set(null);
             error_user_name.set(null);
+            error_password.set(null);
 
             return true;
         } else {
@@ -46,7 +50,13 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 error_national_id.set(null);
 
             }
+            if (name.isEmpty()) {
+                error_name.set(context.getString(R.string.field_required));
 
+            } else {
+                error_name.set(null);
+
+            }
             if (email.trim().isEmpty()) {
                 error_email.set(context.getString(R.string.field_required));
 
@@ -61,28 +71,6 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 error_user_name.set(null);
 
             }
-
-            return false;
-        }
-    }
-
-    public boolean isDataValid2(Context context){
-        if(!name.trim().isEmpty() &&
-                !password.trim().isEmpty()){
-
-            error_name.set(null);
-            error_password.set(null);
-
-            return true;
-        }else {
-
-            if (name.trim().isEmpty()) {
-                error_name.set(context.getString(R.string.field_required));
-
-            } else {
-                error_name.set(null);
-
-            }
             if (password.trim().isEmpty()) {
                 error_password.set(context.getString(R.string.field_required));
 
@@ -90,9 +78,12 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 error_password.set(null);
 
             }
-            if (gender.trim().isEmpty()) {
+            if (gender.isEmpty()) {
                 Toast.makeText(context, "gender required", Toast.LENGTH_SHORT).show();
 
+            }
+            if (type.isEmpty()){
+                Toast.makeText(context, R.string.please_choose_the_user, Toast.LENGTH_SHORT).show();
             }
 
             return false;
@@ -100,19 +91,19 @@ public class SignUpModel extends BaseObservable implements Serializable {
     }
 
     public SignUpModel() {
-        name="";
+        name = "";
         notifyPropertyChanged(BR.name);
-        user_name="";
+        user_name = "";
         notifyPropertyChanged(BR.user_name);
-        password="";
+        password = "";
         notifyPropertyChanged(BR.password);
-        national_id="";
+        national_id = "";
         notifyPropertyChanged(BR.national_id);
-        email="";
+        email = "";
         notifyPropertyChanged(BR.email);
-        gender="";
+        gender = "";
         notifyPropertyChanged(BR.gender);
-        type="";
+        type = "";
         notifyPropertyChanged(BR.type);
     }
 
@@ -135,6 +126,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
         this.user_name = user_name;
         notifyPropertyChanged(BR.user_name);
     }
+
     @Bindable
     public String getPassword() {
         return password;
@@ -144,6 +136,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
         this.password = password;
         notifyPropertyChanged(BR.password);
     }
+
     @Bindable
     public String getNational_id() {
         return national_id;
@@ -153,6 +146,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
         this.national_id = national_id;
         notifyPropertyChanged(BR.national_id);
     }
+
     @Bindable
     public String getEmail() {
         return email;
@@ -182,4 +176,5 @@ public class SignUpModel extends BaseObservable implements Serializable {
         this.type = type;
         notifyPropertyChanged(BR.type);
     }
+
 }

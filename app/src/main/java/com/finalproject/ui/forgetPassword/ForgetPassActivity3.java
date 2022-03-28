@@ -12,7 +12,6 @@ import com.finalproject.databinding.ActivityForgetPass3Binding;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
 
 import java.util.Locale;
 

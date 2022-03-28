@@ -12,8 +12,6 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityForgetPassword1Binding;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
-import com.finalproject.ui.user.activity_sign_up.SignUpActivity;
-import com.finalproject.ui.user.activity_sign_up.SignUpActivity2;
 
 import java.util.Locale;
 
