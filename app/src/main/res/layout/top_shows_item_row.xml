@@ -3,6 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="model"
+            type="com.finalproject.model.ShowModel" />
 
     </data>
 
@@ -24,6 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
+                image="@{model.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,7 +43,7 @@
                 android:gravity="start"
                 android:lines="1"
                 android:padding="5dp"
-                android:text="Venom"
+                android:text="@{model.title}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
-                    android:text="(8.5)"
+                    android:text='@{model.rate+""}'
                     android:textColor="@color/color4"
                     android:textSize="13sp" />
             </LinearLayout>

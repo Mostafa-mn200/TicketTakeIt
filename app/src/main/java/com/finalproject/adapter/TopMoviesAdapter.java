@@ -11,13 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.TopMoviesItemRowBinding;
+import com.finalproject.model.MovieModel;
 import com.finalproject.ui.user.activity_trailar_movie.MovieDetailsActivity;
 import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 
 public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<MovieModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -39,12 +40,14 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
+        myHolder.binding.setModel(list.get(position));
         myHolder.binding.image.setImageResource(R.drawable.venom);
 
         myHolder.binding.cardTopMovie.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
             fragmentHome.navigateToMovieTrailerActivity();
         });
+
 
     }
 
@@ -57,7 +60,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<MovieModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

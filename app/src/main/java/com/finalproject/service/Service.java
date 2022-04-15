@@ -1,13 +1,17 @@
 package com.finalproject.service;
 
-import com.finalproject.model.SignUpModel;
+import com.finalproject.model.HomeDataModel;
 import com.finalproject.model.UserModel;
+
+import java.util.List;
 
 import io.reactivex.Single;
 import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Service {
 
@@ -29,5 +33,10 @@ public interface Service {
             @Field("password") String password,
             @Field("type") String type
     );
+
+
+
+    @GET("api/home")
+    Single<Response<HomeDataModel>>getHomeData();
 
 }

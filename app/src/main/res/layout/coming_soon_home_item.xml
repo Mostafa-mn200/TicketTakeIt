@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="ComingSoonModel"
+            type="com.finalproject.model.ComingSoonModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -24,11 +26,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:scaleType="fitXY"
+                image="@{ComingSoonModel.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <TextView
@@ -39,7 +40,7 @@
                 android:gravity="start"
                 android:lines="1"
                 android:padding="5dp"
-                android:text="Venom"
+                android:text="@{ComingSoonModel.title}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -58,21 +59,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/movieName">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_rate" />
-
                 <TextView
                     android:id="@+id/tvRate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="5dp"
-                    android:text="(8.5)"
+                    android:text="@{ComingSoonModel.coming_date}"
                     android:textColor="@color/color4"
-                    android:textSize="13sp" />
+                    android:textSize="13sp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

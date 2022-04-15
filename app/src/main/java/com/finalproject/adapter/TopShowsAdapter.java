@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.TopShowsItemRowBinding;
+import com.finalproject.model.MovieModel;
+import com.finalproject.model.ShowModel;
 import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 
 public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<ShowModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -37,8 +39,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        myHolder.binding.image.setImageResource(R.drawable.theatre);
-        myHolder.binding.movieName.setText("العيال كبرت");
+        myHolder.binding.setModel(list.get(position));
 
         myHolder.binding.cardTopMovie.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
@@ -55,7 +56,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<ShowModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

@@ -11,12 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ComingSoonHomeItemBinding;
+import com.finalproject.model.ComingSoonModel;
 
 
 import java.util.List;
 
 public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<ComingSoonModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -38,6 +39,7 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.image.setImageResource(R.drawable.spider);
+        myHolder.binding.setComingSoonModel(list.get(position));
     }
 
     @Override
@@ -49,7 +51,7 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<ComingSoonModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

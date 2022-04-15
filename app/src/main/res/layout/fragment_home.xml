@@ -11,9 +11,17 @@
 
         <variable
             name="lang"
-            type="String"
+            type="String" />
+        <variable
+            name="TopMovieModel"
+            type="com.finalproject.model.MovieModel" />
+        <variable
+            name="TopShowModel"
+            type="com.finalproject.model.ShowModel" />
+        <variable
+            name="ComingSoonModel"
+            type="com.finalproject.model.ComingSoonModel" />
 
-            />
     </data>
 
     <FrameLayout

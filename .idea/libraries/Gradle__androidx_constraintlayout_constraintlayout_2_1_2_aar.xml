@@ -7,6 +7,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55815a221b5caa160f7c4b09652065ce/transformed/constraintlayout-2.1.2/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/55815a221b5caa160f7c4b09652065ce/transformed/constraintlayout-2.1.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55815a221b5caa160f7c4b09652065ce/transformed/constraintlayout-2.1.2/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24d68d7979e6d501138efc687e20561c/transformed/constraintlayout-2.1.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/24d68d7979e6d501138efc687e20561c/transformed/constraintlayout-2.1.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/24d68d7979e6d501138efc687e20561c/transformed/constraintlayout-2.1.2/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

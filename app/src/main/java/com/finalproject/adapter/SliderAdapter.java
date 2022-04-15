@@ -11,13 +11,14 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.finalproject.R;
 import com.finalproject.databinding.SliderRowBinding;
+import com.finalproject.model.SliderModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class SliderAdapter extends PagerAdapter {
-    private int[] sliders = {R.drawable.venom, R.drawable.spider, R.drawable.theatre};
+    private List<SliderModel>sliders;
     private Context context;
     private LayoutInflater inflater;
 
@@ -28,7 +29,7 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return sliders.length;
+        return sliders.size();
     }
 
     @Override
@@ -40,7 +41,7 @@ public class SliderAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         SliderRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.slider_row, container, false);
-        binding.imgSlider.setImageResource(sliders[position]);
+        binding.setPhoto(sliders.get(position).getImage());
         container.addView(binding.getRoot());
         return binding.getRoot();
     }
