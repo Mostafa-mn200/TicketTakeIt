@@ -156,7 +156,15 @@ public class FragmentHome extends BaseFragment {
 
         mvvm.getHomeData(activity);
 
+//        binding.swipeRefresh.setOnRefreshListener(this::getData);
+//
+//        getData();
     }
+
+//    private void getData() {
+//        mvvm.getSlider();
+//        mvvm.getHomeData(activity);
+//    }
 
     public void navigateToMovieTrailerActivity() {
         Intent i = new Intent(getContext(), MovieDetailsActivity.class);
@@ -180,16 +188,9 @@ public class FragmentHome extends BaseFragment {
 
                 }
             });
+
         }
-    }
-
-    @Override
-    public void onDestroyView() {
-        binding = null;
-        timer.cancel();
-        timer.purge();
-        timer = null;
-        super.onDestroyView();
 
     }
+
 }
