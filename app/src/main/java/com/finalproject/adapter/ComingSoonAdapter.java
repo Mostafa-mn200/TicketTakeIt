@@ -24,8 +24,8 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     public ComingSoonAdapter(Context context, Fragment fragment) {
         this.context = context;
-        inflater = LayoutInflater.from(context);
         this.fragment = fragment;
+        inflater = LayoutInflater.from(context);
     }
 
     @NonNull
@@ -38,7 +38,6 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        myHolder.binding.image.setImageResource(R.drawable.spider);
         myHolder.binding.setComingSoonModel(list.get(position));
     }
 
@@ -47,7 +46,7 @@ public class ComingSoonAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (list != null) {
             return list.size();
         } else {
-            return 5;
+            return 0;
         }
     }
 

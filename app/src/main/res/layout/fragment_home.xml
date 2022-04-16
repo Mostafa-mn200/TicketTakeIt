@@ -168,7 +168,7 @@
                                 android:layout_marginStart="5dp"
                                 android:text="@string/top_picked_for_you"
                                 android:textColor="@color/white"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -190,13 +190,13 @@
                                 android:visibility="gone" />
 
                             <TextView
-                                android:id="@+id/tvNoData"
+                                android:id="@+id/tvNoMovies"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:text="@string/no_data_to_show"
                                 android:textColor="@color/white"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
                                 android:visibility="gone" />
                         </FrameLayout>
@@ -223,7 +223,7 @@
                                 android:layout_marginStart="5dp"
                                 android:text="@string/topShow"
                                 android:textColor="@color/white"
-                                android:textSize="20sp"
+                                android:textSize="18sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
 
@@ -245,14 +245,14 @@
                                 android:visibility="gone" />
 
                             <TextView
-                                android:id="@+id/tvNoData3"
+                                android:id="@+id/tvNoShows"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
 
                                 android:text="@string/no_data_to_show"
                                 android:textColor="@color/white"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
                                 android:visibility="gone" />
                         </FrameLayout>
@@ -283,7 +283,7 @@
                                     android:layout_marginStart="5dp"
                                     android:text="@string/comingSoon"
                                     android:textColor="@color/white"
-                                    android:textSize="20sp"
+                                    android:textSize="18sp"
                                     android:textStyle="bold" />
 
                                 <Space
@@ -298,7 +298,7 @@
                                     android:layout_marginEnd="10dp"
                                     android:text="@string/seeAll"
                                     android:textColor="@color/white"
-                                    android:textSize="15sp" />
+                                    android:textSize="16sp" />
                             </LinearLayout>
 
                             <ImageView
@@ -330,14 +330,13 @@
                                 android:visibility="gone" />
 
                             <TextView
-                                android:id="@+id/tvNoData2"
+                                android:id="@+id/tvNoComingSoon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-
                                 android:text="@string/no_data_to_show"
                                 android:textColor="@color/white"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold"
                                 android:visibility="gone" />
                         </FrameLayout>

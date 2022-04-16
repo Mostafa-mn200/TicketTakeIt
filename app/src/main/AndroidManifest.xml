@@ -64,10 +64,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".ui.user.activity_maps.CinemaMapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_cinema_maps" />
+
         <activity
             android:name=".ui.owner.activity_add_movie.AddMovieActivity"
             android:exported="true"

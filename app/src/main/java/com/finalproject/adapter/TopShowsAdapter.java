@@ -25,8 +25,8 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public TopShowsAdapter(Context context, Fragment fragment) {
         this.context = context;
-        inflater = LayoutInflater.from(context);
         this.fragment = fragment;
+        inflater = LayoutInflater.from(context);
     }
 
     @NonNull
@@ -52,7 +52,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (list != null) {
             return list.size();
         } else {
-            return 5;
+            return 0;
         }
     }
 

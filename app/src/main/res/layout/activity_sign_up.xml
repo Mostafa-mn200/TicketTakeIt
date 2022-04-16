@@ -194,19 +194,20 @@
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/nationalId"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:text="@string/nationalId"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/small_stroke_color"
@@ -245,19 +246,20 @@
                         tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/name"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:text="@string/name"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/small_stroke_color"
@@ -296,20 +298,21 @@
                         tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/email"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:text="@string/email"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
 
                 <LinearLayout
                     android:id="@+id/cardEmail"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/small_stroke_color"
@@ -343,19 +346,20 @@
                         android:textSize="14sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/username"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:text="@string/username"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/small_stroke_color"
@@ -394,20 +398,21 @@
                         tools:ignore="TouchTargetSizeCheck" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/password"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="8dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:layout_marginEnd="8dp"-->
+<!--                    android:text="@string/password"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="16sp" />-->
 
                 <LinearLayout
                     android:id="@+id/cardPassword"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
                     android:background="@drawable/small_stroke_color"
@@ -462,7 +467,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:text="@string/gender"
                     android:textColor="@color/white"

@@ -1,6 +1,7 @@
 package com.finalproject.service;
 
 import com.finalproject.model.HomeDataModel;
+import com.finalproject.model.SliderDataModel;
 import com.finalproject.model.UserModel;
 
 import java.util.List;
@@ -35,8 +36,12 @@ public interface Service {
     );
 
 
+    @GET("api/home")
+    Single<Response<SliderDataModel>>getSlider();
 
     @GET("api/home")
     Single<Response<HomeDataModel>>getHomeData();
+
+
 
 }

@@ -22,12 +22,12 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
-    MovieDetailsActivity movieDetailsActivity;
 
     public TopMoviesAdapter(Context context, Fragment fragment) {
         this.context = context;
-        inflater = LayoutInflater.from(context);
         this.fragment = fragment;
+        inflater = LayoutInflater.from(context);
+
     }
 
     @NonNull
@@ -41,7 +41,6 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
-        myHolder.binding.image.setImageResource(R.drawable.venom);
 
         myHolder.binding.cardTopMovie.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
@@ -56,7 +55,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (list != null) {
             return list.size();
         } else {
-            return 5;
+            return 0;
         }
     }
 

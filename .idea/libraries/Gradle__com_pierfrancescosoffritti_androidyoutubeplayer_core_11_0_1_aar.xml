@@ -1,9 +1,6 @@
 <component name="libraryTable">
   <library name="Gradle: com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/17dc38c4aa321e65f2b40eeb1386bb63/transformed/jetified-core-11.0.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/17dc38c4aa321e65f2b40eeb1386bb63/transformed/jetified-core-11.0.1/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/17dc38c4aa321e65f2b40eeb1386bb63/transformed/jetified-core-11.0.1/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a12b7068e66a8d96c20a3ecdd78ff510/transformed/jetified-core-11.0.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a12b7068e66a8d96c20a3ecdd78ff510/transformed/jetified-core-11.0.1/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a12b7068e66a8d96c20a3ecdd78ff510/transformed/jetified-core-11.0.1/res" />

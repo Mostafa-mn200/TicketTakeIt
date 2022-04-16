@@ -2,16 +2,12 @@
   <library name="Gradle: com.aurelhubert:ahbottomnavigation:2.3.4@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/244c548d2e96f1855834847c0ec716a0/transformed/jetified-ahbottomnavigation-2.3.4/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/72a9da8b36213fddad6ddd5df855b112/transformed/jetified-ahbottomnavigation-2.3.4/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ea9e1de233735f39fe4348e34ec7dc5f/transformed/jetified-ahbottomnavigation-2.3.4/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/244c548d2e96f1855834847c0ec716a0/transformed/jetified-ahbottomnavigation-2.3.4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/244c548d2e96f1855834847c0ec716a0/transformed/jetified-ahbottomnavigation-2.3.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/244c548d2e96f1855834847c0ec716a0/transformed/jetified-ahbottomnavigation-2.3.4/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/72a9da8b36213fddad6ddd5df855b112/transformed/jetified-ahbottomnavigation-2.3.4/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/72a9da8b36213fddad6ddd5df855b112/transformed/jetified-ahbottomnavigation-2.3.4/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/72a9da8b36213fddad6ddd5df855b112/transformed/jetified-ahbottomnavigation-2.3.4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea9e1de233735f39fe4348e34ec7dc5f/transformed/jetified-ahbottomnavigation-2.3.4/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea9e1de233735f39fe4348e34ec7dc5f/transformed/jetified-ahbottomnavigation-2.3.4/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ea9e1de233735f39fe4348e34ec7dc5f/transformed/jetified-ahbottomnavigation-2.3.4/jars/classes.jar!/" />

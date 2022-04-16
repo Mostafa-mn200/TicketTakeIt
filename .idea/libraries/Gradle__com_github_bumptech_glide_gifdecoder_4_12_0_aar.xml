@@ -2,7 +2,6 @@
   <library name="Gradle: com.github.bumptech.glide:gifdecoder:4.12.0@aar">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/eea6bf5c941666972978ea72d17fa715/transformed/jetified-gifdecoder-4.12.0/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f960fdca8ee55368754940b8ce64da6d/transformed/jetified-gifdecoder-4.12.0/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9eab8434dbc91c9ccda46ead65935cc0/transformed/jetified-gifdecoder-4.12.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
@@ -10,9 +9,7 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/eea6bf5c941666972978ea72d17fa715/transformed/jetified-gifdecoder-4.12.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/eea6bf5c941666972978ea72d17fa715/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9eab8434dbc91c9ccda46ead65935cc0/transformed/jetified-gifdecoder-4.12.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f960fdca8ee55368754940b8ce64da6d/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f960fdca8ee55368754940b8ce64da6d/transformed/jetified-gifdecoder-4.12.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f960fdca8ee55368754940b8ce64da6d/transformed/jetified-gifdecoder-4.12.0/jars/classes.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9eab8434dbc91c9ccda46ead65935cc0/transformed/jetified-gifdecoder-4.12.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9eab8434dbc91c9ccda46ead65935cc0/transformed/jetified-gifdecoder-4.12.0/AndroidManifest.xml" />
     </CLASSES>

@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.finalproject.model.ComingSoonModel;
 import com.finalproject.model.HomeDataModel;
+import com.finalproject.model.SliderDataModel;
 import com.finalproject.model.SliderModel;
 import com.finalproject.model.MovieModel;
 import com.finalproject.model.ShowModel;
@@ -30,7 +31,7 @@ import retrofit2.Response;
 
 public class FragmentHomeMVVM extends AndroidViewModel {
     private Context context;
-    private MutableLiveData<List<SliderModel>> sliderDataModelMutableLiveData;
+    private MutableLiveData<SliderDataModel> sliderDataModelMutableLiveData;
     private MutableLiveData<List<MovieModel>> topMovieModelMutableLiveData;
     private MutableLiveData<List<ShowModel>> topShowModelMutableLiveData;
     private MutableLiveData<List<ComingSoonModel>> comingSoonMutableLiveData;
@@ -66,7 +67,7 @@ public class FragmentHomeMVVM extends AndroidViewModel {
         return comingSoonMutableLiveData;
     }
 
-    public MutableLiveData<List<SliderModel>> getSliderDataModelMutableLiveData() {
+    public MutableLiveData<SliderDataModel> getSliderDataModelMutableLiveData() {
         if (sliderDataModelMutableLiveData == null) {
             sliderDataModelMutableLiveData = new MutableLiveData<>();
         }
@@ -81,8 +82,36 @@ public class FragmentHomeMVVM extends AndroidViewModel {
     }
 
 
+    public void getSlider() {
+        isLoadingLivData.setValue(true);
+        Api.getService(Tags.base_url).getSlider()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<SliderDataModel>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
 
-    public void getHomeData2(Context context) {
+                    @Override
+                    public void onSuccess(@NonNull Response<SliderDataModel> response) {
+                        isLoadingLivData.postValue(false);
+
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getStatus() == 200) {
+                                sliderDataModelMutableLiveData.postValue(response.body());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        isLoadingLivData.setValue(false);
+                    }
+                });
+    }
+
+    public void getHomeData(Context context) {
         isLoadingLivData.setValue(true);
         Api.getService(Tags.base_url).getHomeData()
                 .subscribeOn(Schedulers.io())
@@ -98,7 +127,6 @@ public class FragmentHomeMVVM extends AndroidViewModel {
                         isLoadingLivData.postValue(false);
                         if (response.isSuccessful()&&response.body()!=null){
                             if (response.body().getStatus()==200){
-                                sliderDataModelMutableLiveData.postValue(response.body().getSlider());
                                 topMovieModelMutableLiveData.postValue(response.body().getMoves());
                                 topShowModelMutableLiveData.postValue(response.body().getShows());
                                 comingSoonMutableLiveData.postValue(response.body().getSoon());

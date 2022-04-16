@@ -38,11 +38,11 @@
                 android:layout_height="wrap_content"
                 android:background="@color/black2"
                 android:gravity="start"
-                android:lines="1"
                 android:padding="5dp"
+                android:lines="1"
                 android:text="@{ComingSoonModel.title}"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image" />
@@ -50,7 +50,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="start"
                 android:orientation="horizontal"
@@ -64,10 +63,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
                     android:text="@{ComingSoonModel.coming_date}"
                     android:textColor="@color/color4"
-                    android:textSize="13sp"
+                    android:textSize="14sp"
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"/>
             </LinearLayout>
