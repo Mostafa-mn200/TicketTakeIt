@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.finalproject" >
+    package="com.finalproject">
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -28,11 +28,20 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
-        tools:targetApi="q" >
+        tools:targetApi="q">
+        <activity
+            android:name=".ui.activity_splash.SplashhActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.activity_signup.SignUpActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.owner.activities_owner_home.activity_list_of_bookings.BookingListActivity"
             android:exported="false" />
@@ -45,8 +54,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.owner.activities_owner_home.OwnerHomeActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
         <activity
             android:name=".ui.user.activity_show_detiles.ShowDetilesActivity"
@@ -64,7 +72,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity
             android:name=".ui.owner.activity_add_movie.AddMovieActivity"
             android:exported="true"
@@ -81,7 +88,6 @@
             android:name=".ui.user.activity_trailar_movie.MovieDetailsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.user.activity_language.LanguageActivity"
             android:exported="false"
@@ -95,25 +101,13 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.activity_splash.SplashActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name=".ui.user.activity_noification.NotificationActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".ui.user.activity_home.HomeActivity"
             android:exported="false"

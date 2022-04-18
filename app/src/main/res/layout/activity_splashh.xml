@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <FrameLayout
+            android:id="@+id/tName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            app:layout_constraintBottom_toTopOf="@+id/tLogo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+        >
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_appname" />
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/tLogo"
+            android:layout_width="250dp"
+
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/logo"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonLinear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tName"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/buttonLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/tLogo"
+            android:visibility="gone">
+
+
+            <Button
+                android:id="@+id/loginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/item_clicked2"
+                android:minWidth="180dp"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@color/white">
+
+            </Button>
+
+            <Button
+                android:id="@+id/guestBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/item_clicked2"
+                android:minWidth="180dp"
+                android:text="Guest"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+
+
+                >
+
+            </Button>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
