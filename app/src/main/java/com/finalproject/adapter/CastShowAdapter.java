@@ -10,52 +10,52 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.CastItemBinding;
+import com.finalproject.model.HeroModel;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class CastShowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<Object> list ;
+    private List<HeroModel> heroList ;
     private Context context;
     private LayoutInflater inflater;
 
-    public CastShowAdapter( Context context) {
+    public CastShowAdapter( List<HeroModel> heroList,Context context) {
+        this.heroList=heroList;
         this.context = context;
         inflater = LayoutInflater.from(context);
     }
     @NonNull
-    @NotNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         CastItemBinding binding = DataBindingUtil.inflate(inflater, R.layout.cast_item, parent, false);
-        return new CastAdapter.VH(binding);
+        return new MyHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
-        CastAdapter.VH vh=(CastAdapter.VH)holder;
-        vh.binding.castImg.setImageResource(R.drawable.venom);
-        vh.binding.authorName.setText("Hero1");
+        MyHolder myHolder=(MyHolder)holder;
+        myHolder.binding.setHero(heroList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        if (list != null) {
-            return list.size();
+        if (heroList != null) {
+            return heroList.size();
         } else {
-            return 8;
+            return 0;
         }
     }
 
-    public void updateList(List<Object> list) {
-        this.list = list;
+    public void updateList(List<HeroModel> list) {
+        this.heroList = list;
         notifyDataSetChanged();
     }
 
-    public static class VH extends RecyclerView.ViewHolder {
+    public static class MyHolder extends RecyclerView.ViewHolder {
         public CastItemBinding binding;
-        public VH( CastItemBinding binding) {
+        public MyHolder( CastItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

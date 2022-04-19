@@ -149,26 +149,20 @@ public class SplashhActivity extends BaseActivity {
     }
 
     private void navigateToLoginActivity() {
-        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SplashhActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        binding.loginBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(SplashhActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
 
     }
 
 
     private void navigateToHomeActivity() {
-    binding.guestBtn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(SplashhActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
+    binding.guestBtn.setOnClickListener(view -> {
+        Intent intent = new Intent(SplashhActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
     });
     }
 

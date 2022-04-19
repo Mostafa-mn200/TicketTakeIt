@@ -156,24 +156,18 @@ public class FragmentHome extends BaseFragment {
 
         mvvm.getHomeData(activity);
 
-//        binding.swipeRefresh.setOnRefreshListener(this::getData);
-//
-//        getData();
     }
 
-//    private void getData() {
-//        mvvm.getSlider();
-//        mvvm.getHomeData(activity);
-//    }
-
-    public void navigateToMovieTrailerActivity() {
-        Intent i = new Intent(getContext(), MovieDetailsActivity.class);
-        startActivity(i);
+    public void navigateToMovieDetailsActivity(MovieModel movieModel, int adapterPosition) {
+        Intent intent = new Intent(activity, MovieDetailsActivity.class);
+        intent.putExtra("model1",movieModel);
+        startActivity(intent);
     }
 
-    public void navigateToShowDetilesActivity() {
-        Intent i = new Intent(getContext(), ShowDetilesActivity.class);
-        startActivity(i);
+    public void navigateToShowDetailsActivity(ShowModel showModel, int adapterPosition) {
+        Intent intent = new Intent(activity, ShowDetilesActivity.class);
+        intent.putExtra("model2",showModel);
+        startActivity(intent);
     }
 
     public class MyTask extends TimerTask {

@@ -3,6 +3,9 @@
 
     <data>
 
+        <variable
+            name="hero"
+            type="com.finalproject.model.HeroModel" />
     </data>
 
     <LinearLayout
@@ -12,19 +15,18 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/cast_img"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/soon1" />
+            image="@{hero.image}"
+             />
 
         <TextView
-            android:id="@+id/author_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:lines="1"
-            android:text="Hero1"
+            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
+            android:text="@{hero.name}"
             android:textColor="@color/white"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </layout>

@@ -42,9 +42,9 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
 
-        myHolder.binding.cardTopMovie.setOnClickListener(view -> {
+        myHolder.itemView.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
-            fragmentHome.navigateToMovieTrailerActivity();
+            fragmentHome.navigateToMovieDetailsActivity(list.get(myHolder.getAbsoluteAdapterPosition()),myHolder.getAdapterPosition());
         });
 
 

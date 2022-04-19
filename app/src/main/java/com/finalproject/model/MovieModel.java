@@ -6,7 +6,6 @@ import java.util.List;
 
 public class MovieModel implements Serializable {
 
-
     private String id;
     private String title;
     private String rate;

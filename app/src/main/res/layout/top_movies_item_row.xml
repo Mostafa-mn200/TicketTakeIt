@@ -10,7 +10,6 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardTopMovie"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
