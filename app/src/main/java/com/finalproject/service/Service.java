@@ -1,6 +1,8 @@
 package com.finalproject.service;
 
 import com.finalproject.model.HomeDataModel;
+import com.finalproject.model.ShowDataModel;
+import com.finalproject.model.ShowModel;
 import com.finalproject.model.SliderDataModel;
 import com.finalproject.model.UserModel;
 
@@ -41,6 +43,9 @@ public interface Service {
 
     @GET("api/home")
     Single<Response<HomeDataModel>>getHomeData();
+
+    @GET("api/posts/show")
+    Single<Response<ShowDataModel>>getShow();
 
 
 

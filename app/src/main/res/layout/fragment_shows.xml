@@ -8,6 +8,9 @@
         <variable
             name="lang"
             type="String" />
+        <variable
+            name="model"
+            type="com.finalproject.model.ShowModel" />
     </data>
 
     <FrameLayout
