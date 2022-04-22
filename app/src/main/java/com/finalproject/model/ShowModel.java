@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowModel extends StatusResponse implements Serializable {
+public class ShowModel implements Serializable {
 
     private String id;
     private String title;
@@ -12,7 +12,8 @@ public class ShowModel extends StatusResponse implements Serializable {
     private String image;
     private String price;
     private String details;
-    private List<HeroModel>heroes;
+    private String count_hours;
+    private List<HeroModel> heroes;
 
     public String getId() {
         return id;
@@ -38,7 +39,13 @@ public class ShowModel extends StatusResponse implements Serializable {
         return details;
     }
 
+    public String getCount_hours() {
+        return count_hours;
+    }
+
     public List<HeroModel> getHeroes() {
         return heroes;
     }
+
+
 }

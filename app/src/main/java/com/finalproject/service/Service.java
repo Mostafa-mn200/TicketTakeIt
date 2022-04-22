@@ -1,6 +1,10 @@
 package com.finalproject.service;
 
+import com.finalproject.model.CategoryDataModel;
 import com.finalproject.model.HomeDataModel;
+import com.finalproject.model.MovieDetailsDataModel;
+import com.finalproject.model.MoviesDataModel;
+import com.finalproject.model.ShowDetailsDataModel;
 import com.finalproject.model.ShowDataModel;
 import com.finalproject.model.ShowModel;
 import com.finalproject.model.SliderDataModel;
@@ -46,6 +50,18 @@ public interface Service {
 
     @GET("api/posts/show")
     Single<Response<ShowDataModel>>getShow();
+
+    @GET("api/posts/move")
+    Single<Response<MoviesDataModel>> getMovies(@Query("category_id") String category_id);
+
+    @GET("api/categories")
+    Single<Response<CategoryDataModel>> getCategories();
+
+    @GET("api/onePost")
+    Single<Response<MovieDetailsDataModel>> getDetails(@Query("post_id") String post_id);
+
+    @GET("api/onePost")
+    Single<Response<ShowDetailsDataModel>> getShowDetails(@Query("post_id") String post_id);
 
 
 

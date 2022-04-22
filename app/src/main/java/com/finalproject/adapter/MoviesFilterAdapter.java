@@ -1,5 +1,6 @@
 package com.finalproject.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,31 +15,36 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MoviesFilterRowBinding;
+import com.finalproject.model.CategoryModel;
 import com.finalproject.model.FilterModel;
 import com.finalproject.ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
+import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
 import java.util.List;
 
 
 public class MoviesFilterAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<FilterModel> list;
+    private List<CategoryModel> list;
     private Context context;
     private LayoutInflater inflater;
-    private AppCompatActivity appCompatActivity;
     private Fragment fragment;
     private int currentPos = 1;
     private int oldPos = currentPos;
     private MyHolder oldHolder;
 
-    public MoviesFilterAdapter(List<FilterModel> list, Context context) {
-        this.list = list;
+    public MoviesFilterAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
-        appCompatActivity = (AppCompatActivity) context;
+
     }
 
+    public MoviesFilterAdapter(Context context, Fragment fragment) {
+        this.context = context;
+        this.fragment = fragment;
+        inflater = LayoutInflater.from(context);
+    }
 
     @NonNull
     @Override
@@ -48,42 +54,51 @@ public class MoviesFilterAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
 
         if (oldHolder==null){
             oldHolder=myHolder;
-        }
+            CategoryModel model=list.get(position);
+            model.setSelected(true);
+            list.set(position,model);
+            myHolder.binding.setModel(model);
+            oldPos=position;
+           if (fragment instanceof FragmentMovies){
+               FragmentMovies fragmentMovies =(FragmentMovies) fragment;
+               fragmentMovies.setItemCategory(model,position);
 
+           }
+        }
         myHolder.itemView.setOnClickListener(view -> {
             if (oldHolder!=null){
-                FilterModel oldFilterModel=list.get(oldPos);
-                oldFilterModel.setSelected(false);
-                list.set(oldPos,oldFilterModel);
+                CategoryModel oldCategoryModel=list.get(oldPos);
+                oldCategoryModel.setSelected(false);
+                list.set(oldPos,oldCategoryModel);
 
                 MyHolder oHolder=(MyHolder) oldHolder;
-                oHolder.binding.setModel(oldFilterModel);
+                oHolder.binding.setModel(oldCategoryModel);
             }
 
             currentPos=myHolder.getAdapterPosition();
-            FilterModel filterModel=list.get(currentPos);
-            filterModel.setSelected(true);
-            list.set(currentPos,filterModel);
-            myHolder.binding.setModel(filterModel);
+            CategoryModel categoryModel=list.get(currentPos);
+            categoryModel.setSelected(true);
+            list.set(currentPos,categoryModel);
+            myHolder.binding.setModel(categoryModel);
 
             oldHolder=myHolder;
             oldPos=currentPos;
 
             if (fragment instanceof FragmentMovies){
                 FragmentMovies fragmentMovies=(FragmentMovies) fragment;
-                fragmentMovies.setItemFilter(filterModel,currentPos);
+                fragmentMovies.setItemCategory(categoryModel,currentPos);
             }
 
 
-            if (appCompatActivity instanceof OwnerMoviesActivity){
-                OwnerMoviesActivity ownerMoviesActivity=(OwnerMoviesActivity) appCompatActivity;
-                ownerMoviesActivity.setItemFilter(filterModel,currentPos);
+            if (context instanceof OwnerMoviesActivity){
+                OwnerMoviesActivity ownerMoviesActivity=(OwnerMoviesActivity) context;
+                ownerMoviesActivity.setItemCategory(categoryModel,currentPos);
             }
         });
 
@@ -98,7 +113,7 @@ public class MoviesFilterAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         }
     }
 
-    public void updateList(List<FilterModel> list) {
+    public void updateList(List<CategoryModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

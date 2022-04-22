@@ -14,6 +14,7 @@ public class MovieModel implements Serializable {
     private CategoryModel category;
     private String price;
     private String details;
+    private String count_hours;
     private List<HeroModel> heroes;
 
     public String getId() {
@@ -52,7 +53,7 @@ public class MovieModel implements Serializable {
         return heroes;
     }
 
-
-
-
+    public String getCount_hours() {
+        return count_hours;
+    }
 }

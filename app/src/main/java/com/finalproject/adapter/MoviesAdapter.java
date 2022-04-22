@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
+import com.finalproject.databinding.MovieRowBinding;
 import com.finalproject.databinding.MovieShowItemRowBinding;
+import com.finalproject.model.MovieModel;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
 
@@ -18,7 +20,7 @@ import java.util.List;
 
 
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<MovieModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -32,18 +34,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MovieShowItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.movie_show_item_row, parent, false);
+        MovieRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.movie_row, parent, false);
         return new MyHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
+        myHolder.binding.setModel(list.get(position));
 
-        myHolder.binding.image.setImageResource(R.drawable.venom);
-        myHolder.binding.cardMovieItem.setOnClickListener(view -> {
+        myHolder.itemView.setOnClickListener(view -> {
             FragmentMovies fragmentMovies = (FragmentMovies) fragment;
-            fragmentMovies.navigatetoMovieTrailerActivity();
+            fragmentMovies.navigateToMovieDetails(list.get(position));
         });
     }
 
@@ -52,19 +54,19 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (list != null) {
             return list.size();
         } else {
-            return 8;
+            return 0;
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<MovieModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public MovieShowItemRowBinding binding;
+        public MovieRowBinding binding;
 
-        public MyHolder(MovieShowItemRowBinding binding) {
+        public MyHolder(MovieRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

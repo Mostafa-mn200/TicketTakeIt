@@ -132,7 +132,6 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
 
-                                            android:text="@string/_1h_39m_Mtime"
                                             android:textColor="@color/white_txt"
                                             android:textSize="18sp" />
                                     </LinearLayout>

@@ -13,6 +13,7 @@ import com.finalproject.adapter.CinemaOwnerAdapter;
 
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.ActivityOwnerMoviesBinding;
+import com.finalproject.model.CategoryModel;
 import com.finalproject.model.FilterModel;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.owner.activity_add_movie.AddMovieActivity;
@@ -24,7 +25,6 @@ public class OwnerMoviesActivity extends BaseActivity {
 
     private ActivityOwnerMoviesBinding binding;
     private CinemaOwnerAdapter cinemaOwnerAdapter;
-    private List<FilterModel> filterModelList;
     private MoviesFilterAdapter filterAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +38,9 @@ public class OwnerMoviesActivity extends BaseActivity {
     private void initView() {
         setUpToolbar(binding.toolbar, getString(R.string.movies_list), R.color.color2, R.color.white);
 
-        filterModelList=new ArrayList<>();
-        filterModelList.add(new FilterModel("action"));
-        filterModelList.add(new FilterModel("drama"));
-        filterModelList.add(new FilterModel("comedy"));
-        filterModelList.add(new FilterModel("other"));
         binding.setLang(getLang());
         cinemaOwnerAdapter = new CinemaOwnerAdapter(this);
-        filterAdapter=new MoviesFilterAdapter(filterModelList,this);
+        filterAdapter=new MoviesFilterAdapter(this);
         binding.recyclerFilter.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         binding.recyclerFilter.setAdapter(filterAdapter);
         binding.recyclerMovies.setLayoutManager(new LinearLayoutManager(this));
@@ -58,7 +53,7 @@ public class OwnerMoviesActivity extends BaseActivity {
         });
     }
 
-    public void setItemFilter(FilterModel filterModel, int currentPos) {
+    public void setItemCategory(CategoryModel categoryModel, int currentPos) {
 
     }
 }

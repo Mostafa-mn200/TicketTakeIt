@@ -21,8 +21,7 @@ public class CastShowAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private Context context;
     private LayoutInflater inflater;
 
-    public CastShowAdapter( List<HeroModel> heroList,Context context) {
-        this.heroList=heroList;
+    public CastShowAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
     }

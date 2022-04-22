@@ -23,7 +23,7 @@ import com.finalproject.databinding.FragmentShowsBinding;
 import com.finalproject.mvvm.FragmentShowMVVM;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_detiles.ShowDetilesActivity;
+import com.finalproject.ui.user.activity_show_detiles.ShowDetailsActivity;
 
 
 public class FragmentShows extends BaseFragment {
@@ -79,7 +79,7 @@ public class FragmentShows extends BaseFragment {
     }
 
     public void navigatetoShowDetilesActivity() {
-        Intent i = new Intent(getContext(), ShowDetilesActivity.class);
+        Intent i=new Intent(getContext(), ShowDetailsActivity.class);
         startActivity(i);
     }
 }

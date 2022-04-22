@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,17 +25,14 @@ import com.finalproject.adapter.TopMoviesAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 
 import com.finalproject.databinding.FragmentHomeBinding;
-import com.finalproject.model.ComingSoonModel;
-import com.finalproject.model.HomeDataModel;
 import com.finalproject.model.MovieModel;
 import com.finalproject.model.ShowModel;
-import com.finalproject.model.SliderDataModel;
 import com.finalproject.model.SliderModel;
 import com.finalproject.mvvm.FragmentHomeMVVM;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_detiles.ShowDetilesActivity;
+import com.finalproject.ui.user.activity_show_detiles.ShowDetailsActivity;
 import com.finalproject.ui.user.activity_trailar_movie.MovieDetailsActivity;
 
 import java.util.ArrayList;
@@ -160,13 +156,13 @@ public class FragmentHome extends BaseFragment {
 
     public void navigateToMovieDetailsActivity(MovieModel movieModel, int adapterPosition) {
         Intent intent = new Intent(activity, MovieDetailsActivity.class);
-        intent.putExtra("model1",movieModel);
+        intent.putExtra("movie_id",movieModel.getId());
         startActivity(intent);
     }
 
     public void navigateToShowDetailsActivity(ShowModel showModel, int adapterPosition) {
-        Intent intent = new Intent(activity, ShowDetilesActivity.class);
-        intent.putExtra("model2",showModel);
+        Intent intent = new Intent(activity, ShowDetailsActivity.class);
+        intent.putExtra("show_id",showModel.getId());
         startActivity(intent);
     }
 
