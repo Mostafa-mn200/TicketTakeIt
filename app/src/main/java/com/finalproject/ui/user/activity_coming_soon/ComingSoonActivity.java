@@ -41,6 +41,7 @@ public class ComingSoonActivity extends BaseActivity {
         mallComingSoonDetailsAdapter = new ComingSoonDetailsAdapter(this);
         binding.comingRecycler.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         binding.comingRecycler.setAdapter(mallComingSoonDetailsAdapter);
+
         binding.toolbar.llBack.setOnClickListener(view -> {finish();});
     }
 }
