@@ -75,7 +75,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void refreshActivity(String lang) {
-        Log.e("lang",lang);
+        Log.e("lang", lang);
         Paper.book().write("lang", lang);
         Language.setNewLocale(this, lang);
         new Handler()
@@ -85,7 +85,6 @@ public class HomeActivity extends BaseActivity {
                     finish();
                     startActivity(intent);
                 }, 500);
-
 
     }
 

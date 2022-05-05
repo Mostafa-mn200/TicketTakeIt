@@ -46,46 +46,59 @@
                         android:orientation="vertical">
 
                         <FrameLayout
+                            android:id="@+id/flvideo"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            >
-                            <com.google.android.exoplayer2.ui.StyledPlayerView
-                                android:id="@+id/exoPlayer"
+                            android:layout_height="200dp">
+                            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                                android:id="@+id/youtube_player_view"
                                 android:layout_width="match_parent"
-                                android:layout_height="200dp"
-                                android:layout_margin="10dp"
-                                android:background="@color/black"
-                                android:clickable="true"
-                                android:focusable="true"
-                                android:visibility="invisible"
-                                app:show_buffering="always"
-                                app:use_controller="false"
-
-                                />
-                            <FrameLayout
-                                android:id="@+id/flVideo"
-                                android:layout_width="match_parent"
-                                android:layout_height="200dp"
-                                android:layout_margin="10dp"
-                                android:background="@color/black"
-                                android:visibility="visible"
-                                >
-
-                                <ImageView
-                                    android:id="@+id/imageVideo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    />
-
-                                <ImageView
-                                    android:layout_width="36dp"
-                                    android:layout_height="36dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/ic_play"
-                                    app:tint="@color/gray14" />
-
-                            </FrameLayout>
+                                android:layout_height="match_parent"
+                                app:autoPlay="false"
+                                app:showFullScreenButton="false"
+                                app:showSeekBar="false"
+                                app:showYouTubeButton="false" />
                         </FrameLayout>
+<!--                        <FrameLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            >-->
+<!--                            <com.google.android.exoplayer2.ui.StyledPlayerView-->
+<!--                                android:id="@+id/exoPlayer"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="200dp"-->
+<!--                                android:layout_margin="10dp"-->
+<!--                                android:background="@color/black"-->
+<!--                                android:clickable="true"-->
+<!--                                android:focusable="true"-->
+<!--                                android:visibility="invisible"-->
+<!--                                app:show_buffering="always"-->
+<!--                                app:use_controller="false"-->
+
+<!--                                />-->
+<!--                            <FrameLayout-->
+<!--                                android:id="@+id/flVideo"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="200dp"-->
+<!--                                android:layout_margin="10dp"-->
+<!--                                android:background="@color/black"-->
+<!--                                android:visibility="visible"-->
+<!--                                >-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/imageVideo"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    />-->
+
+<!--                                <ImageView-->
+<!--                                    android:layout_width="36dp"-->
+<!--                                    android:layout_height="36dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:src="@drawable/ic_play"-->
+<!--                                    app:tint="@color/gray14" />-->
+
+<!--                            </FrameLayout>-->
+<!--                        </FrameLayout>-->
 
 
                         <LinearLayout

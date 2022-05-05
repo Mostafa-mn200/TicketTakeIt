@@ -18,6 +18,7 @@ import com.finalproject.databinding.MoviesFilterRowBinding;
 import com.finalproject.model.CategoryModel;
 import com.finalproject.model.FilterModel;
 import com.finalproject.ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
@@ -70,6 +71,11 @@ public class MoviesFilterAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                fragmentMovies.setItemCategory(model,position);
 
            }
+           if (fragment instanceof FragmentOwnerMovies){
+               FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
+               fragmentOwnerMovies.setItemCategory(model,position);
+
+           }
         }
         myHolder.itemView.setOnClickListener(view -> {
             if (oldHolder!=null){
@@ -96,9 +102,9 @@ public class MoviesFilterAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             }
 
 
-            if (context instanceof OwnerMoviesActivity){
-                OwnerMoviesActivity ownerMoviesActivity=(OwnerMoviesActivity) context;
-                ownerMoviesActivity.setItemCategory(categoryModel,currentPos);
+            if (fragment instanceof FragmentOwnerMovies){
+                FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
+                fragmentOwnerMovies.setItemCategory(categoryModel,currentPos);
             }
         });
 

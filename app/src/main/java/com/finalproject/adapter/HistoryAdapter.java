@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.HistoryItemRowBinding;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerBookings;
+import com.finalproject.ui.user.activity_home.fragments.FragmentHistory;
 
 import java.util.List;
 
@@ -41,6 +43,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.movieName.setText("SpiderMan");
+        if (fragment instanceof FragmentHistory){
+            FragmentHistory fragmentHistory=(FragmentHistory) fragment;
+        }
+        if (fragment instanceof FragmentOwnerBookings){
+            FragmentOwnerBookings fragmentOwnerBookings=(FragmentOwnerBookings) fragment;
+        }
         myHolder.binding.llHeader.setOnClickListener(view -> {
             if (!myHolder.binding.expand.isExpanded()) {
                 TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());

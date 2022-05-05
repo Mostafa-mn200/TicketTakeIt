@@ -14,25 +14,29 @@ import com.finalproject.model.UserModel;
 import java.util.List;
 
 import io.reactivex.Single;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface Service {
 
-    @FormUrlEncoded
+    @Multipart
     @POST("api/register")
-    Single<Response<UserModel>> signUp(@Field("name") String name,
-                                       @Field("user_name") String user_name,
-                                       @Field("password") String password,
-                                       @Field("national_id") String national_id,
-                                       @Field("email") String email,
-                                       @Field("gender") String gender,
-                                       @Field("type") String type
-    );
+    Single<Response<UserModel>> signUp(@Part("name") RequestBody name,
+                                       @Part("user_name") RequestBody user_name,
+                                       @Part("password") RequestBody password,
+                                       @Part("national_id") RequestBody national_id,
+                                       @Part("email") RequestBody email,
+                                       @Part("gender") RequestBody gender,
+                                       @Part("type") RequestBody type,
+                                       @Part MultipartBody.Part image);
 
     @FormUrlEncoded
     @POST("api/login")
@@ -42,15 +46,37 @@ public interface Service {
             @Field("type") String type
     );
 
+    @FormUrlEncoded
+    @POST("api/logoutOrDelete")
+    Single<Response<StatusResponse>> logOut(@Field("user_id") String user_id,
+                                            @Field("delete") String delete);
+
+    @FormUrlEncoded
+    @POST("api/logoutOrDelete")
+    Single<Response<StatusResponse>> delete(@Field("user_id") String user_id,
+                                            @Field("delete") String delete);
+
+
+    @Multipart
+    @POST("api/edit_profile")
+    Single<Response<UserModel>> update(@Part("user_id") RequestBody user_id,
+                                       @Part("name") RequestBody name,
+                                       @Part("user_name") RequestBody user_name,
+                                       @Part("national_id") RequestBody national_id,
+                                       @Part("gender") RequestBody gender,
+                                       @Part("email") RequestBody email,
+                                       @Part("password") RequestBody password,
+                                       @Part MultipartBody.Part image);
+
 
     @GET("api/home")
-    Single<Response<SliderDataModel>>getSlider();
+    Single<Response<SliderDataModel>> getSlider();
 
     @GET("api/home")
-    Single<Response<HomeDataModel>>getHomeData();
+    Single<Response<HomeDataModel>> getHomeData();
 
     @GET("api/posts/show")
-    Single<Response<ShowDataModel>>getShow();
+    Single<Response<ShowDataModel>> getShow();
 
     @GET("api/posts/move")
     Single<Response<MoviesDataModel>> getMovies(@Query("category_id") String category_id);

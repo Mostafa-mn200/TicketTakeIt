@@ -11,7 +11,6 @@ import com.finalproject.R;
 import com.finalproject.adapter.TheaterOwnerAdapter;
 import com.finalproject.databinding.ActivityOwnerShowsBinding;
 import com.finalproject.ui.activity_base.BaseActivity;
-import com.finalproject.ui.owner.activity_add_show.AddShowActivity;
 
 public class OwnerShowsActivity extends BaseActivity {
     private ActivityOwnerShowsBinding binding;
@@ -33,9 +32,5 @@ public class OwnerShowsActivity extends BaseActivity {
 
         binding.toolbar.llBack.setOnClickListener(view -> {finish();});
 
-        binding.addaShow.setOnClickListener(view -> {
-            Intent i=new Intent(OwnerShowsActivity.this, AddShowActivity.class);
-            startActivity(i);
-        });
     }
 }

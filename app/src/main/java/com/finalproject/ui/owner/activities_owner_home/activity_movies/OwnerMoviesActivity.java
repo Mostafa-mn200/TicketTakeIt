@@ -16,8 +16,6 @@ import com.finalproject.databinding.ActivityOwnerMoviesBinding;
 import com.finalproject.model.CategoryModel;
 import com.finalproject.model.FilterModel;
 import com.finalproject.ui.activity_base.BaseActivity;
-import com.finalproject.ui.owner.activity_add_movie.AddMovieActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,10 +45,7 @@ public class OwnerMoviesActivity extends BaseActivity {
         binding.recyclerMovies.setAdapter(cinemaOwnerAdapter);
         binding.toolbar.llBack.setOnClickListener(view -> {finish();});
 
-        binding.addaMovie.setOnClickListener(view -> {
-            Intent i=new Intent(OwnerMoviesActivity.this, AddMovieActivity.class);
-            startActivity(i);
-        });
+
     }
 
     public void setItemCategory(CategoryModel categoryModel, int currentPos) {

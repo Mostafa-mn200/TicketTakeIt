@@ -78,6 +78,8 @@ dependencies {
 
 
     //youtube library
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:11.0.1'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+    implementation 'org.jetbrains:annotations:16.0.2'
+
 
 }

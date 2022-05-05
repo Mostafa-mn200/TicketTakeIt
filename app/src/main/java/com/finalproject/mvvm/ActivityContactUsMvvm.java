@@ -30,8 +30,7 @@ import retrofit2.Response;
 public class ActivityContactUsMvvm extends AndroidViewModel {
     private Context context;
 
-    public MutableLiveData<StatusResponse> contactUsSuccess = new MutableLiveData<>();
-    private MutableLiveData<Boolean> isLoading;
+    public MutableLiveData<Boolean> send = new MutableLiveData<>();
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -39,20 +38,12 @@ public class ActivityContactUsMvvm extends AndroidViewModel {
         super(application);
     }
 
-    public MutableLiveData<Boolean> getIsLoading() {
-        if (isLoading==null){
-            isLoading=new MutableLiveData<>();
-        }
-        return isLoading;
-    }
 
     public void contactWithUs(Context context, ContactUsModel contactUsModel) {
-        isLoading.setValue(true);
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        Log.e("data", contactUsModel.getName() + "_" + contactUsModel.getPhone() + "_" + contactUsModel.getMessage() + "");
-        Api.getService(Tags.base_url).ContactUs(contactUsModel.getName(),contactUsModel.getPhone(), contactUsModel.getMessage())
+        Api.getService(Tags.base_url).ContactUs(contactUsModel.getName(),contactUsModel.getMail(), contactUsModel.getMessage())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<StatusResponse>>() {
@@ -64,12 +55,10 @@ public class ActivityContactUsMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NotNull Response<StatusResponse> response) {
                         dialog.dismiss();
-                        Log.e("ssss", response.code() + "_");
-                        isLoading.setValue(false);
                         if (response.isSuccessful() && response.body() != null) {
 
                             if (response.body().getStatus() == 200) {
-                                contactUsSuccess.setValue(response.body());
+                                send.postValue(true);
                             }
                         }
                     }

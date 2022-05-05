@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -17,10 +18,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.View;
 import android.widget.Toast;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityEditAccountBinding;
+import com.finalproject.model.EditAccountModel;
+import com.finalproject.model.UserModel;
+import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.preferences.Preferences;
 import com.finalproject.share.Common;
 import com.finalproject.ui.activity_base.BaseActivity;
@@ -33,8 +38,11 @@ import java.util.Locale;
 import io.paperdb.Paper;
 
 public class EditAccountActivity extends BaseActivity {
-    private String lang;
     private ActivityEditAccountBinding binding;
+    private UserModel userModel;
+    private EditAccountModel model;
+    private String gender = "";
+    private ActivitySignupMvvm mvvm;
     private Preferences preferences;
     private ActivityResultLauncher<Intent> launcher;
     private final String READ_PERM = Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -54,22 +62,55 @@ public class EditAccountActivity extends BaseActivity {
 
     private void initView() {
         setUpToolbar(binding.toolbar, getString(R.string.editAccount), R.color.color2, R.color.white);
-//        Paper.init(this);
-//        lang = getLang();
-//        binding.setLang(getLang());
+        binding.toolbar.llBack.setOnClickListener(view -> finish());
+
+        mvvm = ViewModelProviders.of(this).get(ActivitySignupMvvm.class);
+        binding.setLang(getLang());
+        preferences = Preferences.getInstance();
+        model = new EditAccountModel();
+        userModel = getUserModel();
+        model.setName(userModel.getData().getName());
+        model.setNational_id(userModel.getData().getNational_id());
+        model.setEmail(userModel.getData().getEmail());
+        model.setUser_name(userModel.getData().getUser_name());
+        if (userModel.getData().getGender().equals("male")) {
+            setupMale();
+        } else if (userModel.getData().getGender().equals("female")) {
+            setupFemale();
+        }
+        if (userModel.getData().getImage()!=null){
+            String url = userModel.getData().getImage();
+            Picasso.get().load(Uri.parse(url)).into(binding.image);
+            binding.icon.setVisibility(View.GONE);
+        }
+        binding.llMale.setOnClickListener(view -> {
+            setupMale();
+        });
+        binding.llFemale.setOnClickListener(view -> {
+            setupFemale();
+        });
+        model.setGender(gender);
+        binding.setModel(model);
+        binding.setUserModel(userModel);
+
+        mvvm.getOnSignUpSuccess().observe(this, userModel -> {
+            setUserModel(userModel);
+            setResult(RESULT_OK);
+            finish();
+        });
 
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (result.getResultCode() == RESULT_OK && result.getData() != null) {
                 if (selectedReq == READ_REQ) {
-
+                    binding.icon.setVisibility(View.GONE);
                     uri = result.getData().getData();
-
 
                     File file = new File(Common.getImagePath(this, uri));
                     Picasso.get().load(file).fit().into(binding.image);
 
                 } else if (selectedReq == CAMERA_REQ) {
                     Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
+                    binding.icon.setVisibility(View.GONE);
                     uri = getUriFromBitmap(bitmap);
                     if (uri != null) {
                         String path = Common.getImagePath(this, uri);
@@ -98,19 +139,29 @@ public class EditAccountActivity extends BaseActivity {
         binding.image.setOnClickListener(view -> openSheet());
 
         ProgressDialog dialog = new ProgressDialog(this);
+        binding.btnUpdate.setOnClickListener(view -> {
+//            Log.e("data",signUpModel.getType()+" "+ signUpModel.getNational_id()+" "+signUpModel.getName()+" "+signUpModel.getEmail()+" "+signUpModel.getUser_name()+" "+signUpModel.getPassword()+" "+signUpModel.getGender());
+                if (model.isDataValid(this)){
+                    mvvm.update(this,model,userModel);
+                }
 
-
-        binding.toolbar.llBack.setOnClickListener(view -> finish());
-        binding.saveChanges.setOnClickListener(view -> {
-            dialog.setMessage(getString(R.string.savingChanges));
-            dialog.show();
-
-            new Handler().postDelayed(() -> {
-                dialog.dismiss();
-                Toast.makeText(EditAccountActivity.this, R.string.dataUpdated, Toast.LENGTH_SHORT).show();
-            }, 600);
         });
 
+
+    }
+
+    private void setupMale() {
+        binding.llMale.setBackgroundResource(R.drawable.small_stroke_color3);
+        binding.llFemale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+        gender = "male";
+        model.setGender(gender);
+    }
+
+    private void setupFemale() {
+        binding.llFemale.setBackgroundResource(R.drawable.small_stroke_color3);
+        binding.llMale.setBackgroundResource(R.drawable.bg_user_btn_not_clicked);
+        gender = "female";
+        model.setGender(gender);
     }
 
     public void checkCameraPermission() {

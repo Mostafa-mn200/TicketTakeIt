@@ -29,8 +29,17 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="q">
-        <activity android:name=".ui.user.activity_contact_us.ContactUsActivity"></activity>
+        <activity android:name=".ui.user.activity_contact_us.ContactUsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize"
+            />
         <activity
+            android:name=".ui.owner.activity_create_cinema.CreateCinemaActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".ui.first_splash_activity.FirstSplashActivity"
+            android:exported="true">
             android:name=".ui.activity_splash.SplashhActivity"
             android:exported="true">
             <intent-filter>
@@ -39,6 +48,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.activity_splash.SplashActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".ui.activity_signup.SignUpActivity"
             android:exported="false"
@@ -54,6 +66,8 @@
             android:name=".ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity"
             android:exported="true" />
         <activity
+            android:name=".ui.owner.activity_home.OwnerHomeActivity"
+            android:exported="true" />
             android:name=".ui.owner.activities_owner_home.OwnerHomeActivity"
             android:exported="true" />
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />

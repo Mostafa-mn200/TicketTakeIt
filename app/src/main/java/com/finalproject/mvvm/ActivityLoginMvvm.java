@@ -4,6 +4,7 @@ import android.app.Application;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -69,6 +70,10 @@ public class ActivityLoginMvvm extends AndroidViewModel {
 
                             if (response.body().getStatus() == 200) {
                                 onLoginSuccess.setValue(response.body());
+                            }else if (response.body().getStatus()==403){
+                                Toast.makeText(context, R.string.incorrect_data, Toast.LENGTH_SHORT).show();
+                            }else if (response.body().getStatus()==509){
+                                Toast.makeText(context, R.string.user_not_found, Toast.LENGTH_SHORT).show();
                             }
                         }
 

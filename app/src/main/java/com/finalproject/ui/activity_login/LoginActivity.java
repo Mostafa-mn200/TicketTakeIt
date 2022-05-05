@@ -4,30 +4,22 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityLoginBinding;
-import com.finalproject.language.Language;
 import com.finalproject.model.LoginModel;
 import com.finalproject.model.UserModel;
 import com.finalproject.mvvm.ActivityLoginMvvm;
-import com.finalproject.mvvm.ActivitySignupMvvm;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_signup.SignUpActivity;
 import com.finalproject.ui.forgetPassword.ForgetPasswordActivity1;
-import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
+import com.finalproject.ui.owner.activity_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-
-import java.util.Locale;
-
-import io.paperdb.Paper;
 
 public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding binding;

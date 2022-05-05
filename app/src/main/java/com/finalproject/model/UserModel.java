@@ -20,6 +20,11 @@ public class UserModel extends StatusResponse{
         private String email_verified_at;
         private String created_at;
         private String updated_at;
+        private String image;
+
+        public String getImage() {
+            return image;
+        }
 
         public String getId() {
             return id;

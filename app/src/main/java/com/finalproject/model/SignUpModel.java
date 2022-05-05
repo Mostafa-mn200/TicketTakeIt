@@ -20,6 +20,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
     private String email;
     private String gender;
     private String type;
+    private String image;
 
     public ObservableField<String> error_name = new ObservableField<>();
     public ObservableField<String> error_user_name = new ObservableField<>();
@@ -90,21 +91,81 @@ public class SignUpModel extends BaseObservable implements Serializable {
         }
     }
 
+    public boolean isDataValid2(Context context) {
+        if (!national_id.trim().isEmpty() &&
+                !name.isEmpty() &&
+                !email.trim().isEmpty() &&
+                !user_name.trim().isEmpty()) {
+
+            error_national_id.set(null);
+            error_name.set(null);
+            error_email.set(null);
+            error_user_name.set(null);
+
+            return true;
+        } else {
+
+            if (national_id.trim().isEmpty()) {
+                error_national_id.set(context.getString(R.string.field_required));
+
+            } else {
+                error_national_id.set(null);
+
+            }
+            if (name.isEmpty()) {
+                error_name.set(context.getString(R.string.field_required));
+
+            } else {
+                error_name.set(null);
+
+            }
+            if (email.trim().isEmpty()) {
+                error_email.set(context.getString(R.string.field_required));
+
+            } else {
+                error_email.set(null);
+
+            }
+            if (user_name.trim().isEmpty()) {
+                error_user_name.set(context.getString(R.string.field_required));
+
+            } else {
+                error_user_name.set(null);
+
+            }
+            if (gender.isEmpty()) {
+                Toast.makeText(context, "gender required", Toast.LENGTH_SHORT).show();
+
+            }
+
+            return false;
+        }
+    }
+
     public SignUpModel() {
-        name = "";
+        this.image = "";
+        this.name = "";
         notifyPropertyChanged(BR.name);
-        user_name = "";
+        this.user_name = "";
         notifyPropertyChanged(BR.user_name);
-        password = "";
+        this.password = "";
         notifyPropertyChanged(BR.password);
-        national_id = "";
+        this.national_id = "";
         notifyPropertyChanged(BR.national_id);
-        email = "";
+        this.email = "";
         notifyPropertyChanged(BR.email);
-        gender = "";
+        this.gender = "";
         notifyPropertyChanged(BR.gender);
-        type = "";
+        this.type = "";
         notifyPropertyChanged(BR.type);
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @Bindable

@@ -137,6 +137,26 @@
     <string name="field_required">field required</string>
     <string name="user_found">User Found</string>
     <string name="data_taken_before">data has already been taken before</string>
+    <string name="incorrect_data">Incorrect data</string>
+    <string name="update">Update</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="user_not_found">User not found</string>
+    <string name="cinema_name">Cinema name</string>
+    <string name="create_cinema">Create your cinema</string>
+    <string name="available_days">Available days</string>
+    <string name="available_hours">Available hours</string>
+    <string name="number_of_seats">Number of seats</string>
+    <string name="add_time">Add time :</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="am_pm">AM / PM</string>
+    <string name="number">number</string>
+    <string name="create">Create</string>
+    <string name="booking_list">Booking list</string>
+
     <string name="message">Message</string>
     <string name="send">Send</string>
+    <string name="sucess">Success</string>
 </resources>

@@ -3,6 +3,7 @@ package com.finalproject.model;
 import android.content.Context;
 
 import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 
 import com.finalproject.BR;
@@ -11,16 +12,16 @@ import java.io.Serializable;
 
 public class ContactUsModel extends BaseObservable implements Serializable {
     private String name;
-    private String phone;
+    private String mail;
     private String message;
 
     public ObservableField<String> error_name = new ObservableField<>();
-    public ObservableField<String> error_phone = new ObservableField<>();
+    public ObservableField<String> error_mail = new ObservableField<>();
     public ObservableField<String> error_message = new ObservableField<>();
 
     public ContactUsModel() {
         this.name = "";
-        this.phone = "";
+        this.mail = "";
         this.message = "";
     }
 
@@ -28,11 +29,11 @@ public class ContactUsModel extends BaseObservable implements Serializable {
 
         if (!name.trim().isEmpty()
                 &&
-                !phone.trim().isEmpty()
+                !mail.trim().isEmpty()
               && (!message.trim().isEmpty()))
         {
             error_name.set(null);
-            error_phone.set(null);
+            error_mail.set(null);
             error_message.set(null);
 
             return true;
@@ -42,10 +43,10 @@ public class ContactUsModel extends BaseObservable implements Serializable {
             } else {
                 error_name.set(null);
             }
-            if (phone.trim().isEmpty()) {
-                error_phone.set("Field is Required");
+            if (mail.trim().isEmpty()) {
+                error_mail.set("Field is Required");
             } else {
-                error_phone.set(null);
+                error_mail.set(null);
             }
             if (message.trim().isEmpty()) {
                 error_message.set("Field is Required");
@@ -57,6 +58,7 @@ public class ContactUsModel extends BaseObservable implements Serializable {
         }
     }
 
+    @Bindable
     public String getName() {
         return name;
     }
@@ -66,21 +68,24 @@ public class ContactUsModel extends BaseObservable implements Serializable {
         notifyPropertyChanged(BR.name);
     }
 
-    public String getPhone() {
-        return phone;
+
+    @Bindable
+    public String getMail() {
+        return mail;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-        notifyPropertyChanged(BR.phone);
+    public void setMail(String mail) {
+        this.mail = mail;
+        notifyPropertyChanged(BR.email);
     }
 
+    @Bindable
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
-        notifyPropertyChanged(BR.phone);
+        notifyPropertyChanged(BR.message);
     }
 }

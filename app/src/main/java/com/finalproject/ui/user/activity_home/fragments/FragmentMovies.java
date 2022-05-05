@@ -102,9 +102,6 @@ public class FragmentMovies extends BaseFragment {
         binding.recyclerMovies.setLayoutManager(new GridLayoutManager(activity, 2));
         binding.recyclerMovies.setAdapter(moviesAdapter);
     }
-
-
-
     public void setItemCategory(CategoryModel categoryModel, int currentPos) {
         mvvm.getCategoryId().setValue(categoryModel.getId());
 //        mvvm.setSelectedCategoryPos(currentPos);

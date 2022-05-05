@@ -32,6 +32,11 @@
         android:label=""
         tools:layout="@layout/fragment_profile" />
     <activity
+        android:id="@+id/activity_sign_up"
+        android:name="com.finalproject.ui.activity_signup.SignUpActivity"
+        android:label=""
+        tools:layout="@layout/activity_sign_up" />
+    <activity
         android:id="@+id/activity_edit_account"
         android:name="com.finalproject.ui.user.activity_edit_account.EditAccountActivity"
         android:label=""

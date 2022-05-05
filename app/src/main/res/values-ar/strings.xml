@@ -127,5 +127,27 @@
     <string name="bookings_list">قائمة الحجوزات</string>
     <string name="movie_type">نوع الفيلم</string>
     <string name="please_choose_the_user">برجاء تحديد(المستخدم أو المالك)</string>
+    <string name="field_required">field required</string>
+    <string name="user_found">User Found</string>
     <string name="data_taken_before">تم تسجيل هذه البيانات بالفعل من قبل</string>
+    <string name="incorrect_data">بيانات خاطئة</string>
+    <string name="update">تعديل</string>
+    <string name="delete_account">حذف الحساب</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="user_not_found">المستخدم غير موجود</string>
+    <string name="cinema_name">اسم السينما</string>
+    <string name="create_cinema">إنشاء السينما الخاصة بك</string>
+    <string name="available_days">الأيام المتاحة</string>
+    <string name="available_hours">الساعات المتاحة</string>
+    <string name="number_of_seats">عدد الكراسي</string>
+    <string name="add_time">إضافة وقت :</string>
+    <string name="from">من</string>
+    <string name="to">إلى</string>
+    <string name="am_pm">ص / م</string>
+    <string name="number">العدد</string>
+    <string name="create">إنشاء</string>
+    <string name="booking_list">Booking list</string>
+    <string name="sucess">تم بنجاح</string>
+
 </resources>

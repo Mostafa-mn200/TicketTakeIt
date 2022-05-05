@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.MovieShowItemRowBinding;
 import com.finalproject.model.ShowModel;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
 import com.finalproject.ui.user.activity_home.fragments.FragmentShows;
 
 import java.util.List;
@@ -39,7 +40,12 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
-
+        if (fragment instanceof FragmentShows){
+            FragmentShows fragmentShows=(FragmentShows) fragment;
+        }
+        if (fragment instanceof FragmentOwnerShows){
+            FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
+        }
         myHolder.binding.cardMovieItem.setOnClickListener(view -> {
             FragmentShows fragmentShows=(FragmentShows) fragment;
             fragmentShows.navigatetoShowDetilesActivity();

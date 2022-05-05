@@ -1,7 +1,6 @@
 package com.finalproject.ui.activity_splash;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
@@ -28,7 +27,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class SplashhActivity extends BaseActivity {
+public class SplashActivity extends BaseActivity {
     private ActivitySplashhBinding binding;
     private CompositeDisposable disposable = new CompositeDisposable();
     private Preferences preferences;
@@ -76,10 +75,15 @@ public class SplashhActivity extends BaseActivity {
 
                     }
                 });
-        navigateToLoginActivity();
-        navigateToHomeActivity();
 
-    }private void animateMethod() {
+
+        binding.loginBtn.setOnClickListener(view -> navigateToLoginActivity());
+
+        binding.guestBtn.setOnClickListener(view -> navigateToHomeActivity());
+
+    }
+
+    private void animateMethod() {
 
         animation1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
         animation2 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.slide_up);
@@ -149,21 +153,16 @@ public class SplashhActivity extends BaseActivity {
     }
 
     private void navigateToLoginActivity() {
-        binding.loginBtn.setOnClickListener(view -> {
-            Intent intent = new Intent(SplashhActivity.this, LoginActivity.class);
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        });
-
     }
 
 
     private void navigateToHomeActivity() {
-    binding.guestBtn.setOnClickListener(view -> {
-        Intent intent = new Intent(SplashhActivity.this, HomeActivity.class);
+        Intent intent = new Intent(SplashActivity.this, HomeActivity.class);
         startActivity(intent);
         finish();
-    });
     }
 
     @Override
