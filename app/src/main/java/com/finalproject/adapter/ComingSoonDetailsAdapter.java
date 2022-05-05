@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.ComingSoonItemBinding;
 import com.finalproject.databinding.MovieShowItemRowBinding;
+import com.finalproject.model.ComingSoonModel;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -20,7 +21,7 @@ import java.util.List;
 
 
 public class ComingSoonDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<ComingSoonModel> list;
     private Context context;
     private LayoutInflater inflater;
 
@@ -42,7 +43,8 @@ public class ComingSoonDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
     @Override
     public void onBindViewHolder(@NonNull @NotNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        myHolder.binding.image.setImageResource(R.drawable.spider);
+        myHolder.binding.setModel(list.get(position));
+        //myHolder.binding.image.setImageResource(R.drawable.spider);
     }
 
     @Override
@@ -50,11 +52,11 @@ public class ComingSoonDetailsAdapter extends RecyclerView.Adapter<RecyclerView.
         if (list != null) {
             return list.size();
         } else {
-            return 8;
+            return 0;
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<ComingSoonModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

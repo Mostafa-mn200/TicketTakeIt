@@ -8,6 +8,7 @@ import com.finalproject.model.ShowDetailsDataModel;
 import com.finalproject.model.ShowDataModel;
 import com.finalproject.model.ShowModel;
 import com.finalproject.model.SliderDataModel;
+import com.finalproject.model.StatusResponse;
 import com.finalproject.model.UserModel;
 
 import java.util.List;
@@ -63,6 +64,12 @@ public interface Service {
     @GET("api/onePost")
     Single<Response<ShowDetailsDataModel>> getShowDetails(@Query("post_id") String post_id);
 
-
+    @FormUrlEncoded
+    @POST("api/contact_us")
+    Single<Response<StatusResponse>> ContactUs(
+            @Field("name") String name,
+            @Field("phone") String phone,
+            @Field("message") String message
+    );
 
 }

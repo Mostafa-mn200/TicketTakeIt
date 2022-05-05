@@ -137,4 +137,6 @@
     <string name="field_required">field required</string>
     <string name="user_found">User Found</string>
     <string name="data_taken_before">data has already been taken before</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
 </resources>

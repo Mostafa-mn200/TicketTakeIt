@@ -21,6 +21,7 @@ import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.owner.activities_owner_home.OwnerHomeActivity;
+import com.finalproject.ui.user.activity_contact_us.ContactUsActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_language.LanguageActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
@@ -72,6 +73,11 @@ public class FragmentProfile extends BaseFragment {
         binding.llLogOut.setOnClickListener(view -> {
             Intent intent=new Intent(activity,LoginActivity.class);
             launcher.launch(intent);
+        });
+        
+        binding.llContactUs.setOnClickListener(view -> {
+            Intent intent=new Intent(getContext(), ContactUsActivity.class);
+            startActivity(intent);
         });
     }
 }

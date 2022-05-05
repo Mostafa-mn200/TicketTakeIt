@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="model"
+            type="com.finalproject.model.ComingSoonModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -28,6 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="190dp"
                 android:scaleType="fitXY"
+                image="@{model.image}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,11 +40,12 @@
                 android:id="@+id/comingSoonName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:background="@color/black2"
                 android:gravity="start"
                 android:lines="1"
-                android:text="Spider Man"
+                android:text="@{model.title}"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -52,11 +56,12 @@
                 android:id="@+id/timeMovieCome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="start"
                 android:lines="1"
-                android:text="22 / 12 / 2023"
+                android:text="@{model.coming_date}"
                 android:textColor="@color/color4"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"

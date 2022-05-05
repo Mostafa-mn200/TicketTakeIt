@@ -29,9 +29,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="q">
+        <activity android:name=".ui.user.activity_contact_us.ContactUsActivity"></activity>
         <activity
             android:name=".ui.activity_splash.SplashhActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -54,7 +55,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.owner.activities_owner_home.OwnerHomeActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
         <activity
             android:name=".ui.user.activity_show_detiles.ShowDetailsActivity"
@@ -107,7 +108,7 @@
         <activity
             android:name=".ui.activity_login.LoginActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ui.user.activity_home.HomeActivity"
             android:exported="false"
