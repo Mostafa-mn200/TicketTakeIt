@@ -70,6 +70,7 @@ public class ComingSoonActivity extends BaseActivity {
         });
 
 
+
         binding.toolbar.llBack.setOnClickListener(view -> {finish();});
 
         mvvm.getComingSoonData(activity);
