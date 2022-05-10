@@ -33,17 +33,32 @@ public class BaseFragment extends Fragment {
 
     }
 
+    protected void setUserModel(UserModel userModel) {
+        Preferences preferences = Preferences.getInstance();
+        preferences.createUpdateUserData(context, userModel);
+    }
+
+//    protected OwnerModel getOwnerModel() {
+//        Preferences preferences = Preferences.getInstance();
+//        return preferences.getOwnerData(context);
+//    }
+
+//    protected void setOwnerModel(OwnerModel ownerModel) {
+//        Preferences preferences = Preferences.getInstance();
+//        preferences.createUpdateOwnerData(context, ownerModel);
+//    }
+
     protected void clearUserModel(Context context) {
         Preferences preferences = Preferences.getInstance();
         preferences.clearUserData(context);
 
     }
 
-    protected void setUserModel(UserModel userModel) {
-        Preferences preferences = Preferences.getInstance();
-        preferences.createUpdateUserData(context, userModel);
-    }
-
+//    protected void clearOwnerModel(Context context) {
+//        Preferences preferences = Preferences.getInstance();
+//        preferences.clearOwnerData(context);
+//
+//    }
 
     public void setUserSettings(UserSettingsModel userSettingsModel) {
         Preferences preferences = Preferences.getInstance();

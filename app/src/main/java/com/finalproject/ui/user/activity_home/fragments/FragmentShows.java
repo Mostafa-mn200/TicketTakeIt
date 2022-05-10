@@ -7,12 +7,11 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +19,17 @@ import android.view.ViewGroup;
 import com.finalproject.R;
 import com.finalproject.adapter.ShowsAdapter;
 import com.finalproject.databinding.FragmentShowsBinding;
+import com.finalproject.model.ShowModel;
 import com.finalproject.mvvm.FragmentShowMVVM;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_detiles.ShowDetailsActivity;
+import com.finalproject.ui.user.activity_show_details.ShowDetailsActivity;
 
 
 public class FragmentShows extends BaseFragment {
     private HomeActivity activity;
     private FragmentShowsBinding binding;
-    ShowsAdapter showsAdapter;
+    private ShowsAdapter showsAdapter;
     private FragmentShowMVVM mvvm;
 
     public void onAttach(@NonNull Context context) {
@@ -62,7 +62,7 @@ public class FragmentShows extends BaseFragment {
         binding.recyclerShows.setLayoutManager(new GridLayoutManager(activity,2));
         binding.recyclerShows.setAdapter(showsAdapter);
         mvvm.getIsLoading().observe(activity, isLoading -> binding.swipeRef.setRefreshing(isLoading));
-        mvvm.getShows().observe(activity, showModels -> {
+        mvvm.getShowsSuccess().observe(activity, showModels -> {
             if (showModels.size() > 0) {
                 binding.progBarShows.setVisibility(View.GONE);
                 binding.cardNoData.setVisibility(View.GONE);
@@ -74,12 +74,32 @@ public class FragmentShows extends BaseFragment {
                 binding.cardNoData.setVisibility(View.VISIBLE);
             }
         });
-        mvvm.getShowData(activity);
+        mvvm.getShowData(activity,null);
+        binding.swipeRef.setOnRefreshListener(() -> {
+            mvvm.getShowData(activity,binding.edtSearch.getText().toString());
+        });
 
+        binding.edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mvvm.getShowData(activity,s.toString());
+            }
+        });
     }
 
-    public void navigatetoShowDetilesActivity() {
-        Intent i=new Intent(getContext(), ShowDetailsActivity.class);
-        startActivity(i);
+    public void navigateToShowDetailsActivity(ShowModel showModel, int position) {
+        Intent intent=new Intent(getContext(), ShowDetailsActivity.class);
+        intent.putExtra("show_id", showModel.getId());
+        startActivity(intent);
     }
 }

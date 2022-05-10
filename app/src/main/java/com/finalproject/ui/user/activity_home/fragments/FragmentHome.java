@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,8 @@ import com.finalproject.mvvm.FragmentHomeMVVM;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_detiles.ShowDetailsActivity;
-import com.finalproject.ui.user.activity_trailar_movie.MovieDetailsActivity;
+import com.finalproject.ui.user.activity_show_details.ShowDetailsActivity;
+import com.finalproject.ui.user.activity_movie_details.MovieDetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,6 +153,9 @@ public class FragmentHome extends BaseFragment {
 
         mvvm.getHomeData(activity);
 
+        binding.llSearch.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.fragmentSearch);
+        });
     }
 
     public void navigateToMovieDetailsActivity(MovieModel movieModel, int adapterPosition) {

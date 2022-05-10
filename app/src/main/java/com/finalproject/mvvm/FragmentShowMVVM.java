@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class FragmentShowMVVM extends AndroidViewModel {
     private Context context;
-    private MutableLiveData<List<ShowModel>> showDataModelMatulableLiveData;
+    private MutableLiveData<List<ShowModel>> onShowsSuccess;
     private MutableLiveData<Boolean> isLoadingLivData;
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -38,12 +38,12 @@ public class FragmentShowMVVM extends AndroidViewModel {
         super(application);
         context = application.getApplicationContext();
     }
-    public LiveData<List<ShowModel>> getShows() {
-        if (showDataModelMatulableLiveData == null) {
-            showDataModelMatulableLiveData = new MutableLiveData<>();
+    public LiveData<List<ShowModel>> getShowsSuccess() {
+        if (onShowsSuccess == null) {
+            onShowsSuccess = new MutableLiveData<>();
 
         }
-        return showDataModelMatulableLiveData;
+        return onShowsSuccess;
     }
     public MutableLiveData<Boolean> getIsLoading() {
         if (isLoadingLivData == null) {
@@ -52,9 +52,9 @@ public class FragmentShowMVVM extends AndroidViewModel {
         return isLoadingLivData;
     }
 
-    public void getShowData(Context context) {
+    public void getShowData(Context context,String search) {
         isLoadingLivData.setValue(true);
-        Api.getService(Tags.base_url).getShow()
+        Api.getService(Tags.base_url).getShow(search)
         .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<ShowDataModel>>() {
@@ -69,7 +69,7 @@ public class FragmentShowMVVM extends AndroidViewModel {
                         if (response.isSuccessful()&&response.body()!=null){
                             if (response.body().getStatus()==200){
 
-                                showDataModelMatulableLiveData.postValue(response.body().getData());
+                                onShowsSuccess.postValue(response.body().getData());
 
                             }
                         }

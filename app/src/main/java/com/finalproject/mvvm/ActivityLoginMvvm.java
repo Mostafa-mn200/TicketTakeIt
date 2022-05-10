@@ -47,12 +47,13 @@ public class ActivityLoginMvvm extends AndroidViewModel {
 
     }
 
-    public void loginWith(Context context, LoginModel loginModel, String type) {
+
+    public void login(Context context, LoginModel loginModel, String type) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        Log.e("data", loginModel.getUser_name() + "_" + loginModel.getPassword() + "_" + loginModel.getType() + "");
-        Api.getService(Tags.base_url).logIn(loginModel.getUser_name(), loginModel.getPassword(), type)
+//        Log.e("data", loginModel.getUser_name() + "_" + loginModel.getPassword() + "_" + loginModel.getType() + "");
+        Api.getService(Tags.base_url).login(loginModel.getUser_name(), loginModel.getPassword(), type)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<UserModel>>() {
@@ -65,7 +66,7 @@ public class ActivityLoginMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<UserModel> response) {
                         dialog.dismiss();
-                        Log.e("ssss", response.code() + "_");
+//                        Log.e("ssss", response.code() + "_");
                         if (response.isSuccessful() && response.body() != null) {
 
                             if (response.body().getStatus() == 200) {
@@ -87,4 +88,6 @@ public class ActivityLoginMvvm extends AndroidViewModel {
                     }
                 });
     }
+
+
 }

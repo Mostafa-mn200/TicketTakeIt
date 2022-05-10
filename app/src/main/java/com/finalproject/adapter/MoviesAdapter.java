@@ -2,6 +2,7 @@ package com.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieRowBinding;
-import com.finalproject.databinding.MovieShowItemRowBinding;
 import com.finalproject.model.MovieModel;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
 
@@ -42,10 +43,26 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
-
         myHolder.itemView.setOnClickListener(view -> {
-            FragmentMovies fragmentMovies = (FragmentMovies) fragment;
-            fragmentMovies.navigateToMovieDetails(list.get(position));
+            if (fragment instanceof FragmentMovies){
+                FragmentMovies fragmentMovies = (FragmentMovies) fragment;
+                fragmentMovies.navigateToMovieDetails(list.get(position));
+            }
+
+        });
+        if (fragment instanceof FragmentMovies){
+            FragmentMovies fragmentMovies=(FragmentMovies) fragment;
+            myHolder.binding.flAddToCinema.setVisibility(View.GONE);
+        }else if (fragment instanceof FragmentOwnerMovies){
+            FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
+            myHolder.binding.flAddToCinema.setVisibility(View.VISIBLE);
+        }
+        myHolder.binding.flAddToCinema.setOnClickListener(view -> {
+            if (fragment instanceof FragmentOwnerMovies) {
+                FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
+                fragmentOwnerMovies.setItemChecked(list.get(position),position);
+
+            }
         });
     }
 

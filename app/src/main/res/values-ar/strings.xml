@@ -18,7 +18,6 @@
     <string name="cancel">الغاء</string>
     <string name="editAccount">تعديل الحساب</string>
     <string name="contactUs">تواصل معنا</string>
-    <string name="aboutApp">عن التطبيق</string>
     <string name="saveChanges">حفظ التغييرات</string>
     <string name="verify">تأكيد</string>
     <string name="change">تغيير</string>
@@ -57,53 +56,28 @@
     <string name="female">انثى</string>
     <string name="previous">السابق</string>
     <string name="location">الموقع</string>
-    <string name="detectLocation">حدد موقعك</string>
     <string name="wait">انتظر</string>
     <string name="waitLoading">برجاء انتظار التحميل ...</string>
     <string name="savingChanges">جاري حفظ التعديلات</string>
     <string name="dataUpdated">تم تحديث البيانات</string>
-    <string name="birthDate">تاريخ الميلاد</string>
-    <string name="day">اليوم</string>
-    <string name="month">الشهر</string>
-    <string name="year">السنة</string>
 
-    <string name="action_Mtype">Action, Adventure</string>
-    <string name="venom_Mname">Venom</string>
-    <string name="_7_0_MRate">7.0</string>
-    <string name="adventure_Mtype">Adventure</string>
     <string name="overview">القصة</string>
-    <string name="cast_title">فريق العمل</string>
     <string name="choose_Cinema">اختار السينما</string>
-    <string name="choose_seat">اختار المقعد</string>
+    <string name="choose_seats">اختار المقاعد</string>
     <string name="screen">الشاشة</string>
     <string name="selected">اختيار</string>
     <string name="available">متاح</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="choose_payment">اختر طريقة الدفع</string>
-    <string name="title_activity_cinema_map">الخريطة</string>
-    <string name="title_activity_cinema_maps">الخريطة</string>
-    <string name="fawry">فورى</string>
-    <string name="choose_payment_method">اختر طريقة الدفع</string>
-    <string name="cinema_title">سينيما سيتى ستار</string>
-    <string name="rserved">محجوز</string>
-    <string name="cinemaName_CU">سينيما صن ستى</string>
-    <string name="vodavone">فودافون</string>
+    <string name="reserved">محجوز</string>
     <string name="perm_image_denied">لا يمكنك الوصول للصور</string>
-
     <string name="logout">تسجيل الخروج</string>
     <string name="show_details">تفاصيل المسرحية</string>
     <string name="movie_details">تفاصيل الفيلم</string>
     <string name="booking_seats">حجز المقاعد</string>
-    <string name="add_movie">إضافة فيلم</string>
     <string name="movie_name">اسم الفيلم</string>
     <string name="rate">التقييم</string>
     <string name="ticket_price">سعر التذكرة</string>
-    <string name="movie_image">صورة الفيلم</string>
-    <string name="choose_video">إختر فيديو</string>
-    <string name="add_hero">إضافة بطل</string>
+    <string name="ticket_type">نوع التذكرة</string>
     <string name="save">حفظ</string>
-    <string name="add_show">إضافة مسرحية</string>
     <string name="show_image">صورة المسرحية</string>
     <string name="show_name">اسم المسرحية</string>
     <string name="movies_list">قائمة الافلام</string>
@@ -120,8 +94,8 @@
     <string name="you_about_to_end">انت على وشك الانتهاء</string>
     <string name="code_has_been_sent">لقد تم ارسال الرمز</string>
     <string name="price">السعر :</string>
+    <string name="price2">السعر</string>
     <string name="book_now">إحجز الان</string>
-    <string name="pay_now">إدفع الان</string>
     <string name="done">تم</string>
     <string name="time">الوقت</string>
     <string name="bookings_list">قائمة الحجوزات</string>
@@ -140,14 +114,18 @@
     <string name="create_cinema">إنشاء السينما الخاصة بك</string>
     <string name="available_days">الأيام المتاحة</string>
     <string name="available_hours">الساعات المتاحة</string>
-    <string name="number_of_seats">عدد الكراسي</string>
+    <string name="number_of_seats">عدد المقاعد</string>
     <string name="add_time">إضافة وقت :</string>
-    <string name="from">من</string>
-    <string name="to">إلى</string>
-    <string name="am_pm">ص / م</string>
     <string name="number">العدد</string>
     <string name="create">إنشاء</string>
     <string name="booking_list">Booking list</string>
     <string name="sucess">تم بنجاح</string>
+    <string name="enter_number_of_seats">أدخل عدد المقاعد</string>
+    <string name="total_seats">كل المقاعد</string>
+    <string name="select">اختر</string>
+    <string name="cast">فريق العمل</string>
+    <string name="day">Day</string>
+    <string name="guest">Guest</string>
+
 
 </resources>

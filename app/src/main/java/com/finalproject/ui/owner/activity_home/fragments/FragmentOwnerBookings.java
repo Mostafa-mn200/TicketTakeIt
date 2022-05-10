@@ -14,17 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.finalproject.R;
-import com.finalproject.adapter.HistoryAdapter;
+import com.finalproject.adapter.OwnerHistoryAdapter;
 import com.finalproject.databinding.FragmentOwnerBookingsBinding;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.owner.activity_home.OwnerHomeActivity;
-import com.finalproject.ui.user.activity_home.HomeActivity;
 
 
 public class FragmentOwnerBookings extends BaseFragment {
     private OwnerHomeActivity activity;
     private FragmentOwnerBookingsBinding binding;
-    private HistoryAdapter historyAdapter;
+    private OwnerHistoryAdapter historyAdapter;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -45,7 +44,7 @@ public class FragmentOwnerBookings extends BaseFragment {
         initView();
     }
     private void initView() {
-        historyAdapter = new HistoryAdapter(activity, this);
+        historyAdapter = new OwnerHistoryAdapter(activity, this);
         binding.recyclerHistory.setLayoutManager(new LinearLayoutManager(activity));
         binding.recyclerHistory.setAdapter(historyAdapter);
     }

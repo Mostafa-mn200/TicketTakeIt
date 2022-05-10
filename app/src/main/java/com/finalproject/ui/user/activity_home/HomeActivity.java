@@ -10,7 +10,6 @@ import android.util.Log;
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityHomeBinding;
 import com.finalproject.language.Language;
-import com.finalproject.model.FilterModel;
 import com.finalproject.ui.activity_base.BaseActivity;
 
 import androidx.core.content.ContextCompat;

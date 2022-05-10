@@ -37,6 +37,8 @@
                     android:layout_height="0dp"
                     android:fillViewport="true"
                     app:layout_constraintBottom_toTopOf="@id/btnChooseCinema"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_weight="1">
 
@@ -49,6 +51,7 @@
                             android:id="@+id/flvideo"
                             android:layout_width="match_parent"
                             android:layout_height="200dp">
+
                             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
                                 android:id="@+id/youtube_player_view"
                                 android:layout_width="match_parent"
@@ -58,47 +61,47 @@
                                 app:showSeekBar="false"
                                 app:showYouTubeButton="false" />
                         </FrameLayout>
-<!--                        <FrameLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            >-->
-<!--                            <com.google.android.exoplayer2.ui.StyledPlayerView-->
-<!--                                android:id="@+id/exoPlayer"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="200dp"-->
-<!--                                android:layout_margin="10dp"-->
-<!--                                android:background="@color/black"-->
-<!--                                android:clickable="true"-->
-<!--                                android:focusable="true"-->
-<!--                                android:visibility="invisible"-->
-<!--                                app:show_buffering="always"-->
-<!--                                app:use_controller="false"-->
+                        <!--                        <FrameLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            >-->
+                        <!--                            <com.google.android.exoplayer2.ui.StyledPlayerView-->
+                        <!--                                android:id="@+id/exoPlayer"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="200dp"-->
+                        <!--                                android:layout_margin="10dp"-->
+                        <!--                                android:background="@color/black"-->
+                        <!--                                android:clickable="true"-->
+                        <!--                                android:focusable="true"-->
+                        <!--                                android:visibility="invisible"-->
+                        <!--                                app:show_buffering="always"-->
+                        <!--                                app:use_controller="false"-->
 
-<!--                                />-->
-<!--                            <FrameLayout-->
-<!--                                android:id="@+id/flVideo"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="200dp"-->
-<!--                                android:layout_margin="10dp"-->
-<!--                                android:background="@color/black"-->
-<!--                                android:visibility="visible"-->
-<!--                                >-->
+                        <!--                                />-->
+                        <!--                            <FrameLayout-->
+                        <!--                                android:id="@+id/flVideo"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="200dp"-->
+                        <!--                                android:layout_margin="10dp"-->
+                        <!--                                android:background="@color/black"-->
+                        <!--                                android:visibility="visible"-->
+                        <!--                                >-->
 
-<!--                                <ImageView-->
-<!--                                    android:id="@+id/imageVideo"-->
-<!--                                    android:layout_width="match_parent"-->
-<!--                                    android:layout_height="match_parent"-->
-<!--                                    />-->
+                        <!--                                <ImageView-->
+                        <!--                                    android:id="@+id/imageVideo"-->
+                        <!--                                    android:layout_width="match_parent"-->
+                        <!--                                    android:layout_height="match_parent"-->
+                        <!--                                    />-->
 
-<!--                                <ImageView-->
-<!--                                    android:layout_width="36dp"-->
-<!--                                    android:layout_height="36dp"-->
-<!--                                    android:layout_gravity="center"-->
-<!--                                    android:src="@drawable/ic_play"-->
-<!--                                    app:tint="@color/gray14" />-->
+                        <!--                                <ImageView-->
+                        <!--                                    android:layout_width="36dp"-->
+                        <!--                                    android:layout_height="36dp"-->
+                        <!--                                    android:layout_gravity="center"-->
+                        <!--                                    android:src="@drawable/ic_play"-->
+                        <!--                                    app:tint="@color/gray14" />-->
 
-<!--                            </FrameLayout>-->
-<!--                        </FrameLayout>-->
+                        <!--                            </FrameLayout>-->
+                        <!--                        </FrameLayout>-->
 
 
                         <LinearLayout
@@ -108,7 +111,6 @@
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
-                                android:id="@+id/card_poster_Mt"
                                 android:layout_width="130dp"
                                 android:layout_height="130dp"
                                 android:layout_gravity="center_vertical"
@@ -116,20 +118,16 @@
                                 app:cardElevation="3dp">
 
                                 <ImageView
+                                    image="@{model.image}"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:scaleType="fitXY"
-                                    image="@{model.image}" />
+                                    android:scaleType="fitXY" />
                             </androidx.cardview.widget.CardView>
 
-                            <Space
+                            <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:layout_gravity="center_vertical"
                                 android:layout_marginStart="5dp"
                                 android:layout_marginEnd="5dp"
@@ -143,8 +141,7 @@
                                     android:layout_marginTop="3dp"
                                     android:text="@{model.title}"
                                     android:textColor="@color/white_txt"
-                                    android:textSize="18sp"
-                                    android:lines="2"
+                                    android:textSize="16sp"
                                     android:textStyle="bold" />
 
                                 <TextView
@@ -155,9 +152,9 @@
                                     android:background="@drawable/text_shap"
                                     android:paddingStart="5dp"
                                     android:paddingEnd="5dp"
-                                    android:text="@string/action_Mtype"
+                                    android:text="@{model.category.title}"
                                     android:textColor="@color/white_txt"
-                                    android:textSize="16sp" />
+                                    android:textSize="14sp" />
 
                                 <LinearLayout
                                     android:layout_width="wrap_content"
@@ -180,7 +177,7 @@
                                         android:layout_marginEnd="20dp"
                                         android:text='@{model.rate+" "}'
                                         android:textColor="@color/white_txt"
-                                        android:textSize="16sp" />
+                                        android:textSize="14sp" />
 
                                     <ImageView
                                         android:layout_width="22dp"
@@ -195,7 +192,7 @@
                                         android:layout_gravity="center_vertical"
                                         android:text='@{model.count_hours+""}'
                                         android:textColor="@color/white_txt"
-                                        android:textSize="16sp" />
+                                        android:textSize="14sp" />
                                 </LinearLayout>
                             </LinearLayout>
                         </LinearLayout>
@@ -214,7 +211,7 @@
                                 android:layout_marginEnd="8dp"
                                 android:text="@string/overview"
                                 android:textColor="@color/white_txt"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -237,9 +234,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:text="@string/cast_title"
+                                android:text="@string/cast"
                                 android:textColor="@color/white_txt"
-                                android:textSize="18sp"
+                                android:textSize="16sp"
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView

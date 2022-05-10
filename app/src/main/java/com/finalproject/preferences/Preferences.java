@@ -41,6 +41,15 @@ public class Preferences {
         editor.apply();
 
     }
+//    public void createUpdateOwnerData(Context context, OwnerModel ownerModel) {
+//        SharedPreferences preferences = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
+//        Gson gson = new Gson();
+//        String owner_data = gson.toJson(ownerModel);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.putString("owner_data", owner_data);
+//        editor.apply();
+//
+//    }
 
     public void create_update_user_settings(Context context, UserSettingsModel model) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("settings_pref", Context.MODE_PRIVATE);
@@ -59,6 +68,13 @@ public class Preferences {
         editor.apply();
 
     }
+//    public void clearOwnerData(Context context) {
+//        SharedPreferences preferences = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = preferences.edit();
+//        editor.clear();
+//        editor.apply();
+//
+//    }
     public UserSettingsModel getUserSettings(Context context) {
         SharedPreferences preferences = context.getSharedPreferences("settings_pref", Context.MODE_PRIVATE);
         UserSettingsModel model = new Gson().fromJson(preferences.getString("settings", ""), UserSettingsModel.class);
@@ -102,6 +118,13 @@ public class Preferences {
         UserModel userModel = gson.fromJson(user_data, UserModel.class);
         return userModel;
     }
+//    public OwnerModel getOwnerData(Context context) {
+//        SharedPreferences preferences = context.getSharedPreferences("owner", Context.MODE_PRIVATE);
+//        Gson gson = new Gson();
+//        String owner_data = preferences.getString("owner_data", "");
+//        OwnerModel ownerModel = gson.fromJson(owner_data, OwnerModel.class);
+//        return ownerModel;
+//    }
 
     public void create_update_session(Context context, String session) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("session", Context.MODE_PRIVATE);

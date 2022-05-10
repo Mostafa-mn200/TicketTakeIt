@@ -10,10 +10,12 @@ public class ShowModel implements Serializable {
     private String title;
     private String rate;
     private String image;
+    private String video;
     private String price;
     private String details;
     private String count_hours;
     private List<HeroModel> heroes;
+    private String have_or_not;
 
     public String getId() {
         return id;
@@ -29,6 +31,10 @@ public class ShowModel implements Serializable {
 
     public String getImage() {
         return image;
+    }
+
+    public String getVideo() {
+        return video;
     }
 
     public String getPrice() {
@@ -47,5 +53,12 @@ public class ShowModel implements Serializable {
         return heroes;
     }
 
+    public String getHave_or_not() {
+        return have_or_not;
+    }
+
+    public void setHave_or_not(String have_or_not) {
+        this.have_or_not = have_or_not;
+    }
 
 }

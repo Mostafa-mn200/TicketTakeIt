@@ -11,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -20,16 +19,15 @@ import android.view.ViewGroup;
 
 import com.finalproject.R;
 import com.finalproject.databinding.FragmentOwnerProfileBinding;
-import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.model.UserModel;
 import com.finalproject.mvvm.FragmentProfileMvvm;
+import com.finalproject.tags.Tags;
 import com.finalproject.ui.activity_base.BaseFragment;
 import com.finalproject.ui.activity_login.LoginActivity;
 import com.finalproject.ui.owner.activity_home.OwnerHomeActivity;
-import com.finalproject.ui.user.activity_edit_account.EditAccountActivity;
-import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_language.LanguageActivity;
+import com.finalproject.ui.activity_contact_us.ContactUsActivity;
+import com.finalproject.ui.activity_edit_account.EditAccountActivity;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.squareup.picasso.Picasso;
 
@@ -73,10 +71,10 @@ public class FragmentOwnerProfile extends BaseFragment {
         mvvm = ViewModelProviders.of(this).get(FragmentProfileMvvm.class);
 
         behavior = BottomSheetBehavior.from(binding.sheet.root);
-        userModel=getUserModel();
+        userModel =getUserModel();
         if (userModel.getData().getImage()!=null){
             String url = userModel.getData().getImage();
-            Picasso.get().load(Uri.parse(url)).into(binding.image);
+            Picasso.get().load(Uri.parse(Tags.base_url+url)).into(binding.image);
         }
         binding.setModel(userModel);
 //        binding.llEditAccount.setOnClickListener(view -> Navigation.findNavController(view).navigate(R.id.activity_edit_account));
@@ -84,19 +82,32 @@ public class FragmentOwnerProfile extends BaseFragment {
             Intent intent=new Intent(activity, EditAccountActivity.class);
             launcher.launch(intent);
         });
+
+        binding.llContactUs.setOnClickListener(view -> {
+            Intent intent1 = new Intent(activity, ContactUsActivity.class);
+            startActivity(intent1);
+        });
+
         binding.llLanguage.setOnClickListener(view -> {
-            req = 1;
-            Intent intent = new Intent(activity, LanguageActivity.class);
-            launcher.launch(intent);
+//            req = 1;
+//            Intent intent = new Intent(activity, LanguageActivity.class);
+//            launcher.launch(intent);
+                if (getLang().equals("en")) {
+                    activity.refreshActivity("ar");
+                } else {
+                    activity.refreshActivity("en");
+                }
         });
         mvvm.logout.observe(activity, aBoolean -> {
             if (aBoolean){
                 logout();
+                activity.finish();
             }
         });
         mvvm.delete.observe(activity, aBoolean -> {
             if (aBoolean){
                 logout();
+                activity.finish();
             }
         });
         binding.langName.setText(Language.getLanguageSelected(requireContext()));

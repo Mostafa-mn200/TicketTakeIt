@@ -2,8 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
-            name="day"
+            name="lang"
+            type="String" />
+
+        <variable
+            name="model"
             type="com.finalproject.model.DayModel" />
     </data>
 
@@ -11,21 +16,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:gravity="center"
         android:layout_margin="5dp"
-        android:background='@{day.selected?@drawable/selected_bg:@drawable/not_selected_bg}'
-        >
+        android:background='@{model.selected?@drawable/selected_bg:@drawable/not_selected_bg}'
+        android:gravity="center">
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:layout_gravity="center"
-            android:text='@{day.day_text}'
-            android:textSize="12sp"
-            android:textColor='@{day.selected?@color/white:@color/black}'/>
+            android:text="@{model.day}"
+            android:textColor='@{model.selected?@color/white:@color/black}'
+            android:textSize="14sp" />
+
+
+        <!--        <ImageView-->
+        <!--            android:id="@+id/imageClose"-->
+        <!--            android:layout_width="16dp"-->
+        <!--            android:layout_height="16dp"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginEnd="10dp"-->
+        <!--            android:src="@drawable/ic_close" />-->
 
     </LinearLayout>
 

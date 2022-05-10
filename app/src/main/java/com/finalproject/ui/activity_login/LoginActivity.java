@@ -23,8 +23,8 @@ import com.finalproject.ui.user.activity_home.HomeActivity;
 
 public class LoginActivity extends BaseActivity {
     private ActivityLoginBinding binding;
-    private String type="";
-    private ActivityLoginMvvm mvvm ;
+    private String type = "";
+    private ActivityLoginMvvm mvvm;
     private LoginModel loginModel;
 
 
@@ -36,7 +36,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initView() {
-        mvvm= ViewModelProviders.of(this).get(ActivityLoginMvvm.class);
+        mvvm = ViewModelProviders.of(this).get(ActivityLoginMvvm.class);
         loginModel = new LoginModel();
         binding.setModel(loginModel);
 
@@ -47,51 +47,31 @@ public class LoginActivity extends BaseActivity {
             setupbutton2();
         });
 
-        mvvm.getOnLoginSuccess().observe(this, new Observer<UserModel>() {
-            @Override
-            public void onChanged(UserModel userModel) {
-                setUserModel(userModel);
-                if (loginModel.getType().equals("customer")){
-                    navigateToUserHome();
-                }else if (loginModel.getType().equals("owner")){
-                    navigateToOwnerHome();
-                }
+        mvvm.getOnLoginSuccess().observe(this, userModel -> {
+            setUserModel(userModel);
+            if (userModel.getData().getType().equals("customer")){
+                navigateToUserHome();
+            }else if (userModel.getData().getType().equals("owner")){
+                navigateToOwnerHome();
             }
 
-            private void navigateToOwnerHome() {
-                Intent intent=new Intent(LoginActivity.this,OwnerHomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
 
-            private void navigateToUserHome() {
-                Intent intent=new Intent(LoginActivity.this,HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
         });
+
         binding.btnLogin.setOnClickListener(view -> {
             if (loginModel.isDataValid(this)) {
-
-                if (type.equals("customer")) {
-                    mvvm.loginWith(this, loginModel, "customer");
-
-
-                } else if (type.equals("owner")) {
-                    mvvm.loginWith(this, loginModel, "owner");
-
-
+                if (!type.isEmpty()) {
+                    mvvm.login(this, loginModel, type);
                 } else {
                     Toast.makeText(this, R.string.please_choose_the_user, Toast.LENGTH_SHORT).show();
                 }
             }
 
 
-
         });
         binding.txtCreate.setOnClickListener(view -> {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
         binding.forgetPass.setOnClickListener(view -> {
@@ -102,8 +82,20 @@ public class LoginActivity extends BaseActivity {
 
     }
 
+    private void navigateToOwnerHome() {
+        Intent intent = new Intent(LoginActivity.this, OwnerHomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void navigateToUserHome() {
+        Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     public void setupbutton1() {
-        type="customer";
+        type = "customer";
         loginModel.setType(type);
         binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn_clicked);
         binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn);
@@ -113,7 +105,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     public void setupbutton2() {
-        type="owner";
+        type = "owner";
         loginModel.setType(type);
         binding.btnOwner.setBackgroundResource(R.drawable.bg_user_btn_clicked);
         binding.btnCustomer.setBackgroundResource(R.drawable.bg_user_btn);

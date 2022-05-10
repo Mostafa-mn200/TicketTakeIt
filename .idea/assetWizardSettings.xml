@@ -319,8 +319,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="fdfdfd" />
-                            <entry key="outputName" value="ic_setting" />
-                            <entry key="sourceFile" value="F:\Material\Android Course\Android With Kotlin\setting.svg" />
+                            <entry key="outputName" value="ic_number_of_seats" />
+                            <entry key="sourceFile" value="F:\Material\Android Course\Android With Kotlin\number_of_seats.svg" />
                           </map>
                         </option>
                       </PersistentState>

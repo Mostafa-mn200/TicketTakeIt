@@ -3,19 +3,28 @@ package com.finalproject.model;
 import java.io.Serializable;
 
 public class DayModel implements Serializable {
-    private String day_text;
-    private boolean isSelected = false;
+    private String id;
+    private String day;
+    private boolean isSelected;
 
-    public DayModel(String day_text) {
-        this.day_text = day_text;
+    public DayModel() {
     }
 
-    public String getDay_text() {
-        return day_text;
+    public DayModel(String day) {
+        this.day = day;
     }
 
-    public void setDay_text(String day_text) {
-        this.day_text = day_text;
+
+    public String getId() {
+        return id;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 
     public boolean isSelected() {

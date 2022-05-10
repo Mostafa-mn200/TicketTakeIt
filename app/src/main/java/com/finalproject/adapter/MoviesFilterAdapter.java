@@ -16,11 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.MoviesFilterRowBinding;
 import com.finalproject.model.CategoryModel;
-import com.finalproject.model.FilterModel;
-import com.finalproject.ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
-import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
 import java.util.List;

@@ -80,6 +80,8 @@ dependencies {
     //youtube library
     implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
     implementation 'org.jetbrains:annotations:16.0.2'
+    implementation 'com.wdullaer:materialdatetimepicker:3.6.4'
+
 
 
 }

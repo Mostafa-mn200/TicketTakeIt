@@ -29,7 +29,7 @@
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup"
         tools:targetApi="q">
-        <activity android:name=".ui.user.activity_contact_us.ContactUsActivity"
+        <activity android:name=".ui.activity_contact_us.ContactUsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize"
             />
@@ -55,16 +55,11 @@
             android:name=".ui.activity_signup.SignUpActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.owner.activities_owner_home.activity_list_of_bookings.BookingListActivity"
-            android:exported="false" />
+
         <activity android:name=".ui.forgetPassword.ForgetPassActivity3" />
         <activity android:name=".ui.forgetPassword.ForgetPassActivity2" />
         <activity android:name=".ui.forgetPassword.ForgetPasswordActivity1" />
-        <activity android:name=".ui.owner.activities_owner_home.activity_shows.OwnerShowsActivity" />
-        <activity
-            android:name=".ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity"
-            android:exported="true" />
+
         <activity
             android:name=".ui.owner.activity_home.OwnerHomeActivity"
             android:exported="true" />
@@ -72,7 +67,7 @@
             android:exported="true" />
         <activity android:name=".ui.user.activity_coming_soon.ComingSoonActivity" />
         <activity
-            android:name=".ui.user.activity_show_detiles.ShowDetailsActivity"
+            android:name=".ui.user.activity_show_details.ShowDetailsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <!--
@@ -88,33 +83,32 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".ui.owner.activity_add_movie.AddMovieActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".ui.owner.activity_add_show.AddShowActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".ui.user.activity_cinema_users.CinemasUserActivity" />
+
+        <activity android:name=".ui.user.activity_cinema_users.CinemasUserShowActivity" />
+
         <activity
             android:name=".ui.user.activity_booking_seats.BookingSeatsActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.user.activity_trailar_movie.MovieDetailsActivity"
+            android:name=".ui.user.activity_booking_seats.BookingShowSeatsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.user.activity_movie_details.MovieDetailsActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.user.activity_language.LanguageActivity"
+            android:name=".ui.activity_language.LanguageActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".ui.user.activity_edit_account.EditAccountActivity"
+            android:name=".ui.activity_edit_account.EditAccountActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.user.activity_verification_code.VerificationCodeActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".ui.user.activity_noification.NotificationActivity"
             android:exported="false"

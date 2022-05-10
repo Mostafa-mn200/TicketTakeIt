@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:visibility="gone"
+            android:visibility="invisible"
         >
 
             <ImageView
@@ -45,10 +45,10 @@
             android:layout_height="250dp"
             android:scaleType="fitXY"
             android:src="@drawable/logo"
-            app:layout_constraintBottom_toBottomOf="@+id/buttonLinear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tName"
+            app:layout_constraintTop_toBottomOf="@id/tName"
+
             android:visibility="gone"/>
 
         <LinearLayout
@@ -56,36 +56,42 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
+            android:gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@id/tLogo"
-            android:visibility="gone">
+            android:visibility="visible">
 
 
             <Button
                 android:id="@+id/loginBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/item_clicked2"
-                android:minWidth="180dp"
-                android:text="Login"
+                android:minWidth="150dp"
+                android:text="@string/login"
+                android:textSize="14sp"
                 android:textAllCaps="false"
                 android:textColor="@color/white">
-
             </Button>
 
+            <androidx.legacy.widget.Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
             <Button
                 android:id="@+id/guestBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/item_clicked2"
-                android:minWidth="180dp"
-                android:text="Guest"
+                android:minWidth="150dp"
+                android:text="@string/guest"
+                android:textSize="14sp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
 

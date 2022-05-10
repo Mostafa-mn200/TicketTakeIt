@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="model"
             type="com.finalproject.model.MovieModel" />
@@ -31,16 +32,33 @@
 
                 <ImageView
                     android:id="@+id/image"
+                    image="@{model.image}"
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
                     android:scaleType="fitXY"
-                    image="@{model.image}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
 
                     />
 
+                <FrameLayout
+                    android:id="@+id/flAddToCinema"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:padding="5dp"
+                    android:background="@drawable/btn_bg2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:background='@{model.have_or_not.equals("have")?@drawable/ic_selected:@drawable/ic_not_selected,default=@drawable/ic_not_selected}'
+                        app:tint="@color/primary_dark2" />
+
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/movieName"

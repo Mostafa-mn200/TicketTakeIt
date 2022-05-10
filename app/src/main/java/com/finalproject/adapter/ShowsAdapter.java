@@ -2,6 +2,7 @@ package com.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,8 +11,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.MovieShowItemRowBinding;
+import com.finalproject.databinding.ShowRowBinding;
 import com.finalproject.model.ShowModel;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
 import com.finalproject.ui.user.activity_home.fragments.FragmentShows;
 
@@ -32,7 +34,7 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        MovieShowItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.movie_show_item_row, parent, false);
+        ShowRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.show_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -42,13 +44,26 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         myHolder.binding.setModel(list.get(position));
         if (fragment instanceof FragmentShows){
             FragmentShows fragmentShows=(FragmentShows) fragment;
+            myHolder.binding.flAddToCinema.setVisibility(View.GONE);
         }
         if (fragment instanceof FragmentOwnerShows){
             FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
+            myHolder.binding.flAddToCinema.setVisibility(View.VISIBLE);
         }
-        myHolder.binding.cardMovieItem.setOnClickListener(view -> {
-            FragmentShows fragmentShows=(FragmentShows) fragment;
-            fragmentShows.navigatetoShowDetilesActivity();
+        myHolder.itemView.setOnClickListener(view -> {
+            if (fragment instanceof FragmentShows){
+                FragmentShows fragmentShows=(FragmentShows) fragment;
+                fragmentShows.navigateToShowDetailsActivity(list.get(position),position);
+            }
+
+        });
+
+        myHolder.binding.flAddToCinema.setOnClickListener(view -> {
+            if (fragment instanceof FragmentOwnerShows) {
+                FragmentOwnerShows fragmentOwnerShows = (FragmentOwnerShows) fragment;
+                fragmentOwnerShows.setItemChecked(list.get(position),position);
+
+            }
         });
     }
 
@@ -69,9 +84,9 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public MovieShowItemRowBinding binding;
+        public ShowRowBinding binding;
 
-        public MyHolder(MovieShowItemRowBinding binding) {
+        public MyHolder(ShowRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

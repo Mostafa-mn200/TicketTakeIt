@@ -24,7 +24,7 @@
         android:id="@+id/profile"
         android:name="com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerProfile"
         android:label=""
-        tools:layout="@layout/fragment_owner_bookings" />
+        tools:layout="@layout/fragment_owner_profile" />
 
     <activity
         android:id="@+id/activity_sign_up"

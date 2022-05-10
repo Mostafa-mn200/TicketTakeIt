@@ -16,9 +16,14 @@ public class MovieModel implements Serializable {
     private String details;
     private String count_hours;
     private List<HeroModel> heroes;
+    private String have_or_not;
 
     public String getId() {
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -55,5 +60,13 @@ public class MovieModel implements Serializable {
 
     public String getCount_hours() {
         return count_hours;
+    }
+
+    public String getHave_or_not() {
+        return have_or_not;
+    }
+
+    public void setHave_or_not(String have_or_not) {
+        this.have_or_not = have_or_not;
     }
 }

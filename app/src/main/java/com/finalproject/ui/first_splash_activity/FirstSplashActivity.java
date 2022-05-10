@@ -15,6 +15,7 @@ import com.finalproject.preferences.Preferences;
 import com.finalproject.ui.activity_base.BaseActivity;
 import com.finalproject.ui.activity_login.LoginActivity;
 import com.finalproject.ui.activity_splash.SplashActivity;
+import com.finalproject.ui.owner.activity_home.OwnerHomeActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -54,7 +55,11 @@ public class FirstSplashActivity extends BaseActivity {
                     @Override
                     public void onNext(@NonNull Long aLong) {
                         if (getUserModel()!=null){
-                            navigateToLoginActivity();
+                            if (getUserModel().getData().getType().equals("customer")){
+                                navigateToCustomerHomeActivity();
+                            }else if (getUserModel().getData().getType().equals("owner")){
+                                navigateToOwnerHomeActivity();
+                            }
                         }else {
                             navigateToSecondSplashActivity();
                         }
@@ -80,8 +85,14 @@ public class FirstSplashActivity extends BaseActivity {
         finish();
     }
 
-    private void navigateToLoginActivity() {
-        Intent intent = new Intent(this, LoginActivity.class);
+    private void navigateToCustomerHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+    }
+    private void navigateToOwnerHomeActivity() {
+        Intent intent = new Intent(this, OwnerHomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
         finish();

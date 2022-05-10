@@ -49,7 +49,8 @@ public class ActivitySignupMvvm extends AndroidViewModel {
         return onSignUpSuccess;
     }
 
-    public void signupWith(Context context, SignUpModel model) {
+
+    public void signUp(Context context, SignUpModel model) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
@@ -102,6 +103,8 @@ public class ActivitySignupMvvm extends AndroidViewModel {
                     }
                 });
     }
+
+
 
     public void update(Context context, EditAccountModel model, UserModel userModel) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));

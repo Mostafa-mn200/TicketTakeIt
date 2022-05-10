@@ -116,10 +116,10 @@ public class FragmentMoviesMvvm extends AndroidViewModel {
                 });
     }
 
-    public void getMovies() {
+    public void getMovies(String search) {
         isLoading.setValue(true);
 
-        Api.getService(Tags.base_url).getMovies(getCategoryId().getValue())
+        Api.getService(Tags.base_url).getMovies(getCategoryId().getValue(),search)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<MoviesDataModel>>() {

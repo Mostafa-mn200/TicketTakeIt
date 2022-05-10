@@ -38,20 +38,23 @@
         tools:layout="@layout/activity_sign_up" />
     <activity
         android:id="@+id/activity_edit_account"
-        android:name="com.finalproject.ui.user.activity_edit_account.EditAccountActivity"
+        android:name="com.finalproject.ui.activity_edit_account.EditAccountActivity"
         android:label=""
         tools:layout="@layout/activity_edit_account" />
 
 
+    <fragment
+        android:id="@+id/fragmentSearch"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentSearch"
+        android:label=""
+        tools:layout="@layout/fragment_search" />
+
     <activity
         android:id="@+id/activity_language"
-        android:name="com.finalproject.ui.user.activity_language.LanguageActivity"
+        android:name="com.finalproject.ui.activity_language.LanguageActivity"
         android:label=""
         tools:layout="@layout/activity_language" />
 
-    <activity
-        android:id="@+id/verification_code"
-        android:name="com.finalproject.ui.user.activity_verification_code.VerificationCodeActivity"
-        android:label=""
-        tools:layout="@layout/activity_verification_code" />
+
+
 </navigation>

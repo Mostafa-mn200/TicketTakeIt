@@ -58,6 +58,15 @@ public class BaseActivity extends AppCompatActivity {
         Preferences preferences = Preferences.getInstance();
         preferences.createUpdateUserData(this, userModel);
     }
+//    protected OwnerModel getOwnerModel() {
+//        Preferences preferences = Preferences.getInstance();
+//        return preferences.getOwnerData(this);
+//    }
+
+//    protected void setOwnerModel(OwnerModel ownerModel) {
+//        Preferences preferences = Preferences.getInstance();
+//        preferences.createUpdateOwnerData(this, ownerModel);
+//    }
 
 
     public void setUserSettings(UserSettingsModel userSettingsModel) {
@@ -85,4 +94,9 @@ public class BaseActivity extends AppCompatActivity {
         preferences.clearUserData(context);
 
     }
+//    protected void clearOwnerModel(Context context) {
+//        Preferences preferences = Preferences.getInstance();
+//        preferences.clearOwnerData(context);
+//
+//    }
 }

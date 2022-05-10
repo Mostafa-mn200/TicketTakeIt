@@ -23,12 +23,6 @@ import com.finalproject.R;
 import com.finalproject.databinding.ActivityOwnerHomeBinding;
 import com.finalproject.language.Language;
 import com.finalproject.ui.activity_base.BaseActivity;
-import com.finalproject.ui.activity_login.LoginActivity;
-import com.finalproject.ui.owner.activities_owner_home.activity_list_of_bookings.BookingListActivity;
-import com.finalproject.ui.owner.activities_owner_home.activity_movies.OwnerMoviesActivity;
-import com.finalproject.ui.owner.activities_owner_home.activity_shows.OwnerShowsActivity;
-import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_language.LanguageActivity;
 
 import io.paperdb.Paper;
 

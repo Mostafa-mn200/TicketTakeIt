@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
@@ -36,7 +37,6 @@ import java.io.File;
 public class SignUpActivity extends BaseActivity {
     private ActivitySignUpBinding binding;
     private SignUpModel signUpModel;
-
     private Preferences preferences;
     private String type = "";
     private String gender = "";
@@ -83,17 +83,22 @@ public class SignUpActivity extends BaseActivity {
             finish();
         });
         mvvm.getOnSignUpSuccess().observe(this, userModel -> {
-            setUserModel(userModel);
-            if (signUpModel.getType().equals("customer")) {
-                navigateToUserHome();
-            } else if (signUpModel.getType().equals("owner")) {
-                navigateToOwnerHome();
-            }
+                setUserModel(userModel);
+                if (userModel.getData().getType().equals("customer")){
+                    navigateToUserHome();
+                }else if (userModel.getData().getType().equals("owner")){
+                    navigateToOwnerHome();
+                }
+
         });
+
         binding.btnConfirm.setOnClickListener(view -> {
 //            Log.e("data",signUpModel.getType()+" "+ signUpModel.getNational_id()+" "+signUpModel.getName()+" "+signUpModel.getEmail()+" "+signUpModel.getUser_name()+" "+signUpModel.getPassword()+" "+signUpModel.getGender());
                 if (signUpModel.isDataValid(this)) {
-                    mvvm.signupWith(this, signUpModel);
+                    if (!type.isEmpty()){
+                        mvvm.signUp(this, signUpModel);
+                    }
+
                 }
         });
         binding.txtLogin.setOnClickListener(view -> {
@@ -132,34 +137,6 @@ public class SignUpActivity extends BaseActivity {
             }
         });
 
-//        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-//            if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-//                if (selectedReq == READ_REQ) {
-//
-//                    uri = result.getData().getData();
-//                    File file = new File(Common.getImagePath(this, uri));
-//                    Picasso.get().load(file).fit().into(binding.image);
-//                    signUpModel.setImage(uri.toString());
-//                    binding.setModel(signUpModel);
-//
-//                } else if (selectedReq == CAMERA_REQ) {
-//                    Bitmap bitmap = (Bitmap) result.getData().getExtras().get("data");
-//                    uri = getUriFromBitmap(bitmap);
-//                    if (uri != null) {
-//                        String path = Common.getImagePath(this, uri);
-//                        if (path != null) {
-//                            Picasso.get().load(new File(path)).fit().into(binding.image);
-//
-//                        } else {
-//                            Picasso.get().load(uri).fit().into(binding.image);
-//
-//                        }
-//                        signUpModel.setImage(uri.toString());
-//                        binding.setModel(signUpModel);
-//                    }
-//                }
-//            }
-//        });
 
         binding.flGallery.setOnClickListener(view -> {
             closeSheet();

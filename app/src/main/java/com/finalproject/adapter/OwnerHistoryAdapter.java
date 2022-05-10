@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.OwnerHistoryRowBinding;
-import com.finalproject.ui.owner.activities_owner_home.activity_list_of_bookings.BookingListActivity;
 
 import java.util.List;
 
@@ -21,13 +20,12 @@ public class OwnerHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     private List<Object> list;
     private Context context;
     private LayoutInflater inflater;
-    private BookingListActivity activity;
+    private Fragment fragment;
 
-
-    public OwnerHistoryAdapter(Context context) {
+    public OwnerHistoryAdapter(Context context,Fragment fragment) {
         this.context = context;
+        this.fragment=fragment;
         inflater = LayoutInflater.from(context);
-        activity=(BookingListActivity) context;
     }
 
     @NonNull

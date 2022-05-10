@@ -49,7 +49,6 @@
                         android:id="@+id/llProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:layout_gravity="center_horizontal">
 
                         <FrameLayout
@@ -57,11 +56,11 @@
                             android:layout_width="130dp"
                             android:layout_height="130dp"
                             android:layout_gravity="center_horizontal"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/circle_fill_color"
+                            android:layout_marginTop="20dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image"
@@ -69,7 +68,7 @@
                                 android:layout_height="match_parent"
                                 android:clickable="false"
                                 android:longClickable="false"
-                                app:civ_border_color="@color/purple_200"
+                                app:civ_border_color="@color/white"
                                 app:civ_border_width="1dp"
                                 app:civ_circle_background_color="@color/white" />
 
@@ -77,11 +76,13 @@
                                 android:id="@+id/icon"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:background="@drawable/circle_fill_color2"
                                 android:clickable="false"
                                 android:longClickable="false"
-                                android:padding="4dp"
-                                android:background="@drawable/circle_fill_color2"
+                                android:padding="8dp"
                                 android:src="@drawable/circle_avatar" />
+
+
                         </FrameLayout>
 
                         <FrameLayout

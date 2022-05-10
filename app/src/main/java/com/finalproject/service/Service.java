@@ -1,14 +1,18 @@
 package com.finalproject.service;
 
 import com.finalproject.model.CategoryDataModel;
+import com.finalproject.model.CinemaDataModel;
+import com.finalproject.model.DayDataModel;
 import com.finalproject.model.HomeDataModel;
 import com.finalproject.model.MovieDetailsDataModel;
 import com.finalproject.model.MoviesDataModel;
+import com.finalproject.model.SeatsModel;
 import com.finalproject.model.ShowDetailsDataModel;
 import com.finalproject.model.ShowDataModel;
 import com.finalproject.model.ShowModel;
 import com.finalproject.model.SliderDataModel;
 import com.finalproject.model.StatusResponse;
+import com.finalproject.model.TimeDataModel;
 import com.finalproject.model.UserModel;
 
 import java.util.List;
@@ -40,11 +44,10 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("api/login")
-    Single<Response<UserModel>> logIn(
+    Single<Response<UserModel>> login(
             @Field("user_name") String user_name,
             @Field("password") String password,
-            @Field("type") String type
-    );
+            @Field("type") String type);
 
     @FormUrlEncoded
     @POST("api/logoutOrDelete")
@@ -76,10 +79,11 @@ public interface Service {
     Single<Response<HomeDataModel>> getHomeData();
 
     @GET("api/posts/show")
-    Single<Response<ShowDataModel>> getShow();
+    Single<Response<ShowDataModel>> getShow(@Query("title") String title);
 
     @GET("api/posts/move")
-    Single<Response<MoviesDataModel>> getMovies(@Query("category_id") String category_id);
+    Single<Response<MoviesDataModel>> getMovies(@Query("category_id") String category_id,
+                                                @Query("title") String title);
 
     @GET("api/categories")
     Single<Response<CategoryDataModel>> getCategories();
@@ -97,5 +101,21 @@ public interface Service {
             @Field("phone") String phone,
             @Field("message") String message
     );
+
+    @GET("api/cinemas")
+    Single<Response<CinemaDataModel>> getCinemas();
+
+    @GET("api/postDays")
+    Single<Response<DayDataModel>> getDays(@Query("cinema_id") String cinema_id,
+                                           @Query("post_id") String post_id);
+
+    @GET("api/hoursOfDay")
+    Single<Response<TimeDataModel>> getTimes(@Query("day_id") String day_id);
+
+    @GET("api/chairStatus")
+    Single<Response<SeatsModel>> getSeats(@Query("cinema_id") String cinema_id,
+                                          @Query("day_id") String day_id,
+                                          @Query("hour_id") String hour_id);
+
 
 }

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ComingSoonItemBinding;
-import com.finalproject.databinding.MovieShowItemRowBinding;
 import com.finalproject.model.ComingSoonModel;
 
 import org.jetbrains.annotations.NotNull;
