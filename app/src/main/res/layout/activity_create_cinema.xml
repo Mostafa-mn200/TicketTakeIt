@@ -21,6 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             >
+            <include android:id="@+id/toolbar"
+                layout="@layout/toolbar"/>
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nested"
@@ -30,7 +32,7 @@
                 android:layout_marginBottom="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
                 app:layout_constraintBottom_toTopOf="@id/btnCreate"
                 >
 
@@ -38,31 +40,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
-                    <androidx.appcompat.widget.Toolbar
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/toolbar_shape">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="@string/create_cinema"
-                                android:textColor="@color/white"
-                                android:textSize="18sp"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </androidx.appcompat.widget.Toolbar>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -85,13 +62,14 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            error="@{model.error_cinema_name}"
+                            android:id="@+id/etName"
+                            error="@{model.error_title}"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
                             android:background="@color/transparent"
                             android:hint="@string/name"
-                            android:text="@={model.cinema_name}"
-                            android:layout_marginTop="5dp"
+                            android:text="@={model.title}"
                             android:textColor="@color/white"
                             android:textColorHint="@color/gray12"
                             android:textSize="14sp" />
@@ -118,12 +96,13 @@
                         android:padding="8dp">
 
                         <EditText
-                            error="@{model.error_ticket_price}"
+                            android:id="@+id/etPrice"
+                            error="@{model.error_price}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
                             android:hint="@string/price2"
-                            android:text="@={model.ticket_price}"
+                            android:text="@={model.price}"
                             android:textColor="@color/white"
                             android:textColorHint="@color/gray12"
                             android:textSize="14sp"/>
@@ -138,88 +117,36 @@
                         android:textColor="@color/white"
                         android:textSize="16sp" />
 
-                    <FrameLayout
+                    <LinearLayout
+                        android:id="@+id/llSearch"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="10dp"
+                        android:orientation="horizontal"
                         android:background="@drawable/small_stroke_color2"
                         >
 
                         <EditText
-                            error="@{model.error_address}"
-                            android:id="@+id/edtSearch"
-                            android:layout_width="match_parent"
+                            android:id="@+id/etLocation"
+                            error="@{model.error_location}"
+                            android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:background="@color/transparent"
                             android:hint="@string/location"
-                            android:imeOptions="actionSearch"
                             android:lines="1"
-                            android:text="@={model.address}"
+                            android:text="@={model.location}"
                             android:singleLine="true"
                             android:padding="8dp"
-                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:textColor="@color/white"
+                            android:layout_gravity="center_vertical"
                             android:textColorHint="@color/gray12"
                             android:textSize="14sp" />
 
-                    </FrameLayout>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginEnd="10dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="0dp">
-
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/small_stroke_color2"
-                            >
-
-                            <fragment
-                                android:id="@+id/map"
-                                android:name="com.finalproject.ui.activity_base.FragmentMapTouchListener"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent" />
-                        </FrameLayout>
-                    </androidx.cardview.widget.CardView>
-<!--                    <LinearLayout-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="50dp"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:layout_marginTop="5dp"-->
-<!--                        android:layout_marginEnd="10dp"-->
-<!--                        android:background="@drawable/small_stroke_color2"-->
-<!--                        android:orientation="horizontal"-->
-
-<!--                        >-->
-
-<!--                        <TextView-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_height="match_parent"-->
-<!--                            android:layout_weight="1"-->
-<!--                            android:gravity="center_vertical"-->
-<!--                            android:hint="@string/location"-->
-<!--                            android:paddingStart="8dp"-->
-<!--                            android:paddingEnd="8dp"-->
-<!--                            android:textColor="@color/white"-->
-<!--                            android:textColorHint="@color/gray12"-->
-<!--                            android:textSize="14sp" />-->
-
-<!--                        <ImageView-->
-<!--                            android:layout_width="16dp"-->
-<!--                            android:layout_height="16dp"-->
-<!--                            android:layout_gravity="center_vertical"-->
-<!--                            android:layout_marginStart="8dp"-->
-<!--                            android:layout_marginEnd="8dp"-->
-<!--                            android:rotation='@{lang.equals("en")?180:0}'-->
-<!--                            android:src="@drawable/ic_left_arrow"-->
-<!--                            app:tint="@color/white" />-->
-<!--                    </LinearLayout>-->
+                    </LinearLayout>
 
 
                     <TextView
@@ -243,12 +170,13 @@
                         android:padding="5dp">
 
                         <EditText
-                            error="@{model.error_number_of_seats}"
+                            android:id="@+id/etNumber"
+                            error="@{model.error_chairs_count}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/transparent"
                             android:hint="@string/number"
-                            android:text="@={model.number_of_seats}"
+                            android:text="@={model.chairs_count}"
                             android:textColor="@color/white"
                             android:textColorHint="@color/gray12"
                             android:textSize="14sp"/>
@@ -262,10 +190,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:background="@color/color2"
+                android:background="@color/white"
                 android:text="@string/create"
                 android:textAllCaps="false"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_dark2"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

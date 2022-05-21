@@ -70,6 +70,7 @@
                                     android:longClickable="false"
                                     app:civ_border_color="@color/white"
                                     app:civ_border_width="1dp"
+                                    user_image="@{model.data.image}"
                                     app:civ_circle_background_color="@color/white" />
 
                                 <de.hdodenhof.circleimageview.CircleImageView
@@ -95,7 +96,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="15dp"
-                            android:text="@{model.data.name}"
+                            android:text='@{model==null?@string/login:model.data.name,default=@string/login}'
                             android:textColor="@color/white"
                             android:textSize="18sp" />
 
@@ -112,9 +113,11 @@
                         android:minHeight="56dp"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
+                        android:paddingEnd="16dp"
+                        >
 
-                        <ImageView
+
+                    <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_edit_acc" />
@@ -210,9 +213,11 @@
                         android:minHeight="56dp"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
+                        android:paddingEnd="16dp"
+                        android:visibility='@{model==null?View.GONE:View.VISIBLE,default=gone}'>
 
-                        <ImageView
+
+                    <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_logout" />
@@ -237,9 +242,11 @@
                         android:minHeight="56dp"
                         android:orientation="horizontal"
                         android:paddingStart="16dp"
-                        android:paddingEnd="16dp">
+                        android:paddingEnd="16dp"
+                        android:visibility='@{model==null?View.GONE:View.VISIBLE,default=gone}'>
 
-                        <ImageView
+
+                    <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_delete_acc" />

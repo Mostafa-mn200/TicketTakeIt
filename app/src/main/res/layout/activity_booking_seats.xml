@@ -10,13 +10,17 @@
             type="String" />
 
         <variable
-            name="movieModel"
-            type="com.finalproject.model.MovieModel" />
+            name="postModel"
+            type="com.finalproject.model.PostModel" />
 
         <variable
             name="cinemaModel"
             type="com.finalproject.model.CinemaModel" />
+        <variable
+            name="model"
+            type="com.finalproject.model.BookCinemaModel" />
 
+        <import type="android.view.View" />
     </data>
 
     <FrameLayout
@@ -69,7 +73,7 @@
                                     app:cardElevation="3dp">
 
                                     <ImageView
-                                        image="@{movieModel.image}"
+                                        image="@{postModel.image}"
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:scaleType="fitXY" />
@@ -90,7 +94,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_vertical|center_horizontal"
                                         android:layout_marginTop="3dp"
-                                        android:text="@{movieModel.title}"
+                                        android:text="@{postModel.title}"
                                         android:textColor="@color/white_txt"
                                         android:textSize="16sp"
                                         android:textStyle="bold" />
@@ -103,7 +107,8 @@
                                         android:background="@drawable/text_shap"
                                         android:paddingStart="5dp"
                                         android:paddingEnd="5dp"
-                                        android:text="@{movieModel.category.title}"
+                                        android:text='@{postModel.type.equals("move")?postModel.category.title:""}'
+                                        android:visibility='@{postModel.type.equals("move")?View.VISIBLE:View.GONE,default=gone}'
                                         android:textColor="@color/white_txt"
                                         android:textSize="14sp" />
 
@@ -126,7 +131,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
                                             android:layout_marginEnd="20dp"
-                                            android:text='@{movieModel.rate+" "}'
+                                            android:text='@{postModel.rate+" "}'
                                             android:textColor="@color/white_txt"
                                             android:textSize="14sp" />
 
@@ -141,7 +146,7 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
-                                            android:text='@{movieModel.count_hours+""}'
+                                            android:text='@{postModel.count_hours+""}'
                                             android:textColor="@color/white_txt"
                                             android:textSize="14sp" />
                                     </LinearLayout>
@@ -171,7 +176,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:textStyle="bold"
-                            android:text="@{cinemaModel.title}"
+                            android:text="@{cinemaModel.Model.title}"
                             android:textColor="@color/primary_dark2"
                             android:textSize="16sp" />
 
@@ -194,43 +199,50 @@
                                 android:layout_marginStart="3dp"
                                 android:layout_marginEnd="3dp"
                                 android:layout_weight="1"
-                                android:text="@{cinemaModel.location}"
+                                android:text="@{cinemaModel.Model.location}"
                                 android:textColor="@color/primary_dark2"
                                 android:textSize="14sp" />
                         </LinearLayout>
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_margin="8dp"
+                        android:minWidth="150dp"
+                        android:background="@drawable/spinner_snap"
+                        android:orientation="horizontal">
 
-                    <!--                    <LinearLayout-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="40dp"-->
-                    <!--                        android:layout_marginStart="8dp"-->
-                    <!--                        android:layout_marginTop="40dp"-->
-                    <!--                        android:layout_marginEnd="8dp"-->
-                    <!--                        android:layout_marginBottom="8dp"-->
-                    <!--                        android:background="@drawable/spinner_snap"-->
-                    <!--                        android:orientation="horizontal">-->
 
-                    <!--                        <ImageView-->
-                    <!--                            android:layout_width="35dp"-->
-                    <!--                            android:layout_height="35dp"-->
-                    <!--                            android:layout_gravity="center_vertical"-->
-                    <!--                            android:clickable="false"-->
-                    <!--                            android:longClickable="false"-->
-                    <!--                            android:padding="5dp"-->
-                    <!--                            android:src="@drawable/location"-->
-                    <!--                            app:tint="@color/primary_dark2" />-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:paddingStart="8dp"
+                            android:paddingEnd="8dp"
+                            android:text="@string/single_price"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
 
-                    <!--                        <TextView-->
-                    <!--                            android:layout_width="match_parent"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:layout_gravity="center_vertical"-->
-                    <!--                            android:paddingStart="8dp"-->
-                    <!--                            android:paddingEnd="8dp"-->
-                    <!--                            android:text="location"-->
-                    <!--                            android:textColor="@color/primary_dark2"-->
-                    <!--                            android:textSize="16sp" />-->
-                    <!--                    </LinearLayout>-->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text='@{cinemaModel.Model.price+" "}'
+                            android:textStyle="bold"
+                            android:textColor="@color/primary_dark2"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/egp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:id="@+id/llDay"
@@ -258,7 +270,7 @@
                             android:layout_weight="1"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
-                            android:text="day"
+                            android:text="@string/day"
                             android:textColor="@color/primary_dark2"
                             android:textSize="14sp" />
 
@@ -266,7 +278,8 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
                             android:rotation='@{lang.equals("ar")?180:0}'
                             android:src="@drawable/ic_arrow_right"
                             app:tint="@color/primary_dark2" />
@@ -298,7 +311,7 @@
                             android:layout_weight="1"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
-                            android:text="time"
+                            android:text="@string/time"
                             android:textColor="@color/primary_dark2"
                             android:textSize="14sp" />
 
@@ -306,7 +319,8 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
                             android:rotation='@{lang.equals("ar")?180:0}'
                             android:src="@drawable/ic_arrow_right"
                             app:tint="@color/primary_dark2" />
@@ -347,7 +361,8 @@
                             android:layout_width="25dp"
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
-                            android:layout_marginEnd="5dp"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
                             android:rotation='@{lang.equals("ar")?180:0}'
                             android:src="@drawable/ic_arrow_right"
                             app:tint="@color/primary_dark2" />
@@ -399,13 +414,22 @@
                             android:textSize="16sp" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:id="@+id/totalPrice"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            android:text="200"
                             android:textStyle="bold"
                             android:textColor="@color/primary_dark2"
                             android:textSize="16sp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/egp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginEnd="3dp"
+                            android:textSize="14sp"
+                            android:textColor="@color/black"/>
                     </LinearLayout>
 
                     <Button
@@ -459,23 +483,30 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <LinearLayout
                             android:id="@+id/closeDay"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_close" />
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/day"
-                            android:textColor="@color/primary_dark2"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            >
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_close" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:text="@string/day"
+                                android:textColor="@color/primary_dark2"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
 
                         <androidx.legacy.widget.Space
                             android:layout_width="0dp"
@@ -495,13 +526,26 @@
 
 
                     </LinearLayout>
-
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recViewDay"
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="15dp" />
+                        >
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recViewDay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp" />
+                        <TextView
+                            android:id="@+id/tvNoDays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/no_days_to_show"
+                            android:layout_gravity="center"
+                            android:textSize="16sp"
+                            android:textColor="@color/primary_dark2"
+                            android:visibility="gone"/>
+                    </FrameLayout>
+
 
                 </LinearLayout>
 
@@ -543,23 +587,30 @@
                         android:layout_marginEnd="20dp"
                         android:orientation="horizontal">
 
-                        <ImageView
+                        <LinearLayout
                             android:id="@+id/closeTime"
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_close" />
-
-                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:text="@string/time"
-                            android:textColor="@color/primary_dark2"
-                            android:textSize="22sp"
-                            android:textStyle="bold" />
+                            android:orientation="horizontal"
+                            >
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_close" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:text="@string/time"
+                                android:textColor="@color/primary_dark2"
+                                android:textSize="22sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
 
                         <androidx.legacy.widget.Space
                             android:layout_width="0dp"
@@ -578,12 +629,26 @@
                             android:visibility="gone" />
 
                     </LinearLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recViewTime"
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="15dp" />
+                        >
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recViewTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp" />
+                        <TextView
+                            android:id="@+id/tvNoTimes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="@string/no_times_to_show"
+                            android:textSize="16sp"
+                            android:visibility="gone"
+                            android:textColor="@color/primary_dark2"/>
+                    </FrameLayout>
+
 
                 </LinearLayout>
 

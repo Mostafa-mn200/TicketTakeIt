@@ -144,7 +144,6 @@
                         android:id="@+id/llProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:layout_gravity="center_horizontal">
 
                         <FrameLayout
@@ -155,7 +154,8 @@
                             android:layout_marginTop="15dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            app:layout_constraintTop_toTopOf="parent"
+                            >
 
                             <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/image"
@@ -163,11 +163,19 @@
                                 android:layout_height="match_parent"
                                 android:clickable="false"
                                 android:longClickable="false"
-                                app:civ_border_color="@color/purple_200"
+                                app:civ_border_color="@color/white"
                                 app:civ_border_width="1dp"
-                                android:src="@drawable/circle_avatar"
-
                                 app:civ_circle_background_color="@color/white" />
+
+                            <ImageView
+                                android:id="@+id/icon"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/circle_fill_color2"
+                                android:clickable="false"
+                                android:longClickable="false"
+                                android:padding="8dp"
+                                android:src="@drawable/circle_avatar" />
 
 
                         </FrameLayout>
@@ -196,6 +204,63 @@
                         </FrameLayout>
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--                    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                        android:id="@+id/llProfile"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+
+<!--                        android:layout_gravity="center_horizontal">-->
+
+<!--                        <FrameLayout-->
+<!--                            android:id="@+id/flImage"-->
+<!--                            android:layout_width="130dp"-->
+<!--                            android:layout_height="130dp"-->
+<!--                            android:layout_gravity="center_horizontal"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:id="@+id/image"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:clickable="false"-->
+<!--                                android:longClickable="false"-->
+<!--                                app:civ_border_color="@color/purple_200"-->
+<!--                                app:civ_border_width="1dp"-->
+<!--                                android:src="@drawable/circle_avatar"-->
+
+<!--                                app:civ_circle_background_color="@color/white" />-->
+
+
+<!--                        </FrameLayout>-->
+
+<!--                        <FrameLayout-->
+<!--                            android:id="@+id/llChangePhoto"-->
+<!--                            android:layout_width="40dp"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            app:layout_constraintBottom_toBottomOf="@id/flImage"-->
+<!--                            app:layout_constraintEnd_toEndOf="@id/flImage"-->
+<!--                            app:layout_constraintHorizontal_bias=".1"-->
+<!--                            app:layout_constraintStart_toStartOf="@id/flImage"-->
+<!--                            app:layout_constraintTop_toTopOf="@id/flImage"-->
+<!--                            app:layout_constraintVertical_bias="1">-->
+
+<!--                            <de.hdodenhof.circleimageview.CircleImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:src="@color/color2" />-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:padding="10dp"-->
+<!--                                android:src="@drawable/ic_edit" />-->
+<!--                        </FrameLayout>-->
+
+<!--                    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
                     <LinearLayout
                         android:id="@+id/llGender"
@@ -290,7 +355,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edNationalID"
+                            android:id="@+id/etNationalId"
                             error="@{model.error_national_id}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -342,7 +407,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edFullName"
+                            android:id="@+id/etName"
                             error="@{model.error_name}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -394,7 +459,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edEmail"
+                            android:id="@+id/etEmail"
                             error="@{model.error_email}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -442,7 +507,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edUserName"
+                            android:id="@+id/etUserName"
                             error="@{model.error_user_name}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -506,7 +571,7 @@
                             app:passwordToggleTint="@color/white">
 
                             <EditText
-                                android:id="@+id/edPassword"
+                                android:id="@+id/etPassword"
                                 error="@{model.error_password}"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -685,6 +750,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:background="@color/black_trans"
+            android:clickable="false"
+            android:longClickable="false"
             android:padding="16dp"
             app:el_duration="800"
             app:el_expanded="false"

@@ -1,9 +1,8 @@
 package com.finalproject.adapter;
 
 import android.content.Context;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -13,18 +12,23 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.OwnerHistoryRowBinding;
+import com.finalproject.model.PostModel;
+import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
+import com.finalproject.ui.owner.activity_home.fragments.cinema_module.FragmentOwnerCinema;
+import com.finalproject.ui.owner.activity_home.fragments.cinema_module.fragments.FragmentCinemaMovies;
+import com.finalproject.ui.owner.activity_home.fragments.cinema_module.fragments.FragmentCinemaShows;
 
 import java.util.List;
 
 public class OwnerHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<Object> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
 
-    public OwnerHistoryAdapter(Context context,Fragment fragment) {
+    public OwnerHistoryAdapter(Context context, Fragment fragment) {
         this.context = context;
-        this.fragment=fragment;
+        this.fragment = fragment;
         inflater = LayoutInflater.from(context);
     }
 
@@ -38,18 +42,28 @@ public class OwnerHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        myHolder.binding.movieName.setText("SpiderMan");
-        myHolder.binding.llHeader.setOnClickListener(view -> {
-            if (!myHolder.binding.expand.isExpanded()) {
-                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
-                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_top);
-                myHolder.binding.expand.setExpanded(true);
-            } else {
-                TransitionManager.beginDelayedTransition(myHolder.binding.cardItem, new AutoTransition());
-                myHolder.binding.arrowClicked.setImageResource(R.drawable.ic_down);
-                myHolder.binding.expand.collapse(true);
+        myHolder.binding.setModel(list.get(position));
+        myHolder.itemView.setOnClickListener(view -> {
+            if (fragment instanceof FragmentCinemaMovies) {
+                FragmentCinemaMovies fragmentCinemaMovies = (FragmentCinemaMovies) fragment;
+                fragmentCinemaMovies.navigateToDetails(myHolder.getAdapterPosition(), list.get(position));
+            } else if (fragment instanceof FragmentCinemaShows) {
+                FragmentCinemaShows fragmentCinemaShows = (FragmentCinemaShows) fragment;
+                fragmentCinemaShows.navigateToDetails(myHolder.getAdapterPosition(), list.get(position));
             }
         });
+
+        myHolder.binding.flDelete.setOnClickListener(view -> {
+            if (fragment instanceof FragmentCinemaMovies){
+                FragmentCinemaMovies fragmentCinemaMovies=(FragmentCinemaMovies) fragment;
+                fragmentCinemaMovies.delete(myHolder.getAdapterPosition(),list.get(myHolder.getLayoutPosition()));
+            }
+            if (fragment instanceof FragmentCinemaShows) {
+                FragmentCinemaShows fragmentCinemaShows = (FragmentCinemaShows) fragment;
+                fragmentCinemaShows.delete(myHolder.getAdapterPosition(),list.get(myHolder.getLayoutPosition()));
+            }
+        });
+
     }
 
     @Override
@@ -57,11 +71,11 @@ public class OwnerHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         if (list != null) {
             return list.size();
         } else {
-            return 5;
+            return 0;
         }
     }
 
-    public void updateList(List<Object> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

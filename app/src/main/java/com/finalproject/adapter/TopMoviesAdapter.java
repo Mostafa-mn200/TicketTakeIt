@@ -10,14 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.TopMoviesItemRowBinding;
-import com.finalproject.model.MovieModel;
+import com.finalproject.databinding.TopPostItemRowBinding;
+import com.finalproject.model.PostModel;
 import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 
 public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<MovieModel> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -32,7 +32,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        TopMoviesItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_movies_item_row, parent, false);
+        TopPostItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_post_item_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -43,7 +43,7 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         myHolder.itemView.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
-            fragmentHome.navigateToMovieDetailsActivity(list.get(myHolder.getAbsoluteAdapterPosition()),myHolder.getAdapterPosition());
+            fragmentHome.navigateToDetailsActivity(list.get(myHolder.getAbsoluteAdapterPosition()),myHolder.getAdapterPosition());
         });
 
 
@@ -58,15 +58,15 @@ public class TopMoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
 
-    public void updateList(List<MovieModel> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public TopMoviesItemRowBinding binding;
+        public TopPostItemRowBinding binding;
 
-        public MyHolder(TopMoviesItemRowBinding binding) {
+        public MyHolder(TopPostItemRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

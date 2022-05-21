@@ -1,11 +1,16 @@
 package com.finalproject.ui.user.activity_home.fragments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -17,15 +22,20 @@ import com.finalproject.R;
 
 import com.finalproject.adapter.HistoryAdapter;
 import com.finalproject.databinding.FragmentHistoryBinding;
-import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.model.HistoryModel;
+import com.finalproject.mvvm.FragmentHistoryMvvm;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
 import com.finalproject.ui.user.activity_home.HomeActivity;
+import com.finalproject.ui.user.activity_user_booking_details.UserBookingDetailsActivity;
 
 
 public class FragmentHistory extends BaseFragment {
     private HomeActivity activity;
     private FragmentHistoryBinding binding;
     private HistoryAdapter historyAdapter;
-
+    private FragmentHistoryMvvm mvvm;
+    private ActivityResultLauncher<Intent> launcher;
+    private int req = 1;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -47,11 +57,40 @@ public class FragmentHistory extends BaseFragment {
     }
 
     private void initView() {
-        historyAdapter = new HistoryAdapter(activity, this);
+        mvvm = ViewModelProviders.of(this).get(FragmentHistoryMvvm.class);
+
+
+        historyAdapter = new HistoryAdapter(activity, this,getLang());
         binding.recyclerHistory.setLayoutManager(new LinearLayoutManager(activity));
         binding.recyclerHistory.setAdapter(historyAdapter);
+
+        mvvm.getIsLoadingLivData().observe(activity, isLoading -> binding.swipeRef.setRefreshing(isLoading));
+        binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
+        mvvm.getOnHistorySuccess().observe(activity, historyModels -> {
+            if (historyModels!=null && historyModels.size() > 0) {
+                binding.cardNoData.setVisibility(View.GONE);
+            } else {
+                binding.cardNoData.setVisibility(View.VISIBLE);
+            }
+            historyAdapter.updateList(historyModels);
+        });
+        mvvm.getHistory(getUserModel());
+
+        binding.swipeRef.setOnRefreshListener(() -> {
+            mvvm.getHistory(getUserModel());
+        });
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 1 && result.getResultCode()== Activity.RESULT_OK) {
+                mvvm.getHistory(getUserModel());
+            }
+        });
+    }
+
+    public void navigateToDetails(HistoryModel historyModel, int adapterPosition) {
+        req=1;
+        Intent intent=new Intent(activity, UserBookingDetailsActivity.class);
+        intent.putExtra("model",historyModel);
+        launcher.launch(intent);
+
     }
 }
-
-
-

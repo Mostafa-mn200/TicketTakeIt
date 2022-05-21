@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.finalproject.model.ShowModel" />
+            type="com.finalproject.model.PostModel" />
 
     </data>
 

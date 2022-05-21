@@ -83,7 +83,7 @@ public class FragmentProfileMvvm extends AndroidViewModel {
                         dialog.dismiss();
                         if (response.isSuccessful()) {
                             if (response.body().getStatus() == 200) {
-                                delete.postValue(true);
+                                delete.setValue(true);
                             }
                         }
                     }

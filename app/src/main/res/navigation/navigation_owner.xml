@@ -16,10 +16,10 @@
         android:label=""
         tools:layout="@layout/fragment_owner_shows" />
     <fragment
-        android:id="@+id/history"
-        android:name="com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerBookings"
+        android:id="@+id/cinema"
+        android:name="com.finalproject.ui.owner.activity_home.fragments.cinema_module.FragmentOwnerCinema"
         android:label=""
-        tools:layout="@layout/fragment_owner_bookings" />
+        tools:layout="@layout/fragment_owner_cinema" />
     <fragment
         android:id="@+id/profile"
         android:name="com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerProfile"
@@ -28,7 +28,7 @@
 
     <activity
         android:id="@+id/activity_sign_up"
-        android:name="com.finalproject.ui.activity_signup.SignUpActivity"
+        android:name="com.finalproject.ui.common_uis.activity_signup.SignUpActivity"
         android:label=""
         tools:layout="@layout/activity_sign_up" />
 

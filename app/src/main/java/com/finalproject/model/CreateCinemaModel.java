@@ -13,122 +13,109 @@ import com.finalproject.R;
 import java.io.Serializable;
 import java.util.List;
 
-public class CreateCinemaModel extends BaseObservable implements Serializable {
-    private String cinema_name;
-    private String ticket_price;
-    private String latitude;
-    private String longitude;
-    private String address;
-    private String number_of_seats;
+public class CreateCinemaModel extends BaseObservable {
+    private String user_id;
+    private String title;
+    private String location;
+    private String chairs_count;
+    private String price;
 
-    public ObservableField<String> error_cinema_name = new ObservableField<>();
-    public ObservableField<String> error_ticket_price = new ObservableField<>();
-    public ObservableField<String> error_address = new ObservableField<>();
-    public ObservableField<String> error_number_of_seats = new ObservableField<>();
+
+    public ObservableField<String> error_title = new ObservableField<>();
+    public ObservableField<String> error_location = new ObservableField<>();
+    public ObservableField<String> error_chairs_count = new ObservableField<>();
+    public ObservableField<String> error_price = new ObservableField<>();
 
     public boolean isDataValid(Context context) {
-        if (!cinema_name.isEmpty() &&
-                !ticket_price.isEmpty() &&
-                !address.isEmpty() &&
-                !number_of_seats.isEmpty()) {
-            error_cinema_name.set(null);
-            error_ticket_price.set(null);
-            error_address.set(null);
-            error_number_of_seats.set(null);
+        if (!title.isEmpty() &&
+                !location.isEmpty() &&
+                !chairs_count.isEmpty() &&
+                !price.isEmpty()) {
+            error_title.set(null);
+            error_location.set(null);
+            error_chairs_count.set(null);
+            error_price.set(null);
             return true;
         } else {
-            if (cinema_name.isEmpty()) {
-                error_cinema_name.set(context.getString(R.string.field_required));
+            if (title.isEmpty()) {
+                error_title.set(context.getString(R.string.field_required));
             } else {
-                error_cinema_name.set(null);
+                error_title.set(null);
             }
-            if (ticket_price.isEmpty()) {
-                error_ticket_price.set(context.getString(R.string.field_required));
+            if (location.isEmpty()) {
+                error_location.set(context.getString(R.string.field_required));
             } else {
-                error_ticket_price.set(null);
+                error_location.set(null);
             }
-            if (address.isEmpty()) {
-                error_address.set(context.getString(R.string.field_required));
+            if (chairs_count.isEmpty()) {
+                error_chairs_count.set(context.getString(R.string.field_required));
 
             } else {
-                error_address.set(null);
+                error_chairs_count.set(null);
 
             }
-            if (number_of_seats.isEmpty()) {
-                error_number_of_seats.set(context.getString(R.string.field_required));
+            if (price.isEmpty()) {
+                error_price.set(context.getString(R.string.field_required));
             } else {
-                error_number_of_seats.set(null);
+                error_price.set(null);
             }
             return false;
         }
     }
 
     public CreateCinemaModel() {
-        this.cinema_name = "";
-        this.ticket_price = "";
-        this.address = "";
-        this.latitude = "";
-        this.longitude = "";
-        this.number_of_seats = "";
+        this.user_id = "";
+        this.title = "";
+        this.location = "";
+        this.chairs_count = "";
+        this.price = "";
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     @Bindable
-    public String getCinema_name() {
-        return cinema_name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCinema_name(String cinema_name) {
-        this.cinema_name = cinema_name;
-        notifyPropertyChanged(BR.cinema_name);
-    }
-
-    @Bindable
-    public String getTicket_price() {
-        return ticket_price;
-    }
-
-    public void setTicket_price(String ticket_price) {
-        this.ticket_price = ticket_price;
-        notifyPropertyChanged(BR.ticket_price);
+    public void setTitle(String title) {
+        this.title = title;
+        notifyPropertyChanged(BR.title);
     }
 
     @Bindable
-    public String getLatitude() {
-        return latitude;
+    public String getLocation() {
+        return location;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-        notifyPropertyChanged(BR.latitude);
-    }
-
-    @Bindable
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-        notifyPropertyChanged(BR.longitude);
+    public void setLocation(String location) {
+        this.location = location;
+        notifyPropertyChanged(BR.location);
     }
 
     @Bindable
-    public String getAddress() {
-        return address;
+    public String getChairs_count() {
+        return chairs_count;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-        notifyPropertyChanged(BR.address);
+    public void setChairs_count(String chairs_count) {
+        this.chairs_count = chairs_count;
+        notifyPropertyChanged(BR.chairs_count);
     }
 
     @Bindable
-    public String getNumber_of_seats() {
-        return number_of_seats;
+    public String getPrice() {
+        return price;
     }
 
-    public void setNumber_of_seats(String number_of_seats) {
-        this.number_of_seats = number_of_seats;
-        notifyPropertyChanged(BR.number_of_seats);
+    public void setPrice(String price) {
+        this.price = price;
+        notifyPropertyChanged(BR.price);
     }
 }

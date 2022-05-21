@@ -14,7 +14,7 @@
     <item android:state_selected="true">
         <shape android:shape="oval">
             <padding android:left="5dp" />
-            <solid android:color="#995BE4" />
+            <solid android:color="#450038" />
         </shape>
     </item>
 

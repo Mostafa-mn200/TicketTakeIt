@@ -1,86 +1,86 @@
 package com.finalproject.ui.owner.activity_create_cinema;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityCreateCinemaBinding;
 import com.finalproject.model.CreateCinemaModel;
-import com.finalproject.model.LocationModel;
-import com.finalproject.mvvm.ActivityMapMvvm;
-import com.finalproject.ui.activity_base.BaseActivity;
+
+import com.finalproject.model.UserModel;
+import com.finalproject.mvvm.ActivityCreateCinemaMvvm;
+import com.finalproject.preferences.Preferences;
+import com.finalproject.share.Common;
+import com.finalproject.ui.common_uis.activity_base.BaseActivity;
 import com.finalproject.ui.owner.activity_home.OwnerHomeActivity;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-public class CreateCinemaActivity extends BaseActivity implements OnMapReadyCallback {
+public class CreateCinemaActivity extends BaseActivity {
     private ActivityCreateCinemaBinding binding;
-    private GoogleMap mMap;
-    private float zoom = 15.0f;
-    private LocationModel locationmodel;
-    private ActivityMapMvvm activitymapMvvm;
-    private ActivityResultLauncher<String> permissionLauncher;
-    private CreateCinemaModel createCinemaModel;
-
-
+    private CreateCinemaModel model;
+    private ActivityCreateCinemaMvvm createCinemaMvvm;
+    private UserModel userModel;
+    private Preferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_create_cinema);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_cinema);
         initView();
     }
 
     private void initView() {
-        createCinemaModel=new CreateCinemaModel();
-        binding.btnCreate.setOnClickListener(view -> {
-            Intent intent=new Intent(CreateCinemaActivity.this, OwnerHomeActivity.class);
-            startActivity(intent);
+        preferences = Preferences.getInstance();
+        userModel=getUserModel();
+        Log.e("user",userModel.getData().getId());
+        setUpToolbar(binding.toolbar, getString(R.string.create_cinema), R.color.color2, R.color.white);
+        createCinemaMvvm= ViewModelProviders.of(this).get(ActivityCreateCinemaMvvm.class);
+
+        createCinemaMvvm.getOnCinemaSuccess().observe(this, cinemaModel -> {
+            if (cinemaModel!=null){
+                userModel.getData().setCinema(cinemaModel);
+                setUserModel(userModel);
+                navigateToHomeActivity();
+            }
         });
+        binding.setLang(getLang());
+        model = new CreateCinemaModel();
+        binding.setModel(model);
+
+
+        binding.toolbar.llBack.setOnClickListener(view -> {
+            if (userModel!=null){
+                finish();
+            }else {
+                logout();
+            }
+
+        });
+        binding.btnCreate.setOnClickListener(view -> {
+            Common.CloseKeyBoard(this, binding.etName);
+            Common.CloseKeyBoard(this, binding.etPrice);
+            Common.CloseKeyBoard(this, binding.etLocation);
+            Common.CloseKeyBoard(this, binding.etNumber);
+            if (model.isDataValid(this)){
+                createCinemaMvvm.CreateCinema(getUserModel(),model,this);
+
+            }
+        });
+
+
     }
 
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-
+    private void navigateToHomeActivity() {
+        Intent intent = new Intent(this, OwnerHomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
-    private void addMarker(double lat, double lng) {
-        if (activitymapMvvm.getGoogleMap().getValue() != null) {
-            mMap = activitymapMvvm.getGoogleMap().getValue();
-        }
-        mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lng)).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lng), zoom));
-
+    private void logout() {
+        clearUserModel(this);
+        finish();
     }
 
-    private void checkPermission() {
-        if (ActivityCompat.checkSelfPermission(this, BaseActivity.fineLocPerm) != PackageManager.PERMISSION_GRANTED) {
-            permissionLauncher.launch(BaseActivity.fineLocPerm);
-        } else {
-
-            activitymapMvvm.initGoogleApi();
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
-
-            activitymapMvvm.startLocationUpdate();
-
-        }
-    }
 }

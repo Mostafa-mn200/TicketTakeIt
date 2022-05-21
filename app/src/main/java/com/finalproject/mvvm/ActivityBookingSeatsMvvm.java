@@ -1,21 +1,29 @@
 package com.finalproject.mvvm;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.finalproject.R;
+import com.finalproject.model.BookCinemaModel;
 import com.finalproject.model.CinemaModel;
 import com.finalproject.model.DayDataModel;
 import com.finalproject.model.DayModel;
 import com.finalproject.model.SeatsModel;
+import com.finalproject.model.StatusResponse;
 import com.finalproject.model.TimeDataModel;
 import com.finalproject.model.TimeModel;
+import com.finalproject.model.UserModel;
 import com.finalproject.remote.Api;
+import com.finalproject.share.Common;
 import com.finalproject.tags.Tags;
 
 import java.util.List;
@@ -33,6 +41,9 @@ public class ActivityBookingSeatsMvvm extends AndroidViewModel {
     private MutableLiveData<List<DayModel>> onDaySuccess;
     private MutableLiveData<List<TimeModel>> onTimeSuccess;
     private MutableLiveData<SeatsModel> onSeatsSuccess;
+
+    public MutableLiveData<Boolean> book = new MutableLiveData<>();
+
     private CompositeDisposable disposable = new CompositeDisposable();
 
     public ActivityBookingSeatsMvvm(@NonNull Application application) {
@@ -62,7 +73,7 @@ public class ActivityBookingSeatsMvvm extends AndroidViewModel {
     }
 
     public void getDays(String cinema_id, String post_id) {
-//        Log.e("cinema_id",cinema_id);
+//        Log.e("cinema_id",cinema_id+" "+post_id);
         Api.getService(Tags.base_url).getDays(cinema_id, post_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -74,6 +85,7 @@ public class ActivityBookingSeatsMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(@NonNull Response<DayDataModel> response) {
+//                        Log.e("dayy",response.code()+" "+response.body().getData()+" "+response.body().getStatus());
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getData() != null && response.body().getStatus() == 200) {
                                 onDaySuccess.postValue(response.body().getData());
@@ -115,8 +127,8 @@ public class ActivityBookingSeatsMvvm extends AndroidViewModel {
                 });
     }
 
-    public void getSeats(CinemaModel cinemaModel, DayModel dayModel, TimeModel timeModel) {
-        Log.e("ids", cinemaModel.getId() + " " + dayModel.getId() + " " + timeModel.getId());
+    public void getSeats(Context context, CinemaModel.Model cinemaModel, DayModel dayModel, TimeModel timeModel) {
+//        Log.e("ids", cinemaModel.getId() + " " + dayModel.getId() + " " + timeModel.getId());
         Api.getService(Tags.base_url).getSeats(cinemaModel.getId(), dayModel.getId(), timeModel.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -133,17 +145,52 @@ public class ActivityBookingSeatsMvvm extends AndroidViewModel {
                             if (response.body().getData() != null && response.body().getStatus() == 200) {
                                 getOnSeatsSuccess().postValue(response.body());
                             } else if (response.body().getStatus() == 509) {
-
+                                Toast.makeText(context, R.string.validation_error, Toast.LENGTH_SHORT).show();
                             } else if (response.body().getStatus() == 510) {
-
+                                Toast.makeText(context, R.string.wrong_data, Toast.LENGTH_SHORT).show();
                             } else if (response.body().getStatus() == 511) {
-
+                                Toast.makeText(context, R.string.time_is_fully_booked, Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        Log.e("error", e.toString());
+                    }
+                });
+    }
+
+    public void book(BookCinemaModel model, UserModel userModel,Context context){
+        ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
+        dialog.setCancelable(false);
+        dialog.show();
+
+        Log.e("dataa",userModel.getData().getId()+" "+model.getCinema_id()+" "+model.getPost_id()+" "+model.getDay_id()+" "+model.getHour_id()+" "+model.getNumber_of_seats()+" "+model.getTotal_price()+" "+model.getTicket_type());
+        Api.getService(Tags.base_url).book(userModel.getData().getId(),model.getCinema_id()+"",model.getPost_id()+"",
+                model.getDay_id()+"",model.getHour_id()+"",model.getNumber_of_seats()+"",model.getTotal_price()+"",model.getTicket_type())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<StatusResponse>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+                        disposable.add(d);
+                    }
+
+                    @Override
+                    public void onSuccess(@NonNull Response<StatusResponse> response) {
+                        dialog.dismiss();
+                        Log.e("responsee",response.code()+" ");
+                        if (response.isSuccessful() && response.body()!=null){
+                            if (response.body().getStatus()==200){
+                                book.postValue(true);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        dialog.dismiss();
                         Log.e("error", e.toString());
                     }
                 });

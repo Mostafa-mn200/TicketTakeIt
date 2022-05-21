@@ -22,12 +22,13 @@ import com.finalproject.databinding.FragmentProfileBinding;
 import com.finalproject.language.Language;
 import com.finalproject.model.UserModel;
 import com.finalproject.mvvm.FragmentProfileMvvm;
+import com.finalproject.preferences.Preferences;
 import com.finalproject.tags.Tags;
-import com.finalproject.ui.activity_base.BaseFragment;
-import com.finalproject.ui.activity_edit_account.EditAccountActivity;
-import com.finalproject.ui.activity_contact_us.ContactUsActivity;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_edit_account.EditAccountActivity;
+import com.finalproject.ui.common_uis.activity_contact_us.ContactUsActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.activity_login.LoginActivity;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.squareup.picasso.Picasso;
 
@@ -36,7 +37,8 @@ public class FragmentProfile extends BaseFragment {
     private HomeActivity activity;
     private FragmentProfileBinding binding;
     private ActivityResultLauncher<Intent> launcher;
-    private int req;
+    private int req = 1;
+    private Preferences preferences;
     private UserModel userModel;
     private FragmentProfileMvvm mvvm;
     private BottomSheetBehavior behavior;
@@ -48,6 +50,12 @@ public class FragmentProfile extends BaseFragment {
             if (req == 1 && result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                 String lang = result.getData().getStringExtra("lang");
                 activity.refreshActivity(lang);
+            }else if (req == 2 && result.getResultCode() == Activity.RESULT_OK){
+                userModel = getUserModel();
+                if (userModel.getData().getImage() != null) {
+                    Picasso.get().load(Tags.base_url + userModel.getData().getImage()).into(binding.image);
+                }
+                binding.setModel(userModel);
             }
         });
     }
@@ -67,27 +75,39 @@ public class FragmentProfile extends BaseFragment {
     }
 
     private void initView() {
+        behavior = BottomSheetBehavior.from(binding.sheet.root);
+        preferences = Preferences.getInstance();
+        userModel = getUserModel();
         mvvm = ViewModelProviders.of(this).get(FragmentProfileMvvm.class);
 
-        behavior = BottomSheetBehavior.from(binding.sheet.root);
-        userModel = getUserModel();
-        if (userModel.getData().getImage() != null) {
-            String url = userModel.getData().getImage();
-            Picasso.get().load(Uri.parse(Tags.base_url+url)).into(binding.image);
+        if (userModel != null) {
+            if (userModel.getData().getImage() != null) {
+                String url = userModel.getData().getImage();
+                Picasso.get().load(Uri.parse(Tags.base_url + url)).into(binding.image);
+                binding.setModel(userModel);
+            }
+            binding.setModel(userModel);
         }
-        binding.setModel(userModel);
+
+        if (userModel==null){
+            binding.tvName.setOnClickListener(view -> navigateToLoginActivity());
+        }
+
+
         binding.llEditAccount.setOnClickListener(view -> {
-            Intent intent = new Intent(activity, EditAccountActivity.class);
-            launcher.launch(intent);
+            if (userModel == null) {
+                navigateToLoginActivity();
+            } else {
+                navigateToEditProfileActivity();
+            }
+
         });
         binding.llContactUs.setOnClickListener(view -> {
             Intent intent1 = new Intent(activity, ContactUsActivity.class);
             startActivity(intent1);
         });
         binding.llLanguage.setOnClickListener(view -> {
-//            req = 1;
-//            Intent intent = new Intent(activity, LanguageActivity.class);
-//            launcher.launch(intent);
+
             if (getLang().equals("en")) {
                 activity.refreshActivity("ar");
             } else {
@@ -97,13 +117,11 @@ public class FragmentProfile extends BaseFragment {
         mvvm.logout.observe(activity, aBoolean -> {
             if (aBoolean) {
                 logout();
-                activity.finish();
             }
         });
         mvvm.delete.observe(activity, aBoolean -> {
             if (aBoolean) {
                 logout();
-                activity.finish();
             }
         });
         binding.langName.setText(Language.getLanguageSelected(requireContext()));
@@ -131,14 +149,21 @@ public class FragmentProfile extends BaseFragment {
     }
 
     private void logout() {
+        navigateToLoginActivity();
         clearUserModel(activity);
         userModel = getUserModel();
         binding.setModel(null);
-        navigateToLoginActivity();
     }
 
     private void navigateToLoginActivity() {
         Intent intent = new Intent(activity, LoginActivity.class);
+        launcher.launch(intent);
+        activity.finish();
+
+    }
+    private void navigateToEditProfileActivity(){
+        req=2;
+        Intent intent = new Intent(activity, EditAccountActivity.class);
         launcher.launch(intent);
     }
 }

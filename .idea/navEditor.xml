@@ -56,6 +56,30 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="bookingSeats">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="fragmentHomeSearch">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="fragmentSearch">
                     <value>
                       <LayoutPositions>
@@ -116,18 +140,6 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="verification_code">
-                    <value>
-                      <LayoutPositions>
-                        <option name="myPosition">
-                          <Point>
-                            <option name="x" value="256" />
-                            <option name="y" value="724" />
-                          </Point>
-                        </option>
-                      </LayoutPositions>
-                    </value>
-                  </entry>
                 </map>
               </option>
             </LayoutPositions>
@@ -150,7 +162,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="history">
+                  <entry key="cinema">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

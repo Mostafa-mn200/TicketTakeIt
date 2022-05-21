@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.finalproject.R;
 import com.finalproject.databinding.CastItemBinding;
 import com.finalproject.model.HeroModel;
-import com.finalproject.model.MovieModel;
 
 
 import org.jetbrains.annotations.NotNull;

@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 public class MoviesDataModel extends StatusResponse implements Serializable {
-    private List<MovieModel> data;
+    private List<PostModel> data;
 
-    public List<MovieModel> getData() {
+    public List<PostModel> getData() {
         return data;
     }
 }

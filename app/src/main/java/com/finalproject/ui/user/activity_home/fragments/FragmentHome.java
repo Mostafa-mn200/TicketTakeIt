@@ -1,17 +1,22 @@
 package com.finalproject.ui.user.activity_home.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
@@ -26,15 +31,14 @@ import com.finalproject.adapter.TopMoviesAdapter;
 import com.finalproject.adapter.TopShowsAdapter;
 
 import com.finalproject.databinding.FragmentHomeBinding;
-import com.finalproject.model.MovieModel;
-import com.finalproject.model.ShowModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.model.SliderModel;
 import com.finalproject.mvvm.FragmentHomeMVVM;
-import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_coming_soon.ComingSoonActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_details.ShowDetailsActivity;
-import com.finalproject.ui.user.activity_movie_details.MovieDetailsActivity;
+import com.finalproject.ui.user.activity_details.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +57,17 @@ public class FragmentHome extends BaseFragment {
 
     private SliderAdapter sliderAdapter;
     private List<SliderModel> sliderModelList;
-
+    private int req;
+    private ActivityResultLauncher<Intent>launcher;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
+        launcher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
+            if (req==1&&result.getResultCode()== Activity.RESULT_OK ){
+                activity.navigateToHistory();
+            }
+        });
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -85,6 +95,11 @@ public class FragmentHome extends BaseFragment {
 
             }
         });
+        binding.progBarSlider.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.primary_dark2), PorterDuff.Mode.SRC_IN);
+        binding.progBarTopPicked.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.primary_dark2), PorterDuff.Mode.SRC_IN);
+        binding.progBarTopShow.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.primary_dark2), PorterDuff.Mode.SRC_IN);
+        binding.progBarComingSoon.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.primary_dark2), PorterDuff.Mode.SRC_IN);
+
 
         mvvm.getSliderDataModelMutableLiveData().observe(activity, sliderDataModel -> {
             if (sliderDataModel.getSlider()!=null){
@@ -142,7 +157,8 @@ public class FragmentHome extends BaseFragment {
         binding.pager.setPadding(20, 0, 20, 0);
         binding.pager.setPageMargin(20);
         mvvm.getSlider();
-        binding.tab.setupWithViewPager(binding.pager);
+
+        binding.tab.setViewPager(binding.pager);
 
         binding.seeComingSoon.setPaintFlags(binding.seeComingSoon.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
@@ -153,22 +169,30 @@ public class FragmentHome extends BaseFragment {
 
         mvvm.getHomeData(activity);
 
+
         binding.llSearch.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.fragmentSearch);
+            Navigation.findNavController(v).navigate(R.id.fragmentHomeSearch);
         });
     }
 
-    public void navigateToMovieDetailsActivity(MovieModel movieModel, int adapterPosition) {
-        Intent intent = new Intent(activity, MovieDetailsActivity.class);
-        intent.putExtra("movie_id",movieModel.getId());
+    public void navigateToDetailsActivity(PostModel postModel, int adapterPosition) {
+        if (getUserModel()!=null){
+            req=1;
+            Intent intent = new Intent(activity, DetailsActivity.class);
+            intent.putExtra("post_id",postModel.getId());
+            launcher.launch(intent);
+        }else {
+            navigateToLoginActivity();
+        }
+
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent=new Intent(activity, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void navigateToShowDetailsActivity(ShowModel showModel, int adapterPosition) {
-        Intent intent = new Intent(activity, ShowDetailsActivity.class);
-        intent.putExtra("show_id",showModel.getId());
-        startActivity(intent);
-    }
+
 
     public class MyTask extends TimerTask {
         @Override

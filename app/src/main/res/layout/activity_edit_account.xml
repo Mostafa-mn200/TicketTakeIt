@@ -134,7 +134,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edNationalID"
+                            android:id="@+id/etNationalId"
                             error="@{model.error_national_id}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -186,7 +186,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edFullName"
+                            android:id="@+id/etName"
                             error="@{model.error_name}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -238,7 +238,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edEmail"
+                            android:id="@+id/etEmail"
                             error="@{model.error_email}"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -286,7 +286,7 @@
                         </FrameLayout>
 
                         <EditText
-                            android:id="@+id/edUserName"
+                            android:id="@+id/etUserName"
                             error="@{model.error_user_name}"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -350,7 +350,7 @@
                             app:passwordToggleTint="@color/white">
 
                             <EditText
-                                android:id="@+id/edPassword"
+                                android:id="@+id/etPassword"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/transparent"
@@ -422,7 +422,7 @@
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
-                        <Space
+                        <androidx.legacy.widget.Space
                             android:layout_width="20dp"
                             android:layout_height="0dp"
                             android:layout_gravity="center_vertical" />
@@ -487,6 +487,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom"
+            android:clickable="false"
+            android:longClickable="false"
             android:background="@color/black_trans"
             android:padding="16dp"
             app:el_duration="800"

@@ -12,15 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieRowBinding;
-import com.finalproject.model.MovieModel;
-import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
-import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
+import com.finalproject.model.PostModel;
+
 import com.finalproject.ui.user.activity_home.fragments.FragmentSearch;
 
 import java.util.List;
 
 public class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
-    private List<MovieModel> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -65,7 +64,7 @@ public class SearchItemAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
     }
 
-    public void updateList(List<MovieModel> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

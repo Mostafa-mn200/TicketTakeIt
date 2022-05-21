@@ -8,9 +8,7 @@
         <variable
             name="lang"
             type="String" />
-        <variable
-            name="model"
-            type="com.finalproject.model.ShowModel" />
+
     </data>
 
     <FrameLayout
@@ -68,6 +66,7 @@
                                 android:layout_height="match_parent"
                                 android:background="@drawable/background_transparent"
                                 android:hint="@string/search"
+                                android:lines="1"
                                 android:textColor="@color/white"
                                 android:textColorHint="@color/gray14"
                                 android:textSize="15sp" />
@@ -125,7 +124,6 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
-
                             android:layout_marginBottom="30dp"
                             android:visibility="gone"
                             app:cardBackgroundColor="@color/white"

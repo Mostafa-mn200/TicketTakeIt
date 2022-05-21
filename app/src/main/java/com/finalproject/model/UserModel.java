@@ -21,6 +21,7 @@ public class UserModel extends StatusResponse{
         private String created_at;
         private String updated_at;
         private String image;
+        private CinemaModel.Model cinema;
 
         public String getImage() {
             return image;
@@ -64,6 +65,14 @@ public class UserModel extends StatusResponse{
 
         public String getUpdated_at() {
             return updated_at;
+        }
+
+        public CinemaModel.Model getCinema() {
+            return cinema;
+        }
+
+        public void setCinema(CinemaModel.Model cinema) {
+            this.cinema = cinema;
         }
     }
 

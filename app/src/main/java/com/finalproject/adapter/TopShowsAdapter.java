@@ -10,15 +10,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
-import com.finalproject.databinding.TopShowsItemRowBinding;
-import com.finalproject.model.MovieModel;
-import com.finalproject.model.ShowModel;
+import com.finalproject.databinding.TopPostItemRowBinding;
+import com.finalproject.model.PostModel;
 import com.finalproject.ui.user.activity_home.fragments.FragmentHome;
 
 import java.util.List;
 
 public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<ShowModel> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -32,7 +31,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        TopShowsItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_shows_item_row, parent, false);
+        TopPostItemRowBinding binding = DataBindingUtil.inflate(inflater, R.layout.top_post_item_row, parent, false);
         return new MyHolder(binding);
     }
 
@@ -43,7 +42,7 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         myHolder.itemView.setOnClickListener(view -> {
             FragmentHome fragmentHome = (FragmentHome) fragment;
-            fragmentHome.navigateToShowDetailsActivity(list.get(myHolder.getAbsoluteAdapterPosition()),myHolder.getAdapterPosition());
+            fragmentHome.navigateToDetailsActivity(list.get(myHolder.getAbsoluteAdapterPosition()),myHolder.getAdapterPosition());
         });
     }
 
@@ -56,15 +55,15 @@ public class TopShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public void updateList(List<ShowModel> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
     public static class MyHolder extends RecyclerView.ViewHolder {
-        public TopShowsItemRowBinding binding;
+        public TopPostItemRowBinding binding;
 
-        public MyHolder(TopShowsItemRowBinding binding) {
+        public MyHolder(TopPostItemRowBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
 

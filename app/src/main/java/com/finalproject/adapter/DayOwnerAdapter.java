@@ -8,27 +8,27 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.DayOwnerRowBinding;
-import com.finalproject.databinding.DayRowBinding;
+import com.finalproject.model.Day;
 import com.finalproject.model.DayModel;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
-import com.finalproject.ui.user.activity_booking_seats.BookingSeatsActivity;
-import com.finalproject.ui.user.activity_booking_seats.BookingShowSeatsActivity;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DayOwnerAdapter extends RecyclerView.Adapter<DayOwnerAdapter.MyHolder> {
-
-    private List<DayModel> dayList;
+    private List<Day> dayList;
     private Context context;
     private Fragment fragment;
     private LayoutInflater inflater;
 
-    public DayOwnerAdapter(List<DayModel> dayList, Fragment fragment, Context context) {
+    public DayOwnerAdapter(List<Day> dayList, Fragment fragment, Context context) {
         this.dayList = dayList;
         this.context = context;
         this.fragment = fragment;
@@ -46,13 +46,30 @@ public class DayOwnerAdapter extends RecyclerView.Adapter<DayOwnerAdapter.MyHold
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(dayList.get(position));
+        myHolder.binding.recViewTime.setLayoutManager(new GridLayoutManager(context, 2));
+
+        TimeOwnerAdapter adapter = new TimeOwnerAdapter(context, myHolder.getAdapterPosition(),fragment);
+        adapter.updateList(dayList.get(position).getTimeModelList());
+        myHolder.binding.recViewTime.setAdapter(adapter);
+
         if (fragment instanceof FragmentOwnerMovies) {
             FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
-            myHolder.binding.imageClose.setVisibility(View.VISIBLE);
         } else if (fragment instanceof FragmentOwnerShows) {
             FragmentOwnerShows fragmentOwnerShows = (FragmentOwnerShows) fragment;
-            myHolder.binding.imageClose.setVisibility(View.VISIBLE);
         }
+
+        myHolder.binding.llAddNew.setOnClickListener(view -> {
+            if (fragment instanceof FragmentOwnerMovies){
+                FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
+                fragmentOwnerMovies.addNewTime(dayList.get(myHolder.getAdapterPosition()), myHolder.getAdapterPosition(),dayList.get(myHolder.getAdapterPosition()).getTimeModelList(),adapter);
+
+            } else if (fragment instanceof FragmentOwnerShows){
+                FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
+                fragmentOwnerShows.addNewTime(dayList.get(myHolder.getAdapterPosition()), myHolder.getAdapterPosition(),dayList.get(myHolder.getAdapterPosition()).getTimeModelList(),adapter);
+            }
+
+        });
+
         myHolder.binding.imageClose.setOnClickListener(view -> {
             if (fragment instanceof FragmentOwnerMovies) {
                 FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
@@ -73,6 +90,11 @@ public class DayOwnerAdapter extends RecyclerView.Adapter<DayOwnerAdapter.MyHold
             return dayList.size();
     }
 
+    public void remove(int position, int adapterPosition) {
+        dayList.get(adapterPosition).getTimeModelList().remove(position);
+        notifyItemChanged(adapterPosition);
+    }
+
     public class MyHolder extends RecyclerView.ViewHolder {
         private DayOwnerRowBinding binding;
 
@@ -82,7 +104,7 @@ public class DayOwnerAdapter extends RecyclerView.Adapter<DayOwnerAdapter.MyHold
         }
     }
 
-    public void updateList(List<DayModel> list) {
+    public void updateList(List<Day> list) {
         if (list != null) {
             this.dayList = list;
         }

@@ -7,13 +7,10 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.finalproject.model.MovieDetailsDataModel;
-import com.finalproject.model.MovieModel;
-import com.finalproject.model.ShowDetailsDataModel;
-import com.finalproject.model.ShowModel;
+import com.finalproject.model.DetailsDataModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.remote.Api;
 import com.finalproject.tags.Tags;
-import com.google.android.material.tabs.TabLayout;
 
 import io.reactivex.SingleObserver;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -26,9 +23,7 @@ public class ActivityDetailsMvvm extends AndroidViewModel {
 
     private MutableLiveData<Boolean> isLoading;
 
-    private MutableLiveData<MovieModel> onDataSuccess;
-
-    private MutableLiveData<ShowModel> onShowDataSuccess;
+    private MutableLiveData<PostModel> onDataSuccess;
 
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -43,19 +38,14 @@ public class ActivityDetailsMvvm extends AndroidViewModel {
         return isLoading;
     }
 
-    public MutableLiveData<MovieModel> getOnDataSuccess() {
+    public MutableLiveData<PostModel> getOnDataSuccess() {
         if (onDataSuccess==null){
             onDataSuccess=new MutableLiveData<>();
         }
         return onDataSuccess;
     }
 
-    public MutableLiveData<ShowModel> getOnShowDataSuccess() {
-        if (onShowDataSuccess==null){
-            onShowDataSuccess=new MutableLiveData<>();
-        }
-        return onShowDataSuccess;
-    }
+
 
     public void getDetails(String id){
         isLoading.setValue(true);
@@ -63,14 +53,14 @@ public class ActivityDetailsMvvm extends AndroidViewModel {
         Api.getService(Tags.base_url).getDetails(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Response<MovieDetailsDataModel>>() {
+                .subscribe(new SingleObserver<Response<DetailsDataModel>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         disposable.add(d);
                     }
 
                     @Override
-                    public void onSuccess(@NonNull Response<MovieDetailsDataModel> response) {
+                    public void onSuccess(@NonNull Response<DetailsDataModel> response) {
                         isLoading.setValue(false);
                         if (response.isSuccessful() && response.body()!=null){
                             if (response.body().getData()!=null && response.body().getStatus()==200){
@@ -86,31 +76,5 @@ public class ActivityDetailsMvvm extends AndroidViewModel {
                 });
     }
 
-    public void getShowDetails(String id){
-        isLoading.setValue(true);
-        Api.getService(Tags.base_url).getShowDetails(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Response<ShowDetailsDataModel>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-                        disposable.add(d);
-                    }
 
-                    @Override
-                    public void onSuccess(@NonNull Response<ShowDetailsDataModel> response) {
-                        isLoading.setValue(false);
-                        if (response.isSuccessful() && response.body()!=null){
-                            if (response.body().getData()!=null && response.body().getStatus()==200){
-                                onShowDataSuccess.postValue(response.body().getData());
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        Log.e("error",e.toString());
-                    }
-                });
-    }
 }
