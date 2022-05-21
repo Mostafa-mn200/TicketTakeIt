@@ -13,24 +13,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.finalproject.R;
 import com.finalproject.adapter.SearchItemAdapter;
 import com.finalproject.databinding.FragmentSearchBinding;
-import com.finalproject.model.MovieModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.mvvm.FragmentSearchMvvm;
 import com.finalproject.share.Common;
-import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_movie_details.MovieDetailsActivity;
+import com.finalproject.ui.user.activity_details.DetailsActivity;
 
-import java.util.concurrent.TimeUnit;
-
-import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 
 
@@ -72,7 +68,7 @@ public class FragmentSearch extends BaseFragment {
             }
         });
 
-        fragmentSearchMvvm.getOnMoviesSuccess().observe(activity, movieModels -> {
+        fragmentSearchMvvm.getOnPostSuccess().observe(activity, movieModels -> {
             if (movieModels.size() > 0) {
                 binding.cardNoData.setVisibility(View.GONE);
             } else {
@@ -88,7 +84,7 @@ public class FragmentSearch extends BaseFragment {
 //        fragmentSearchMvvm.getMovies(null);
 
         binding.swipeRef.setOnRefreshListener(() -> fragmentSearchMvvm.getMovies(binding.edtSearch.getText().toString()));
-
+        binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -115,9 +111,19 @@ public class FragmentSearch extends BaseFragment {
         disposable.clear();
     }
 
-    public void navigateToMovieDetails(MovieModel movieModel) {
-        Intent intent = new Intent(activity, MovieDetailsActivity.class);
-        intent.putExtra("movie_id", movieModel.getId());
+    public void navigateToMovieDetails(PostModel postModel) {
+        if (getUserModel()!=null){
+            Intent intent = new Intent(activity, DetailsActivity.class);
+            intent.putExtra("post_id", postModel.getId());
+            startActivity(intent);
+        }else {
+            navigateToLoginActivity();
+        }
+
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent=new Intent(activity, LoginActivity.class);
         startActivity(intent);
     }
 }

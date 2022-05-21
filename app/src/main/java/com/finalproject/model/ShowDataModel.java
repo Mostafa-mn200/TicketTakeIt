@@ -5,9 +5,9 @@ import java.util.List;
 
 public class ShowDataModel extends StatusResponse implements Serializable {
 
-    private List<ShowModel> data;
+    private List<PostModel> data;
 
-    public List<ShowModel> getData() {
+    public List<PostModel> getData() {
         return data;
     }
 }

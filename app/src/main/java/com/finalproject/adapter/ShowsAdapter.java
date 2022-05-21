@@ -12,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.ShowRowBinding;
-import com.finalproject.model.ShowModel;
+import com.finalproject.model.PostModel;
+
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
 import com.finalproject.ui.user.activity_home.fragments.FragmentShows;
@@ -20,7 +21,7 @@ import com.finalproject.ui.user.activity_home.fragments.FragmentShows;
 import java.util.List;
 
 public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<ShowModel> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -42,6 +43,14 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
+        if (list.get(position).getAdded().equals("1")){
+            if (fragment instanceof FragmentOwnerShows){
+                FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
+                myHolder.itemView.setClickable(false);
+            }else {
+                myHolder.itemView.setClickable(true);
+            }
+        }
         if (fragment instanceof FragmentShows){
             FragmentShows fragmentShows=(FragmentShows) fragment;
             myHolder.binding.flAddToCinema.setVisibility(View.GONE);
@@ -77,7 +86,7 @@ public class ShowsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         }
     }
 
-    public void updateList(List<ShowModel> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

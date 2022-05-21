@@ -12,7 +12,6 @@ import com.finalproject.R;
 import com.finalproject.databinding.TimeRowBinding;
 import com.finalproject.model.TimeModel;
 import com.finalproject.ui.user.activity_booking_seats.BookingSeatsActivity;
-import com.finalproject.ui.user.activity_booking_seats.BookingShowSeatsActivity;
 
 import java.util.List;
 
@@ -64,9 +63,6 @@ public class TimeAdapter extends RecyclerView.Adapter<TimeAdapter.MyHolder>{
 
             if (context instanceof BookingSeatsActivity){
                 BookingSeatsActivity activity=(BookingSeatsActivity) context;
-                activity.setTimeItem(model);
-            } else if (context instanceof BookingShowSeatsActivity){
-                BookingShowSeatsActivity activity=(BookingShowSeatsActivity) context;
                 activity.setTimeItem(model);
             }
 

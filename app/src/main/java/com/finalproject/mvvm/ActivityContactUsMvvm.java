@@ -65,7 +65,7 @@ public class ActivityContactUsMvvm extends AndroidViewModel {
 
                     @Override
                     public void onError(@NotNull Throwable e) {
-
+                        Log.e("error", e.toString());
                     }
                 });
     }

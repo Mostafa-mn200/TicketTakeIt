@@ -29,7 +29,8 @@ public class SignUpModel extends BaseObservable implements Serializable {
     public ObservableField<String> error_email = new ObservableField<>();
 
     public boolean isDataValid(Context context) {
-        if (!national_id.trim().isEmpty() &&
+        if (!type.trim().isEmpty()&&
+                !national_id.trim().isEmpty() &&
                 !name.isEmpty() &&
                 !email.trim().isEmpty() &&
                 !user_name.trim().isEmpty() &&
@@ -90,7 +91,6 @@ public class SignUpModel extends BaseObservable implements Serializable {
             return false;
         }
     }
-
     public boolean isDataValid2(Context context) {
         if (!national_id.trim().isEmpty() &&
                 !name.isEmpty() &&
@@ -141,6 +141,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
             return false;
         }
     }
+
 
     public SignUpModel() {
         this.image = "";

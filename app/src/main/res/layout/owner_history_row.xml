@@ -4,110 +4,111 @@
 
     <data>
 
+        <variable
+            name="model"
+            type="com.finalproject.model.PostModel" />
+
+        <import type="android.view.View" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardItem"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardBackgroundColor="@color/color2"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="10dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/llHeader"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/small_stroke_color2"
-            android:orientation="vertical">
+            android:layout_margin="5dp"
+            app:cardBackgroundColor="@color/black2"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <ImageView
+                    android:id="@+id/image"
+                    image2="@{model.image}"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+
+                <FrameLayout
+                    android:id="@+id/flDelete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/btn_bg2"
+                    android:padding="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_delete2"
+                        app:tint="@color/color5" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/movieName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black2"
+                    android:gravity="start|center_vertical"
+                    android:lines="2"
+                    android:padding="5dp"
+                    android:text="@{model.title}"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/image" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:orientation="horizontal">
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/movieName">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/ic_rate" />
 
                     <TextView
-                        android:id="@+id/movieName"
+                        android:id="@+id/tvMovieRate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="Movie Name"
-                        android:textColor="@color/white"
-                        android:textSize="22sp" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1" />
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20-10-2022"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="5dp"
-                                android:text="200"
-                                android:textColor="@color/white"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="EGP"
-                                android:textColor="@color/white"
-                                android:textSize="20sp" />
-                        </LinearLayout>
-                    </LinearLayout>
+                        android:layout_marginStart="5dp"
+                        android:text='@{model.rate+""}'
+                        android:textColor="@color/color4"
+                        android:textSize="13sp" />
 
                 </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-            <net.cachapa.expandablelayout.ExpandableLayout
-                android:id="@+id/expand"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:el_duration="800"
-                app:el_parallax=".5"
-                app:el_expanded="false">
-
-                <ImageView
-                    android:id="@+id/cardImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/spider" />
-            </net.cachapa.expandablelayout.ExpandableLayout>
-            <ImageView
-                android:id="@+id/arrow_clicked"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="5dp"
-                android:src="@drawable/ic_down" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
 </layout>

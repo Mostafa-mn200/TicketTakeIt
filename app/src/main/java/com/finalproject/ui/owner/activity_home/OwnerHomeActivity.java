@@ -2,7 +2,6 @@ package com.finalproject.ui.owner.activity_home;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
@@ -14,15 +13,12 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 
 import android.os.Handler;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 
 
 import com.finalproject.R;
 import com.finalproject.databinding.ActivityOwnerHomeBinding;
 import com.finalproject.language.Language;
-import com.finalproject.ui.activity_base.BaseActivity;
+import com.finalproject.ui.common_uis.activity_base.BaseActivity;
 
 import io.paperdb.Paper;
 
@@ -43,7 +39,7 @@ public class OwnerHomeActivity extends BaseActivity {
 
 
     private void initView() {
-
+//        Log.e("cinema",getUserModel().getData().getCinema().getId());
         Paper.init(this);
         binding.setLang(getLang());
         setSupportActionBar(binding.toolBar);
@@ -83,23 +79,6 @@ public class OwnerHomeActivity extends BaseActivity {
 
     }
 
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.lang) {
-//            req = 1;
-//            Intent intent = new Intent(this, LanguageActivity.class);
-//            launcher.launch(intent);
-//        } else if (id == R.id.lLogOut) {
-//            Intent intent = new Intent(this, LoginActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 
     public void refreshActivity(String lang) {
         Paper.book().write("lang", lang);

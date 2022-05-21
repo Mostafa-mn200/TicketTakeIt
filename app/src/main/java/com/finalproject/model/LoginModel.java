@@ -13,14 +13,12 @@ import java.io.Serializable;
 public class LoginModel extends BaseObservable implements Serializable {
     private String user_name;
     private String password;
-    private String type;
     public ObservableField<String> error_user_name = new ObservableField<>();
     public ObservableField<String> error_password = new ObservableField<>();
 
     public LoginModel() {
         this.user_name = "";
         this.password = "";
-        this.type = "";
     }
 
     public Boolean isDataValid(Context context) {
@@ -28,13 +26,9 @@ public class LoginModel extends BaseObservable implements Serializable {
         if (!user_name.trim().isEmpty()
                 &&
                 !password.trim().isEmpty()
-//                && (!type.isEmpty())
-
-
         ) {
             error_user_name.set(null);
             error_password.set(null);
-//            error_type.set(null);
 
             return true;
         } else {
@@ -48,12 +42,6 @@ public class LoginModel extends BaseObservable implements Serializable {
             } else {
                 error_password.set(null);
             }
-//            if (type.isEmpty()) {
-////                error_type.set("Field is Required");
-//            } else {
-//                type.set(null);
-//
-//            }
             return false;
         }
     }
@@ -75,14 +63,5 @@ public class LoginModel extends BaseObservable implements Serializable {
     public void setPassword(String password) {
         this.password = password;
         notifyPropertyChanged(BR.password);
-    }
-    @Bindable
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-        notifyPropertyChanged(BR.type);
     }
 }

@@ -14,13 +14,14 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_margin="5dp"
         android:background='@{model.selected?@drawable/selected_bg:@drawable/not_selected_bg}'
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name">Ticket TakeIt</string>
     <string name="title_home">Home</string>
     <string name="title_movie">Movies</string>
     <string name="title_show">Shows</string>
@@ -91,11 +91,12 @@
     <string name="code_has_been_sent">Code has been sent</string>
     <string name="confirm">Confirm</string>
     <string name="or">OR</string>
-    <string name="price">Price :</string>
+    <string name="price">Total price :</string>
     <string name="price2">Price</string>
     <string name="book_now">Book now</string>
     <string name="done">Done</string>
     <string name="time">Time</string>
+    <string name="time2">Time :</string>
     <string name="bookings_list">Bookings list</string>
     <string name="movie_type">Movie type</string>
     <string name="please_choose_the_user">Please choose(Customer or Owner)</string>
@@ -114,10 +115,9 @@
     <string name="available_hours">Available hours</string>
     <string name="number_of_seats">Number of seats</string>
     <string name="add_time">Add time :</string>
+    <string name="add_time2">Add time</string>
     <string name="number">number</string>
     <string name="create">Create</string>
-    <string name="booking_list">Booking list</string>
-
     <string name="message">Message</string>
     <string name="send">Send</string>
     <string name="sucess">Success</string>
@@ -126,7 +126,43 @@
     <string name="select">Select</string>
     <string name="cast">Cast</string>
     <string name="day">Day</string>
-    <string name="guest">Guest</string>
+    <string name="day2">Day :</string>
+    <string name="skip">Skip</string>
+    <string name="my_cinema">My cinema</string>
+    <string name="reserved_seats">Reserved Seats :</string>
+    <string name="bookings_details">Bookings details</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="booking_details">Booking details</string>
+    <string name="date">Date</string>
+    <string name="details">Details</string>
+    <string name="cancel_booking">Cancel booking</string>
+    <string name="bookings">Bookings</string>
+    <string name="select_location_on_map">Select location on map</string>
+    <string name="single_price">Single price :</string>
+    <string name="booked_sucess">Booked successfully</string>
+    <string name="egp">EGP</string>
+    <string name="choose_ticket_type">please choose ticket type</string>
+    <string name="select_seats">please select number of seats</string>
+    <string name="choose_hour">please choose hour</string>
+    <string name="choose_day">please choose day</string>
+    <string name="choose_movie_or_show">please choose movie or show</string>
+    <string name="choose_cinema">please choose cinema</string>
+    <string name="validation_error">Validation error</string>
+    <string name="wrong_data">Wrong Data</string>
+    <string name="time_is_fully_booked">Time is fully booked</string>
+    <string name="added_success">This movie added successfully to the cinema</string>
+    <string name="movie_removed">This movie removed successfully</string>
+    <string name="show_removed">This show removed successfully</string>
+    <string name="day_added_before">Day added before</string>
+    <string name="time_added_before">Time added before</string>
+    <string name="no_seats_available">No seats available to book</string>
+    <string name="selected_is_greater_than_available">\"selected seats is greater than available \"</string>
+    <string name="canceled">canceled successfully</string>
+    <string name="no_days_to_show">No days to show</string>
+    <string name="no_times_to_show">No times to show</string>
+    <string name="no_reserved_seats_to_show">No reserved seats to show</string>
+    <string name="choose_at_least_one_time">please choose at least one time</string>
 
 
 </resources>

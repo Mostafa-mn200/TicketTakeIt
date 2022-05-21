@@ -33,12 +33,12 @@
         tools:layout="@layout/fragment_profile" />
     <activity
         android:id="@+id/activity_sign_up"
-        android:name="com.finalproject.ui.activity_signup.SignUpActivity"
+        android:name="com.finalproject.ui.common_uis.activity_signup.SignUpActivity"
         android:label=""
         tools:layout="@layout/activity_sign_up" />
     <activity
         android:id="@+id/activity_edit_account"
-        android:name="com.finalproject.ui.activity_edit_account.EditAccountActivity"
+        android:name="com.finalproject.ui.common_uis.activity_edit_account.EditAccountActivity"
         android:label=""
         tools:layout="@layout/activity_edit_account" />
 
@@ -49,11 +49,23 @@
         android:label=""
         tools:layout="@layout/fragment_search" />
 
+    <fragment
+        android:id="@+id/fragmentHomeSearch"
+        android:name="com.finalproject.ui.user.activity_home.fragments.FragmentHomeSearch"
+        android:label=""
+        tools:layout="@layout/fragment_search" />
+
     <activity
         android:id="@+id/activity_language"
-        android:name="com.finalproject.ui.activity_language.LanguageActivity"
+        android:name="com.finalproject.ui.common_uis.activity_language.LanguageActivity"
         android:label=""
         tools:layout="@layout/activity_language" />
+    <activity
+        android:id="@+id/bookingSeats"
+        android:name="com.finalproject.ui.user.activity_booking_seats.BookingSeatsActivity"
+        android:label=""
+        tools:layout="@layout/activity_booking_seats" />
+
 
 
 

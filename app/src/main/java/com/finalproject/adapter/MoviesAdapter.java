@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.MovieRowBinding;
-import com.finalproject.model.MovieModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
@@ -21,7 +21,7 @@ import java.util.List;
 
 
 public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private List<MovieModel> list;
+    private List<PostModel> list;
     private Context context;
     private LayoutInflater inflater;
     private Fragment fragment;
@@ -43,24 +43,41 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.binding.setModel(list.get(position));
+
+        if (list.get(position).getAdded().equals("1")) {
+            if (fragment instanceof FragmentOwnerMovies) {
+                FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
+                myHolder.binding.flAddToCinema.setEnabled(false);
+                myHolder.binding.flAddToCinema.setClickable(false);
+                myHolder.binding.flAddToCinema.setLongClickable(false);
+            }
+        } else if (list.get(position).getAdded().equals("0")) {
+            if (fragment instanceof FragmentOwnerMovies) {
+                FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
+                myHolder.binding.flAddToCinema.setEnabled(true);
+                myHolder.binding.flAddToCinema.setClickable(true);
+                myHolder.binding.flAddToCinema.setLongClickable(true);
+            }
+
+        }
         myHolder.itemView.setOnClickListener(view -> {
-            if (fragment instanceof FragmentMovies){
+            if (fragment instanceof FragmentMovies) {
                 FragmentMovies fragmentMovies = (FragmentMovies) fragment;
                 fragmentMovies.navigateToMovieDetails(list.get(position));
             }
 
         });
-        if (fragment instanceof FragmentMovies){
-            FragmentMovies fragmentMovies=(FragmentMovies) fragment;
+        if (fragment instanceof FragmentMovies) {
+            FragmentMovies fragmentMovies = (FragmentMovies) fragment;
             myHolder.binding.flAddToCinema.setVisibility(View.GONE);
-        }else if (fragment instanceof FragmentOwnerMovies){
-            FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
+        } else if (fragment instanceof FragmentOwnerMovies) {
+            FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
             myHolder.binding.flAddToCinema.setVisibility(View.VISIBLE);
         }
         myHolder.binding.flAddToCinema.setOnClickListener(view -> {
             if (fragment instanceof FragmentOwnerMovies) {
                 FragmentOwnerMovies fragmentOwnerMovies = (FragmentOwnerMovies) fragment;
-                fragmentOwnerMovies.setItemChecked(list.get(position),position);
+                fragmentOwnerMovies.setItemChecked(list.get(position), position);
 
             }
         });
@@ -75,7 +92,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public void updateList(List<MovieModel> list) {
+    public void updateList(List<PostModel> list) {
         this.list = list;
         notifyDataSetChanged();
     }

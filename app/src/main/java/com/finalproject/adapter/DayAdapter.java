@@ -1,5 +1,6 @@
 package com.finalproject.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.DayRowBinding;
+import com.finalproject.model.CategoryModel;
 import com.finalproject.model.DayModel;
+
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
-import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
+import com.finalproject.ui.owner.activity_owner_booking_details.OwnerBookingDetailsActivity;
 import com.finalproject.ui.user.activity_booking_seats.BookingSeatsActivity;
-import com.finalproject.ui.user.activity_booking_seats.BookingShowSeatsActivity;
+import com.finalproject.ui.user.activity_home.fragments.FragmentMovies;
 
 import java.util.List;
 
@@ -46,11 +49,25 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.MyHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyHolder holder, @SuppressLint("RecyclerView") int position) {
         MyHolder myHolder=(MyHolder) holder;
         myHolder.dayRowBinding.setModel(dayList.get(position));
+
         if (oldHolder==null){
             oldHolder=myHolder;
+            DayModel model=dayList.get(position);
+            model.setSelected(true);
+            dayList.set(position,model);
+            myHolder.dayRowBinding.setModel(model);
+            oldPos=position;
+            if (context instanceof BookingSeatsActivity){
+                BookingSeatsActivity activity=(BookingSeatsActivity) context;
+                activity.setDayItem(model);
+            }
+            else if (context instanceof OwnerBookingDetailsActivity){
+                OwnerBookingDetailsActivity activity=(OwnerBookingDetailsActivity) context;
+                activity.setDayItem(model,currentPos);
+            }
         }
         myHolder.itemView.setOnClickListener(view -> {
             if (oldHolder!=null){
@@ -72,9 +89,9 @@ public class DayAdapter extends RecyclerView.Adapter<DayAdapter.MyHolder>{
             if (context instanceof BookingSeatsActivity){
                 BookingSeatsActivity activity=(BookingSeatsActivity) context;
                 activity.setDayItem(model);
-            }else if (context instanceof BookingShowSeatsActivity){
-                BookingShowSeatsActivity activity=(BookingShowSeatsActivity) context;
-                activity.setDayItem(model);
+            } else if (context instanceof OwnerBookingDetailsActivity){
+                OwnerBookingDetailsActivity activity=(OwnerBookingDetailsActivity) context;
+                activity.setDayItem(model,currentPos);
             }
         });
 

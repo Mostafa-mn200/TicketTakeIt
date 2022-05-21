@@ -8,7 +8,7 @@
             type="String" />
         <variable
             name="model"
-            type="com.finalproject.model.ShowModel" />
+            type="com.finalproject.model.PostModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,15 +33,16 @@
 
                 <ImageView
                     android:id="@+id/image"
+                    image="@{model.image}"
                     android:layout_width="match_parent"
                     android:layout_height="190dp"
                     android:scaleType="fitXY"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    image="@{model.image}"
 
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <FrameLayout
                     android:id="@+id/flAddToCinema"
                     android:layout_width="wrap_content"
@@ -55,7 +56,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:background='@{model.have_or_not.equals("have")?@drawable/ic_selected:@drawable/ic_not_selected,default=@drawable/ic_not_selected}'
+                        android:background='@{model.added.equals("1")?@drawable/ic_selected:@drawable/ic_not_selected,default=@drawable/ic_not_selected}'
                         app:tint="@color/primary_dark2" />
 
                 </FrameLayout>

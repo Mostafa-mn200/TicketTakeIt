@@ -12,12 +12,7 @@
         <variable
             name="lang"
             type="String" />
-        <variable
-            name="TopMovieModel"
-            type="com.finalproject.model.MovieModel" />
-        <variable
-            name="TopShowModel"
-            type="com.finalproject.model.ShowModel" />
+
         <variable
             name="ComingSoonModel"
             type="com.finalproject.model.ComingSoonModel" />
@@ -131,18 +126,22 @@
                             android:visibility="gone" />
                     </FrameLayout>
 
-                    <com.google.android.material.tabs.TabLayout
+                    <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
                         android:id="@+id/tab"
                         android:layout_width="wrap_content"
-                        android:layout_height="7dp"
-                        android:layout_gravity="bottom|center"
+                        android:layout_height="10dp"
                         android:layout_margin="8dp"
-                        android:layout_marginBottom="8dp"
-                        app:tabBackground="@drawable/tab_intdecator"
-                        app:tabGravity="fill"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabMaxWidth="7dp"
-                        app:tabMode="scrollable" />
+                        app:dotsColor="@android:color/darker_gray"
+                        app:dotsCornerRadius="8dp"
+                        android:layout_gravity="center"
+                        app:dotsSize="10dp"
+                        app:dotsSpacing="2dp"
+                        app:dotsWidthFactor="2.5"
+                        app:selectedDotColor="@color/primary_dark2"
+                        app:progressMode="false"
+                        android:layout_marginBottom="7dp"
+                        />
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -196,8 +195,6 @@
                             android:textStyle="bold"
                             android:visibility="gone" />
                     </FrameLayout>
-
-
 
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@id/tLogo"
-            android:visibility="visible">
+            android:visibility="gone">
 
 
             <Button
@@ -90,7 +90,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/item_clicked2"
                 android:minWidth="150dp"
-                android:text="@string/guest"
+                android:text="@string/skip"
                 android:textSize="14sp"
                 android:textAllCaps="false"
                 android:textColor="@color/white"

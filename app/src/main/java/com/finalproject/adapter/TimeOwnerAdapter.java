@@ -2,7 +2,6 @@ package com.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,24 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.finalproject.R;
 import com.finalproject.databinding.TimeOwnerRowBinding;
+import com.finalproject.model.Time;
 import com.finalproject.model.TimeModel;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerMovies;
 import com.finalproject.ui.owner.activity_home.fragments.FragmentOwnerShows;
 
-import java.sql.Time;
 import java.util.List;
 
 public class TimeOwnerAdapter extends RecyclerView.Adapter<TimeOwnerAdapter.MyHolder>{
 
-    private List<TimeModel> timeList;
+    private List<Time> timeList;
     private Context context;
     private Fragment fragment;
     private LayoutInflater inflater;
+    private int mainDayPos;
 
-    public TimeOwnerAdapter(List<TimeModel> timeList, Fragment fragment, Context context){
-        this.timeList=timeList;
+    public TimeOwnerAdapter(Context context,int mainDayPos,Fragment fragment){
         this.context=context;
         this.fragment=fragment;
+        this.mainDayPos=mainDayPos;
         inflater = LayoutInflater.from(context);
     }
 
@@ -46,19 +46,18 @@ public class TimeOwnerAdapter extends RecyclerView.Adapter<TimeOwnerAdapter.MyHo
         myHolder.binding.setModel(timeList.get(position));
         if (fragment instanceof FragmentOwnerMovies){
             FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
-            myHolder.binding.imageClose.setVisibility(View.VISIBLE);
         } else if (fragment instanceof FragmentOwnerShows){
             FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
-            myHolder.binding.imageClose.setVisibility(View.VISIBLE);
         }
-        myHolder.binding.imageClose.setOnClickListener(view -> {
+        myHolder.binding.imageDelete.setOnClickListener(view -> {
             if (fragment instanceof FragmentOwnerMovies){
                 FragmentOwnerMovies fragmentOwnerMovies=(FragmentOwnerMovies) fragment;
-                fragmentOwnerMovies.deleteSelectedTime(myHolder.getAdapterPosition());
+                fragmentOwnerMovies.deleteSelectedTime(myHolder.getAdapterPosition(),mainDayPos);
             } else if (fragment instanceof FragmentOwnerShows){
                 FragmentOwnerShows fragmentOwnerShows=(FragmentOwnerShows) fragment;
-                fragmentOwnerShows.deleteSelectedDay(myHolder.getAdapterPosition());
+                fragmentOwnerShows.deleteSelectedTime(myHolder.getAdapterPosition(),mainDayPos);
             }
+
         });
 
     }
@@ -79,7 +78,7 @@ public class TimeOwnerAdapter extends RecyclerView.Adapter<TimeOwnerAdapter.MyHo
             this.binding = binding;
         }
     }
-    public void updateList(List<TimeModel> list) {
+    public void updateList(List<Time> list) {
         if (list != null) {
             this.timeList = list;
         }

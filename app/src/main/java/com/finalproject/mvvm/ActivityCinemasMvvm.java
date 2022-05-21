@@ -9,7 +9,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.finalproject.model.CinemaDataModel;
 import com.finalproject.model.CinemaModel;
-import com.finalproject.model.MovieModel;
 import com.finalproject.remote.Api;
 import com.finalproject.tags.Tags;
 
@@ -45,10 +44,10 @@ public class ActivityCinemasMvvm extends AndroidViewModel {
         return onCinemaSuccess;
     }
 
-    public void getCinemas(){
+    public void getCinemas(String post_id){
         isLoading.setValue(true);
 
-        Api.getService(Tags.base_url).getCinemas()
+        Api.getService(Tags.base_url).getCinemas(post_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<CinemaDataModel>>() {

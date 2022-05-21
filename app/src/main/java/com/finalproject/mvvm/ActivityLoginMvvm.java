@@ -48,12 +48,12 @@ public class ActivityLoginMvvm extends AndroidViewModel {
     }
 
 
-    public void login(Context context, LoginModel loginModel, String type) {
+    public void login(Context context, LoginModel loginModel) {
         ProgressDialog dialog = Common.createProgressDialog(context, context.getResources().getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
 //        Log.e("data", loginModel.getUser_name() + "_" + loginModel.getPassword() + "_" + loginModel.getType() + "");
-        Api.getService(Tags.base_url).login(loginModel.getUser_name(), loginModel.getPassword(), type)
+        Api.getService(Tags.base_url).login(loginModel.getUser_name(), loginModel.getPassword())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<UserModel>>() {

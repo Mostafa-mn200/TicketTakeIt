@@ -19,11 +19,12 @@ import android.view.ViewGroup;
 import com.finalproject.R;
 import com.finalproject.adapter.ShowsAdapter;
 import com.finalproject.databinding.FragmentShowsBinding;
-import com.finalproject.model.ShowModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.mvvm.FragmentShowMVVM;
-import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_show_details.ShowDetailsActivity;
+import com.finalproject.ui.user.activity_details.DetailsActivity;
 
 
 public class FragmentShows extends BaseFragment {
@@ -52,31 +53,27 @@ public class FragmentShows extends BaseFragment {
     }
 
     private void initView() {
-        showsAdapter = new ShowsAdapter(activity, this);
-        binding.recyclerShows.setLayoutManager(new GridLayoutManager(activity, 2));
-        binding.recyclerShows.setAdapter(showsAdapter);
-
 
         mvvm = ViewModelProviders.of(this).get(FragmentShowMVVM.class);
         showsAdapter = new ShowsAdapter(activity, this);
         binding.recyclerShows.setLayoutManager(new GridLayoutManager(activity,2));
         binding.recyclerShows.setAdapter(showsAdapter);
         mvvm.getIsLoading().observe(activity, isLoading -> binding.swipeRef.setRefreshing(isLoading));
+        binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
         mvvm.getShowsSuccess().observe(activity, showModels -> {
             if (showModels.size() > 0) {
                 binding.progBarShows.setVisibility(View.GONE);
                 binding.cardNoData.setVisibility(View.GONE);
                 if (showsAdapter != null) {
                     showsAdapter.updateList(showModels);
-
                 }
             } else {
                 binding.cardNoData.setVisibility(View.VISIBLE);
             }
         });
-        mvvm.getShowData(activity,null);
+        mvvm.getShowData(activity,null,null,getUserModel().getData().getId());
         binding.swipeRef.setOnRefreshListener(() -> {
-            mvvm.getShowData(activity,binding.edtSearch.getText().toString());
+            mvvm.getShowData(activity,binding.edtSearch.getText().toString(),null,getUserModel().getData().getId());
         });
 
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
@@ -92,14 +89,24 @@ public class FragmentShows extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                mvvm.getShowData(activity,s.toString());
+                mvvm.getShowData(activity,s.toString(),null,getUserModel().getData().getId());
             }
         });
     }
 
-    public void navigateToShowDetailsActivity(ShowModel showModel, int position) {
-        Intent intent=new Intent(getContext(), ShowDetailsActivity.class);
-        intent.putExtra("show_id", showModel.getId());
+    public void navigateToShowDetailsActivity(PostModel postModel, int position) {
+        if (getUserModel()!=null){
+            Intent intent=new Intent(getContext(), DetailsActivity.class);
+            intent.putExtra("post_id", postModel.getId());
+            startActivity(intent);
+        }else {
+            navigateToLoginActivity();
+        }
+
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent=new Intent(activity, LoginActivity.class);
         startActivity(intent);
     }
 }

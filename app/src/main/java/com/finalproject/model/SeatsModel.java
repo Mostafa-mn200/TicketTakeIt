@@ -15,6 +15,13 @@ public class SeatsModel extends StatusResponse implements Serializable {
         private String chairs_reserved;
         private String chairs_available;
 
+        public Data() {
+        }
+
+        public Data(String chairs_reserved) {
+            this.chairs_reserved = chairs_reserved;
+        }
+
         public String getId() {
             return id;
         }

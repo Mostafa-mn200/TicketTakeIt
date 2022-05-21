@@ -11,10 +11,9 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.finalproject.model.ComingSoonModel;
 import com.finalproject.model.HomeDataModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.model.SliderDataModel;
-import com.finalproject.model.SliderModel;
-import com.finalproject.model.MovieModel;
-import com.finalproject.model.ShowModel;
+
 import com.finalproject.remote.Api;
 import com.finalproject.tags.Tags;
 
@@ -32,8 +31,8 @@ import retrofit2.Response;
 public class FragmentHomeMVVM extends AndroidViewModel {
     private Context context;
     private MutableLiveData<SliderDataModel> sliderDataModelMutableLiveData;
-    private MutableLiveData<List<MovieModel>> topMovieModelMutableLiveData;
-    private MutableLiveData<List<ShowModel>> topShowModelMutableLiveData;
+    private MutableLiveData<List<PostModel>> topMovieModelMutableLiveData;
+    private MutableLiveData<List<PostModel>> topShowModelMutableLiveData;
     private MutableLiveData<List<ComingSoonModel>> comingSoonMutableLiveData;
     private MutableLiveData<Boolean> isLoadingLivData;
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -44,7 +43,7 @@ public class FragmentHomeMVVM extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<List<MovieModel>> getMovies() {
+    public LiveData<List<PostModel>> getMovies() {
         if (topMovieModelMutableLiveData == null) {
             topMovieModelMutableLiveData = new MutableLiveData<>();
 
@@ -52,7 +51,7 @@ public class FragmentHomeMVVM extends AndroidViewModel {
         return topMovieModelMutableLiveData;
     }
 
-    public LiveData<List<ShowModel>> getShows() {
+    public LiveData<List<PostModel>> getShows() {
         if (topShowModelMutableLiveData == null) {
             topShowModelMutableLiveData = new MutableLiveData<>();
 

@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.finalproject.R;
+import com.finalproject.tags.Tags;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
@@ -87,6 +88,47 @@ public class GeneralMethod {
 
     }
 
+    @BindingAdapter("image2")
+    public static void image2(View view, String imageUrl) {
+
+
+        if (view instanceof CircleImageView) {
+            CircleImageView imageView = (CircleImageView) view;
+            if (imageUrl != null) {
+
+                Glide.with(view.getContext()).asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.circle_avatar)
+                        .load(Tags.base_url + imageUrl)
+                        .into(imageView);
+
+            }
+        } else if (view instanceof RoundedImageView) {
+            RoundedImageView imageView = (RoundedImageView) view;
+
+            if (imageUrl != null) {
+
+                Glide.with(view.getContext()).asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.circle_avatar)
+                        .load(Tags.base_url +imageUrl)
+                        .into(imageView);
+
+            }
+        } else if (view instanceof ImageView) {
+            ImageView imageView = (ImageView) view;
+
+            if (imageUrl != null) {
+
+                Glide.with(view.getContext()).asBitmap()
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .placeholder(R.drawable.circle_avatar)
+                        .load(Tags.base_url +imageUrl)
+                        .into(imageView);
+            }
+        }
+
+    }
 
     @BindingAdapter("user_image")
     public static void user_image(View view, String imageUrl) {
@@ -99,7 +141,7 @@ public class GeneralMethod {
                 Glide.with(view.getContext()).asBitmap()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.circle_avatar)
-                        .load(imageUrl)
+                        .load(Tags.base_url + imageUrl)
                         .centerCrop()
                         .into(imageView);
 
@@ -112,7 +154,7 @@ public class GeneralMethod {
                 Glide.with(view.getContext()).asBitmap()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.circle_avatar)
-                        .load(imageUrl)
+                        .load(Tags.base_url +imageUrl)
                         .centerCrop()
                         .into(imageView);
 
@@ -125,7 +167,7 @@ public class GeneralMethod {
                 Glide.with(view.getContext()).asBitmap()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .placeholder(R.drawable.circle_avatar)
-                        .load(imageUrl)
+                        .load(Tags.base_url +imageUrl)
                         .centerCrop()
                         .into(imageView);
             }

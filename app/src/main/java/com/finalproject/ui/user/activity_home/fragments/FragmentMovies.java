@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +22,12 @@ import com.finalproject.adapter.MoviesAdapter;
 import com.finalproject.adapter.MoviesFilterAdapter;
 import com.finalproject.databinding.FragmentMoviesBinding;
 import com.finalproject.model.CategoryModel;
-import com.finalproject.model.MovieModel;
+import com.finalproject.model.PostModel;
 import com.finalproject.mvvm.FragmentMoviesMvvm;
-import com.finalproject.ui.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
-import com.finalproject.ui.user.activity_movie_details.MovieDetailsActivity;
+import com.finalproject.ui.user.activity_details.DetailsActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +39,7 @@ public class FragmentMovies extends BaseFragment {
     private MoviesFilterAdapter moviesFilterAdapter;
     private MoviesAdapter moviesAdapter;
     private FragmentMoviesMvvm mvvm;
-    private List<MovieModel> movieModelList;
+    private List<PostModel> movieModelList;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -77,19 +76,26 @@ public class FragmentMovies extends BaseFragment {
         });
         mvvm.getCategory();
         mvvm.getOnMoviesSuccess().observe(activity, movieModels -> {
-            if (movieModels.size() > 0) {
-                binding.cardNoData.setVisibility(View.GONE);
-            } else {
-                binding.cardNoData.setVisibility(View.VISIBLE);
+            if (mvvm.getCategoryId()!=null){
+                if (movieModels.size() > 0) {
+                    binding.cardNoData.setVisibility(View.GONE);
+                    if (moviesAdapter != null) {
+                        movieModelList.clear();
+                        movieModelList.addAll(movieModels);
+                        moviesAdapter.updateList(movieModels);
+                    }
+                } else {
+                    binding.cardNoData.setVisibility(View.VISIBLE);
+                    moviesAdapter.updateList(new ArrayList<>());
+                }
             }
-            if (moviesAdapter != null) {
-                moviesAdapter.updateList(movieModels);
-            }
+
+
         });
-        mvvm.getMovies(null);
         binding.swipeRef.setOnRefreshListener(() -> {
-            mvvm.getMovies(null);
+            mvvm.getMovies(null,null,getUserModel().getData().getId());
         });
+        binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
         moviesFilterAdapter = new MoviesFilterAdapter(activity, this);
         binding.recyclerFilter.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
         binding.recyclerFilter.setAdapter(moviesFilterAdapter);
@@ -107,12 +113,23 @@ public class FragmentMovies extends BaseFragment {
     public void setItemCategory(CategoryModel categoryModel, int currentPos) {
         mvvm.getCategoryId().setValue(categoryModel.getId());
 //        mvvm.setSelectedCategoryPos(currentPos);
-        mvvm.getMovies(null);
+        mvvm.getMovies(null,null,getUserModel().getData().getId());
     }
 
-    public void navigateToMovieDetails(MovieModel movieModel) {
-        Intent intent = new Intent(activity, MovieDetailsActivity.class);
-        intent.putExtra("movie_id", movieModel.getId());
+    public void navigateToMovieDetails(PostModel postModel) {
+        if (getUserModel()!=null){
+            Intent intent = new Intent(activity, DetailsActivity.class);
+            intent.putExtra("post_id", postModel.getId());
+            startActivity(intent);
+        }else {
+            navigateToLoginActivity();
+
+        }
+
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent=new Intent(activity, LoginActivity.class);
         startActivity(intent);
     }
 }
