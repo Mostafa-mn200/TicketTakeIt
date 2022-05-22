@@ -56,11 +56,11 @@ public class OwnerHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         myHolder.binding.flDelete.setOnClickListener(view -> {
             if (fragment instanceof FragmentCinemaMovies){
                 FragmentCinemaMovies fragmentCinemaMovies=(FragmentCinemaMovies) fragment;
-                fragmentCinemaMovies.delete(myHolder.getAdapterPosition(),list.get(myHolder.getLayoutPosition()));
+                fragmentCinemaMovies.delete(myHolder.getAdapterPosition(),list.get(myHolder.getAdapterPosition()));
             }
             if (fragment instanceof FragmentCinemaShows) {
                 FragmentCinemaShows fragmentCinemaShows = (FragmentCinemaShows) fragment;
-                fragmentCinemaShows.delete(myHolder.getAdapterPosition(),list.get(myHolder.getLayoutPosition()));
+                fragmentCinemaShows.delete(myHolder.getAdapterPosition(),list.get(myHolder.getAdapterPosition()));
             }
         });
 

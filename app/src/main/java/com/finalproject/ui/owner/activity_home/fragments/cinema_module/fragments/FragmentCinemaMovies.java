@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +79,7 @@ public class FragmentCinemaMovies extends BaseFragment {
         });
 
         mvvm.getOnDataSuccess().observe(activity, movieModels -> {
+            Log.e("fllfl",movieModels.size()+"");
             if (movieModels != null && movieModels.size() > 0) {
                 binding.tvNoData.setVisibility(View.GONE);
                 movieModelList.clear();
@@ -85,11 +87,15 @@ public class FragmentCinemaMovies extends BaseFragment {
                 if (historyAdapter != null) {
                     historyAdapter.updateList(movieModels);
                 }
+                if(movieModelList.size()==0){
+                    binding.tvNoData.setVisibility(View.VISIBLE);
+
+                }
             } else {
+               // Log.e("kkkkk","lllll");
                 binding.tvNoData.setVisibility(View.VISIBLE);
                 historyAdapter.updateList(new ArrayList<>());
             }
-            historyAdapter.updateList(movieModels);
         });
 
         mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move");
@@ -97,14 +103,16 @@ public class FragmentCinemaMovies extends BaseFragment {
         binding.recViewMovies.setLayoutManager(new GridLayoutManager(activity, 2));
         binding.recViewMovies.setAdapter(historyAdapter);
         binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
-        binding.swipeRef.setOnRefreshListener(() -> mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move"));
+        binding.swipeRef.setOnRefreshListener(() -> {
+            mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move");
+        });
 
         mvvm.getRemove().observe(activity, pos -> {
             if (historyAdapter != null) {
-                binding.tvNoData.setVisibility(View.GONE);
+
                 Toast.makeText(activity, R.string.movie_removed, Toast.LENGTH_SHORT).show();
                 movieModelList.remove(pos);
-                historyAdapter.updateList(movieModelList);
+                mvvm.getOnDataSuccess().setValue(movieModelList);
             }else {
                 binding.tvNoData.setVisibility(View.VISIBLE);
             }
@@ -112,7 +120,7 @@ public class FragmentCinemaMovies extends BaseFragment {
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 1 && result.getResultCode()== Activity.RESULT_OK) {
-                mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move");
+               // mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move");
                 if (movieModelList.size()>0){
                     historyAdapter.updateList(movieModelList);
                 }else {
@@ -134,6 +142,7 @@ public class FragmentCinemaMovies extends BaseFragment {
 
     public void delete(int adapterPosition, PostModel postModel) {
         req=1;
+        Log.e("llll",adapterPosition+"");
         mvvm.removeFromCinema(activity, getUserModel().getData().getCinema().getId(), postModel.getId(), adapterPosition);
     }
 }

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -260,6 +261,8 @@ public class BookingSeatsActivity extends BaseActivity {
     public void setDayItem(DayModel model) {
         binding.tvDone1.setVisibility(View.VISIBLE);
         this.dayModel = model;
+        Log.e("kkkkk","hhhhh");
+
     }
 
     public void setTimeItem(TimeModel model) {

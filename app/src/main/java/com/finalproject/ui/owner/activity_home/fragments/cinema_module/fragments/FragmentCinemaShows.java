@@ -81,6 +81,10 @@ public class FragmentCinemaShows extends BaseFragment {
                 if (historyAdapter != null) {
                     historyAdapter.updateList(showModels);
                 }
+                if(showModelList.size()==0){
+                    binding.tvNoData.setVisibility(View.VISIBLE);
+
+                }
             } else {
                 binding.tvNoData.setVisibility(View.VISIBLE);
                 historyAdapter.updateList(new ArrayList<>());
@@ -98,7 +102,7 @@ public class FragmentCinemaShows extends BaseFragment {
             if (historyAdapter != null) {
                 Toast.makeText(activity, R.string.movie_removed, Toast.LENGTH_SHORT).show();
                 showModelList.remove(pos);
-                historyAdapter.updateList(showModelList);
+                mvvm.getOnDataSuccess().setValue(showModelList);
             }
 
         });
