@@ -151,6 +151,7 @@ public class FragmentOwnerProfile extends BaseFragment {
 
     private void logout() {
         navigateToLoginActivity();
+        activity.finish();
         clearUserModel(activity);
         userModel = getUserModel();
         binding.setModel(null);
@@ -159,7 +160,6 @@ public class FragmentOwnerProfile extends BaseFragment {
     private void navigateToLoginActivity() {
         Intent intent = new Intent(activity, LoginActivity.class);
         launcher.launch(intent);
-        activity.finish();
 
     }
 }

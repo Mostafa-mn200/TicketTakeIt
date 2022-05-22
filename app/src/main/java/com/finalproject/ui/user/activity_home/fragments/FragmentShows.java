@@ -71,9 +71,18 @@ public class FragmentShows extends BaseFragment {
                 binding.cardNoData.setVisibility(View.VISIBLE);
             }
         });
-        mvvm.getShowData(activity,null,null,getUserModel().getData().getId());
+        if (getUserModel()!=null){
+            mvvm.getShowData(activity,null,null,getUserModel().getData().getId());
+        }else {
+            mvvm.getShowData(activity,null,null,null);
+        }
         binding.swipeRef.setOnRefreshListener(() -> {
-            mvvm.getShowData(activity,binding.edtSearch.getText().toString(),null,getUserModel().getData().getId());
+            if (getUserModel()!=null){
+                mvvm.getShowData(activity,binding.edtSearch.getText().toString(),null,getUserModel().getData().getId());
+            }else {
+                mvvm.getShowData(activity,binding.edtSearch.getText().toString(),null,null);
+
+            }
         });
 
         binding.edtSearch.addTextChangedListener(new TextWatcher() {
@@ -89,7 +98,12 @@ public class FragmentShows extends BaseFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                mvvm.getShowData(activity,s.toString(),null,getUserModel().getData().getId());
+                if (getUserModel()!=null){
+                    mvvm.getShowData(activity,s.toString(),null,getUserModel().getData().getId());
+                }else {
+                    mvvm.getShowData(activity,s.toString(),null,null);
+                }
+
             }
         });
     }

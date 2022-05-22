@@ -25,6 +25,7 @@ import com.finalproject.databinding.FragmentHistoryBinding;
 import com.finalproject.model.HistoryModel;
 import com.finalproject.mvvm.FragmentHistoryMvvm;
 import com.finalproject.ui.common_uis.activity_base.BaseFragment;
+import com.finalproject.ui.common_uis.activity_login.LoginActivity;
 import com.finalproject.ui.user.activity_home.HomeActivity;
 import com.finalproject.ui.user.activity_user_booking_details.UserBookingDetailsActivity;
 
@@ -74,16 +75,34 @@ public class FragmentHistory extends BaseFragment {
             }
             historyAdapter.updateList(historyModels);
         });
-        mvvm.getHistory(getUserModel());
+        if (getUserModel()!=null){
+            mvvm.getHistory(getUserModel());
+        }else {
+            navigateToLoginActivity();
+        }
+
 
         binding.swipeRef.setOnRefreshListener(() -> {
-            mvvm.getHistory(getUserModel());
+            if (getUserModel()!=null){
+                mvvm.getHistory(getUserModel());
+            }else {
+                navigateToLoginActivity();
+            }
         });
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
             if (req == 1 && result.getResultCode()== Activity.RESULT_OK) {
-                mvvm.getHistory(getUserModel());
+                if (getUserModel()!=null){
+                    mvvm.getHistory(getUserModel());
+                }else {
+                    navigateToLoginActivity();
+                }
             }
         });
+    }
+
+    private void navigateToLoginActivity() {
+        Intent intent=new Intent(activity, LoginActivity.class);
+        startActivity(intent);
     }
 
     public void navigateToDetails(HistoryModel historyModel, int adapterPosition) {

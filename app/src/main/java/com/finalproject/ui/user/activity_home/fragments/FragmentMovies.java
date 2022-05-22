@@ -113,7 +113,12 @@ public class FragmentMovies extends BaseFragment {
     public void setItemCategory(CategoryModel categoryModel, int currentPos) {
         mvvm.getCategoryId().setValue(categoryModel.getId());
 //        mvvm.setSelectedCategoryPos(currentPos);
-        mvvm.getMovies(null,null,getUserModel().getData().getId());
+        if (getUserModel()!=null){
+            mvvm.getMovies(null,null,getUserModel().getData().getId());
+        }else {
+            mvvm.getMovies(null,null,null);
+        }
+
     }
 
     public void navigateToMovieDetails(PostModel postModel) {
