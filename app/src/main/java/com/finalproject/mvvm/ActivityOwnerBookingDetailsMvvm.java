@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoadingLivData;
     private MutableLiveData<List<DayModel>> onDaysSuccess;
+    private MutableLiveData<String> dayId;
     private MutableLiveData<List<OwnerHistoryModel>> onHoursSuccess;
     private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -36,32 +37,38 @@ public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
 
 
     public MutableLiveData<Boolean> getIsLoadingLivData() {
-        if (isLoadingLivData==null){
-            isLoadingLivData=new MutableLiveData<>();
+        if (isLoadingLivData == null) {
+            isLoadingLivData = new MutableLiveData<>();
         }
         return isLoadingLivData;
     }
 
     public MutableLiveData<List<DayModel>> getOnDaysSuccess() {
-        if (onDaysSuccess==null){
-            onDaysSuccess=new MutableLiveData<>();
+        if (onDaysSuccess == null) {
+            onDaysSuccess = new MutableLiveData<>();
         }
         return onDaysSuccess;
     }
 
     public MutableLiveData<List<OwnerHistoryModel>> getOnHoursSuccess() {
-        if (onHoursSuccess==null){
-            onHoursSuccess=new MutableLiveData<>();
+        if (onHoursSuccess == null) {
+            onHoursSuccess = new MutableLiveData<>();
         }
         return onHoursSuccess;
     }
 
+    public MutableLiveData<String> getDayId() {
+        if (dayId == null) {
+            dayId = new MutableLiveData<>();
+        }
+        return dayId;
+    }
 
-    public void getDays(UserModel userModel,String post_id){
+    public void getDays(UserModel userModel, String post_id) {
         isLoadingLivData.setValue(true);
 //        Log.e("reservings1",userModel.getData().getCinema().getId()+" "+post_id);
         Api.getService(Tags.base_url)
-                .getOwnerDays(userModel.getData().getCinema().getId(),post_id)
+                .getOwnerDays(userModel.getData().getCinema().getId(), post_id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<DayDataModel>>() {
@@ -72,8 +79,8 @@ public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
 
                     @Override
                     public void onSuccess(Response<DayDataModel> response) {
-                        if (response.isSuccessful() && response.body()!=null){
-                            if (response.body().getData()!=null && response.body().getStatus()==200){
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getData() != null && response.body().getStatus() == 200) {
                                 getOnDaysSuccess().setValue(response.body().getData());
                             }
                         }
@@ -86,10 +93,10 @@ public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
                 });
     }
 
-    public void getOwnerBookings(UserModel userModel,String post_id,String day_id){
+    public void getOwnerBookings(UserModel userModel, String post_id) {
         isLoadingLivData.setValue(true);
-        Log.e("reservings3",userModel.getData().getCinema().getId()+" "+post_id+" "+day_id);
-        Api.getService(Tags.base_url).getOwnerBookingsDetails(userModel.getData().getCinema().getId(),post_id,day_id)
+        Log.e("reservings3", userModel.getData().getCinema().getId() + " " + post_id + " " + getDayId().getValue());
+        Api.getService(Tags.base_url).getOwnerBookingsDetails(userModel.getData().getCinema().getId(), post_id, getDayId().getValue())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<OwnerHistoryDataModel>>() {
@@ -101,9 +108,9 @@ public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
                     @Override
                     public void onSuccess(@NonNull Response<OwnerHistoryDataModel> response) {
                         isLoadingLivData.postValue(false);
-                        Log.e("ddddata",response.code()+" "+response.body().getStatus());
-                        if (response.isSuccessful() && response.body()!=null){
-                            if (response.body().getData()!=null && response.body().getStatus()==200){
+                        Log.e("ddddata", response.code() + " " + response.body().getStatus());
+                        if (response.isSuccessful() && response.body() != null) {
+                            if (response.body().getData() != null && response.body().getStatus() == 200) {
                                 onHoursSuccess.postValue(response.body().getData());
                             }
                         }
@@ -111,7 +118,7 @@ public class ActivityOwnerBookingDetailsMvvm extends AndroidViewModel {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        Log.e("error",e.toString());
+                        Log.e("error", e.toString());
                     }
                 });
     }

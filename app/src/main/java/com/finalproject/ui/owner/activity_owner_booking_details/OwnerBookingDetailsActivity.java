@@ -30,7 +30,6 @@ public class OwnerBookingDetailsActivity extends BaseActivity {
     private List<OwnerHistoryModel> timeModelList;
     private ActivityOwnerBookingDetailsMvvm mvvm;
     private PostModel postModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class OwnerBookingDetailsActivity extends BaseActivity {
 
     private void getDAtaFromIntent() {
         Intent intent = getIntent();
-        postModel= (PostModel) intent.getSerializableExtra("model");
+        postModel = (PostModel) intent.getSerializableExtra("model");
     }
 
     private void initView() {
@@ -55,55 +54,64 @@ public class OwnerBookingDetailsActivity extends BaseActivity {
         timeModelList = new ArrayList<>();
 
         mvvm.getIsLoadingLivData().observe(this, loading -> {
-                binding.swipeRef.setRefreshing(loading);
+            binding.swipeRef.setRefreshing(loading);
         });
         mvvm.getOnDaysSuccess().observe(this, dayModels -> {
-            if (dayModels.size()>0){
+            if (dayModels.size() > 0) {
                 binding.tvNoDays.setVisibility(View.GONE);
                 dayModelList.clear();
                 dayModelList.addAll(dayModels);
-                if (dayAdapter!=null){
+                if (dayAdapter != null) {
                     dayAdapter.updateList(dayModels);
                 }
-            }else {
+                binding.llTime.setVisibility(View.VISIBLE);
+            } else {
                 binding.tvNoDays.setVisibility(View.VISIBLE);
+                binding.llTime.setVisibility(View.GONE);
                 dayAdapter.updateList(new ArrayList<>());
             }
 
         });
-        mvvm.getDays(getUserModel(),postModel.getId());
+        mvvm.getDays(getUserModel(), postModel.getId());
         mvvm.getOnHoursSuccess().observe(this, hours -> {
-            if (hours.size()>0){
-                binding.tvNoTimes.setVisibility(View.GONE);
-                timeModelList.clear();
-                timeModelList.addAll(hours);
-                if (timesAdapter!=null){
-                    timesAdapter.updateList(hours);
+            if (mvvm.getDayId() != null) {
+                if (hours.size() > 0) {
+                    binding.tvNoTimes.setVisibility(View.GONE);
+                    timeModelList.clear();
+                    timeModelList.addAll(hours);
+                    if (timesAdapter != null) {
+                        timesAdapter.updateList(hours);
+                    }
+                } else {
+                    binding.tvNoTimes.setVisibility(View.VISIBLE);
+                    timesAdapter.updateList(new ArrayList<>());
                 }
-            }else {
-                binding.tvNoTimes.setVisibility(View.VISIBLE);
-                timesAdapter.updateList(new ArrayList<>());
             }
+
         });
 
         dayAdapter = new DayAdapter(dayModelList, this);
         binding.recViewDays.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         binding.recViewDays.setAdapter(dayAdapter);
 
-        timesAdapter = new OwnerBookingTimesAdapter(timeModelList, this,getLang());
+        timesAdapter = new OwnerBookingTimesAdapter(timeModelList, this, getLang());
         binding.recViewTimes.setLayoutManager(new LinearLayoutManager(this));
         binding.recViewTimes.setAdapter(timesAdapter);
 
         binding.swipeRef.setOnRefreshListener(() -> {
-            mvvm.getDays(getUserModel(),postModel.getId());
+            if (mvvm.getDayId().getValue() != null) {
+                mvvm.getOwnerBookings(getUserModel(), postModel.getId());
+            } else {
+                binding.swipeRef.setRefreshing(false);
+            }
         });
         binding.swipeRef.setColorSchemeResources(R.color.primary_dark2);
 
     }
 
     public void setDayItem(DayModel model, int currentPos) {
-        mvvm.getOwnerBookings(getUserModel(),postModel.getId(),model.getId());
+        mvvm.getDayId().setValue(model.getId());
+        mvvm.getOwnerBookings(getUserModel(), postModel.getId());
     }
-
 
 }

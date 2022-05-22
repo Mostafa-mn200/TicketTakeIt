@@ -79,10 +79,6 @@ public class FragmentMoviesMvvm extends AndroidViewModel {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
-        getCategoryId().setValue(categoryId);
-    }
-
     public MutableLiveData<Integer> getSelectedCategoryPos() {
         if (selectedCategoryPos == null) {
             selectedCategoryPos = new MutableLiveData<>(-1);
@@ -113,7 +109,7 @@ public class FragmentMoviesMvvm extends AndroidViewModel {
                         isLoading.setValue(false);
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getData() != null && response.body().getStatus() == 200) {
-                                onCategorySuccess.postValue(response.body().getData());
+                                onCategorySuccess.setValue(response.body().getData());
                             }
                         }
                     }
@@ -142,7 +138,7 @@ public class FragmentMoviesMvvm extends AndroidViewModel {
                         isLoading.setValue(false);
                         if (response.isSuccessful() && response.body() != null) {
                             if (response.body().getData() != null && response.body().getStatus() == 200) {
-                                onMoviesSuccess.postValue(response.body().getData());
+                                onMoviesSuccess.setValue(response.body().getData());
                             }
                         }
                     }

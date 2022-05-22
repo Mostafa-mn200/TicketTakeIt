@@ -70,7 +70,7 @@ public class OwnerHomeActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         int currentFragmentId = navController.getCurrentDestination().getId();
-        if (currentFragmentId == R.id.home) {
+        if (currentFragmentId == R.id.movies) {
             finish();
 
         } else {
