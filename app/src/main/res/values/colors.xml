@@ -7,6 +7,7 @@
 
     <color name="color1">#EAB217</color>
     <color name="color2">#3B2939</color>
+    <color name="color20">#4C2648</color>
     <color name="color3">#604D5E</color>
     <color name="color4">#fdd22a</color>
     <color name="color5">#EC0C2C</color>
@@ -21,6 +22,7 @@
     <color name="black_trans">#55000000</color>
     <color name="primary_dark">#5C014B</color>
     <color name="primary_dark2">#450038</color>
+
 
 
     <color name="gray0">#99fafafa</color>
