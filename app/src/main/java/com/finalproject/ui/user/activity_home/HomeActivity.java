@@ -43,6 +43,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void initView() {
+//        Log.e("reqq",req+"");
         Paper.init(this);
         lang = getLang();
         binding.setLang(getLang());
@@ -86,7 +87,7 @@ public class HomeActivity extends BaseActivity {
     }
 
     public void refreshActivity(String lang) {
-        Log.e("lang", lang);
+//        Log.e("lang", lang);
         Paper.book().write("lang", lang);
         Language.setNewLocale(this, lang);
         new Handler()

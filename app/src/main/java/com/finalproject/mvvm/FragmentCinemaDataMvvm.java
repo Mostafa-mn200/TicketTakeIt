@@ -83,6 +83,7 @@ public class FragmentCinemaDataMvvm extends AndroidViewModel {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        isLoading.postValue(false);
                         Log.e("error", e.toString());
                     }
                 });

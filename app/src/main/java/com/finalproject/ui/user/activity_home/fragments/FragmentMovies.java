@@ -1,9 +1,12 @@
 package com.finalproject.ui.user.activity_home.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -40,10 +43,17 @@ public class FragmentMovies extends BaseFragment {
     private MoviesAdapter moviesAdapter;
     private FragmentMoviesMvvm mvvm;
     private List<PostModel> movieModelList;
+    private int req;
+    private ActivityResultLauncher<Intent> launcher;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 1 && result.getResultCode() == Activity.RESULT_OK) {
+                activity.navigateToHistory();
+            }
+        });
     }
 
     @Override
@@ -122,10 +132,11 @@ public class FragmentMovies extends BaseFragment {
     }
 
     public void navigateToMovieDetails(PostModel postModel) {
+        req = 1;
         if (getUserModel()!=null){
             Intent intent = new Intent(activity, DetailsActivity.class);
             intent.putExtra("post_id", postModel.getId());
-            startActivity(intent);
+            launcher.launch(intent);
         }else {
             navigateToLoginActivity();
 

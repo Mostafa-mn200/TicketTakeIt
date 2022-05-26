@@ -51,7 +51,7 @@ public class BookingSeatsActivity extends BaseActivity {
     private AlertDialog dialog;
     private ActivityBookingSeatsMvvm mvvm;
     private String id;
-    private String available_seats="";
+    private String available_seats = "";
     private String selected_seats;
     private int total_price;
 
@@ -76,7 +76,7 @@ public class BookingSeatsActivity extends BaseActivity {
     private void initView() {
         bookCinemaModel = new BookCinemaModel();
         binding.setModel(bookCinemaModel);
-        userModel=getUserModel();
+        userModel = getUserModel();
         bookCinemaModel.setUser_id(userModel.getData().getId());
         setUpToolbar(binding.toolbar, getString(R.string.booking_seats), R.color.color2, R.color.white);
         binding.toolbar.llBack.setOnClickListener(view -> {
@@ -107,9 +107,9 @@ public class BookingSeatsActivity extends BaseActivity {
                     dayModelList.addAll(dayModels);
                     dayAdapter.updateList(dayModels);
                 }
-            }else {
+            } else {
                 binding.tvNoDays.setVisibility(View.VISIBLE);
-                dayModelList=new ArrayList<>();
+                dayModelList = new ArrayList<>();
             }
         });
         mvvm.getOnTimeSuccess().observe(this, timeModels -> {
@@ -120,9 +120,9 @@ public class BookingSeatsActivity extends BaseActivity {
                     timeModelList.addAll(timeModels);
                     timeAdapter.updateList(timeModels);
                 }
-            }else {
+            } else {
                 binding.tvNoTimes.setVisibility(View.VISIBLE);
-                timeModelList=new ArrayList<>();
+                timeModelList = new ArrayList<>();
             }
         });
         mvvm.getDays(cinemaModel.getModel().getId(), model.getId());
@@ -174,7 +174,7 @@ public class BookingSeatsActivity extends BaseActivity {
                 bookCinemaModel.setDay_id(dayModel.getId());
                 binding.llTime.setEnabled(true);
                 binding.tvTime.setText(getResources().getString(R.string.time));
-                timeModel=new TimeModel();
+                timeModel = new TimeModel();
                 mvvm.getTimes(dayModel);
             }
 
@@ -185,7 +185,7 @@ public class BookingSeatsActivity extends BaseActivity {
                 binding.tvTime.setText(timeModel.getHour());
                 bookCinemaModel.setHour_id(timeModel.getId());
                 binding.llChooseSeats.setEnabled(true);
-                mvvm.getSeats(this,cinemaModel.getModel(), dayModel, timeModel);
+                mvvm.getSeats(this, cinemaModel.getModel(), dayModel, timeModel);
             }
 
         });
@@ -210,13 +210,11 @@ public class BookingSeatsActivity extends BaseActivity {
         });
 
         binding.btnBook.setOnClickListener(view -> {
-            if (bookCinemaModel.isDataValid(BookingSeatsActivity.this)){
-                mvvm.book(bookCinemaModel,userModel,this);
+            if (bookCinemaModel.isDataValid(BookingSeatsActivity.this)) {
+                mvvm.book(bookCinemaModel, userModel, this);
             }
         });
     }
-
-
 
 
     private void openDays() {
@@ -241,10 +239,10 @@ public class BookingSeatsActivity extends BaseActivity {
         seatsBinding.btnConfirm.setOnClickListener(view -> {
 
             selected_seats = seatsBinding.number.getText().toString();
-            if ((Integer.parseInt(selected_seats) <=Integer.parseInt(available_seats))) {
+            if ((Integer.parseInt(selected_seats) <= Integer.parseInt(available_seats))) {
                 bookCinemaModel.setNumber_of_seats(selected_seats);
-                total_price=Integer.parseInt(selected_seats) * Integer.parseInt(cinemaModel.getModel().getPrice());
-                binding.totalPrice.setText(total_price+" ");
+                total_price = Integer.parseInt(selected_seats) * Integer.parseInt(cinemaModel.getModel().getPrice());
+                binding.totalPrice.setText(total_price + " ");
                 bookCinemaModel.setTotal_price(String.valueOf(total_price));
                 binding.numberBooked.setText(seatsBinding.number.getText().toString());
                 dialog.dismiss();
@@ -261,7 +259,7 @@ public class BookingSeatsActivity extends BaseActivity {
     public void setDayItem(DayModel model) {
         binding.tvDone1.setVisibility(View.VISIBLE);
         this.dayModel = model;
-        Log.e("kkkkk","hhhhh");
+//        Log.e("kkkkk", "hhhhh");
 
     }
 

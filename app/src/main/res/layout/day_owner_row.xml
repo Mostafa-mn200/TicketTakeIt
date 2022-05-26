@@ -52,10 +52,16 @@
                 android:src="@drawable/ic_close"
                 app:tint="@color/color5" />
         </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recViewTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        </FrameLayout>
+
         <LinearLayout
             android:id="@+id/llAddNew"
             android:layout_width="90dp"

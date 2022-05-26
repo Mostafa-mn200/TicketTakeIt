@@ -35,7 +35,6 @@ public class FragmentCinemaShows extends BaseFragment {
     private FragmentCinemaShowsBinding binding;
     private OwnerHistoryAdapter historyAdapter;
     private FragmentCinemaDataMvvm mvvm;
-    private List<PostModel> showModelList;
     private ActivityResultLauncher<Intent> launcher;
     private int req;
 
@@ -66,7 +65,6 @@ public class FragmentCinemaShows extends BaseFragment {
     }
 
     private void initView() {
-        showModelList=new ArrayList<>();
         mvvm = ViewModelProviders.of(this).get(FragmentCinemaDataMvvm.class);
 
         mvvm.getIsLoading().observe(activity, isLoading -> {
@@ -75,16 +73,12 @@ public class FragmentCinemaShows extends BaseFragment {
 
         mvvm.getOnDataSuccess().observe(activity, showModels -> {
             if (showModels.size() > 0) {
-                showModelList.clear();
-                showModelList.addAll(showModels);
+
                 binding.tvNoData.setVisibility(View.GONE);
                 if (historyAdapter != null) {
                     historyAdapter.updateList(showModels);
                 }
-                if(showModelList.size()==0){
-                    binding.tvNoData.setVisibility(View.VISIBLE);
 
-                }
             } else {
                 binding.tvNoData.setVisibility(View.VISIBLE);
                 historyAdapter.updateList(new ArrayList<>());
@@ -99,19 +93,17 @@ public class FragmentCinemaShows extends BaseFragment {
         binding.swipeRef.setOnRefreshListener(()->mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(),"show"));
 
         mvvm.getRemove().observe(activity, pos -> {
-            if (historyAdapter != null) {
-                Toast.makeText(activity, R.string.movie_removed, Toast.LENGTH_SHORT).show();
-                showModelList.remove(pos);
-                mvvm.getOnDataSuccess().setValue(showModelList);
-            }
+            if(req==1) {
 
-        });
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (req == 1 && result.getResultCode()== Activity.RESULT_OK) {
-                mvvm.getMoviesOrShows(getUserModel().getData().getCinema().getId(), "move");
-                historyAdapter.updateList(showModelList);
+                if (historyAdapter != null) {
+                    Toast.makeText(activity, R.string.movie_removed, Toast.LENGTH_SHORT).show();
+                    mvvm.getMoviesOrShows(FragmentCinemaShows.this.getUserModel().getData().getCinema().getId(), "show");
+
+                }
+                req=0;
             }
         });
+
     }
 
     public void navigateToDetails(int adapterPosition, PostModel postModel) {
@@ -123,7 +115,7 @@ public class FragmentCinemaShows extends BaseFragment {
     public void delete(int adapterPosition, PostModel postModel) {
         req=1;
         mvvm.removeFromCinema(activity,getUserModel().getData().getCinema().getId(),postModel.getId(),adapterPosition);
-        showModelList.remove(adapterPosition);
-        historyAdapter.updateList(showModelList);
+//        showModelList.remove(adapterPosition);
+//        historyAdapter.updateList(showModelList);
     }
 }

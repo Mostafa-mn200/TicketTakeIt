@@ -58,13 +58,14 @@ public class FragmentHome extends BaseFragment {
     private SliderAdapter sliderAdapter;
     private List<SliderModel> sliderModelList;
     private int req;
-    private ActivityResultLauncher<Intent>launcher;
+    private ActivityResultLauncher<Intent> launcher;
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         activity = (HomeActivity) context;
-        launcher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result -> {
-            if (req==1&&result.getResultCode()== Activity.RESULT_OK ){
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 1 && result.getResultCode() == Activity.RESULT_OK) {
                 activity.navigateToHistory();
             }
         });
@@ -102,7 +103,7 @@ public class FragmentHome extends BaseFragment {
 
 
         mvvm.getSliderDataModelMutableLiveData().observe(activity, sliderDataModel -> {
-            if (sliderDataModel.getSlider()!=null){
+            if (sliderDataModel.getSlider() != null) {
                 binding.progBarSlider.setVisibility(View.GONE);
                 sliderModelList.clear();
                 sliderModelList.addAll(sliderDataModel.getSlider());
@@ -129,11 +130,11 @@ public class FragmentHome extends BaseFragment {
         binding.recyclerTopShow.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
         binding.recyclerTopShow.setAdapter(topShowsAdapter);
         mvvm.getShows().observe(activity, showModels -> {
-            if (showModels.size()>0){
+            if (showModels.size() > 0) {
                 binding.progBarTopShow.setVisibility(View.GONE);
                 binding.tvNoShows.setVisibility(View.GONE);
                 topShowsAdapter.updateList(showModels);
-            }else {
+            } else {
                 binding.tvNoShows.setVisibility(View.VISIBLE);
             }
         });
@@ -142,16 +143,16 @@ public class FragmentHome extends BaseFragment {
         binding.recyclerComingSoon.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
         binding.recyclerComingSoon.setAdapter(comingSoonAdapter);
         mvvm.getComingSoon().observe(activity, comingSoonModels -> {
-            if (comingSoonModels.size()>0){
+            if (comingSoonModels.size() > 0) {
                 binding.progBarComingSoon.setVisibility(View.GONE);
                 binding.tvNoComingSoon.setVisibility(View.GONE);
                 comingSoonAdapter.updateList(comingSoonModels);
-            }else {
+            } else {
                 binding.tvNoComingSoon.setVisibility(View.VISIBLE);
             }
         });
-      
-        sliderAdapter = new SliderAdapter(sliderModelList,activity);
+
+        sliderAdapter = new SliderAdapter(sliderModelList, activity);
         binding.pager.setAdapter(sliderAdapter);
         binding.pager.setClipToPadding(false);
         binding.pager.setPadding(20, 0, 20, 0);
@@ -176,22 +177,21 @@ public class FragmentHome extends BaseFragment {
     }
 
     public void navigateToDetailsActivity(PostModel postModel, int adapterPosition) {
-        if (getUserModel()!=null){
-            req=1;
+        req = 1;
+        if (getUserModel() != null) {
             Intent intent = new Intent(activity, DetailsActivity.class);
-            intent.putExtra("post_id",postModel.getId());
+            intent.putExtra("post_id", postModel.getId());
             launcher.launch(intent);
-        }else {
+        } else {
             navigateToLoginActivity();
         }
 
     }
 
     private void navigateToLoginActivity() {
-        Intent intent=new Intent(activity, LoginActivity.class);
+        Intent intent = new Intent(activity, LoginActivity.class);
         startActivity(intent);
     }
-
 
 
     public class MyTask extends TimerTask {

@@ -141,6 +141,10 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
 
 
     public void setItemChecked(PostModel postModel, int position) {
+        dayModelList.clear();
+        list.clear();
+        dayAdapter.updateList(dayModelList);
+        binding.sheet.tvDate.setText("");
         openSheet(postModel, position);
     }
 
@@ -157,6 +161,7 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
                     Toast.makeText(activity, R.string.choose_at_least_one_time, Toast.LENGTH_SHORT).show();
                 }
             }
+            showsAdapter.notifyItemChanged(position);
 
         });
         binding.sheet.btnCancel.setOnClickListener(view -> {
@@ -165,27 +170,13 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
             list.clear();
             dayAdapter.updateList(dayModelList);
             binding.sheet.tvDate.setText("");
+            postModel.setAdded("0");
+            showsAdapter.notifyItemChanged(position);
         });
 
         behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         behavior.setDraggable(false);
     }
-
-
-//    private void setHaveMovie(PostModel postModel, int position) {
-//        added = "1";
-//        postModel.setAdded(added);
-//        showModelList.set(position, postModel);
-//        showsAdapter.updateList(showModelList);
-//
-//    }
-//
-//    private void setHaveNotMovie(PostModel postModel, int position) {
-//        added = "0";
-//        postModel.setAdded(added);
-//        showModelList.set(position, postModel);
-//        showsAdapter.updateList(showModelList);
-//    }
 
     private void createDateDialog() {
 
@@ -209,7 +200,7 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
         calendar.setTimeInMillis(System.currentTimeMillis());
         timePickerDialog = TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.dismissOnPause(true);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
         try {
             if(dayModel !=null&&!dateFormat.parse(dayModel.getDay()).after(dateFormat.parse(dateFormat.format(calendar.getTimeInMillis())))){
                 timePickerDialog.setMinTime(calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND));
@@ -266,7 +257,7 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
             list.add(timeModel);
             timeOwnerAdapter.updateList(list);
         } else {
-            Toast.makeText(activity, getResources().getString(R.string.time_added_before), Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, R.string.time_added_before, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -274,7 +265,7 @@ public class FragmentOwnerShows extends BaseFragment implements DatePickerDialog
         // list.clear();
         Calendar calendar = Calendar.getInstance();
         this.list = timeModels;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
 
         // dayModel.setTimeModelList(list);
         this.timeOwnerAdapter = adapter;

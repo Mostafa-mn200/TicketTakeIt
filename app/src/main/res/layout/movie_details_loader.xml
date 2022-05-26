@@ -18,14 +18,15 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
-            <View
+            <androidx.cardview.widget.CardView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@color/gray17"
+                app:cardBackgroundColor="@color/gray17"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="1.2:1" />
 
-            <Space
+            <androidx.legacy.widget.Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
@@ -76,7 +77,7 @@
                 android:orientation="vertical"
                 android:layout_marginStart="8dp"
                 >
-                <View
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@color/gray17"
@@ -94,7 +95,7 @@
                 android:orientation="vertical"
                 android:layout_marginStart="8dp"
                 >
-                <View
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@color/gray17"
@@ -112,7 +113,7 @@
                 android:orientation="vertical"
                 android:layout_marginStart="8dp"
                 >
-                <View
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@color/gray17"
@@ -130,7 +131,7 @@
                 android:orientation="vertical"
                 android:layout_marginStart="8dp"
                 >
-                <View
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:background="@color/gray17"

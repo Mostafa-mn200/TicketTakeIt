@@ -173,6 +173,10 @@ public class FragmentOwnerMovies extends BaseFragment implements DatePickerDialo
     }
 
     public void setItemChecked(PostModel postModel, int position) {
+        dayModelList.clear();
+        list.clear();
+        dayAdapter.updateList(dayModelList);
+        binding.sheet.tvDate.setText("");
         openSheet(postModel, position);
     }
 
@@ -228,7 +232,7 @@ public class FragmentOwnerMovies extends BaseFragment implements DatePickerDialo
         calendar.setTimeInMillis(System.currentTimeMillis());
         timePickerDialog = TimePickerDialog.newInstance(this, calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), false);
         timePickerDialog.dismissOnPause(true);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
         try {
             if(dayModel !=null&&!dateFormat.parse(dayModel.getDay()).after(dateFormat.parse(dateFormat.format(calendar.getTimeInMillis())))){
                 timePickerDialog.setMinTime(calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE),calendar.get(Calendar.SECOND));

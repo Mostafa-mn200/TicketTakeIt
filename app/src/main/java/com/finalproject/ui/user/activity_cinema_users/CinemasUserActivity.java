@@ -42,15 +42,16 @@ public class CinemasUserActivity extends BaseActivity {
 
     private void getDataFromIntent() {
         Intent intent = getIntent();
-        model= (PostModel) intent.getSerializableExtra("postModel");
+        model = (PostModel) intent.getSerializableExtra("postModel");
     }
+
     private void initView() {
         setUpToolbar(binding.toolbar, getString(R.string.choose_Cinema), R.color.color2, R.color.white);
         binding.toolbar.llBack.setOnClickListener(view -> finish());
         mvvm = ViewModelProviders.of(this).get(ActivityCinemasMvvm.class);
 
-        launcher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (req==1&&result.getResultCode()== Activity.RESULT_OK ){
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+            if (req == 1 && result.getResultCode() == Activity.RESULT_OK) {
                 setResult(RESULT_OK);
                 finish();
             }
@@ -60,32 +61,32 @@ public class CinemasUserActivity extends BaseActivity {
         });
 
         mvvm.getOnCinemaSuccess().observe(this, cinemaModels -> {
-            if (cinemaModels.size()>0){
+            if (cinemaModels.size() > 0) {
                 binding.cardNoData.setVisibility(View.GONE);
-                if (cinemaUsersAdapter!=null){
+                if (cinemaUsersAdapter != null) {
                     cinemaUsersAdapter.updateList(cinemaModels);
                 }
-            }else {
+            } else {
                 binding.cardNoData.setVisibility(View.VISIBLE);
             }
         });
         mvvm.getCinemas(model.getId());
 //        Log.e("iddd",model.getId());
         binding.swipeRef.setOnRefreshListener(() -> {
-                mvvm.getCinemas(model.getId());
+            mvvm.getCinemas(model.getId());
         });
         binding.swipeRef.setColorSchemeResources(R.color.colorPrimary);
-        cinemaUsersAdapter = new CinemaUsersAdapter(this,getLang());
+        cinemaUsersAdapter = new CinemaUsersAdapter(this, getLang());
         binding.recViewCinemas.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
         binding.recViewCinemas.setAdapter(cinemaUsersAdapter);
     }
 
 
     public void navigateToBookingActivity(CinemaModel cinemaModel, int position) {
-        req=1;
+        req = 1;
         Intent intent = new Intent(CinemasUserActivity.this, BookingSeatsActivity.class);
-        intent.putExtra("postModel",model);
-        intent.putExtra("cinemaModel",cinemaModel);
+        intent.putExtra("postModel", model);
+        intent.putExtra("cinemaModel", cinemaModel);
         launcher.launch(intent);
     }
 }
