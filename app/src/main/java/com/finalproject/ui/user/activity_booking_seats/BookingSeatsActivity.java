@@ -140,8 +140,28 @@ public class BookingSeatsActivity extends BaseActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if (i == 0) {
                     bookCinemaModel.setTicket_type("0");
+                    int sss= Integer.parseInt(cinemaModel.getModel().getPrice());
+                    binding.singlePrice.setText(String.valueOf(sss));
+                    binding.totalPrice.setText("");
+                    bookCinemaModel.setTotal_price("");
                 } else {
-                    bookCinemaModel.setTicket_type(ticketTypeModelList.get(i).getTitle());
+                    if (i==1){
+                        int sss= Integer.parseInt(cinemaModel.getModel().getPrice());
+                        binding.singlePrice.setText(String.valueOf(sss));
+                        total_price = Integer.parseInt(selected_seats) * Integer.parseInt(cinemaModel.getModel().getPrice());
+                        binding.totalPrice.setText(total_price + " ");
+                        bookCinemaModel.setTotal_price(String.valueOf(total_price));
+                        bookCinemaModel.setTicket_type(ticketTypeModelList.get(i).getTitle());
+                    }else if (i==2){
+                        int sss= 2 * Integer.parseInt(cinemaModel.getModel().getPrice());
+                        binding.singlePrice.setText(String.valueOf(sss));
+                        total_price=total_price*2;
+                        binding.totalPrice.setText(total_price + " ");
+                        bookCinemaModel.setTotal_price(String.valueOf(total_price));
+//                        total_price = Integer.parseInt(selected_seats) * Integer.parseInt(cinemaModel.getModel().getPrice());
+                        bookCinemaModel.setTicket_type(ticketTypeModelList.get(i).getTitle());
+                    }
+
 
                 }
 

@@ -103,6 +103,8 @@
     <string name="movie_type">نوع الفيلم</string>
     <string name="please_choose_the_user">برجاء تحديد(المستخدم أو المالك)</string>
     <string name="field_required">الحقل مطلوب</string>
+    <string name="inv_email">البريد الالكتروني غير صحيح</string>
+    <string name="national_id_shoud_14">الرقم التعريفي يجب أن يحتوي على 14 رقم</string>
     <string name="user_found">المستخدم موجود بالفعل</string>
     <string name="data_taken_before">تم تسجيل هذه البيانات بالفعل من قبل</string>
     <string name="incorrect_data">بيانات خاطئة</string>

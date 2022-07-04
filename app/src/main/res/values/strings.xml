@@ -101,6 +101,8 @@
     <string name="movie_type">Movie type</string>
     <string name="please_choose_the_user">Please choose(Customer or Owner)</string>
     <string name="field_required">field required</string>
+    <string name="inv_email">Invalid email</string>
+    <string name="national_id_shoud_14">national id should contains 14 numbers</string>
     <string name="user_found">User Found</string>
     <string name="data_taken_before">data has already been taken before</string>
     <string name="incorrect_data">Incorrect data</string>

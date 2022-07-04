@@ -1,6 +1,7 @@
 package com.finalproject.model;
 
 import android.content.Context;
+import android.util.Patterns;
 import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
@@ -31,8 +32,10 @@ public class SignUpModel extends BaseObservable implements Serializable {
     public boolean isDataValid(Context context) {
         if (!type.trim().isEmpty()&&
                 !national_id.trim().isEmpty() &&
+                national_id.trim().length()==14 &&
                 !name.isEmpty() &&
                 !email.trim().isEmpty() &&
+                Patterns.EMAIL_ADDRESS.matcher(email).matches()&&
                 !user_name.trim().isEmpty() &&
                 !password.trim().isEmpty()) {
 
@@ -48,10 +51,12 @@ public class SignUpModel extends BaseObservable implements Serializable {
             if (national_id.trim().isEmpty()) {
                 error_national_id.set(context.getString(R.string.field_required));
 
-            } else {
+            } else if (national_id.trim().length()<14) {
+                error_national_id.set(context.getString(R.string.national_id_shoud_14));
+            }else {
                 error_national_id.set(null);
-
             }
+
             if (name.isEmpty()) {
                 error_name.set(context.getString(R.string.field_required));
 
@@ -62,7 +67,11 @@ public class SignUpModel extends BaseObservable implements Serializable {
             if (email.trim().isEmpty()) {
                 error_email.set(context.getString(R.string.field_required));
 
-            } else {
+            }
+            else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+            {
+                error_email.set(context.getString(R.string.inv_email));
+            }else {
                 error_email.set(null);
 
             }
